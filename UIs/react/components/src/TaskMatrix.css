@@ -1,0 +1,18 @@
+.task-matrix {
+    width: 100%;
+}
+
+.task-icon {
+    padding-left: 5px;
+    width: 62px;
+}
+
+.range-label {
+    width: 100%;
+    text-align: center;
+}
+
+ion-range {
+    padding-top: 0px;
+    width: 100%;
+}

@@ -1,0 +1,24 @@
+# Idea files
+.idea/workspace.xml
+.idea/shelf/**
+
+# Node runtime
+npm-debug.log
+
+# Ignore NPM package folders
+node_modules
+
+# Ignore build files
+bundle.js
+bundle.css
+0.0.js
+1.1.js
+public.zip
+
+# Ignore Rush temporary files
+/common/temp/**
+
+# Ignore Microsoft Rush temp files
+.rush/
+
+.history/

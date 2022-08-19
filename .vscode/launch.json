@@ -1,0 +1,110 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "conversations-dos",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\apps\\conversations\\node_modules\\@airport\\runway\\lib\\index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/conversations/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}\\apps\\conversations",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "conversations-sh",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/apps/conversations/node_modules/@airport/runway/lib/index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/conversations/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}/apps/conversations",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "tasks-dos",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\apps\\tasks\\node_modules\\@airport\\runway\\lib\\index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/tasks/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}\\apps\\tasks",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "tasks-sh",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/apps/tasks/node_modules/@airport/runway/lib/index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/tasks/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}/apps/tasks",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "topics-dos",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}\\apps\\topics\\node_modules\\@airport\\runway\\lib\\index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/topics/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}\\apps\\topics",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        },
+        {
+            "type": "pwa-node",
+            "request": "launch",
+            "name": "topics-sh",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/apps/topics/node_modules/@airport/runway/lib/index.js",
+            "outFiles": [
+                "${workspaceFolder}/apps/topics/lib/**/*.js"
+            ],
+            "cwd": "${workspaceFolder}/apps/topics",
+            "runtimeArgs": [
+                "--experimental-specifier-resolution=node",
+                "--preserve-symlinks"
+            ]
+        }
+    ]
+}
