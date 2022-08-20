@@ -1,4 +1,4 @@
-import { Task } from "@airline/task"
+import { Task } from "@airline/tasks"
 import { IonLabel, IonRange } from "@ionic/react"
 import { TaskIcon } from "./TaskIcon"
 

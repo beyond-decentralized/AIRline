@@ -1,4 +1,4 @@
-import { Task } from '@airline/task'
+import { Task } from '@airline/tasks'
 import './TaskIcon.css'
 
 export function TaskIcon({ task }: { task: Task }) {
