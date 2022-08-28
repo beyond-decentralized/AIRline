@@ -6,15 +6,15 @@ export class SQDIDvo extends Dvo {
         super(dbEntityId, Q);
     }
 }
-export class BasePrerequisiteTaskDvo extends SQDIDvo {
+export class BaseGoalDvo extends SQDIDvo {
     static diSet() {
-        return duoDiSet(4);
+        return duoDiSet(7);
     }
     constructor() {
-        super(4);
+        super(7);
     }
 }
-export class BaseSubtaskDvo extends SQDIDvo {
+export class BaseGoalConversationDvo extends SQDIDvo {
     static diSet() {
         return duoDiSet(0);
     }
@@ -22,15 +22,15 @@ export class BaseSubtaskDvo extends SQDIDvo {
         super(0);
     }
 }
-export class BaseTaskDvo extends SQDIDvo {
+export class BaseGoalTaskDvo extends SQDIDvo {
     static diSet() {
-        return duoDiSet(3);
+        return duoDiSet(6);
     }
     constructor() {
-        super(3);
+        super(6);
     }
 }
-export class BaseTaskAssigneeDvo extends SQDIDvo {
+export class BasePrerequisiteTaskDvo extends SQDIDvo {
     static diSet() {
         return duoDiSet(1);
     }
@@ -38,7 +38,7 @@ export class BaseTaskAssigneeDvo extends SQDIDvo {
         super(1);
     }
 }
-export class BaseTaskConversationDvo extends SQDIDvo {
+export class BaseSubtaskDvo extends SQDIDvo {
     static diSet() {
         return duoDiSet(2);
     }
@@ -46,12 +46,36 @@ export class BaseTaskConversationDvo extends SQDIDvo {
         super(2);
     }
 }
-export class BaseTaskReferenceInCommentDvo extends SQDIDvo {
+export class BaseTaskDvo extends SQDIDvo {
     static diSet() {
         return duoDiSet(5);
     }
     constructor() {
         super(5);
+    }
+}
+export class BaseTaskAssigneeDvo extends SQDIDvo {
+    static diSet() {
+        return duoDiSet(3);
+    }
+    constructor() {
+        super(3);
+    }
+}
+export class BaseTaskConversationDvo extends SQDIDvo {
+    static diSet() {
+        return duoDiSet(4);
+    }
+    constructor() {
+        super(4);
+    }
+}
+export class BaseTaskReferenceInCommentDvo extends SQDIDvo {
+    static diSet() {
+        return duoDiSet(8);
+    }
+    constructor() {
+        super(8);
     }
 }
 //# sourceMappingURL=baseDvos.js.map

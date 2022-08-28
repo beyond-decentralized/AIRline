@@ -5,7 +5,32 @@ export declare const APPLICATION: {
     sinceVersion: number;
     versions: {
         api: {
-            apiObjectMap: {};
+            apiObjectMap: {
+                ThemeApi: {
+                    operationMap: {
+                        findAll: {
+                            isAsync: boolean;
+                            parameters: any[];
+                        };
+                        save: {
+                            isAsync: boolean;
+                            parameters: any[];
+                        };
+                    };
+                };
+                TopicApi: {
+                    operationMap: {
+                        findAllForTheme: {
+                            isAsync: boolean;
+                            parameters: any[];
+                        };
+                        save: {
+                            isAsync: boolean;
+                            parameters: any[];
+                        };
+                    };
+                };
+            };
         };
         entities: ({
             columns: ({
@@ -100,6 +125,7 @@ export declare const APPLICATION: {
                 name: string;
                 columnIndexes: any[];
             };
+            operations: {};
         } | {
             columns: {
                 index: number;
@@ -175,6 +201,7 @@ export declare const APPLICATION: {
                 name: string;
                 columnIndexes: any[];
             };
+            operations: {};
         })[];
         integerVersion: number;
         referencedApplications: {

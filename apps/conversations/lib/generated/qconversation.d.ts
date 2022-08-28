@@ -1,4 +1,4 @@
-import { IQDateField, IQNumberField, IQAirEntityOneToManyRelation } from '@airport/tarmaq-query';
+import { IQDateField, IQNumberField, IQStringField, IQAirEntityOneToManyRelation } from '@airport/tarmaq-query';
 import { AirEntityGraph, AirEntityEId, AirEntityEUpdateColumns, AirEntityEUpdateProperties, AirEntityESelect, QAirEntityQId, QAirEntityQRelation, QAirEntity } from '@airport/holding-pattern';
 import { TopicGraph, TopicEOptionalId, TopicESelect, QTopicQRelation } from '@airline/topics';
 import { ParticipantGraph, ParticipantESelect, QParticipant } from './qparticipant';
@@ -12,6 +12,7 @@ import { IConversation } from './conversation';
  * SELECT - All fields and relations (optional).
  */
 export interface ConversationESelect extends AirEntityESelect, ConversationEOptionalId {
+    name?: string | IQStringField;
     topic?: TopicESelect;
     participants?: ParticipantESelect;
     moderators?: ModeratorESelect;
@@ -31,12 +32,14 @@ export interface ConversationEOptionalId {
  * UPDATE - non-id fields and relations (optional).
  */
 export interface ConversationEUpdateProperties extends AirEntityEUpdateProperties {
+    name?: string | IQStringField;
     topic?: TopicEOptionalId;
 }
 /**
  * PERSIST CASCADE - non-id relations (optional).
  */
 export interface ConversationGraph extends ConversationEOptionalId, AirEntityGraph {
+    name?: string | IQStringField;
     topic?: TopicGraph;
     participants?: ParticipantGraph[];
     moderators?: ModeratorGraph[];
@@ -52,6 +55,7 @@ export interface ConversationEUpdateColumns extends AirEntityEUpdateColumns {
     ORIGINAL_ACTOR_RECORD_ID?: number | IQNumberField;
     ORIGINAL_REPOSITORY_LID?: number | IQNumberField;
     ORIGINAL_ACTOR_LID?: number | IQNumberField;
+    NAME?: string | IQStringField;
     TOPIC_RID_1?: number | IQNumberField;
     TOPIC_AID_1?: number | IQNumberField;
     TOPIC_ARID_1?: number | IQNumberField;
@@ -70,6 +74,7 @@ export interface ConversationECreateColumns extends ConversationEId, Conversatio
  * Query Entity Query Definition (used for Q.ApplicationEntity_Name).
  */
 export interface QConversation<IQE extends QConversation = any> extends QAirEntity<IQE | QConversation> {
+    name: IQStringField;
     topic: QTopicQRelation;
     participants: IQAirEntityOneToManyRelation<IParticipant, QParticipant>;
     moderators: IQAirEntityOneToManyRelation<IModerator, QModerator>;

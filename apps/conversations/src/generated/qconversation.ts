@@ -93,6 +93,7 @@ import {
 export interface ConversationESelect
     extends AirEntityESelect, ConversationEOptionalId {
 	// Non-Id Properties
+	name?: string | IQStringField;
 
 	// Id Relations - full property interfaces
 
@@ -131,6 +132,7 @@ export interface ConversationEOptionalId {
 export interface ConversationEUpdateProperties
 	extends AirEntityEUpdateProperties {
 	// Non-Id Properties
+	name?: string | IQStringField;
 
 	// Non-Id Relations - _localIds only & no OneToMany's
 	topic?: TopicEOptionalId;
@@ -145,6 +147,7 @@ export interface ConversationGraph
 // NOT USED: Cascading Relations
 // NOT USED: ${relationsForCascadeGraph}
 	// Non-Id Properties
+	name?: string | IQStringField;
 
 	// Relations
 	topic?: TopicGraph;
@@ -166,6 +169,7 @@ export interface ConversationEUpdateColumns
 	ORIGINAL_ACTOR_RECORD_ID?: number | IQNumberField;
 	ORIGINAL_REPOSITORY_LID?: number | IQNumberField;
 	ORIGINAL_ACTOR_LID?: number | IQNumberField;
+	NAME?: string | IQStringField;
 	TOPIC_RID_1?: number | IQNumberField;
 	TOPIC_AID_1?: number | IQNumberField;
 	TOPIC_ARID_1?: number | IQNumberField;
@@ -201,6 +205,7 @@ export interface QConversation<IQE extends QConversation = any> extends QAirEnti
 	// Id Relations
 
 	// Non-Id Fields
+	name: IQStringField;
 
 	// Non-Id Relations
 	topic: QTopicQRelation;

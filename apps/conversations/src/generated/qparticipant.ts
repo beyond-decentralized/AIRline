@@ -72,7 +72,7 @@ export interface ParticipantESelect
 
   // Non-Id relations (including OneToMany's)
 	conversation?: ConversationESelect;
-	moderator?: UserAccountESelect;
+	userAccount?: UserAccountESelect;
 
 }
 
@@ -106,7 +106,7 @@ export interface ParticipantEUpdateProperties
 
 	// Non-Id Relations - _localIds only & no OneToMany's
 	conversation?: ConversationEOptionalId;
-	moderator?: UserAccountEOptionalId;
+	userAccount?: UserAccountEOptionalId;
 
 }
 
@@ -121,7 +121,7 @@ export interface ParticipantGraph
 
 	// Relations
 	conversation?: ConversationGraph;
-	moderator?: UserAccountGraph;
+	userAccount?: UserAccountGraph;
 
 }
 
@@ -176,7 +176,7 @@ export interface QParticipant<IQE extends QParticipant = any> extends QAirEntity
 
 	// Non-Id Relations
 	conversation: QConversationQRelation;
-	moderator: QUserAccountQRelation;
+	userAccount: QUserAccountQRelation;
 
 }
 

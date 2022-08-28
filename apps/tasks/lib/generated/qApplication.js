@@ -1,6 +1,9 @@
 import { airApi } from '@airport/aviation-communication';
-import { PrerequisiteTask, Subtask, Task, TaskAssignee, TaskConversation, TaskReferenceInComment } from '../ddl/ddl';
+import { Goal, GoalConversation, GoalTask, PrerequisiteTask, Subtask, Task, TaskAssignee, TaskConversation, TaskReferenceInComment } from '../ddl/ddl';
 const __constructors__ = {
+    Goal: Goal,
+    GoalConversation: GoalConversation,
+    GoalTask: GoalTask,
     PrerequisiteTask: PrerequisiteTask,
     Subtask: Subtask,
     Task: Task,

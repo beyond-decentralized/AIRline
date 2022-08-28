@@ -4,6 +4,7 @@ import { Comment } from "./Comment";
 import { Moderator } from "./Moderator";
 import { Participant } from "./Participant";
 export declare class Conversation extends AirEntity {
+    name: string;
     topic: Topic;
     participants: Participant[];
     moderators: Moderator[];

@@ -16,4 +16,4 @@ Theme = __decorate([
     Table({ name: 'THEME' })
 ], Theme);
 export { Theme };
-//# sourceMappingURL=Theme.js.map
+//# sourceMappingURL=theme.js.map

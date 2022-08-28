@@ -5,9 +5,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 import { AirEntity } from "@airport/holding-pattern";
-import { Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
+import { Column, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
 let Conversation = class Conversation extends AirEntity {
+    constructor() {
+        super(...arguments);
+        this.participants = [];
+        this.moderators = [];
+        this.comments = [];
+    }
 };
+__decorate([
+    Column({ name: 'NAME' })
+], Conversation.prototype, "name", void 0);
 __decorate([
     ManyToOne()
 ], Conversation.prototype, "topic", void 0);

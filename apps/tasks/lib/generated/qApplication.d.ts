@@ -1,13 +1,19 @@
 import { QApplication } from '@airport/aviation-communication';
 import { DbApplication, ApplicationEntity_LocalId } from '@airport/ground-control';
-import { QPrerequisiteTask } from './qprerequisitetask';
-import { QSubtask } from './qsubtask';
-import { QTask } from './qtask';
-import { QTaskAssignee } from './qtaskassignee';
-import { QTaskConversation } from './qtaskconversation';
-import { QTaskReferenceInComment } from './qtaskreferenceincomment';
+import { QGoal } from './goal/qgoal';
+import { QGoalConversation } from './goal/qgoalconversation';
+import { QGoalTask } from './goal/qgoaltask';
+import { QPrerequisiteTask } from './task/qprerequisitetask';
+import { QSubtask } from './task/qsubtask';
+import { QTask } from './task/qtask';
+import { QTaskAssignee } from './task/qtaskassignee';
+import { QTaskConversation } from './task/qtaskconversation';
+import { QTaskReferenceInComment } from './task/qtaskreferenceincomment';
 export interface LocalQApplication extends QApplication {
     db: DbApplication;
+    Goal: QGoal;
+    GoalConversation: QGoalConversation;
+    GoalTask: QGoalTask;
     PrerequisiteTask: QPrerequisiteTask;
     Subtask: QSubtask;
     Task: QTask;

@@ -7,7 +7,32 @@ export const APPLICATION = {
     "versions": [
         {
             "api": {
-                "apiObjectMap": {}
+                "apiObjectMap": {
+                    "ThemeApi": {
+                        "operationMap": {
+                            "findAll": {
+                                "isAsync": true,
+                                "parameters": []
+                            },
+                            "save": {
+                                "isAsync": true,
+                                "parameters": []
+                            }
+                        }
+                    },
+                    "TopicApi": {
+                        "operationMap": {
+                            "findAllForTheme": {
+                                "isAsync": true,
+                                "parameters": []
+                            },
+                            "save": {
+                                "isAsync": true,
+                                "parameters": []
+                            }
+                        }
+                    }
+                }
             },
             "entities": [
                 {
@@ -433,7 +458,8 @@ export const APPLICATION = {
                     "tableConfig": {
                         "name": "TOPIC",
                         "columnIndexes": []
-                    }
+                    },
+                    "operations": {}
                 },
                 {
                     "columns": [
@@ -789,7 +815,8 @@ export const APPLICATION = {
                     "tableConfig": {
                         "name": "THEME",
                         "columnIndexes": []
-                    }
+                    },
+                    "operations": {}
                 }
             ],
             "integerVersion": 1,

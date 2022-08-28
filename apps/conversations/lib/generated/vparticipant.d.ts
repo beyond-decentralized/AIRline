@@ -4,6 +4,6 @@ import { Conversation } from '../ddl/Conversation';
 import { UserAccountVDescriptor, UserAccount } from '@airport/travel-document-checkpoint/lib/to_be_generated/runtime-index';
 export interface ParticipantVDescriptor<T> extends AirEntityVDescriptor<T> {
     conversation?: ConversationVDescriptor<Conversation>;
-    moderator?: UserAccountVDescriptor<UserAccount>;
+    userAccount?: UserAccountVDescriptor<UserAccount>;
 }
 //# sourceMappingURL=vparticipant.d.ts.map

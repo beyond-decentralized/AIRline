@@ -8,7 +8,7 @@ import { IParticipant } from './participant';
  */
 export interface ParticipantESelect extends AirEntityESelect, ParticipantEOptionalId {
     conversation?: ConversationESelect;
-    moderator?: UserAccountESelect;
+    userAccount?: UserAccountESelect;
 }
 /**
  * DELETE - Ids fields and relations only (required).
@@ -25,14 +25,14 @@ export interface ParticipantEOptionalId {
  */
 export interface ParticipantEUpdateProperties extends AirEntityEUpdateProperties {
     conversation?: ConversationEOptionalId;
-    moderator?: UserAccountEOptionalId;
+    userAccount?: UserAccountEOptionalId;
 }
 /**
  * PERSIST CASCADE - non-id relations (optional).
  */
 export interface ParticipantGraph extends ParticipantEOptionalId, AirEntityGraph {
     conversation?: ConversationGraph;
-    moderator?: UserAccountGraph;
+    userAccount?: UserAccountGraph;
 }
 /**
  * UPDATE - non-id columns (optional).
@@ -64,7 +64,7 @@ export interface ParticipantECreateColumns extends ParticipantEId, ParticipantEU
  */
 export interface QParticipant<IQE extends QParticipant = any> extends QAirEntity<IQE | QParticipant> {
     conversation: QConversationQRelation;
-    moderator: QUserAccountQRelation;
+    userAccount: QUserAccountQRelation;
 }
 export interface QParticipantQId extends QAirEntityQId {
 }

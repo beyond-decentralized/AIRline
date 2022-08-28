@@ -27,6 +27,7 @@ export interface IConversation extends IAirEntity {
 	// Id Relations
 
 	// Non-Id Properties
+	name?: string;
 
 	// Non-Id Relations
 	topic?: ITopic;

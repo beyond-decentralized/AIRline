@@ -1,19 +1,43 @@
-import { PrerequisiteTask } from '../ddl/prerequisitetask';
-import { PrerequisiteTaskVDescriptor } from './vprerequisitetask';
-import { Subtask } from '../ddl/subtask';
-import { SubtaskVDescriptor } from './vsubtask';
-import { Task } from '../ddl/task';
-import { TaskVDescriptor } from './vtask';
-import { TaskAssignee } from '../ddl/taskassignee';
-import { TaskAssigneeVDescriptor } from './vtaskassignee';
-import { TaskConversation } from '../ddl/taskconversation';
-import { TaskConversationVDescriptor } from './vtaskconversation';
-import { TaskReferenceInComment } from '../ddl/taskreferenceincomment';
-import { TaskReferenceInCommentVDescriptor } from './vtaskreferenceincomment';
+import { Goal } from '../ddl/goal/goal';
+import { GoalVDescriptor } from './goal/vgoal';
+import { GoalConversation } from '../ddl/goal/goalconversation';
+import { GoalConversationVDescriptor } from './goal/vgoalconversation';
+import { GoalTask } from '../ddl/goal/goaltask';
+import { GoalTaskVDescriptor } from './goal/vgoaltask';
+import { PrerequisiteTask } from '../ddl/task/prerequisitetask';
+import { PrerequisiteTaskVDescriptor } from './task/vprerequisitetask';
+import { Subtask } from '../ddl/task/subtask';
+import { SubtaskVDescriptor } from './task/vsubtask';
+import { Task } from '../ddl/task/task';
+import { TaskVDescriptor } from './task/vtask';
+import { TaskAssignee } from '../ddl/task/taskassignee';
+import { TaskAssigneeVDescriptor } from './task/vtaskassignee';
+import { TaskConversation } from '../ddl/task/taskconversation';
+import { TaskConversationVDescriptor } from './task/vtaskconversation';
+import { TaskReferenceInComment } from '../ddl/task/taskreferenceincomment';
+import { TaskReferenceInCommentVDescriptor } from './task/vtaskreferenceincomment';
 import { IDvo, Dvo } from '@airbridge/validate';
 import { ApplicationEntity_LocalId as DbEntityId } from '@airport/ground-control';
 export declare class SQDIDvo<Entity, EntityVDescriptor> extends Dvo<Entity, EntityVDescriptor> {
     constructor(dbEntityId: DbEntityId);
+}
+export interface IBaseGoalDvo extends IDvo<Goal, GoalVDescriptor<Goal>> {
+}
+export declare class BaseGoalDvo extends SQDIDvo<Goal, GoalVDescriptor<Goal>> implements IBaseGoalDvo {
+    static diSet(): boolean;
+    constructor();
+}
+export interface IBaseGoalConversationDvo extends IDvo<GoalConversation, GoalConversationVDescriptor<GoalConversation>> {
+}
+export declare class BaseGoalConversationDvo extends SQDIDvo<GoalConversation, GoalConversationVDescriptor<GoalConversation>> implements IBaseGoalConversationDvo {
+    static diSet(): boolean;
+    constructor();
+}
+export interface IBaseGoalTaskDvo extends IDvo<GoalTask, GoalTaskVDescriptor<GoalTask>> {
+}
+export declare class BaseGoalTaskDvo extends SQDIDvo<GoalTask, GoalTaskVDescriptor<GoalTask>> implements IBaseGoalTaskDvo {
+    static diSet(): boolean;
+    constructor();
 }
 export interface IBasePrerequisiteTaskDvo extends IDvo<PrerequisiteTask, PrerequisiteTaskVDescriptor<PrerequisiteTask>> {
 }

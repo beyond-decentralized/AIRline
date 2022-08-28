@@ -3,6 +3,6 @@ import { IConversation } from './conversation';
 import { IUserAccount } from '@airport/travel-document-checkpoint';
 export interface IParticipant extends IAirEntity {
     conversation?: IConversation;
-    moderator?: IUserAccount;
+    userAccount?: IUserAccount;
 }
 //# sourceMappingURL=participant.d.ts.map

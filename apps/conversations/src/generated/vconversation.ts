@@ -46,6 +46,7 @@ export interface ConversationVDescriptor<T>
 	// Id Properties
 	
 	// Non-Id Properties
+	name?: string | IVStringField;
 
 	// Id Relations - full property interfaces
 

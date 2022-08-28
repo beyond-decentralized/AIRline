@@ -17,7 +17,7 @@ __decorate([
         name: "USER_ACCOUNT_GUID",
         referencedColumnName: "USER_ACCOUNT_GUID"
     })
-], Participant.prototype, "moderator", void 0);
+], Participant.prototype, "userAccount", void 0);
 Participant = __decorate([
     Entity(),
     Table({ name: 'PARTICIPANTS' })

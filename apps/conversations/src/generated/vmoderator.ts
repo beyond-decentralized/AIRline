@@ -39,7 +39,7 @@ export interface ModeratorVDescriptor<T>
 
   // Non-Id relations (including OneToMany's)
 	conversation?: ConversationVDescriptor<Conversation>
-	moderator?: UserAccountVDescriptor<UserAccount>
+	userAccount?: UserAccountVDescriptor<UserAccount>
 
 }
 

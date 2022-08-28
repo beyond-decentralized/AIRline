@@ -11,9 +11,9 @@ import {
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { calendarNumberOutline, flagOutline, hammerOutline } from 'ionicons/icons';
-import Goals from './pages/Goals';
-import Tasks from './pages/Tasks';
-import Calendar from './pages/Calendar';
+import GoalsPage from './pages/GoalsPage';
+import TasksPage from './pages/TasksPage';
+import CalendarPage from './pages/CalendarPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -42,13 +42,13 @@ const App: React.FC = () => (
       <IonTabs>
         <IonRouterOutlet>
           <Route exact path="/goals">
-            <Goals />
+            <GoalsPage />
           </Route>
-          <Route exact path="/tasks">
-            <Tasks />
+          <Route exact path="/tasks/:goalId">
+            <TasksPage />
           </Route>
           <Route path="/calendar">
-            <Calendar />
+            <CalendarPage />
           </Route>
           <Route exact path="/">
             <Redirect to="/goals" />

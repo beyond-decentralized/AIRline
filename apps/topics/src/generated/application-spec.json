@@ -6,7 +6,32 @@
 	"versions": [
 		{
 			"api": {
-				"apiObjectMap": {}
+				"apiObjectMap": {
+					"ThemeApi": {
+						"operationMap": {
+							"findAll": {
+								"isAsync": true,
+								"parameters": []
+							},
+							"save": {
+								"isAsync": true,
+								"parameters": []
+							}
+						}
+					},
+					"TopicApi": {
+						"operationMap": {
+							"findAllForTheme": {
+								"isAsync": true,
+								"parameters": []
+							},
+							"save": {
+								"isAsync": true,
+								"parameters": []
+							}
+						}
+					}
+				}
 			},
 			"entities": [
 				{
@@ -432,7 +457,8 @@
 					"tableConfig": {
 						"name": "TOPIC",
 						"columnIndexes": []
-					}
+					},
+					"operations": {}
 				},
 				{
 					"columns": [
@@ -788,7 +814,8 @@
 					"tableConfig": {
 						"name": "THEME",
 						"columnIndexes": []
-					}
+					},
+					"operations": {}
 				}
 			],
 			"integerVersion": 1,

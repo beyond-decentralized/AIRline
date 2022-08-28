@@ -1,7 +1,46 @@
 /* eslint-disable */
 import {
+	Goal,
+} from '../ddl/goal/goal';
+import {
+	GoalESelect,
+	GoalECreateColumns,
+	GoalECreateProperties,
+	GoalEUpdateColumns,
+	GoalEUpdateProperties,
+	GoalEId,
+	GoalGraph,
+	QGoal,
+} from './goal/qgoal';
+import {
+	GoalConversation,
+} from '../ddl/goal/goalconversation';
+import {
+	GoalConversationESelect,
+	GoalConversationECreateColumns,
+	GoalConversationECreateProperties,
+	GoalConversationEUpdateColumns,
+	GoalConversationEUpdateProperties,
+	GoalConversationEId,
+	GoalConversationGraph,
+	QGoalConversation,
+} from './goal/qgoalconversation';
+import {
+	GoalTask,
+} from '../ddl/goal/goaltask';
+import {
+	GoalTaskESelect,
+	GoalTaskECreateColumns,
+	GoalTaskECreateProperties,
+	GoalTaskEUpdateColumns,
+	GoalTaskEUpdateProperties,
+	GoalTaskEId,
+	GoalTaskGraph,
+	QGoalTask,
+} from './goal/qgoaltask';
+import {
 	PrerequisiteTask,
-} from '../ddl/prerequisitetask';
+} from '../ddl/task/prerequisitetask';
 import {
 	PrerequisiteTaskESelect,
 	PrerequisiteTaskECreateColumns,
@@ -11,10 +50,10 @@ import {
 	PrerequisiteTaskEId,
 	PrerequisiteTaskGraph,
 	QPrerequisiteTask,
-} from './qprerequisitetask';
+} from './task/qprerequisitetask';
 import {
 	Subtask,
-} from '../ddl/subtask';
+} from '../ddl/task/subtask';
 import {
 	SubtaskESelect,
 	SubtaskECreateColumns,
@@ -24,10 +63,10 @@ import {
 	SubtaskEId,
 	SubtaskGraph,
 	QSubtask,
-} from './qsubtask';
+} from './task/qsubtask';
 import {
 	Task,
-} from '../ddl/task';
+} from '../ddl/task/task';
 import {
 	TaskESelect,
 	TaskECreateColumns,
@@ -37,10 +76,10 @@ import {
 	TaskEId,
 	TaskGraph,
 	QTask,
-} from './qtask';
+} from './task/qtask';
 import {
 	TaskAssignee,
-} from '../ddl/taskassignee';
+} from '../ddl/task/taskassignee';
 import {
 	TaskAssigneeESelect,
 	TaskAssigneeECreateColumns,
@@ -50,10 +89,10 @@ import {
 	TaskAssigneeEId,
 	TaskAssigneeGraph,
 	QTaskAssignee,
-} from './qtaskassignee';
+} from './task/qtaskassignee';
 import {
 	TaskConversation,
-} from '../ddl/taskconversation';
+} from '../ddl/task/taskconversation';
 import {
 	TaskConversationESelect,
 	TaskConversationECreateColumns,
@@ -63,10 +102,10 @@ import {
 	TaskConversationEId,
 	TaskConversationGraph,
 	QTaskConversation,
-} from './qtaskconversation';
+} from './task/qtaskconversation';
 import {
 	TaskReferenceInComment,
-} from '../ddl/taskreferenceincomment';
+} from '../ddl/task/taskreferenceincomment';
 import {
 	TaskReferenceInCommentESelect,
 	TaskReferenceInCommentECreateColumns,
@@ -76,7 +115,7 @@ import {
 	TaskReferenceInCommentEId,
 	TaskReferenceInCommentGraph,
 	QTaskReferenceInComment,
-} from './qtaskreferenceincomment';
+} from './task/qtaskreferenceincomment';
 import {
 	IEntityCascadeGraph,
 	IEntityCreateProperties,
@@ -126,6 +165,90 @@ export class SQDIDao<Entity,
 }
 
 
+export interface IBaseGoalDao
+  extends IDao<Goal, GoalESelect, GoalECreateProperties, GoalEUpdateColumns, GoalEUpdateProperties, GoalEId, GoalGraph, QGoal> {
+}
+
+export class BaseGoalDao
+  extends SQDIDao<Goal, GoalESelect, GoalECreateProperties, GoalEUpdateColumns, GoalEUpdateProperties, GoalEId, GoalGraph, QGoal>
+	implements IBaseGoalDao {
+	
+	static Find      = new DaoQueryDecorators<GoalESelect>();
+	static FindOne   = new DaoQueryDecorators<GoalESelect>();
+	static Search    = new DaoQueryDecorators<GoalESelect>();
+	static SearchOne = new DaoQueryDecorators<GoalESelect>();
+	static Save(
+		config: GoalGraph
+	): PropertyDecorator {
+		return Dao.BaseSave<GoalGraph>(config);
+  }
+
+	static diSet(): boolean {
+		return duoDiSet(7)
+	}
+	
+	constructor() {
+		super(7)
+	}
+}
+
+
+export interface IBaseGoalConversationDao
+  extends IDao<GoalConversation, GoalConversationESelect, GoalConversationECreateProperties, GoalConversationEUpdateColumns, GoalConversationEUpdateProperties, GoalConversationEId, GoalConversationGraph, QGoalConversation> {
+}
+
+export class BaseGoalConversationDao
+  extends SQDIDao<GoalConversation, GoalConversationESelect, GoalConversationECreateProperties, GoalConversationEUpdateColumns, GoalConversationEUpdateProperties, GoalConversationEId, GoalConversationGraph, QGoalConversation>
+	implements IBaseGoalConversationDao {
+	
+	static Find      = new DaoQueryDecorators<GoalConversationESelect>();
+	static FindOne   = new DaoQueryDecorators<GoalConversationESelect>();
+	static Search    = new DaoQueryDecorators<GoalConversationESelect>();
+	static SearchOne = new DaoQueryDecorators<GoalConversationESelect>();
+	static Save(
+		config: GoalConversationGraph
+	): PropertyDecorator {
+		return Dao.BaseSave<GoalConversationGraph>(config);
+  }
+
+	static diSet(): boolean {
+		return duoDiSet(0)
+	}
+	
+	constructor() {
+		super(0)
+	}
+}
+
+
+export interface IBaseGoalTaskDao
+  extends IDao<GoalTask, GoalTaskESelect, GoalTaskECreateProperties, GoalTaskEUpdateColumns, GoalTaskEUpdateProperties, GoalTaskEId, GoalTaskGraph, QGoalTask> {
+}
+
+export class BaseGoalTaskDao
+  extends SQDIDao<GoalTask, GoalTaskESelect, GoalTaskECreateProperties, GoalTaskEUpdateColumns, GoalTaskEUpdateProperties, GoalTaskEId, GoalTaskGraph, QGoalTask>
+	implements IBaseGoalTaskDao {
+	
+	static Find      = new DaoQueryDecorators<GoalTaskESelect>();
+	static FindOne   = new DaoQueryDecorators<GoalTaskESelect>();
+	static Search    = new DaoQueryDecorators<GoalTaskESelect>();
+	static SearchOne = new DaoQueryDecorators<GoalTaskESelect>();
+	static Save(
+		config: GoalTaskGraph
+	): PropertyDecorator {
+		return Dao.BaseSave<GoalTaskGraph>(config);
+  }
+
+	static diSet(): boolean {
+		return duoDiSet(6)
+	}
+	
+	constructor() {
+		super(6)
+	}
+}
+
+
 export interface IBasePrerequisiteTaskDao
   extends IDao<PrerequisiteTask, PrerequisiteTaskESelect, PrerequisiteTaskECreateProperties, PrerequisiteTaskEUpdateColumns, PrerequisiteTaskEUpdateProperties, PrerequisiteTaskEId, PrerequisiteTaskGraph, QPrerequisiteTask> {
 }
@@ -145,11 +268,11 @@ export class BasePrerequisiteTaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(4)
+		return duoDiSet(1)
 	}
 	
 	constructor() {
-		super(4)
+		super(1)
 	}
 }
 
@@ -173,11 +296,11 @@ export class BaseSubtaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return duoDiSet(2)
 	}
 	
 	constructor() {
-		super(0)
+		super(2)
 	}
 }
 
@@ -201,11 +324,11 @@ export class BaseTaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(3)
+		return duoDiSet(5)
 	}
 	
 	constructor() {
-		super(3)
+		super(5)
 	}
 }
 
@@ -229,11 +352,11 @@ export class BaseTaskAssigneeDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return duoDiSet(3)
 	}
 	
 	constructor() {
-		super(1)
+		super(3)
 	}
 }
 
@@ -257,11 +380,11 @@ export class BaseTaskConversationDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(2)
+		return duoDiSet(4)
 	}
 	
 	constructor() {
-		super(2)
+		super(4)
 	}
 }
 
@@ -285,10 +408,10 @@ export class BaseTaskReferenceInCommentDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(5)
+		return duoDiSet(8)
 	}
 	
 	constructor() {
-		super(5)
+		super(8)
 	}
 }

@@ -1,1 +1,2 @@
-export * from './TaskDao'
+export * from './goal/GoalDao'
+export * from './task/TaskDao'

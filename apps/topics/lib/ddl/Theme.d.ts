@@ -4,4 +4,4 @@ export declare class Theme extends AirEntity {
     name: string;
     topics: Topic[];
 }
-//# sourceMappingURL=Theme.d.ts.map
+//# sourceMappingURL=theme.d.ts.map

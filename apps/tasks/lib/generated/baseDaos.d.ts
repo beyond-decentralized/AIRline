@@ -1,20 +1,59 @@
-import { PrerequisiteTask } from '../ddl/prerequisitetask';
-import { PrerequisiteTaskESelect, PrerequisiteTaskECreateProperties, PrerequisiteTaskEUpdateColumns, PrerequisiteTaskEUpdateProperties, PrerequisiteTaskEId, PrerequisiteTaskGraph, QPrerequisiteTask } from './qprerequisitetask';
-import { Subtask } from '../ddl/subtask';
-import { SubtaskESelect, SubtaskECreateProperties, SubtaskEUpdateColumns, SubtaskEUpdateProperties, SubtaskEId, SubtaskGraph, QSubtask } from './qsubtask';
-import { Task } from '../ddl/task';
-import { TaskESelect, TaskECreateProperties, TaskEUpdateColumns, TaskEUpdateProperties, TaskEId, TaskGraph, QTask } from './qtask';
-import { TaskAssignee } from '../ddl/taskassignee';
-import { TaskAssigneeESelect, TaskAssigneeECreateProperties, TaskAssigneeEUpdateColumns, TaskAssigneeEUpdateProperties, TaskAssigneeEId, TaskAssigneeGraph, QTaskAssignee } from './qtaskassignee';
-import { TaskConversation } from '../ddl/taskconversation';
-import { TaskConversationESelect, TaskConversationECreateProperties, TaskConversationEUpdateColumns, TaskConversationEUpdateProperties, TaskConversationEId, TaskConversationGraph, QTaskConversation } from './qtaskconversation';
-import { TaskReferenceInComment } from '../ddl/taskreferenceincomment';
-import { TaskReferenceInCommentESelect, TaskReferenceInCommentECreateProperties, TaskReferenceInCommentEUpdateColumns, TaskReferenceInCommentEUpdateProperties, TaskReferenceInCommentEId, TaskReferenceInCommentGraph, QTaskReferenceInComment } from './qtaskreferenceincomment';
+import { Goal } from '../ddl/goal/goal';
+import { GoalESelect, GoalECreateProperties, GoalEUpdateColumns, GoalEUpdateProperties, GoalEId, GoalGraph, QGoal } from './goal/qgoal';
+import { GoalConversation } from '../ddl/goal/goalconversation';
+import { GoalConversationESelect, GoalConversationECreateProperties, GoalConversationEUpdateColumns, GoalConversationEUpdateProperties, GoalConversationEId, GoalConversationGraph, QGoalConversation } from './goal/qgoalconversation';
+import { GoalTask } from '../ddl/goal/goaltask';
+import { GoalTaskESelect, GoalTaskECreateProperties, GoalTaskEUpdateColumns, GoalTaskEUpdateProperties, GoalTaskEId, GoalTaskGraph, QGoalTask } from './goal/qgoaltask';
+import { PrerequisiteTask } from '../ddl/task/prerequisitetask';
+import { PrerequisiteTaskESelect, PrerequisiteTaskECreateProperties, PrerequisiteTaskEUpdateColumns, PrerequisiteTaskEUpdateProperties, PrerequisiteTaskEId, PrerequisiteTaskGraph, QPrerequisiteTask } from './task/qprerequisitetask';
+import { Subtask } from '../ddl/task/subtask';
+import { SubtaskESelect, SubtaskECreateProperties, SubtaskEUpdateColumns, SubtaskEUpdateProperties, SubtaskEId, SubtaskGraph, QSubtask } from './task/qsubtask';
+import { Task } from '../ddl/task/task';
+import { TaskESelect, TaskECreateProperties, TaskEUpdateColumns, TaskEUpdateProperties, TaskEId, TaskGraph, QTask } from './task/qtask';
+import { TaskAssignee } from '../ddl/task/taskassignee';
+import { TaskAssigneeESelect, TaskAssigneeECreateProperties, TaskAssigneeEUpdateColumns, TaskAssigneeEUpdateProperties, TaskAssigneeEId, TaskAssigneeGraph, QTaskAssignee } from './task/qtaskassignee';
+import { TaskConversation } from '../ddl/task/taskconversation';
+import { TaskConversationESelect, TaskConversationECreateProperties, TaskConversationEUpdateColumns, TaskConversationEUpdateProperties, TaskConversationEId, TaskConversationGraph, QTaskConversation } from './task/qtaskconversation';
+import { TaskReferenceInComment } from '../ddl/task/taskreferenceincomment';
+import { TaskReferenceInCommentESelect, TaskReferenceInCommentECreateProperties, TaskReferenceInCommentEUpdateColumns, TaskReferenceInCommentEUpdateProperties, TaskReferenceInCommentEId, TaskReferenceInCommentGraph, QTaskReferenceInComment } from './task/qtaskreferenceincomment';
 import { IEntityCascadeGraph, IEntityCreateProperties, IEntityIdProperties, IEntitySelectProperties, IEntityUpdateColumns, IEntityUpdateProperties, IQEntity } from '@airport/tarmaq-query';
 import { IDao, Dao, DaoQueryDecorators } from '@airport/tarmaq-dao';
 import { ApplicationEntity_LocalId as DbEntityId } from '@airport/ground-control';
 export declare class SQDIDao<Entity, EntitySelect extends IEntitySelectProperties, EntityCreate extends IEntityCreateProperties, EntityUpdateColumns extends IEntityUpdateColumns, EntityUpdateProperties extends IEntityUpdateProperties, ApplicationEntity_LocalId extends IEntityIdProperties, EntityCascadeGraph extends IEntityCascadeGraph, IQE extends IQEntity> extends Dao<Entity, EntitySelect, EntityCreate, EntityUpdateColumns, EntityUpdateProperties, ApplicationEntity_LocalId, EntityCascadeGraph, IQE> {
     constructor(dbEntityId: DbEntityId);
+}
+export interface IBaseGoalDao extends IDao<Goal, GoalESelect, GoalECreateProperties, GoalEUpdateColumns, GoalEUpdateProperties, GoalEId, GoalGraph, QGoal> {
+}
+export declare class BaseGoalDao extends SQDIDao<Goal, GoalESelect, GoalECreateProperties, GoalEUpdateColumns, GoalEUpdateProperties, GoalEId, GoalGraph, QGoal> implements IBaseGoalDao {
+    static Find: DaoQueryDecorators<GoalESelect>;
+    static FindOne: DaoQueryDecorators<GoalESelect>;
+    static Search: DaoQueryDecorators<GoalESelect>;
+    static SearchOne: DaoQueryDecorators<GoalESelect>;
+    static Save(config: GoalGraph): PropertyDecorator;
+    static diSet(): boolean;
+    constructor();
+}
+export interface IBaseGoalConversationDao extends IDao<GoalConversation, GoalConversationESelect, GoalConversationECreateProperties, GoalConversationEUpdateColumns, GoalConversationEUpdateProperties, GoalConversationEId, GoalConversationGraph, QGoalConversation> {
+}
+export declare class BaseGoalConversationDao extends SQDIDao<GoalConversation, GoalConversationESelect, GoalConversationECreateProperties, GoalConversationEUpdateColumns, GoalConversationEUpdateProperties, GoalConversationEId, GoalConversationGraph, QGoalConversation> implements IBaseGoalConversationDao {
+    static Find: DaoQueryDecorators<GoalConversationESelect>;
+    static FindOne: DaoQueryDecorators<GoalConversationESelect>;
+    static Search: DaoQueryDecorators<GoalConversationESelect>;
+    static SearchOne: DaoQueryDecorators<GoalConversationESelect>;
+    static Save(config: GoalConversationGraph): PropertyDecorator;
+    static diSet(): boolean;
+    constructor();
+}
+export interface IBaseGoalTaskDao extends IDao<GoalTask, GoalTaskESelect, GoalTaskECreateProperties, GoalTaskEUpdateColumns, GoalTaskEUpdateProperties, GoalTaskEId, GoalTaskGraph, QGoalTask> {
+}
+export declare class BaseGoalTaskDao extends SQDIDao<GoalTask, GoalTaskESelect, GoalTaskECreateProperties, GoalTaskEUpdateColumns, GoalTaskEUpdateProperties, GoalTaskEId, GoalTaskGraph, QGoalTask> implements IBaseGoalTaskDao {
+    static Find: DaoQueryDecorators<GoalTaskESelect>;
+    static FindOne: DaoQueryDecorators<GoalTaskESelect>;
+    static Search: DaoQueryDecorators<GoalTaskESelect>;
+    static SearchOne: DaoQueryDecorators<GoalTaskESelect>;
+    static Save(config: GoalTaskGraph): PropertyDecorator;
+    static diSet(): boolean;
+    constructor();
 }
 export interface IBasePrerequisiteTaskDao extends IDao<PrerequisiteTask, PrerequisiteTaskESelect, PrerequisiteTaskECreateProperties, PrerequisiteTaskEUpdateColumns, PrerequisiteTaskEUpdateProperties, PrerequisiteTaskEId, PrerequisiteTaskGraph, QPrerequisiteTask> {
 }

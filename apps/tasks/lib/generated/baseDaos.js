@@ -6,22 +6,22 @@ export class SQDIDao extends Dao {
         super(dbEntityId, Q);
     }
 }
-export class BasePrerequisiteTaskDao extends SQDIDao {
+export class BaseGoalDao extends SQDIDao {
     constructor() {
-        super(4);
+        super(7);
     }
     static Save(config) {
         return Dao.BaseSave(config);
     }
     static diSet() {
-        return duoDiSet(4);
+        return duoDiSet(7);
     }
 }
-BasePrerequisiteTaskDao.Find = new DaoQueryDecorators();
-BasePrerequisiteTaskDao.FindOne = new DaoQueryDecorators();
-BasePrerequisiteTaskDao.Search = new DaoQueryDecorators();
-BasePrerequisiteTaskDao.SearchOne = new DaoQueryDecorators();
-export class BaseSubtaskDao extends SQDIDao {
+BaseGoalDao.Find = new DaoQueryDecorators();
+BaseGoalDao.FindOne = new DaoQueryDecorators();
+BaseGoalDao.Search = new DaoQueryDecorators();
+BaseGoalDao.SearchOne = new DaoQueryDecorators();
+export class BaseGoalConversationDao extends SQDIDao {
     constructor() {
         super(0);
     }
@@ -32,26 +32,26 @@ export class BaseSubtaskDao extends SQDIDao {
         return duoDiSet(0);
     }
 }
-BaseSubtaskDao.Find = new DaoQueryDecorators();
-BaseSubtaskDao.FindOne = new DaoQueryDecorators();
-BaseSubtaskDao.Search = new DaoQueryDecorators();
-BaseSubtaskDao.SearchOne = new DaoQueryDecorators();
-export class BaseTaskDao extends SQDIDao {
+BaseGoalConversationDao.Find = new DaoQueryDecorators();
+BaseGoalConversationDao.FindOne = new DaoQueryDecorators();
+BaseGoalConversationDao.Search = new DaoQueryDecorators();
+BaseGoalConversationDao.SearchOne = new DaoQueryDecorators();
+export class BaseGoalTaskDao extends SQDIDao {
     constructor() {
-        super(3);
+        super(6);
     }
     static Save(config) {
         return Dao.BaseSave(config);
     }
     static diSet() {
-        return duoDiSet(3);
+        return duoDiSet(6);
     }
 }
-BaseTaskDao.Find = new DaoQueryDecorators();
-BaseTaskDao.FindOne = new DaoQueryDecorators();
-BaseTaskDao.Search = new DaoQueryDecorators();
-BaseTaskDao.SearchOne = new DaoQueryDecorators();
-export class BaseTaskAssigneeDao extends SQDIDao {
+BaseGoalTaskDao.Find = new DaoQueryDecorators();
+BaseGoalTaskDao.FindOne = new DaoQueryDecorators();
+BaseGoalTaskDao.Search = new DaoQueryDecorators();
+BaseGoalTaskDao.SearchOne = new DaoQueryDecorators();
+export class BasePrerequisiteTaskDao extends SQDIDao {
     constructor() {
         super(1);
     }
@@ -62,11 +62,11 @@ export class BaseTaskAssigneeDao extends SQDIDao {
         return duoDiSet(1);
     }
 }
-BaseTaskAssigneeDao.Find = new DaoQueryDecorators();
-BaseTaskAssigneeDao.FindOne = new DaoQueryDecorators();
-BaseTaskAssigneeDao.Search = new DaoQueryDecorators();
-BaseTaskAssigneeDao.SearchOne = new DaoQueryDecorators();
-export class BaseTaskConversationDao extends SQDIDao {
+BasePrerequisiteTaskDao.Find = new DaoQueryDecorators();
+BasePrerequisiteTaskDao.FindOne = new DaoQueryDecorators();
+BasePrerequisiteTaskDao.Search = new DaoQueryDecorators();
+BasePrerequisiteTaskDao.SearchOne = new DaoQueryDecorators();
+export class BaseSubtaskDao extends SQDIDao {
     constructor() {
         super(2);
     }
@@ -77,11 +77,11 @@ export class BaseTaskConversationDao extends SQDIDao {
         return duoDiSet(2);
     }
 }
-BaseTaskConversationDao.Find = new DaoQueryDecorators();
-BaseTaskConversationDao.FindOne = new DaoQueryDecorators();
-BaseTaskConversationDao.Search = new DaoQueryDecorators();
-BaseTaskConversationDao.SearchOne = new DaoQueryDecorators();
-export class BaseTaskReferenceInCommentDao extends SQDIDao {
+BaseSubtaskDao.Find = new DaoQueryDecorators();
+BaseSubtaskDao.FindOne = new DaoQueryDecorators();
+BaseSubtaskDao.Search = new DaoQueryDecorators();
+BaseSubtaskDao.SearchOne = new DaoQueryDecorators();
+export class BaseTaskDao extends SQDIDao {
     constructor() {
         super(5);
     }
@@ -90,6 +90,51 @@ export class BaseTaskReferenceInCommentDao extends SQDIDao {
     }
     static diSet() {
         return duoDiSet(5);
+    }
+}
+BaseTaskDao.Find = new DaoQueryDecorators();
+BaseTaskDao.FindOne = new DaoQueryDecorators();
+BaseTaskDao.Search = new DaoQueryDecorators();
+BaseTaskDao.SearchOne = new DaoQueryDecorators();
+export class BaseTaskAssigneeDao extends SQDIDao {
+    constructor() {
+        super(3);
+    }
+    static Save(config) {
+        return Dao.BaseSave(config);
+    }
+    static diSet() {
+        return duoDiSet(3);
+    }
+}
+BaseTaskAssigneeDao.Find = new DaoQueryDecorators();
+BaseTaskAssigneeDao.FindOne = new DaoQueryDecorators();
+BaseTaskAssigneeDao.Search = new DaoQueryDecorators();
+BaseTaskAssigneeDao.SearchOne = new DaoQueryDecorators();
+export class BaseTaskConversationDao extends SQDIDao {
+    constructor() {
+        super(4);
+    }
+    static Save(config) {
+        return Dao.BaseSave(config);
+    }
+    static diSet() {
+        return duoDiSet(4);
+    }
+}
+BaseTaskConversationDao.Find = new DaoQueryDecorators();
+BaseTaskConversationDao.FindOne = new DaoQueryDecorators();
+BaseTaskConversationDao.Search = new DaoQueryDecorators();
+BaseTaskConversationDao.SearchOne = new DaoQueryDecorators();
+export class BaseTaskReferenceInCommentDao extends SQDIDao {
+    constructor() {
+        super(8);
+    }
+    static Save(config) {
+        return Dao.BaseSave(config);
+    }
+    static diSet() {
+        return duoDiSet(8);
     }
 }
 BaseTaskReferenceInCommentDao.Find = new DaoQueryDecorators();

@@ -24,7 +24,7 @@ export interface IParticipant extends IAirEntity {
 
 	// Non-Id Relations
 	conversation?: IConversation;
-	moderator?: IUserAccount;
+	userAccount?: IUserAccount;
 
 	// Transient Properties
 

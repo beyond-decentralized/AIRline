@@ -1,40 +1,58 @@
 /* eslint-disable */
 import {
+	Goal,
+} from '../ddl/goal/goal';
+import {
+	GoalVDescriptor,
+} from './goal/vgoal';
+import {
+	GoalConversation,
+} from '../ddl/goal/goalconversation';
+import {
+	GoalConversationVDescriptor,
+} from './goal/vgoalconversation';
+import {
+	GoalTask,
+} from '../ddl/goal/goaltask';
+import {
+	GoalTaskVDescriptor,
+} from './goal/vgoaltask';
+import {
 	PrerequisiteTask,
-} from '../ddl/prerequisitetask';
+} from '../ddl/task/prerequisitetask';
 import {
 	PrerequisiteTaskVDescriptor,
-} from './vprerequisitetask';
+} from './task/vprerequisitetask';
 import {
 	Subtask,
-} from '../ddl/subtask';
+} from '../ddl/task/subtask';
 import {
 	SubtaskVDescriptor,
-} from './vsubtask';
+} from './task/vsubtask';
 import {
 	Task,
-} from '../ddl/task';
+} from '../ddl/task/task';
 import {
 	TaskVDescriptor,
-} from './vtask';
+} from './task/vtask';
 import {
 	TaskAssignee,
-} from '../ddl/taskassignee';
+} from '../ddl/task/taskassignee';
 import {
 	TaskAssigneeVDescriptor,
-} from './vtaskassignee';
+} from './task/vtaskassignee';
 import {
 	TaskConversation,
-} from '../ddl/taskconversation';
+} from '../ddl/task/taskconversation';
 import {
 	TaskConversationVDescriptor,
-} from './vtaskconversation';
+} from './task/vtaskconversation';
 import {
 	TaskReferenceInComment,
-} from '../ddl/taskreferenceincomment';
+} from '../ddl/task/taskreferenceincomment';
 import {
 	TaskReferenceInCommentVDescriptor,
-} from './vtaskreferenceincomment';
+} from './task/vtaskreferenceincomment';
 import {
 	IDvo,
 	Dvo,
@@ -60,6 +78,60 @@ export class SQDIDvo<Entity, EntityVDescriptor>
 }
 
 
+export interface IBaseGoalDvo
+  extends IDvo<Goal, GoalVDescriptor<Goal>> {
+}
+
+export class BaseGoalDvo
+  extends SQDIDvo<Goal, GoalVDescriptor<Goal>>
+	implements IBaseGoalDvo {
+
+	static diSet(): boolean {
+		return duoDiSet(7)
+	}
+	
+	constructor() {
+		super(7)
+	}
+}
+
+
+export interface IBaseGoalConversationDvo
+  extends IDvo<GoalConversation, GoalConversationVDescriptor<GoalConversation>> {
+}
+
+export class BaseGoalConversationDvo
+  extends SQDIDvo<GoalConversation, GoalConversationVDescriptor<GoalConversation>>
+	implements IBaseGoalConversationDvo {
+
+	static diSet(): boolean {
+		return duoDiSet(0)
+	}
+	
+	constructor() {
+		super(0)
+	}
+}
+
+
+export interface IBaseGoalTaskDvo
+  extends IDvo<GoalTask, GoalTaskVDescriptor<GoalTask>> {
+}
+
+export class BaseGoalTaskDvo
+  extends SQDIDvo<GoalTask, GoalTaskVDescriptor<GoalTask>>
+	implements IBaseGoalTaskDvo {
+
+	static diSet(): boolean {
+		return duoDiSet(6)
+	}
+	
+	constructor() {
+		super(6)
+	}
+}
+
+
 export interface IBasePrerequisiteTaskDvo
   extends IDvo<PrerequisiteTask, PrerequisiteTaskVDescriptor<PrerequisiteTask>> {
 }
@@ -69,11 +141,11 @@ export class BasePrerequisiteTaskDvo
 	implements IBasePrerequisiteTaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(4)
+		return duoDiSet(1)
 	}
 	
 	constructor() {
-		super(4)
+		super(1)
 	}
 }
 
@@ -87,11 +159,11 @@ export class BaseSubtaskDvo
 	implements IBaseSubtaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return duoDiSet(2)
 	}
 	
 	constructor() {
-		super(0)
+		super(2)
 	}
 }
 
@@ -105,11 +177,11 @@ export class BaseTaskDvo
 	implements IBaseTaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(3)
+		return duoDiSet(5)
 	}
 	
 	constructor() {
-		super(3)
+		super(5)
 	}
 }
 
@@ -123,11 +195,11 @@ export class BaseTaskAssigneeDvo
 	implements IBaseTaskAssigneeDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return duoDiSet(3)
 	}
 	
 	constructor() {
-		super(1)
+		super(3)
 	}
 }
 
@@ -141,11 +213,11 @@ export class BaseTaskConversationDvo
 	implements IBaseTaskConversationDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(2)
+		return duoDiSet(4)
 	}
 	
 	constructor() {
-		super(2)
+		super(4)
 	}
 }
 
@@ -159,10 +231,10 @@ export class BaseTaskReferenceInCommentDvo
 	implements IBaseTaskReferenceInCommentDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(5)
+		return duoDiSet(8)
 	}
 	
 	constructor() {
-		super(5)
+		super(8)
 	}
 }

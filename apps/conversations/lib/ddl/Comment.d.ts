@@ -18,4 +18,4 @@ export declare class Comment extends AirEntity {
     madeTakeBackRequest: TakeBackRequest[];
     takeBackRequests: TakeBackRequest[];
 }
-//# sourceMappingURL=Comment.d.ts.map
+//# sourceMappingURL=comment.d.ts.map

@@ -8,7 +8,7 @@ import { IModerator } from './moderator';
  */
 export interface ModeratorESelect extends AirEntityESelect, ModeratorEOptionalId {
     conversation?: ConversationESelect;
-    moderator?: UserAccountESelect;
+    userAccount?: UserAccountESelect;
 }
 /**
  * DELETE - Ids fields and relations only (required).
@@ -25,14 +25,14 @@ export interface ModeratorEOptionalId {
  */
 export interface ModeratorEUpdateProperties extends AirEntityEUpdateProperties {
     conversation?: ConversationEOptionalId;
-    moderator?: UserAccountEOptionalId;
+    userAccount?: UserAccountEOptionalId;
 }
 /**
  * PERSIST CASCADE - non-id relations (optional).
  */
 export interface ModeratorGraph extends ModeratorEOptionalId, AirEntityGraph {
     conversation?: ConversationGraph;
-    moderator?: UserAccountGraph;
+    userAccount?: UserAccountGraph;
 }
 /**
  * UPDATE - non-id columns (optional).
@@ -64,7 +64,7 @@ export interface ModeratorECreateColumns extends ModeratorEId, ModeratorEUpdateC
  */
 export interface QModerator<IQE extends QModerator = any> extends QAirEntity<IQE | QModerator> {
     conversation: QConversationQRelation;
-    moderator: QUserAccountQRelation;
+    userAccount: QUserAccountQRelation;
 }
 export interface QModeratorQId extends QAirEntityQId {
 }

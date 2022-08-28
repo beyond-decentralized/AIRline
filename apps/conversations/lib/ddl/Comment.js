@@ -52,4 +52,4 @@ Comment = __decorate([
     Table({ name: 'COMMENTS' })
 ], Comment);
 export { Comment };
-//# sourceMappingURL=Comment.js.map
+//# sourceMappingURL=comment.js.map

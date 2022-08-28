@@ -7,7 +7,36 @@ export const APPLICATION = {
     "versions": [
         {
             "api": {
-                "apiObjectMap": {}
+                "apiObjectMap": {
+                    "CommentApi": {
+                        "operationMap": {
+                            "findAllForConversation": {
+                                "isAsync": true,
+                                "parameters": []
+                            },
+                            "save": {
+                                "isAsync": true,
+                                "parameters": []
+                            }
+                        }
+                    },
+                    "ConversationApi": {
+                        "operationMap": {
+                            "findAll": {
+                                "isAsync": true,
+                                "parameters": []
+                            },
+                            "findAllForTopic": {
+                                "isAsync": true,
+                                "parameters": []
+                            },
+                            "save": {
+                                "isAsync": true,
+                                "parameters": []
+                            }
+                        }
+                    }
+                }
             },
             "entities": [
                 {
@@ -855,7 +884,7 @@ export const APPLICATION = {
                         {
                             "index": 10,
                             "isId": false,
-                            "name": "moderator",
+                            "name": "userAccount",
                             "relationRef": {
                                 "index": 5
                             },
@@ -1302,7 +1331,7 @@ export const APPLICATION = {
                         {
                             "index": 10,
                             "isId": false,
-                            "name": "moderator",
+                            "name": "userAccount",
                             "relationRef": {
                                 "index": 5
                             },
@@ -1551,6 +1580,20 @@ export const APPLICATION = {
                         {
                             "index": 9,
                             "isGenerated": false,
+                            "manyRelationColumnRefs": [],
+                            "name": "NAME",
+                            "notNull": false,
+                            "propertyRefs": [
+                                {
+                                    "index": 9
+                                }
+                            ],
+                            "sinceVersion": 1,
+                            "type": "STRING"
+                        },
+                        {
+                            "index": 10,
+                            "isGenerated": false,
                             "manyRelationColumnRefs": [
                                 {
                                     "manyRelationIndex": 4,
@@ -1564,14 +1607,14 @@ export const APPLICATION = {
                             "notNull": false,
                             "propertyRefs": [
                                 {
-                                    "index": 9
+                                    "index": 10
                                 }
                             ],
                             "sinceVersion": 1,
                             "type": "NUMBER"
                         },
                         {
-                            "index": 10,
+                            "index": 11,
                             "isGenerated": false,
                             "manyRelationColumnRefs": [
                                 {
@@ -1586,14 +1629,14 @@ export const APPLICATION = {
                             "notNull": false,
                             "propertyRefs": [
                                 {
-                                    "index": 9
+                                    "index": 10
                                 }
                             ],
                             "sinceVersion": 1,
                             "type": "NUMBER"
                         },
                         {
-                            "index": 11,
+                            "index": 12,
                             "isGenerated": false,
                             "manyRelationColumnRefs": [
                                 {
@@ -1608,7 +1651,7 @@ export const APPLICATION = {
                             "notNull": false,
                             "propertyRefs": [
                                 {
-                                    "index": 9
+                                    "index": 10
                                 }
                             ],
                             "sinceVersion": 1,
@@ -1713,7 +1756,16 @@ export const APPLICATION = {
                             "sinceVersion": 1
                         },
                         {
+                            "columnRef": {
+                                "index": 9
+                            },
                             "index": 9,
+                            "isId": false,
+                            "name": "name",
+                            "sinceVersion": 1
+                        },
+                        {
+                            "index": 10,
                             "isId": false,
                             "name": "topic",
                             "relationRef": {
@@ -1722,7 +1774,7 @@ export const APPLICATION = {
                             "sinceVersion": 1
                         },
                         {
-                            "index": 10,
+                            "index": 11,
                             "isId": false,
                             "name": "participants",
                             "relationRef": {
@@ -1731,7 +1783,7 @@ export const APPLICATION = {
                             "sinceVersion": 1
                         },
                         {
-                            "index": 11,
+                            "index": 12,
                             "isId": false,
                             "name": "moderators",
                             "relationRef": {
@@ -1740,7 +1792,7 @@ export const APPLICATION = {
                             "sinceVersion": 1
                         },
                         {
-                            "index": 12,
+                            "index": 13,
                             "isId": false,
                             "name": "comments",
                             "relationRef": {
@@ -1799,7 +1851,7 @@ export const APPLICATION = {
                             "isId": false,
                             "relationType": "MANY_TO_ONE",
                             "propertyRef": {
-                                "index": 9
+                                "index": 10
                             },
                             "relationTableIndex": 0,
                             "relationTableApplication_Index": 1,
@@ -1813,7 +1865,7 @@ export const APPLICATION = {
                             },
                             "relationType": "ONE_TO_MANY",
                             "propertyRef": {
-                                "index": 10
+                                "index": 11
                             },
                             "relationTableIndex": 2,
                             "sinceVersion": 1
@@ -1826,7 +1878,7 @@ export const APPLICATION = {
                             },
                             "relationType": "ONE_TO_MANY",
                             "propertyRef": {
-                                "index": 11
+                                "index": 12
                             },
                             "relationTableIndex": 1,
                             "sinceVersion": 1
@@ -1839,7 +1891,7 @@ export const APPLICATION = {
                             },
                             "relationType": "ONE_TO_MANY",
                             "propertyRef": {
-                                "index": 12
+                                "index": 13
                             },
                             "relationTableIndex": 5,
                             "sinceVersion": 1
@@ -1849,7 +1901,8 @@ export const APPLICATION = {
                     "tableConfig": {
                         "name": "CONVERSATIONS",
                         "columnIndexes": []
-                    }
+                    },
+                    "operations": {}
                 },
                 {
                     "columns": [
@@ -3139,7 +3192,8 @@ export const APPLICATION = {
                     "tableConfig": {
                         "name": "COMMENTS",
                         "columnIndexes": []
-                    }
+                    },
+                    "operations": {}
                 }
             ],
             "integerVersion": 1,
