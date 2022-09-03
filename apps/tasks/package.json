@@ -1,6 +1,6 @@
 {
   "airport": {
-    "domain": "localhost:8100",
+    "domain": "localhost:3003",
     "schema": "@airline/tasks",
     "daoDir": "src/dao",
     "ddlDir": "src/ddl",

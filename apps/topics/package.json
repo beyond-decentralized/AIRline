@@ -1,6 +1,6 @@
 {
   "airport": {
-    "domain": "localhost:8100",
+    "domain": "localhost:3002",
     "schema": "@airline/topics",
     "daoDir": "src/dao",
     "ddlDir": "src/ddl",
@@ -39,7 +39,7 @@
   "main": "lib/to_be_generated/api-index.js",
   "name": "@airline/topics",
   "scripts": {
-    "dev": "rollup -c -w",
+    "dev": "rollup -c ./rollup/ -w",
     "build": "rollup -c"
   },
   "type": "module",

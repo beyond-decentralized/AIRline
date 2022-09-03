@@ -230,6 +230,17 @@
             "projectFolder": "../AIRport/schemas/travel-document-checkpoint",
             "shouldPublish": true
         },
+        // AIRport "UIs" folder (alphabetical order)
+        {
+            "packageName": "@airport/ui-react-components",
+            "projectFolder": "../AIRport/UI/react/components",
+            "shouldPublish": true
+        },
+        {
+            "packageName": "@airport/ui-react-main",
+            "projectFolder": "../AIRport/UI/react/main",
+            "shouldPublish": true
+        },
         // AIRway (alphabetical order)
         {
             "packageName": "@airway/client",

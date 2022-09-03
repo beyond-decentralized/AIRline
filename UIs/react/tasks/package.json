@@ -46,8 +46,8 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "cross-env PORT=3003 react-scripts start",
+    "build": "cross-env PORT=3003 react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject"
   },
@@ -70,7 +70,8 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.0.1"
+    "@capacitor/cli": "4.0.1",
+    "cross-env": "7.0.3"
   },
   "description": "A Tasks UI for AIRline"
 }
