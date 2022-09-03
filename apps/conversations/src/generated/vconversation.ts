@@ -12,7 +12,7 @@ import {
 import {
 	TopicVDescriptor,
 	Topic,
-} from '@airline/topics/lib/to_be_generated/runtime-index';
+} from '@airline/topics/dist/app/bundle';
 import {
 	ParticipantVDescriptor,
 } from './vparticipant';
@@ -42,15 +42,15 @@ import {
 ////////////////////
 
 export interface ConversationVDescriptor<T>
-    extends AirEntityVDescriptor<T> {
+	extends AirEntityVDescriptor<T> {
 	// Id Properties
-	
+
 	// Non-Id Properties
 	name?: string | IVStringField;
 
 	// Id Relations - full property interfaces
 
-  // Non-Id relations (including OneToMany's)
+	// Non-Id relations (including OneToMany's)
 	topic?: TopicVDescriptor<Topic>
 	participants?: ParticipantVDescriptor<Participant>
 	moderators?: ModeratorVDescriptor<Moderator>

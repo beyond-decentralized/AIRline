@@ -12,7 +12,7 @@ import {
 import {
 	TopicVDescriptor,
 	Topic,
-} from '@airline/topics/lib/to_be_generated/runtime-index';
+} from '@airline/topics/dist/app/bundle';
 import {
 	GoalConversationVDescriptor,
 } from './vgoalconversation';

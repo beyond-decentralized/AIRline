@@ -1,0 +1,1 @@
+{"version":3,"file":"TaskConversation.d.ts","sourceRoot":"","sources":["../../../../src/ddl/task/TaskConversation.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,YAAY,EAAE,MAAM,wBAAwB,CAAC;AACtD,OAAO,EAAE,SAAS,EAAE,MAAM,0BAA0B,CAAC;AAErD,OAAO,EAAE,IAAI,EAAE,MAAM,QAAQ,CAAC;AAE9B,qBAEa,gBACT,SAAQ,SAAS;IAGjB,IAAI,EAAE,IAAI,CAAA;IAGV,YAAY,EAAE,YAAY,CAAA;CAE7B"}

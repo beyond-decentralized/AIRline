@@ -1,12 +1,10 @@
 {
   "compilerOptions": {
-    "outDir": "lib/",
     "typeRoots": [
       "node_modules/@types"
     ]
   },
   "exclude": [
-    "lib",
     "node_modules",
   ],
   "extends": "../../tsconfig.core.json"

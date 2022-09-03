@@ -1,0 +1,1 @@
+{"version":3,"file":"Participant.d.ts","sourceRoot":"","sources":["../../../../../../../../apps/src/ddl/Participant.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,SAAS,EAAE,MAAM,0BAA0B,CAAC;AACrD,OAAO,EAAE,WAAW,EAAE,MAAM,qCAAqC,CAAC;AAElE,OAAO,EAAE,YAAY,EAAE,MAAM,gBAAgB,CAAC;AAE9C,qBAEa,WACT,SAAQ,SAAS;IAGjB,YAAY,EAAE,YAAY,CAAA;IAO1B,WAAW,EAAE,WAAW,CAAA;CAE3B"}

@@ -1,0 +1,1 @@
+{"version":3,"file":"goaltask.d.ts","sourceRoot":"","sources":["../../../../../../../../src/generated/goal/goaltask.ts"],"names":[],"mappings":"AAAA,OAAO,EACN,UAAU,EACV,MAAM,0BAA0B,CAAC;AAClC,OAAO,EACN,KAAK,EACL,MAAM,QAAQ,CAAC;AAChB,OAAO,EACN,KAAK,EACL,MAAM,cAAc,CAAC;AAQtB,MAAM,WAAW,SAAU,SAAQ,UAAU;IAS5C,IAAI,CAAC,EAAE,KAAK,CAAC;IACb,IAAI,CAAC,EAAE,KAAK,CAAC;CAMb"}

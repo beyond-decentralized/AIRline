@@ -1,0 +1,1 @@
+{"version":3,"file":"taskassignee.d.ts","sourceRoot":"","sources":["../../../../src/generated/task/taskassignee.ts"],"names":[],"mappings":"AAAA,OAAO,EACN,UAAU,EACV,MAAM,0BAA0B,CAAC;AAClC,OAAO,EACN,KAAK,EACL,MAAM,QAAQ,CAAC;AAChB,OAAO,EACN,YAAY,EACZ,MAAM,qCAAqC,CAAC;AAQ7C,MAAM,WAAW,aAAc,SAAQ,UAAU;IAShD,IAAI,CAAC,EAAE,KAAK,CAAC;IACb,WAAW,CAAC,EAAE,YAAY,CAAC;CAM3B"}
