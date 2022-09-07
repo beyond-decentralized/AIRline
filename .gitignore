@@ -15,6 +15,10 @@ bundle.css
 1.1.js
 public.zip
 
+**/build
+**/dist
+UIs/**/AIRport/apps
+
 # Ignore Rush temporary files
 /common/temp/**
 

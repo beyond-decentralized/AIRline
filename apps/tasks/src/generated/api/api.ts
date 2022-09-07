@@ -1,5 +1,5 @@
-export * from './GoalApi'
-export * from './TaskApi'
+export * from './goal/GoalApi'
+export * from './task/TaskApi'
 
 import { loadAutopilot } from '@airport/autopilot'
        

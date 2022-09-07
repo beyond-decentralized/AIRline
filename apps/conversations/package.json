@@ -50,8 +50,8 @@
     "dist"
   ],
   "scripts": {
-    "dev": "rollup -c ./rollup/all.config.js -w",
-    "build": "rollup -c ./rollup/all.config.js"
+    "dev": "rollup -c ./rollup.config.js -w",
+    "build": "rollup -c ./rollup.config.js"
   },
   "types": "dist/index.d.ts"
 }

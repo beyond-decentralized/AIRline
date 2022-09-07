@@ -2,7 +2,7 @@ import { QTopic, Topic } from "@airline/topics";
 import { Injected } from "@airport/direction-indicator";
 import { Goal } from "../../ddl/goal/Goal";
 import { BaseGoalDao } from "../../generated/baseDaos";
-import { Q } from "../../generated/qApplication";
+import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/goal/qgoal";
 import { Y } from "@airport/tarmaq-query";
 import { QGoalConversation } from "../../generated/qInterfaces";

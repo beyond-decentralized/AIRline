@@ -134,10 +134,10 @@ import {
 	ApplicationEntity_LocalId as DbEntityId,
 } from '@airport/ground-control';
 import {
-	Q,
-	duoDiSet,
+	localhost_colon_3002____at_airline_slash_tasks_diSet,
 } from './qApplication';
 
+import Q from './qApplication'
 
 // Application Q object Dependency Injection readiness detection Dao
 export class SQDIDao<Entity,
@@ -184,7 +184,7 @@ export class BaseGoalDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(7)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(7)
 	}
 	
 	constructor() {
@@ -212,7 +212,7 @@ export class BaseGoalConversationDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(0)
 	}
 	
 	constructor() {
@@ -240,7 +240,7 @@ export class BaseGoalTaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(6)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(6)
 	}
 	
 	constructor() {
@@ -268,7 +268,7 @@ export class BasePrerequisiteTaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(1)
 	}
 	
 	constructor() {
@@ -296,7 +296,7 @@ export class BaseSubtaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(2)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(2)
 	}
 	
 	constructor() {
@@ -324,7 +324,7 @@ export class BaseTaskDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(5)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(5)
 	}
 	
 	constructor() {
@@ -352,7 +352,7 @@ export class BaseTaskAssigneeDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(3)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(3)
 	}
 	
 	constructor() {
@@ -380,7 +380,7 @@ export class BaseTaskConversationDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(4)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(4)
 	}
 	
 	constructor() {
@@ -408,7 +408,7 @@ export class BaseTaskReferenceInCommentDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(8)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(8)
 	}
 	
 	constructor() {

@@ -61,10 +61,10 @@ import {
 	ApplicationEntity_LocalId as DbEntityId,
 } from '@airport/ground-control';
 import {
-	Q,
-	duoDiSet,
+	localhost_colon_3002____at_airline_slash_tasks_diSet,
 } from './qApplication';
 
+import Q from './qApplication'
 
 // Application Q object Dependency Injection readiness detection Dvo
 export class SQDIDvo<Entity, EntityVDescriptor>
@@ -87,7 +87,7 @@ export class BaseGoalDvo
 	implements IBaseGoalDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(7)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(7)
 	}
 	
 	constructor() {
@@ -105,7 +105,7 @@ export class BaseGoalConversationDvo
 	implements IBaseGoalConversationDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(0)
 	}
 	
 	constructor() {
@@ -123,7 +123,7 @@ export class BaseGoalTaskDvo
 	implements IBaseGoalTaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(6)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(6)
 	}
 	
 	constructor() {
@@ -141,7 +141,7 @@ export class BasePrerequisiteTaskDvo
 	implements IBasePrerequisiteTaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(1)
 	}
 	
 	constructor() {
@@ -159,7 +159,7 @@ export class BaseSubtaskDvo
 	implements IBaseSubtaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(2)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(2)
 	}
 	
 	constructor() {
@@ -177,7 +177,7 @@ export class BaseTaskDvo
 	implements IBaseTaskDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(5)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(5)
 	}
 	
 	constructor() {
@@ -195,7 +195,7 @@ export class BaseTaskAssigneeDvo
 	implements IBaseTaskAssigneeDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(3)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(3)
 	}
 	
 	constructor() {
@@ -213,7 +213,7 @@ export class BaseTaskConversationDvo
 	implements IBaseTaskConversationDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(4)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(4)
 	}
 	
 	constructor() {
@@ -231,7 +231,7 @@ export class BaseTaskReferenceInCommentDvo
 	implements IBaseTaskReferenceInCommentDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(8)
+		return localhost_colon_3002____at_airline_slash_tasks_diSet(8)
 	}
 	
 	constructor() {

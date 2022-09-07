@@ -2,7 +2,7 @@ import { Injected } from "@airport/direction-indicator";
 import { Comment } from "../ddl/comment";
 import { Conversation } from "../ddl/Conversation";
 import { BaseCommentDao } from "../generated/baseDaos";
-import { Q } from "../generated/qApplication";
+import Q from "../generated/qApplication";
 import { QComment } from "../generated/qcomment";
 import { QConversation } from "../generated/qconversation";
 

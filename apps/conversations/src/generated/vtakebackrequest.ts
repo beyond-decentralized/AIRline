@@ -8,7 +8,7 @@ import {
 } from '@airbridge/validate';
 import {
 	AirEntityVDescriptor,
-} from '@airport/holding-pattern/lib/to_be_generated/runtime-index';
+} from '@airport/holding-pattern/dist/app/bundle';
 import {
 	CommentVDescriptor,
 } from './vcomment';

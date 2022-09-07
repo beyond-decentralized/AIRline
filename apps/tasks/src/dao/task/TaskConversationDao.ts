@@ -3,7 +3,7 @@ import { Injected } from "@airport/direction-indicator";
 import { Y } from "@airport/tarmaq-query";
 import { Task, TaskConversation } from "../../ddl/ddl";
 import { BaseTaskConversationDao } from "../../generated/baseDaos";
-import { Q } from "../../generated/qApplication";
+import Q from "../../generated/qApplication";
 import { QTask, QTaskConversation } from "../../generated/qInterfaces";
 
 @Injected()

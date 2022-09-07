@@ -95,10 +95,10 @@ import {
 	ApplicationEntity_LocalId as DbEntityId,
 } from '@airport/ground-control';
 import {
-	Q,
-	duoDiSet,
+	localhost_colon_3002____at_airline_slash_conversations_diSet,
 } from './qApplication';
 
+import Q from './qApplication'
 
 // Application Q object Dependency Injection readiness detection Dao
 export class SQDIDao<Entity,
@@ -145,7 +145,7 @@ export class BaseCommentDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(5)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(5)
 	}
 	
 	constructor() {
@@ -173,7 +173,7 @@ export class BaseCommentReferenceDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(0)
 	}
 	
 	constructor() {
@@ -201,7 +201,7 @@ export class BaseConversationDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(3)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(3)
 	}
 	
 	constructor() {
@@ -229,7 +229,7 @@ export class BaseModeratorDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(1)
 	}
 	
 	constructor() {
@@ -257,7 +257,7 @@ export class BaseParticipantDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(2)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(2)
 	}
 	
 	constructor() {
@@ -285,7 +285,7 @@ export class BaseTakeBackRequestDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(4)
+		return localhost_colon_3002____at_airline_slash_conversations_diSet(4)
 	}
 	
 	constructor() {

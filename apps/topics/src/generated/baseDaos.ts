@@ -43,10 +43,10 @@ import {
 	ApplicationEntity_LocalId as DbEntityId,
 } from '@airport/ground-control';
 import {
-	Q,
-	duoDiSet,
+	localhost_colon_3002____at_airline_slash_topics_diSet,
 } from './qApplication';
 
+import Q from './qApplication'
 
 // Application Q object Dependency Injection readiness detection Dao
 export class SQDIDao<Entity,
@@ -93,7 +93,7 @@ export class BaseThemeDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return localhost_colon_3002____at_airline_slash_topics_diSet(1)
 	}
 	
 	constructor() {
@@ -121,7 +121,7 @@ export class BaseTopicDao
   }
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return localhost_colon_3002____at_airline_slash_topics_diSet(0)
 	}
 	
 	constructor() {

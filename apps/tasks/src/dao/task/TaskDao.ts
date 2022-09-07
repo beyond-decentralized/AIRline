@@ -4,7 +4,7 @@ import { Y } from "@airport/tarmaq-query";
 import { Goal } from "../../ddl/goal/Goal";
 import { Task } from "../../ddl/task/Task";
 import { BaseTaskDao } from "../../generated/baseDaos";
-import { Q } from "../../generated/qApplication";
+import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/goal/qgoal";
 import { QGoalTask } from "../../generated/goal/qgoaltask";
 import { QTask } from "../../generated/task/qtask";

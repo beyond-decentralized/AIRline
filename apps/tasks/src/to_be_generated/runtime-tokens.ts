@@ -1,6 +1,4 @@
 import { APPLICATION_LOADER } from '@airport/apron'
-import { API_REGISTRY } from '@airport/check-in'
-import { APPLICATION_INITIALIZER, TERMINAL_STORE } from '@airport/terminal-map'
 import { ApplicationLoader } from './ApplicationLoader'
 import { GOAL_API, tasks, TASK_API } from './common-tokens'
 import { GoalDao, TaskDao } from '../dao/dao'
@@ -27,8 +25,3 @@ TASK_API.setDependencies({
     taskDao: TASK_DAO
 })
 APPLICATION_LOADER.setClass(ApplicationLoader)
-APPLICATION_LOADER.setDependencies({
-    applicationInitializer: APPLICATION_INITIALIZER,
-    apiRegistry: API_REGISTRY,
-    terminalStore: TERMINAL_STORE,
-})

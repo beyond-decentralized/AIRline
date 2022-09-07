@@ -1,9 +1,9 @@
-import { API_REGISTRY } from '@airport/check-in'
-import { ApplicationLoader } from './ApplicationLoader'
 import { TOPIC_API, topics, THEME_API } from './common-tokens'
 import { TopicDao, ThemeDao } from '../dao/dao'
 import { ThemeApi } from '../api/ThemeApi'
 import { TopicApi } from '../api/TopicApi'
+import { APPLICATION_LOADER } from '@airport/web-tower'
+import { ApplicationLoader } from './ApplicationLoader'
 
 export const THEME_DAO = topics.token<any>({
     class: ThemeDao,
@@ -24,3 +24,4 @@ TOPIC_API.setClass(TopicApi)
 TOPIC_API.setDependencies({
     taskDao: TOPIC_DAO
 })
+APPLICATION_LOADER.setClass(ApplicationLoader)

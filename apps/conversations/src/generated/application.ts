@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const APPLICATION = {
-	"domain": "localhost:8100",
+	"domain": "localhost:3002",
 	"index": null,
 	"name": "@airline/conversations",
 	"sinceVersion": 1,
@@ -3213,7 +3213,7 @@ export const APPLICATION = {
 					]
 				},
 				{
-					"domain": "localhost:8100",
+					"domain": "localhost:3002",
 					"index": 1,
 					"name": "@airline/topics",
 					"sinceVersion": 1,

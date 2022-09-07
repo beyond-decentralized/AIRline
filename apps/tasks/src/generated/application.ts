@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const APPLICATION = {
-	"domain": "localhost:8100",
+	"domain": "localhost:3002",
 	"index": null,
 	"name": "@airline/tasks",
 	"sinceVersion": 1,
@@ -4749,7 +4749,7 @@ export const APPLICATION = {
 			"integerVersion": 1,
 			"referencedApplications": [
 				{
-					"domain": "localhost:8100",
+					"domain": "localhost:3002",
 					"index": 0,
 					"name": "@airline/conversations",
 					"sinceVersion": 1,
@@ -4777,7 +4777,7 @@ export const APPLICATION = {
 					]
 				},
 				{
-					"domain": "localhost:8100",
+					"domain": "localhost:3002",
 					"index": 2,
 					"name": "@airline/topics",
 					"sinceVersion": 1,

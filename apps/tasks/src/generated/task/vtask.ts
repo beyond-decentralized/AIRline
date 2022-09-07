@@ -8,7 +8,7 @@ import {
 } from '@airbridge/validate';
 import {
 	AirEntityVDescriptor,
-} from '@airport/holding-pattern/lib/to_be_generated/runtime-index';
+} from '@airport/holding-pattern/dist/app/bundle';
 import {
 	TopicVDescriptor,
 	Topic,
@@ -54,9 +54,9 @@ import {
 ////////////////////
 
 export interface TaskVDescriptor<T>
-	extends AirEntityVDescriptor<T> {
+    extends AirEntityVDescriptor<T> {
 	// Id Properties
-
+	
 	// Non-Id Properties
 	name?: string | IVStringField;
 	description?: string | IVStringField;
@@ -70,7 +70,7 @@ export interface TaskVDescriptor<T>
 
 	// Id Relations - full property interfaces
 
-	// Non-Id relations (including OneToMany's)
+  // Non-Id relations (including OneToMany's)
 	topic?: TopicVDescriptor<Topic>
 	goalTasks?: GoalTaskVDescriptor<GoalTask>
 	taskConversations?: TaskConversationVDescriptor<TaskConversation>

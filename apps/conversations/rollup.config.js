@@ -5,7 +5,8 @@ import dts from "rollup-plugin-dts";
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
-const production = !process.env.ROLLUP_WATCH;
+// const production = !process.env.ROLLUP_WATCH;
+const production = false;
 
 const packageJson = require("./package.json");
 
@@ -23,7 +24,6 @@ export default [
             file: '../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/bundle.js'
         }],
         plugins: [
-            peerDepsExternal(),
             resolve({
                 browser: true
             }),
@@ -34,6 +34,44 @@ export default [
                 inlineSources: !production
             }),
             production && terser()
+        ],
+        watch: {
+            clearScreen: false
+        }
+    },
+    {
+        input: './src/generated/application.ts',
+        output: [{
+            file: "dist/definition/application.mjs",
+            sourcemap: true,
+        }],
+        plugins: [
+            typescript({
+                tsconfigDefaults: {
+                    "files": [
+                        "src/generated/application.ts"
+                    ],
+                }
+            })
+        ],
+        watch: {
+            clearScreen: false
+        }
+    },
+    {
+        input: './src/generated/mappedSuperclass.ts',
+        output: [{
+            file: "dist/definition/mappedSuperclass.mjs",
+            sourcemap: true,
+        }],
+        plugins: [
+            typescript({
+                tsconfigDefaults: {
+                    "files": [
+                        "src/generated/mappedSuperclass.ts"
+                    ],
+                }
+            })
         ],
         watch: {
             clearScreen: false

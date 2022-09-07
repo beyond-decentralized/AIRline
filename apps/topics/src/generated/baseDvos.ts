@@ -19,10 +19,10 @@ import {
 	ApplicationEntity_LocalId as DbEntityId,
 } from '@airport/ground-control';
 import {
-	Q,
-	duoDiSet,
+	localhost_colon_3002____at_airline_slash_topics_diSet,
 } from './qApplication';
 
+import Q from './qApplication'
 
 // Application Q object Dependency Injection readiness detection Dvo
 export class SQDIDvo<Entity, EntityVDescriptor>
@@ -45,7 +45,7 @@ export class BaseThemeDvo
 	implements IBaseThemeDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(1)
+		return localhost_colon_3002____at_airline_slash_topics_diSet(1)
 	}
 	
 	constructor() {
@@ -63,7 +63,7 @@ export class BaseTopicDvo
 	implements IBaseTopicDvo {
 
 	static diSet(): boolean {
-		return duoDiSet(0)
+		return localhost_colon_3002____at_airline_slash_topics_diSet(0)
 	}
 	
 	constructor() {

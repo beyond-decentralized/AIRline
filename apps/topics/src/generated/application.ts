@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const APPLICATION = {
-	"domain": "localhost:8100",
+	"domain": "localhost:3002",
 	"index": null,
 	"name": "@airline/topics",
 	"sinceVersion": 1,

@@ -12,7 +12,7 @@ import { Goal } from '../ddl/goal/Goal';
 import { TaskReferenceInComment } from '../ddl/task/TaskReferenceInComment';
 
 DEPENDENCY_INJECTION.db().get(AIRPORT_DATABASE).then(airDb => {
-  const accumulator = airDb.getAccumulator('localhost:8100', 'undefined');
+  const accumulator = airDb.getAccumulator('localhost:3002', 'undefined');
   accumulator.add(GoalConversation, 0);
   accumulator.add(PrerequisiteTask, 1);
   accumulator.add(Subtask, 2);

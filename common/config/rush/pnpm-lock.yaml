@@ -8,6 +8,7 @@ dependencies:
   '@ionic/react': 6.2.3_react-dom@17.0.2
   '@ionic/react-router': 6.2.3_e056bd51e8b8ab124c1d133355a0229f
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_1e5167d300f354f21b44cc34def71332
+  '@rollup/plugin-run': 2.1.0
   '@rush-temp/air-traffic-control': 'file:projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:projects/airport-code.tgz'
   '@rush-temp/airspace': 'file:projects/airspace.tgz'
@@ -2604,6 +2605,27 @@ packages:
       rollup: ^1.20.0 || ^2.0.0
     resolution:
       integrity: sha512-IGcu+cydlUMZ5En85jxHH4qj2hta/11BHq95iHEyb2sbgiN0eCdzvUcHw5gt9pBL5lTi4JDYJ1acCoMGpTvEZg==
+  /@rollup/plugin-run/2.1.0:
+    dependencies:
+      '@types/node': 14.0.26
+    dev: false
+    engines:
+      node: '>=8.0.0'
+    peerDependencies:
+      rollup: ^2.0.0
+    resolution:
+      integrity: sha512-jMtIKu/MamhHsk9S+BQ8DR3D4WGWflgjPCODB3waYMdimyvd3efqTmX6jqclQAu+Ed7RBUvbpf4PtJ1ly1rdKA==
+  /@rollup/plugin-run/2.1.0_rollup@2.78.1:
+    dependencies:
+      '@types/node': 14.0.26
+      rollup: 2.78.1
+    dev: false
+    engines:
+      node: '>=8.0.0'
+    peerDependencies:
+      rollup: ^2.0.0
+    resolution:
+      integrity: sha512-jMtIKu/MamhHsk9S+BQ8DR3D4WGWflgjPCODB3waYMdimyvd3efqTmX6jqclQAu+Ed7RBUvbpf4PtJ1ly1rdKA==
   /@rollup/plugin-typescript/8.3.4_ee6504226884066b338823278b2da755:
     dependencies:
       '@rollup/pluginutils': 3.1.0_rollup@2.78.1
@@ -3100,6 +3122,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-J8xLz7q2OFulZ2cyGTLE1TbbZcjpno7FaN6zdJNrgAdrJ+DZzh/uFR6YrTb4C+nXakvud8Q4+rbhoIWlYQbUFQ==
+  /@types/node/14.0.26:
+    dev: false
+    resolution:
+      integrity: sha512-W+fpe5s91FBGE0pEa0lnqGLL4USgpLgs4nokw16SrBBco/gQxuua7KnArSEOd5iaMqbbSHV10vUDkJYJJqpXKA==
   /@types/node/14.18.24:
     dev: false
     resolution:
@@ -13782,6 +13808,7 @@ packages:
     dependencies:
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.78.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
+      '@rollup/plugin-run': 2.1.0_rollup@2.78.1
       '@rollup/plugin-typescript': 8.3.4_ee6504226884066b338823278b2da755
       rollup: 2.78.1
       rollup-plugin-dts: 4.2.2_rollup@2.78.1+typescript@4.7.4
@@ -13794,7 +13821,7 @@ packages:
     dev: false
     name: '@rush-temp/topics'
     resolution:
-      integrity: sha512-s6vVrOjO3eVE1dDT8WAc1BbhjDCWvPzUyAc0JtnBDzO4RbY63UaIfDcQ48S8jto3lCK1KrLH8vwMAhzSzzUEJA==
+      integrity: sha512-6Vm80AKyAYFu8mq4yBnAtCsvAkRD5wx+iCTeDk2OUTa7b+du8Xog7DdmDkt9Y9I5VGPAoxvkZTUC87+KVaGaug==
       tarball: 'file:projects/topics.tgz'
     version: 0.0.0
   'file:projects/tower.tgz':
@@ -14074,6 +14101,7 @@ specifiers:
   '@ionic/react': ^6.0.0
   '@ionic/react-router': ^6.0.0
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.3
+  '@rollup/plugin-run': ^2.1.0
   '@rush-temp/air-traffic-control': 'file:./projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:./projects/airport-code.tgz'
   '@rush-temp/airspace': 'file:./projects/airspace.tgz'
