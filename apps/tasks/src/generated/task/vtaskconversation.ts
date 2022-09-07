@@ -18,7 +18,7 @@ import {
 import {
 	ConversationVDescriptor,
 	Conversation,
-} from '@airline/conversations/lib/to_be_generated/runtime-index';
+} from '@airline/conversations/dist/app/bundle';
 import {
 	ITaskConversation,
 } from './taskconversation';

@@ -1,1 +1,0 @@
-{"version":3,"file":"goalconversation.d.ts","sourceRoot":"","sources":["../../../../src/generated/goal/goalconversation.ts"],"names":[],"mappings":"AAAA,OAAO,EACN,UAAU,EACV,MAAM,0BAA0B,CAAC;AAClC,OAAO,EACN,KAAK,EACL,MAAM,QAAQ,CAAC;AAChB,OAAO,EACN,aAAa,EACb,MAAM,wBAAwB,CAAC;AAQhC,MAAM,WAAW,iBAAkB,SAAQ,UAAU;IASpD,IAAI,CAAC,EAAE,KAAK,CAAC;IACb,YAAY,CAAC,EAAE,aAAa,CAAC;CAM7B"}

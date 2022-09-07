@@ -12,7 +12,7 @@ import {
 import {
 	CommentVDescriptor,
 	Comment,
-} from '@airline/conversations/lib/to_be_generated/runtime-index';
+} from '@airline/conversations/dist/app/bundle';
 import {
 	TaskVDescriptor,
 } from './vtask';

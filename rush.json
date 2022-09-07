@@ -190,8 +190,13 @@
         },
         // AIRport "platforms" folder (alphabetical order)
         {
-            "packageName": "@airport/web-airport",
-            "projectFolder": "../AIRport/platforms/web-airport",
+            "packageName": "@airport/api",
+            "projectFolder": "../AIRport/platforms/api",
+            "shouldPublish": true
+        },
+        {
+            "packageName": "@airport/server",
+            "projectFolder": "../AIRport/platforms/server",
             "shouldPublish": true
         },
         {

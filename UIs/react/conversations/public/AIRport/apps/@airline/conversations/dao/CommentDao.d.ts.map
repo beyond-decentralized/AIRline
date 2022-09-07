@@ -1,1 +1,0 @@
-{"version":3,"file":"CommentDao.d.ts","sourceRoot":"","sources":["../../../../../../../../apps/src/dao/CommentDao.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,OAAO,EAAE,MAAM,gBAAgB,CAAC;AACzC,OAAO,EAAE,YAAY,EAAE,MAAM,qBAAqB,CAAC;AACnD,OAAO,EAAE,cAAc,EAAE,MAAM,uBAAuB,CAAC;AAKvD,qBACa,UACT,SAAQ,cAAc;IAEhB,sBAAsB,CACxB,YAAY,EAAE,YAAY,GAAG,MAAM,GACpC,OAAO,CAAC,OAAO,EAAE,CAAC;CAaxB"}

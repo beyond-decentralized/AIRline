@@ -1,1 +1,0 @@
-{"version":3,"file":"TopicDao.d.ts","sourceRoot":"","sources":["../../../../../../../../apps/src/dao/TopicDao.ts"],"names":[],"mappings":"AACA,OAAO,EAAE,KAAK,EAAE,MAAM,cAAc,CAAC;AACrC,OAAO,EAAE,KAAK,EAAE,MAAM,cAAc,CAAC;AACrC,OAAO,EAAE,YAAY,EAAE,MAAM,uBAAuB,CAAC;AAKrD,qBACa,QACT,SAAQ,YAAY;IAEd,eAAe,CACjB,KAAK,EAAE,KAAK,GAAG,MAAM,GACtB,OAAO,CAAC,KAAK,EAAE,CAAC;CAatB"}
