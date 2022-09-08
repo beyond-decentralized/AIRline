@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import { ConversationApi } from '@airline/conversations';
+import { ThemeApi, TopicApi } from '@airline/topics';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,9 +13,13 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
+const themeApi = new ThemeApi()
+// const topicApi = new TopicApi()
 const conversationApi = new ConversationApi()
 
-conversationApi.findAll().then()
+themeApi.findAll().then(_themes => {
+  conversationApi.findAll().then()
+})
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
