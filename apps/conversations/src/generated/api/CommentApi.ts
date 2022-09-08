@@ -24,13 +24,13 @@ import {
 // An API stub for other Applications and UIs to use
 @Injected()
 export class CommentApi {
-
-    constructor() {
-        DEPENDENCY_INJECTION.db().manualInject(this, COMMENT_API)
-    }
         
     @Inject()
     commentApi: CommentApi
+
+    constructor() {
+        DEPENDENCY_INJECTION.db().manualInject(this, 'commentApi', COMMENT_API)
+    }
             
     async  findAllForConversation(
         conversation: Conversation | string

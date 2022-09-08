@@ -37,13 +37,13 @@ import {
 // An API stub for other Applications and UIs to use
 @Injected()
 export class TaskApi {
-
-    constructor() {
-        DEPENDENCY_INJECTION.db().manualInject(this, TASK_API)
-    }
         
     @Inject()
     taskApi: TaskApi
+
+    constructor() {
+        DEPENDENCY_INJECTION.db().manualInject(this, 'taskApi', TASK_API)
+    }
             
     async  findAll(): Promise<Task[]> {
         return await this.taskApi.findAll()

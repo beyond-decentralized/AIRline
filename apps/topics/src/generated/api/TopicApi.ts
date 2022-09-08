@@ -24,13 +24,13 @@ import {
 // An API stub for other Applications and UIs to use
 @Injected()
 export class TopicApi {
-
-    constructor() {
-        DEPENDENCY_INJECTION.db().manualInject(this, TOPIC_API)
-    }
         
     @Inject()
     topicApi: TopicApi
+
+    constructor() {
+        DEPENDENCY_INJECTION.db().manualInject(this, 'topicApi', TOPIC_API)
+    }
             
     async  findAllForTheme(
         theme: Theme | string

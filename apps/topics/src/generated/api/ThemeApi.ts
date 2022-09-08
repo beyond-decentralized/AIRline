@@ -21,13 +21,13 @@ import {
 // An API stub for other Applications and UIs to use
 @Injected()
 export class ThemeApi {
-
-    constructor() {
-        DEPENDENCY_INJECTION.db().manualInject(this, THEME_API)
-    }
         
     @Inject()
     themeApi: ThemeApi
+
+    constructor() {
+        DEPENDENCY_INJECTION.db().manualInject(this, 'themeApi', THEME_API)
+    }
             
     async  findAll(): Promise<Theme[]> {
         return await this.themeApi.findAll()

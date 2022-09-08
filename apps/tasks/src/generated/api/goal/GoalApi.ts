@@ -34,13 +34,13 @@ import {
 // An API stub for other Applications and UIs to use
 @Injected()
 export class GoalApi {
-
-    constructor() {
-        DEPENDENCY_INJECTION.db().manualInject(this, GOAL_API)
-    }
         
     @Inject()
     goalApi: GoalApi
+
+    constructor() {
+        DEPENDENCY_INJECTION.db().manualInject(this, 'goalApi', GOAL_API)
+    }
             
     async  findAll(): Promise<Goal[]> {
         return await this.goalApi.findAll()
