@@ -1,6 +1,6 @@
 import { domain } from "@airport/direction-indicator"
 
-export const tasks = domain('beyond-decentralized.world').app('at__airline__slash__tasks')
+export const tasks = domain('localhost:3003').app('@airline/tasks')
 
 export const GOAL_API = tasks.token<any>({
     class: null,

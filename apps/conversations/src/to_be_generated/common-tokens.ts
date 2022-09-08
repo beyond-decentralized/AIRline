@@ -1,6 +1,6 @@
 import { domain } from "@airport/direction-indicator"
 
-export const conversations = domain('beyond-decentralized.world').app('at__airline__slash__conversations')
+export const conversations = domain('localhost:3002').app('@airline/conversations')
 
 export const COMMENT_API = conversations.token<any>({
     class: null,

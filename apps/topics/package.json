@@ -4,10 +4,7 @@
   "version": "0.0.1",
   "airport": {
     "domain": "localhost:3002",
-    "schema": "@airline/topics",
-    "daoDir": "src/dao",
-    "ddlDir": "src/ddl",
-    "generatedDir": "src/generated"
+    "application": "@airline/topics"
   },
   "peerDependencies": {
     "@airbridge/validate": "0.0.1",
@@ -30,6 +27,7 @@
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-node-resolve": "^13.0.6",
     "@rollup/plugin-typescript": "^8.3.0",
+    "fs-extra": "^10.1.0",
     "rollup-plugin-typescript2": "0.33.0",
     "rollup": "^2.60.0",
     "rollup-plugin-dts": "^4.0.1",
@@ -44,7 +42,9 @@
     "dist"
   ],
   "scripts": {
+    "predev": "node stageApp.mjs",
     "dev": "rollup -c ./rollup.config.js -w",
+    "prebuild": "node stageApp.mjs",
     "build": "rollup -c ./rollup.config.js"
   },
   "types": "dist/index.d.ts"
