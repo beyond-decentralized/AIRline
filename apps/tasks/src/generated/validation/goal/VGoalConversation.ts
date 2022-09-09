@@ -8,7 +8,7 @@ import {
 } from '@airbridge/validate';
 import {
 	AirEntityVDescriptor,
-} from '@airport/holding-pattern/dist/app/bundle';
+} from '@airport/holding-pattern';
 import {
 	GoalVDescriptor,
 } from './VGoal';
@@ -18,7 +18,7 @@ import {
 import {
 	ConversationVDescriptor,
 	Conversation,
-} from '@airline/conversations/dist/app/bundle';
+} from '@airline/conversations';
 import {
 	IGoalConversation,
 } from '../../entity/goal/IGoalConversation';

@@ -8,7 +8,7 @@ import {
 } from '@airbridge/validate';
 import {
 	AirEntityVDescriptor,
-} from '@airport/holding-pattern/dist/app/bundle';
+} from '@airport/holding-pattern';
 import {
 	TaskVDescriptor,
 } from './VTask';
@@ -18,7 +18,7 @@ import {
 import {
 	UserAccountVDescriptor,
 	UserAccount,
-} from '@airport/travel-document-checkpoint/dist/app/bundle';
+} from '@airport/travel-document-checkpoint';
 import {
 	ITaskAssignee,
 } from '../../entity/task/ITaskAssignee';

@@ -16,12 +16,7 @@ export default [
         output: [{
             sourcemap: true,
             format: 'esm',
-            file: 'dist/app/bundle.js'
-        }, {
-            sourcemap: true,
-            format: 'iife',
-            name: 'app',
-            file: '../../UIs/react/conversations/public/AIRport/apps/@airline/topics/bundle.js'
+            file: '../../UIs/react/conversations/public/AIRport/apps/@airline/topics/bundle.mjs'
         }],
         plugins: [
             resolve({
@@ -110,14 +105,14 @@ export default [
         },
     },
     {
-        input: "dist/app/to_be_generated/runtime-index.d.ts",
-        output: [{ file: "dist/app/bundle.d.ts", format: "esm" }],
+        input: "../../UIs/react/conversations/public/AIRport/apps/@airline/topics/to_be_generated/runtime-index.d.ts",
+        output: [{ file: "../../UIs/react/conversations/public/AIRport/apps/@airline/topics/bundle.d.ts", format: "esm" }],
         plugins: [dts()],
         external: [/\.css$/],
     },
     {
         input: "dist/esm/to_be_generated/api-index.d.ts",
-        output: [{ file: "dist/index.d.ts", format: "esm" }],
+        output: [{ file: "dist/esm/index.d.ts", format: "esm" }],
         plugins: [dts()],
         external: [/\.css$/],
     },
