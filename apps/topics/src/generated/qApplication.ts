@@ -6,8 +6,8 @@ import {
     DbApplication,
     ApplicationEntity_LocalId,
 }                      from '@airport/ground-control';
-import { QTheme } from './qtheme';
-import { QTopic } from './qtopic';
+import { QTheme } from './query/QTheme';
+import { QTopic } from './query/QTopic';
 import {
   Theme,
   Topic

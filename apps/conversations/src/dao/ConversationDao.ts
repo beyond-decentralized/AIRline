@@ -3,7 +3,7 @@ import { Injected } from "@airport/direction-indicator";
 import { Conversation } from "../ddl/Conversation";
 import { BaseConversationDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
-import { QConversation } from "../generated/qconversation";
+import { QConversation } from "../generated/query/QConversation";
 
 @Injected()
 export class ConversationDao

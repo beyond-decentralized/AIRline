@@ -3,8 +3,8 @@ import { Topic } from "../ddl/topic";
 import { Theme } from "../ddl/Theme";
 import { BaseTopicDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
-import { QTopic } from "../generated/qtopic";
-import { QTheme } from "../generated/qtheme";
+import { QTopic } from "../generated/query/QTopic";
+import { QTheme } from "../generated/query/QTheme";
 
 @Injected()
 export class TopicDao

@@ -1,2 +1,2 @@
-export * from './qtheme';
-export * from './qtopic';
+export * from './query/QTheme';
+export * from './query/QTopic';

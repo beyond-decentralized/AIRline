@@ -1,7 +1,7 @@
 /* eslint-disable */
 import {
 	Comment,
-} from '../ddl/comment';
+} from '../ddl/Comment';
 import {
 	CommentESelect,
 	CommentECreateColumns,
@@ -11,10 +11,10 @@ import {
 	CommentEId,
 	CommentGraph,
 	QComment,
-} from './qcomment';
+} from './query/QComment';
 import {
 	CommentReference,
-} from '../ddl/commentreference';
+} from '../ddl/CommentReference';
 import {
 	CommentReferenceESelect,
 	CommentReferenceECreateColumns,
@@ -24,10 +24,10 @@ import {
 	CommentReferenceEId,
 	CommentReferenceGraph,
 	QCommentReference,
-} from './qcommentreference';
+} from './query/QCommentReference';
 import {
 	Conversation,
-} from '../ddl/conversation';
+} from '../ddl/Conversation';
 import {
 	ConversationESelect,
 	ConversationECreateColumns,
@@ -37,10 +37,10 @@ import {
 	ConversationEId,
 	ConversationGraph,
 	QConversation,
-} from './qconversation';
+} from './query/QConversation';
 import {
 	Moderator,
-} from '../ddl/moderator';
+} from '../ddl/Moderator';
 import {
 	ModeratorESelect,
 	ModeratorECreateColumns,
@@ -50,10 +50,10 @@ import {
 	ModeratorEId,
 	ModeratorGraph,
 	QModerator,
-} from './qmoderator';
+} from './query/QModerator';
 import {
 	Participant,
-} from '../ddl/participant';
+} from '../ddl/Participant';
 import {
 	ParticipantESelect,
 	ParticipantECreateColumns,
@@ -63,10 +63,10 @@ import {
 	ParticipantEId,
 	ParticipantGraph,
 	QParticipant,
-} from './qparticipant';
+} from './query/QParticipant';
 import {
 	TakeBackRequest,
-} from '../ddl/takebackrequest';
+} from '../ddl/TakeBackRequest';
 import {
 	TakeBackRequestESelect,
 	TakeBackRequestECreateColumns,
@@ -76,7 +76,7 @@ import {
 	TakeBackRequestEId,
 	TakeBackRequestGraph,
 	QTakeBackRequest,
-} from './qtakebackrequest';
+} from './query/QTakeBackRequest';
 import {
 	IEntityCascadeGraph,
 	IEntityCreateProperties,

@@ -3,7 +3,7 @@ import { Injected } from "@airport/direction-indicator";
 import { Goal } from "../../ddl/goal/Goal";
 import { BaseGoalDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
-import { QGoal } from "../../generated/goal/qgoal";
+import { QGoal } from "../../generated/query/goal/QGoal";
 import { Y } from "@airport/tarmaq-query";
 import { QGoalConversation } from "../../generated/qInterfaces";
 import { QConversation, QParticipant } from "@airline/conversations";

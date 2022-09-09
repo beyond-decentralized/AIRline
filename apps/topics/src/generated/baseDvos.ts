@@ -1,16 +1,16 @@
 /* eslint-disable */
 import {
 	Theme,
-} from '../ddl/theme';
+} from '../ddl/Theme';
 import {
 	ThemeVDescriptor,
-} from './vtheme';
+} from './validation/VTheme';
 import {
 	Topic,
-} from '../ddl/topic';
+} from '../ddl/Topic';
 import {
 	TopicVDescriptor,
-} from './vtopic';
+} from './validation/VTopic';
 import {
 	IDvo,
 	Dvo,

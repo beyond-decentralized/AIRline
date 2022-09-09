@@ -1,58 +1,58 @@
 /* eslint-disable */
 import {
 	Goal,
-} from '../ddl/goal/goal';
+} from '../ddl/goal/Goal';
 import {
 	GoalVDescriptor,
-} from './goal/vgoal';
+} from './validation/goal/VGoal';
 import {
 	GoalConversation,
-} from '../ddl/goal/goalconversation';
+} from '../ddl/goal/GoalConversation';
 import {
 	GoalConversationVDescriptor,
-} from './goal/vgoalconversation';
+} from './validation/goal/VGoalConversation';
 import {
 	GoalTask,
-} from '../ddl/goal/goaltask';
+} from '../ddl/goal/GoalTask';
 import {
 	GoalTaskVDescriptor,
-} from './goal/vgoaltask';
+} from './validation/goal/VGoalTask';
 import {
 	PrerequisiteTask,
-} from '../ddl/task/prerequisitetask';
+} from '../ddl/task/PrerequisiteTask';
 import {
 	PrerequisiteTaskVDescriptor,
-} from './task/vprerequisitetask';
+} from './validation/task/VPrerequisiteTask';
 import {
 	Subtask,
-} from '../ddl/task/subtask';
+} from '../ddl/task/Subtask';
 import {
 	SubtaskVDescriptor,
-} from './task/vsubtask';
+} from './validation/task/VSubtask';
 import {
 	Task,
-} from '../ddl/task/task';
+} from '../ddl/task/Task';
 import {
 	TaskVDescriptor,
-} from './task/vtask';
+} from './validation/task/VTask';
 import {
 	TaskAssignee,
-} from '../ddl/task/taskassignee';
+} from '../ddl/task/TaskAssignee';
 import {
 	TaskAssigneeVDescriptor,
-} from './task/vtaskassignee';
+} from './validation/task/VTaskAssignee';
 import {
 	TaskConversation,
-} from '../ddl/task/taskconversation';
+} from '../ddl/task/TaskConversation';
 import {
 	TaskConversationVDescriptor,
-} from './task/vtaskconversation';
+} from './validation/task/VTaskConversation';
 import {
 	TaskReferenceInComment,
-} from '../ddl/task/taskreferenceincomment';
+} from '../ddl/task/TaskReferenceInComment';
 import {
 	TaskReferenceInCommentVDescriptor,
-} from './task/vtaskreferenceincomment';
+} from './validation/task/VTaskReferenceInComment';
 import {
 	IDvo,
 	Dvo,

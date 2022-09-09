@@ -1,7 +1,7 @@
 /* eslint-disable */
 import {
 	Goal,
-} from '../ddl/goal/goal';
+} from '../ddl/goal/Goal';
 import {
 	GoalESelect,
 	GoalECreateColumns,
@@ -11,10 +11,10 @@ import {
 	GoalEId,
 	GoalGraph,
 	QGoal,
-} from './goal/qgoal';
+} from './query/goal/QGoal';
 import {
 	GoalConversation,
-} from '../ddl/goal/goalconversation';
+} from '../ddl/goal/GoalConversation';
 import {
 	GoalConversationESelect,
 	GoalConversationECreateColumns,
@@ -24,10 +24,10 @@ import {
 	GoalConversationEId,
 	GoalConversationGraph,
 	QGoalConversation,
-} from './goal/qgoalconversation';
+} from './query/goal/QGoalConversation';
 import {
 	GoalTask,
-} from '../ddl/goal/goaltask';
+} from '../ddl/goal/GoalTask';
 import {
 	GoalTaskESelect,
 	GoalTaskECreateColumns,
@@ -37,10 +37,10 @@ import {
 	GoalTaskEId,
 	GoalTaskGraph,
 	QGoalTask,
-} from './goal/qgoaltask';
+} from './query/goal/QGoalTask';
 import {
 	PrerequisiteTask,
-} from '../ddl/task/prerequisitetask';
+} from '../ddl/task/PrerequisiteTask';
 import {
 	PrerequisiteTaskESelect,
 	PrerequisiteTaskECreateColumns,
@@ -50,10 +50,10 @@ import {
 	PrerequisiteTaskEId,
 	PrerequisiteTaskGraph,
 	QPrerequisiteTask,
-} from './task/qprerequisitetask';
+} from './query/task/QPrerequisiteTask';
 import {
 	Subtask,
-} from '../ddl/task/subtask';
+} from '../ddl/task/Subtask';
 import {
 	SubtaskESelect,
 	SubtaskECreateColumns,
@@ -63,10 +63,10 @@ import {
 	SubtaskEId,
 	SubtaskGraph,
 	QSubtask,
-} from './task/qsubtask';
+} from './query/task/QSubtask';
 import {
 	Task,
-} from '../ddl/task/task';
+} from '../ddl/task/Task';
 import {
 	TaskESelect,
 	TaskECreateColumns,
@@ -76,10 +76,10 @@ import {
 	TaskEId,
 	TaskGraph,
 	QTask,
-} from './task/qtask';
+} from './query/task/QTask';
 import {
 	TaskAssignee,
-} from '../ddl/task/taskassignee';
+} from '../ddl/task/TaskAssignee';
 import {
 	TaskAssigneeESelect,
 	TaskAssigneeECreateColumns,
@@ -89,10 +89,10 @@ import {
 	TaskAssigneeEId,
 	TaskAssigneeGraph,
 	QTaskAssignee,
-} from './task/qtaskassignee';
+} from './query/task/QTaskAssignee';
 import {
 	TaskConversation,
-} from '../ddl/task/taskconversation';
+} from '../ddl/task/TaskConversation';
 import {
 	TaskConversationESelect,
 	TaskConversationECreateColumns,
@@ -102,10 +102,10 @@ import {
 	TaskConversationEId,
 	TaskConversationGraph,
 	QTaskConversation,
-} from './task/qtaskconversation';
+} from './query/task/QTaskConversation';
 import {
 	TaskReferenceInComment,
-} from '../ddl/task/taskreferenceincomment';
+} from '../ddl/task/TaskReferenceInComment';
 import {
 	TaskReferenceInCommentESelect,
 	TaskReferenceInCommentECreateColumns,
@@ -115,7 +115,7 @@ import {
 	TaskReferenceInCommentEId,
 	TaskReferenceInCommentGraph,
 	QTaskReferenceInComment,
-} from './task/qtaskreferenceincomment';
+} from './query/task/QTaskReferenceInComment';
 import {
 	IEntityCascadeGraph,
 	IEntityCreateProperties,

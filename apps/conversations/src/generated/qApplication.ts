@@ -6,12 +6,12 @@ import {
     DbApplication,
     ApplicationEntity_LocalId,
 }                      from '@airport/ground-control';
-import { QComment } from './qcomment';
-import { QCommentReference } from './qcommentreference';
-import { QConversation } from './qconversation';
-import { QModerator } from './qmoderator';
-import { QParticipant } from './qparticipant';
-import { QTakeBackRequest } from './qtakebackrequest';
+import { QComment } from './query/QComment';
+import { QCommentReference } from './query/QCommentReference';
+import { QConversation } from './query/QConversation';
+import { QModerator } from './query/QModerator';
+import { QParticipant } from './query/QParticipant';
+import { QTakeBackRequest } from './query/QTakeBackRequest';
 import {
   Comment,
   CommentReference,

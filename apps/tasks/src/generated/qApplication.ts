@@ -6,15 +6,15 @@ import {
     DbApplication,
     ApplicationEntity_LocalId,
 }                      from '@airport/ground-control';
-import { QGoal } from './goal/qgoal';
-import { QGoalConversation } from './goal/qgoalconversation';
-import { QGoalTask } from './goal/qgoaltask';
-import { QPrerequisiteTask } from './task/qprerequisitetask';
-import { QSubtask } from './task/qsubtask';
-import { QTask } from './task/qtask';
-import { QTaskAssignee } from './task/qtaskassignee';
-import { QTaskConversation } from './task/qtaskconversation';
-import { QTaskReferenceInComment } from './task/qtaskreferenceincomment';
+import { QGoal } from './query/goal/QGoal';
+import { QGoalConversation } from './query/goal/QGoalConversation';
+import { QGoalTask } from './query/goal/QGoalTask';
+import { QPrerequisiteTask } from './query/task/QPrerequisiteTask';
+import { QSubtask } from './query/task/QSubtask';
+import { QTask } from './query/task/QTask';
+import { QTaskAssignee } from './query/task/QTaskAssignee';
+import { QTaskConversation } from './query/task/QTaskConversation';
+import { QTaskReferenceInComment } from './query/task/QTaskReferenceInComment';
 import {
   Goal,
   GoalConversation,

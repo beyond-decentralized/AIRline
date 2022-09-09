@@ -1,40 +1,40 @@
 /* eslint-disable */
 import {
 	Comment,
-} from '../ddl/comment';
+} from '../ddl/Comment';
 import {
 	CommentVDescriptor,
-} from './vcomment';
+} from './validation/VComment';
 import {
 	CommentReference,
-} from '../ddl/commentreference';
+} from '../ddl/CommentReference';
 import {
 	CommentReferenceVDescriptor,
-} from './vcommentreference';
+} from './validation/VCommentReference';
 import {
 	Conversation,
-} from '../ddl/conversation';
+} from '../ddl/Conversation';
 import {
 	ConversationVDescriptor,
-} from './vconversation';
+} from './validation/VConversation';
 import {
 	Moderator,
-} from '../ddl/moderator';
+} from '../ddl/Moderator';
 import {
 	ModeratorVDescriptor,
-} from './vmoderator';
+} from './validation/VModerator';
 import {
 	Participant,
-} from '../ddl/participant';
+} from '../ddl/Participant';
 import {
 	ParticipantVDescriptor,
-} from './vparticipant';
+} from './validation/VParticipant';
 import {
 	TakeBackRequest,
-} from '../ddl/takebackrequest';
+} from '../ddl/TakeBackRequest';
 import {
 	TakeBackRequestVDescriptor,
-} from './vtakebackrequest';
+} from './validation/VTakeBackRequest';
 import {
 	IDvo,
 	Dvo,

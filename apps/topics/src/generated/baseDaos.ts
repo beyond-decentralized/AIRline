@@ -1,7 +1,7 @@
 /* eslint-disable */
 import {
 	Theme,
-} from '../ddl/theme';
+} from '../ddl/Theme';
 import {
 	ThemeESelect,
 	ThemeECreateColumns,
@@ -11,10 +11,10 @@ import {
 	ThemeEId,
 	ThemeGraph,
 	QTheme,
-} from './qtheme';
+} from './query/QTheme';
 import {
 	Topic,
-} from '../ddl/topic';
+} from '../ddl/Topic';
 import {
 	TopicESelect,
 	TopicECreateColumns,
@@ -24,7 +24,7 @@ import {
 	TopicEId,
 	TopicGraph,
 	QTopic,
-} from './qtopic';
+} from './query/QTopic';
 import {
 	IEntityCascadeGraph,
 	IEntityCreateProperties,

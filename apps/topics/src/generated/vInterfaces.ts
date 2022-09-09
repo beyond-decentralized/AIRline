@@ -1,2 +1,2 @@
-export * from './vtheme';
-export * from './vtopic';
+export * from './validation/VTheme';
+export * from './validation/VTopic';

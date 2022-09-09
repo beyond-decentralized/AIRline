@@ -3,8 +3,8 @@ import { Comment } from "../ddl/comment";
 import { Conversation } from "../ddl/Conversation";
 import { BaseCommentDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
-import { QComment } from "../generated/qcomment";
-import { QConversation } from "../generated/qconversation";
+import { QComment } from "../generated/query/QComment";
+import { QConversation } from "../generated/query/QConversation";
 
 @Injected()
 export class CommentDao
