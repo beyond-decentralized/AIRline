@@ -6,12 +6,14 @@ export function AirEisenhowerIcon({ rankedUnit }: { rankedUnit: Goal | Task }) {
     for (let i = 0; i < rankedUnit.importance; i++) {
         importanceIcons.push(<img
             className="priority-icon"
+            key={i}
             src="resources/rating/importance_rating_full_point.png" />)
     }
     let urgencyIcons = []
     for (let i = 0; i < rankedUnit.urgency; i++) {
         urgencyIcons.push(<img
             className="priority-icon"
+            key={i}
             src="resources/rating/urgency_rating_full_point.png" />)
     }
     return (

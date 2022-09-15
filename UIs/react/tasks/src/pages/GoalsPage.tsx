@@ -54,31 +54,33 @@ export function GoalsPage() {
         {goals.map(goal =>
           <IonItem>
             <table className="eisenhower-view">
-              <tr>
-                <td className="eisenhower-icon">
-                  <AirEisenhowerIcon
-                    rankedUnit={goal}
-                  ></AirEisenhowerIcon>
-                </td>
-                <td>
-                  {goal.name}
-                  <br>
-                  </br>
-                  <a
-                    href={'/tasks/' + goal.id}
-                    className="go-to-tasks-link"
-                  >Tasks</a> |
-                  <a
-                    href={'http://localhost:8100/conversations/goals/' + goal.id}
-                    className="go-to-conversations-link"
-                  >Conversations</a>
-                  <a
-                    className="edit-goal-link"
-                    id="edit-goal"
-                    onClick={e => currentGoal = goal}
-                  >Edit</a>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="eisenhower-icon">
+                    <AirEisenhowerIcon
+                      rankedUnit={goal}
+                    ></AirEisenhowerIcon>
+                  </td>
+                  <td>
+                    {goal.name}
+                    <br>
+                    </br>
+                    <a
+                      href={'/tasks/' + goal.id}
+                      className="go-to-tasks-link"
+                    >Tasks</a> |
+                    <a
+                      href={'http://localhost:8100/conversations/goals/' + goal.id}
+                      className="go-to-conversations-link"
+                    >Conversations</a>
+                    <a
+                      className="edit-goal-link"
+                      id="edit-goal"
+                      onClick={e => currentGoal = goal}
+                    >Edit</a>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </IonItem>
         )}

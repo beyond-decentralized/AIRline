@@ -67,27 +67,29 @@ export function TasksPage() {
         {tasks.map(task =>
           <IonItem>
             <table className="eisenhower-view">
-              <tr>
-                <td className="eisenhower-icon">
-                  <AirEisenhowerIcon
-                    rankedUnit={task}
-                  ></AirEisenhowerIcon>
-                </td>
-                <td>
-                  {task.name}
-                  <br>
-                  </br>
-                  <a
-                    href={'http://localhost:8100/conversations/tasks/' + task.id}
-                    className="go-to-conversations-link"
-                  >Conversations</a> |
-                  <a
-                    className="edit-task-link"
-                    id="edit-task"
-                    onClick={e => currentTask = task}
-                  >Edit</a>
-                </td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td className="eisenhower-icon">
+                    <AirEisenhowerIcon
+                      rankedUnit={task}
+                    ></AirEisenhowerIcon>
+                  </td>
+                  <td>
+                    {task.name}
+                    <br>
+                    </br>
+                    <a
+                      href={'http://localhost:8100/conversations/tasks/' + task.id}
+                      className="go-to-conversations-link"
+                    >Conversations</a> |
+                    <a
+                      className="edit-task-link"
+                      id="edit-task"
+                      onClick={e => currentTask = task}
+                    >Edit</a>
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </IonItem>
         )}
