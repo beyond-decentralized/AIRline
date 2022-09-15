@@ -16,7 +16,7 @@ export default [
         output: [{
             sourcemap: true,
             format: 'esm',
-            file: '../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/bundle.js'
+            file: '../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/bundle.mjs'
         }],
         plugins: [
             resolve({

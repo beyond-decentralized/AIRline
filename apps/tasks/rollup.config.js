@@ -16,7 +16,7 @@ export default [
         output: [{
             sourcemap: true,
             format: 'esm',
-            file: '../../UIs/react/tasks/public/AIRport/apps/@airline/tasks/bundle.js'
+            file: '../../UIs/react/tasks/public/AIRport/apps/@airline/tasks/bundle.mjs'
         }],
         plugins: [
             resolve({

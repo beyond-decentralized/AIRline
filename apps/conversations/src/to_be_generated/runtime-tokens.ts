@@ -4,6 +4,7 @@ import { COMMENT_API, conversations, CONVERSATION_API } from './common-tokens'
 import { CommentDao, ConversationDao } from '../dao/dao'
 import { ConversationApi } from '../api/ConversationApi'
 import { CommentApi } from '../api/CommentApi'
+import { REQUEST_MANAGER } from '@airport/arrivals-n-departures'
 
 export const CONVERSATION_DAO = conversations.token<any>({
     class: ConversationDao,
@@ -18,10 +19,11 @@ export const COMMENT_DAO = conversations.token<any>({
 
 CONVERSATION_API.setClass(ConversationApi)
 CONVERSATION_API.setDependencies({
-    goalDao: CONVERSATION_DAO
+    conversationDao: CONVERSATION_DAO,
+    requestManager: REQUEST_MANAGER
 })
 COMMENT_API.setClass(CommentApi)
 COMMENT_API.setDependencies({
-    taskDao: COMMENT_DAO
+    commentDao: COMMENT_DAO
 })
 APPLICATION_LOADER.setClass(ApplicationLoader)
