@@ -14,7 +14,7 @@ export class GoalDao
     extends BaseGoalDao {
 
     async findAll(): Promise<Goal[]> {
-        return await this.findAll()
+        return await super.findAll()
     }
 
     async findById(

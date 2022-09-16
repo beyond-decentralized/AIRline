@@ -1,6 +1,6 @@
 /* eslint-disable */
 export const APPLICATION = {
-	"domain": "localhost:3002",
+	"domain": "localhost:3003",
 	"index": null,
 	"name": "@airline/tasks",
 	"sinceVersion": 1,

@@ -3,7 +3,7 @@ import { OverlayEventDetail } from '@ionic/core';
 import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { AirEisenhowerIcon, AirGoalEdit } from '@airline/components-ui-react'
 import { add } from 'ionicons/icons';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getGoals, saveGoal } from '../api';
 import './GoalsPage.css';
 
@@ -19,7 +19,9 @@ export function GoalsPage() {
     present(message, duration)
   }
 
-  getGoals(setGoals, showToast).then()
+  useEffect(() => {
+    getGoals(setGoals, showToast).then()
+  }, [])
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {

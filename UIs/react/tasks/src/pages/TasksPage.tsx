@@ -1,5 +1,5 @@
 import { Task } from '@airline/tasks';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import {
   IonButton,
   IonButtons,
@@ -32,7 +32,9 @@ export function TasksPage() {
 
   let { goalId }: { goalId: string } = useParams()
 
-  getTasks(goalId, setTasks, present).then()
+  useEffect(() => {
+    getTasks(goalId, setTasks, present).then()
+  }, [])
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
