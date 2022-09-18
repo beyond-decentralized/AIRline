@@ -2,6 +2,7 @@ import { Conversation, ConversationApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
+import { RepositoryApi } from "@airport/holding-pattern"
 import { GoalConversationDao } from "../../dao/goal/GoalConversationDao";
 import { GoalDao } from "../../dao/goal/GoalDao";
 import { GoalConversation } from "../../ddl/ddl";
@@ -18,6 +19,9 @@ export class GoalApi {
 
     @Inject()
     goalDao: GoalDao
+
+    @Inject()
+    repositoryApi: RepositoryApi
 
     @Api()
     async findAll(): Promise<Goal[]> {
@@ -54,6 +58,9 @@ export class GoalApi {
             const conversation = new Conversation()
             conversation.name = 'Goal: ' + goal.name
             taskConversation.conversation = conversation
+
+            const repository = await this.repositoryApi.create(conversation.name)
+            goal.repository = repository
         }
         await this.goalDao.save(goal);
         await this.conversationApi.save(goal.goalConversations[0].conversation);

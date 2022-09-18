@@ -1,4 +1,5 @@
 import { APPLICATION_LOADER } from '@airport/apron'
+import { REPOSITORY_API } from '@airport/holding-pattern'
 import { ApplicationLoader } from './ApplicationLoader'
 import { GOAL_API, tasks, TASK_API } from './common-tokens'
 import { GoalDao, TaskDao } from '../dao/dao'
@@ -18,7 +19,8 @@ export const TASK_DAO = tasks.token<any>({
 
 GOAL_API.setClass(GoalApi)
 GOAL_API.setDependencies({
-    goalDao: GOAL_DAO
+    goalDao: GOAL_DAO,
+    repositoryApi: REPOSITORY_API
 })
 TASK_API.setClass(TaskApi)
 TASK_API.setDependencies({
