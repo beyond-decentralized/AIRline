@@ -822,7 +822,7 @@ export const APPLICATION = {
 			"integerVersion": 1,
 			"referencedApplications": [
 				{
-					"domain": "air",
+					"domain": "airport",
 					"index": 0,
 					"name": "@airport/holding-pattern",
 					"sinceVersion": 1,

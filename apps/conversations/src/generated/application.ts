@@ -3199,7 +3199,7 @@ export const APPLICATION = {
 			"integerVersion": 1,
 			"referencedApplications": [
 				{
-					"domain": "air",
+					"domain": "airport",
 					"index": 0,
 					"name": "@airport/travel-document-checkpoint",
 					"sinceVersion": 1,
@@ -3227,7 +3227,7 @@ export const APPLICATION = {
 					]
 				},
 				{
-					"domain": "air",
+					"domain": "airport",
 					"index": 2,
 					"name": "@airport/holding-pattern",
 					"sinceVersion": 1,

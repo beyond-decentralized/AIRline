@@ -17,6 +17,9 @@ import {
 	Api,
 } from '@airport/check-in';
 import {
+	RepositoryApi,
+} from '@airport/holding-pattern';
+import {
 	GoalConversationDao,
 } from '../../../dao/goal/GoalConversationDao';
 import {

@@ -4763,7 +4763,7 @@ export const APPLICATION = {
 					]
 				},
 				{
-					"domain": "air",
+					"domain": "airport",
 					"index": 1,
 					"name": "@airport/travel-document-checkpoint",
 					"sinceVersion": 1,
@@ -4791,7 +4791,7 @@ export const APPLICATION = {
 					]
 				},
 				{
-					"domain": "air",
+					"domain": "airport",
 					"index": 3,
 					"name": "@airport/holding-pattern",
 					"sinceVersion": 1,
