@@ -18,13 +18,13 @@ export class Goal
 
     @Column({ name: "STATUS", nullable: false })
     @DbNumber()
-    status: GoalStatus
+    status: GoalStatus = GoalStatus.FUTURE
 
-    @Column({ name: "IMPORTANCE", nullable: true })
-    importance: number
+    @Column({ name: "IMPORTANCE", nullable: false })
+    importance: number = 3
 
-    @Column({ name: "URGENCY", nullable: true })
-    urgency: number
+    @Column({ name: "URGENCY", nullable: false })
+    urgency: number = 3
 
     @ManyToOne()
     topic: Topic

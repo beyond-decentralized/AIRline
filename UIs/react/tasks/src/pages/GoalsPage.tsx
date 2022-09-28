@@ -8,9 +8,9 @@ import { getGoals, saveGoal } from '../api';
 import './GoalsPage.css';
 
 export function GoalsPage() {
+  const [currentGoal, setCurrentGoal] = useState<Goal>(() => new Goal())
   const [goals, setGoals] = useState<Goal[]>([])
   const [present, dismiss] = useIonToast()
-  let currentGoal = new Goal()
 
   function showToast(
     message: string,
@@ -25,7 +25,7 @@ export function GoalsPage() {
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
-      currentGoal = new Goal()
+      setCurrentGoal(new Goal())
       saveGoal(ev.detail.data, showToast).then()
     }
   }
@@ -54,7 +54,7 @@ export function GoalsPage() {
           triggerId="edit-goal"
         ></AirGoalEdit>
         {goals.map(goal =>
-          <IonItem>
+          <IonItem key={goal.id}>
             <table className="eisenhower-view">
               <tbody>
                 <tr>
@@ -75,11 +75,13 @@ export function GoalsPage() {
                       href={'http://localhost:8100/conversations/goals/' + goal.id}
                       className="go-to-conversations-link"
                     >Conversations</a>
-                    <a
-                      className="edit-goal-link"
-                      id="edit-goal"
-                      onClick={e => currentGoal = goal}
-                    >Edit</a>
+                      <a
+                        className="edit-goal-link"
+                        onClick={e => {
+                            setCurrentGoal(goal)
+                            document.getElementById("edit-goal")?.click()
+                        }}
+                      >Edit</a>
                   </td>
                 </tr>
               </tbody>

@@ -117,7 +117,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -601,7 +601,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -759,7 +759,7 @@
 									"manyRelationIndex": 5,
 									"oneApplication_Index": 0,
 									"oneTableIndex": 5,
-									"oneColumnIndex": 5,
+									"oneColumnIndex": 0,
 									"sinceVersion": 1
 								}
 							],
@@ -1048,7 +1048,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -1206,7 +1206,7 @@
 									"manyRelationIndex": 5,
 									"oneApplication_Index": 0,
 									"oneTableIndex": 5,
-									"oneColumnIndex": 5,
+									"oneColumnIndex": 0,
 									"sinceVersion": 1
 								}
 							],
@@ -1495,7 +1495,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -1982,7 +1982,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -2472,7 +2472,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4

@@ -14,7 +14,7 @@ export class Moderator
     @ManyToOne({ optional: false })
     @JoinColumn({
         name: "USER_ACCOUNT_GUID",
-        referencedColumnName: "USER_ACCOUNT_GUID"
+        referencedColumnName: "GUID"
     })
     userAccount: UserAccount
 

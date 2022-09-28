@@ -12,7 +12,7 @@ export class TaskAssignee
     task: Task
 
     @ManyToOne({ optional: false })
-    @JoinColumn({ name: "ASSIGNED_TO_GUID", referencedColumnName: "USER_ACCOUNT_GUID" })
+    @JoinColumn({ name: "ASSIGNED_TO_GUID", referencedColumnName: "GUID" })
     userAccount: UserAccount
 
 }

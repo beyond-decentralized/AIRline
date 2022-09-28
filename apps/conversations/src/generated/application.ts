@@ -118,7 +118,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -602,7 +602,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -760,7 +760,7 @@ export const APPLICATION = {
 									"manyRelationIndex": 5,
 									"oneApplication_Index": 0,
 									"oneTableIndex": 5,
-									"oneColumnIndex": 5,
+									"oneColumnIndex": 0,
 									"sinceVersion": 1
 								}
 							],
@@ -1049,7 +1049,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -1207,7 +1207,7 @@ export const APPLICATION = {
 									"manyRelationIndex": 5,
 									"oneApplication_Index": 0,
 									"oneTableIndex": 5,
-									"oneColumnIndex": 5,
+									"oneColumnIndex": 0,
 									"sinceVersion": 1
 								}
 							],
@@ -1496,7 +1496,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -1983,7 +1983,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
@@ -2473,7 +2473,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "CREATED_AT",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 4
