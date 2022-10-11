@@ -3906,7 +3906,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "IMPORTANCE",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 12
@@ -3920,7 +3920,7 @@
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "URGENCY",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 13

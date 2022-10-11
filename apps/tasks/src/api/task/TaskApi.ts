@@ -4,7 +4,7 @@ import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { TaskConversationDao } from "../../dao/task/TaskConversationDao";
 import { TaskDao } from "../../dao/task/TaskDao";
-import { TaskConversation } from "../../ddl/ddl";
+import { TaskConversation } from "../../ddl/task/TaskConversation";
 import { Goal } from "../../ddl/goal/Goal";
 import { Task } from "../../ddl/task/Task";
 

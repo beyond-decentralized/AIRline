@@ -3907,7 +3907,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "IMPORTANCE",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 12
@@ -3921,7 +3921,7 @@ export const APPLICATION = {
 							"isGenerated": false,
 							"manyRelationColumnRefs": [],
 							"name": "URGENCY",
-							"notNull": false,
+							"notNull": true,
 							"propertyRefs": [
 								{
 									"index": 13
