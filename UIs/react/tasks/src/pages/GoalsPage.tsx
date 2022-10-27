@@ -25,8 +25,9 @@ export function GoalsPage() {
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
-      setCurrentGoal(new Goal())
-      saveGoal(ev.detail.data, showToast).then()
+      saveGoal(ev.detail.data, showToast).then(() => {
+        setCurrentGoal(new Goal())
+      })
     }
   }
 
@@ -75,13 +76,13 @@ export function GoalsPage() {
                       href={'http://localhost:8100/conversations/goals/' + goal.id}
                       className="go-to-conversations-link"
                     >Conversations</a>
-                      <a
-                        className="edit-goal-link"
-                        onClick={e => {
-                            setCurrentGoal(goal)
-                            document.getElementById("edit-goal")?.click()
-                        }}
-                      >Edit</a>
+                    <a
+                      className="edit-goal-link"
+                      onClick={e => {
+                        setCurrentGoal(goal)
+                        document.getElementById("edit-goal")?.click()
+                      }}
+                    >Edit</a>
                   </td>
                 </tr>
               </tbody>

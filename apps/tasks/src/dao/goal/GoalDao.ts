@@ -14,7 +14,34 @@ export class GoalDao
     extends BaseGoalDao {
 
     async findAll(): Promise<Goal[]> {
-        return await super.findAll()
+        let c: QConversation,
+            g: QGoal,
+            gc: QGoalConversation,
+            to: QTopic,
+            p: QParticipant,
+            u: QUserAccount
+        return await this._find({
+            SELECT: {
+                '*': Y,
+                goalConversations: {
+                    '*': Y,
+                    conversation: {
+                        '*': Y,
+                        participants: {
+                            userAccount: {}
+                        }
+                    }
+                }
+            },
+            FROM: [
+                g = Q.Goal,
+                to = g.topic.LEFT_JOIN(),
+                gc = g.goalConversations.LEFT_JOIN(),
+                c = gc.conversation.LEFT_JOIN(),
+                p = c.participants.LEFT_JOIN(),
+                u = p.userAccount.LEFT_JOIN()
+            ]
+        })
     }
 
     async findById(
@@ -30,6 +57,7 @@ export class GoalDao
                 '*': Y,
                 goalConversations: {
                     conversation: {
+                        '*': Y,
                         participants: {
                             userAccount: {}
                         }
@@ -50,13 +78,32 @@ export class GoalDao
     async findAllForTopic(
         topic: Topic | string
     ): Promise<Goal[]> {
-        let g: QGoal,
-            to: QTopic
+        let c: QConversation,
+            g: QGoal,
+            gc: QGoalConversation,
+            to: QTopic,
+            p: QParticipant,
+            u: QUserAccount
         return await this._find({
-            SELECT: {},
+            SELECT: {
+                '*': Y,
+                goalConversations: {
+                    '*': Y,
+                    conversation: {
+                        '*': Y,
+                        participants: {
+                            userAccount: {}
+                        }
+                    }
+                }
+            },
             FROM: [
                 g = Q.Goal,
-                to = g.topic.LEFT_JOIN()
+                to = g.topic.LEFT_JOIN(),
+                gc = g.goalConversations.LEFT_JOIN(),
+                c = gc.conversation.LEFT_JOIN(),
+                p = c.participants.LEFT_JOIN(),
+                u = p.userAccount.LEFT_JOIN()
             ],
             WHERE: to.equals(topic)
         })

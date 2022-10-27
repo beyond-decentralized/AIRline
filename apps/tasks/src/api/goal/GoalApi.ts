@@ -62,7 +62,7 @@ export class GoalApi {
             const repository = await this.repositoryApi.create(conversation.name)
             goal.repository = repository
         }
-        await this.goalDao.save(goal);
         await this.conversationApi.save(goal.goalConversations[0].conversation);
+        await this.goalDao.save(goal);
     }
 }

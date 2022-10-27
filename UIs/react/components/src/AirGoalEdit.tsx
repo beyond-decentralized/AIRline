@@ -56,21 +56,25 @@ export function AirGoalEdit({
                         onIonChange={e => goal.status = parseInt(e.detail.value)}
                     >
                         <IonSelectOption
+                            key={GoalStatus.FUTURE}
                             value={GoalStatus.FUTURE}
                         >
                             Future
                         </IonSelectOption>
                         <IonSelectOption
+                            key={GoalStatus.CURRENT}
                             value={GoalStatus.CURRENT}
                         >
                             Current
                         </IonSelectOption>
                         <IonSelectOption
+                            key={GoalStatus.OUTDATED}
                             value={GoalStatus.OUTDATED}
                         >
                             Outdated
                         </IonSelectOption>
                         <IonSelectOption
+                            key={GoalStatus.ACCOMPLISHED}
                             value={GoalStatus.ACCOMPLISHED}
                         >
                             Accomplished
