@@ -46,10 +46,6 @@ async function buildProjects(
     parameters
 ) {
     for (const projectDirectory of projectsDirectoriesInBuildOrder) {
-        process.stdout.write(`
-        RUNNING 'rollup -c' in ${projectDirectory}
-
-        `)
         const directoryDepth = projectDirectory.split('/');
         let navigateBackPath = '..'
         for (let i = 1; i < directoryDepth.length; i++) {
@@ -90,6 +86,11 @@ async function execute(
             ]
             command = 'cmd'
         }
+
+        process.stdout.write(`
+        RUNNING '${command} ${parameters.join(' ')}' in ${process.cwd()}
+    
+        `)
 
         const runCommand = spawn(command, parameters);
 
