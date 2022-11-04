@@ -1,9 +1,18 @@
 import { spawn } from 'child_process';
 
-const projectDirectoriesInBuildOrder = [
-    'apps/topics',
-    'apps/conversations',
-    'apps/tasks'
+const projectDescriptorsInBuildOrder = [
+    {
+        directory: 'apps/topics',
+        isApp: true
+    },
+    {
+        directory: 'apps/conversations',
+        isApp: true
+    },
+    {
+        directory: 'apps/tasks',
+        isApp: true
+    }
 ]
 
 const reactUiProjects = [
@@ -13,7 +22,7 @@ const reactUiProjects = [
 ]
 
 try {
-    await buildPeerFramework('AIRline', projectDirectoriesInBuildOrder, true)
+    await buildPeerFramework('AIRline', projectDescriptorsInBuildOrder, true)
     await buildUI('react', reactUiProjects)
 } catch (e) {
     console.log(e)
@@ -21,14 +30,14 @@ try {
 
 async function buildPeerFramework(
     frameworkDirectoryName,
-    projectDirectoriesInBuildOrder,
+    projectDescriptorsInBuildOrder,
     runRushUpdate
 ) {
     process.chdir('../' + frameworkDirectoryName);
     if (runRushUpdate) {
         await wireInDependencies(frameworkDirectoryName)
     }
-    await buildProjects(projectDirectoriesInBuildOrder, 'npm', ['run', 'build']);
+    await buildProjects(projectDescriptorsInBuildOrder, 'npm', ['run', 'build']);
 }
 
 async function buildUI(
@@ -41,11 +50,21 @@ async function buildUI(
 }
 
 async function buildProjects(
-    projectsDirectoriesInBuildOrder,
+    projectDescriptorsInBuildOrder,
     command,
     parameters
 ) {
-    for (const projectDirectory of projectsDirectoriesInBuildOrder) {
+    for (const projectDescriptor of projectDescriptorsInBuildOrder) {
+        let isApp = false;
+        let projectDirectory
+        if (projectDescriptor instanceof Object) {
+            projectDirectory = projectDescriptor.directory
+            isApp = projectDescriptor.isApp
+        } else if (typeof projectDescriptor === 'string') {
+            projectDirectory = projectDescriptor
+        } else {
+            throw `Expecting either object or string as a Project Descriptor.`
+        }
         const directoryDepth = projectDirectory.split('/');
         let navigateBackPath = '..'
         for (let i = 1; i < directoryDepth.length; i++) {
@@ -53,28 +72,26 @@ async function buildProjects(
         }
         process.chdir('./' + projectDirectory);
 
-        const returnCode = await execute(projectDirectory, command, parameters);
+        if (isApp) {
+            await execute('node', ['generate.mjs'], projectDirectory);
+        }
+
+        await execute(command, parameters, projectDirectory);
 
         process.chdir(navigateBackPath);
-
-        if (returnCode != 0) {
-            throw new Error(`
-        Suspending after ${projectDirectory}
-        `)
-        }
     };
 }
 
 async function wireInDependencies(
     frameworkName
 ) {
-    await execute(frameworkName, 'rush', ['update'])
+    await execute('rush', ['update'], frameworkName)
 }
 
 async function execute(
-    operation,
     command,
-    parameters
+    parameters,
+    projectDirectory
 ) {
     return new Promise((resolve, _reject) => {
         if (/^win/.test(process.platform)) {
@@ -108,10 +125,18 @@ async function execute(
 
         runCommand.on("close", code => {
             console.log(`
-        ${code ? 'ERROR' : 'DONE'}: ${operation}
-
-    `);
+        ${code ? 'ERROR' : 'DONE'}: '${command} ${parameters.join(' ')}' in ${process.cwd()}
+    
+        `);
             resolve(code)
+        }).then((returnCode) => {
+            if (returnCode != 0) {
+                throw new Error(`
+            Suspending after ${projectDirectory}
+            `)
+            }
+
+            return returnCode
         });
     })
 
