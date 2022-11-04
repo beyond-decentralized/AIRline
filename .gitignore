@@ -18,6 +18,7 @@ public.zip
 **/build
 **/dist
 UIs/**/AIRport/apps
+**/generated/*
 
 # Ignore Rush temporary files
 /common/temp/**
