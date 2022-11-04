@@ -8,8 +8,8 @@ import {
   IonMenu,
   IonMenuToggle,
   IonNote,
+  useIonToast,
 } from '@ionic/react';
-
 import { useLocation } from 'react-router-dom';
 import {
   bookmarkOutline,
@@ -21,6 +21,10 @@ import {
   paperPlaneSharp
 } from 'ionicons/icons';
 import './Menu.css';
+import { useEffect, useState } from 'react';
+import { Conversation } from '@airline/conversations';
+import { getConversationsByTopic as getConversationsByTopic, getLoggedInUser } from '../api';
+import { UserAccount } from '@airport/travel-document-checkpoint';
 
 interface AppPage {
   url: string;
@@ -55,16 +59,49 @@ const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 const Menu: React.FC = () => {
   const location = useLocation();
 
+  const [userAccount, setUserAccount]
+    = useState<UserAccount | null>(null)
+  const [conversationsByTopic, setConversationsByTopic]
+    = useState<Conversation[][]>([])
+  const [present, dismiss] = useIonToast()
+
+  function showToast(
+    message: string,
+    duration = 3000
+  ) {
+    present(message, duration)
+  }
+
+  useEffect(() => {
+    getLoggedInUser(setUserAccount, showToast).then()
+    getConversationsByTopic(setConversationsByTopic, showToast).then()
+  }, [])
+  let username = ''
+  if (userAccount) {
+    username = userAccount.username
+  }
+
+  for (let conversationsForTopic of conversationsByTopic) {
+    let topic = conversationsForTopic[0].topic
+    let topicName = topic ? topic.name : 'No Topic'
+  }
+
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader>Conversations</IonListHeader>
-          <IonNote>hisz@ionicframework.com</IonNote>
+          <IonNote>{username}</IonNote>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={location.pathname === appPage.url ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonItem
+                  className={location.pathname === appPage.url ? 'selected' : ''}
+                  routerLink={appPage.url}
+                  routerDirection="none"
+                  lines="none"
+                  detail={false}
+                >
                   <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>

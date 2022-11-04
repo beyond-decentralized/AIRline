@@ -1,10 +1,62 @@
 import { Comment, CommentApi, Conversation, ConversationApi } from '@airline/conversations'
-import { Goal, GoalApi, Task, TaskApi } from '@airline/tasks'
+import { GoalApi, TaskApi } from '@airline/tasks'
+import { SessionStateApi } from '@airport/session-state'
+import { UserAccount } from '@airport/travel-document-checkpoint'
 
 const goalApi = new GoalApi()
 const taskApi = new TaskApi()
 const commentApi = new CommentApi()
 const conversationApi = new ConversationApi()
+const sessionStateApi = new SessionStateApi()
+
+export async function getLoggedInUser(
+    setUserAccount: (userAccount: UserAccount) => void,
+    setMessage: (message: string, duration: number) => void
+) {
+    try {
+        const userAccount = await sessionStateApi.getLoggedInUser()
+        setUserAccount(userAccount)
+    } catch (e) {
+        console.error(e)
+        setMessage('Error retrieving Logged In User', 10000)
+    }
+}
+
+export async function getConversationsByTopic(
+    setConversations: (conversationsByTopic: Conversation[][]) => void,
+    setMessage: (message: string, duration: number) => void
+) {
+    try {
+        const conversations = await conversationApi.findAll()
+        const conversationMapByTopicId: { [topicId: string]: Conversation[] } = {}
+
+        for (const conversation of conversations) {
+            const topicId = conversation.topic ? conversation.topic.id as string : 'null'
+            let conversationsForTopic = conversationMapByTopicId[topicId]
+            if (!conversationsForTopic) {
+                conversationsForTopic = []
+                conversationMapByTopicId[topicId] = conversationsForTopic
+            }
+            conversationsForTopic.push(conversation)
+        }
+        const conversationsByTopic: Conversation[][] = []
+        let conversationsWithNoTopic: Conversation[] | null = null
+        for (let topicId in conversationMapByTopicId) {
+            if (topicId === 'null') {
+                conversationsWithNoTopic = conversationMapByTopicId[topicId]
+            } else {
+                conversationsByTopic.push(conversationMapByTopicId[topicId])
+            }
+        }
+        if (conversationsWithNoTopic) {
+            conversationsByTopic.push(conversationsWithNoTopic)
+        }
+        setConversations(conversationsByTopic)
+    } catch (e) {
+        console.error(e)
+        setMessage('Error retrieving Conversations', 10000)
+    }
+}
 
 export async function loadConversationForType(
     conversationType: string,

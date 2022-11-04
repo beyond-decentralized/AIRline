@@ -23,4 +23,5 @@ export class TopicApi {
     ): Promise<void> {
         await this.topicDao.save(topic)
     }
+
 }

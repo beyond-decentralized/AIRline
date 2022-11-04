@@ -8,7 +8,6 @@ dependencies:
   '@ionic/react': 6.2.3_react-dom@17.0.2
   '@ionic/react-router': 6.2.3_e056bd51e8b8ab124c1d133355a0229f
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.7_1e5167d300f354f21b44cc34def71332
-  '@rollup/plugin-run': 2.1.0
   '@rush-temp/air-traffic-control': 'file:projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:projects/airport-code.tgz'
   '@rush-temp/airspace': 'file:projects/airspace.tgz'
@@ -39,6 +38,7 @@ dependencies:
   '@rush-temp/runway': 'file:projects/runway.tgz'
   '@rush-temp/sequence': 'file:projects/sequence.tgz'
   '@rush-temp/server': 'file:projects/server.tgz_tslib@2.4.0'
+  '@rush-temp/session-state': 'file:projects/session-state.tgz'
   '@rush-temp/sqlite': 'file:projects/sqlite.tgz'
   '@rush-temp/sqljs': 'file:projects/sqljs.tgz'
   '@rush-temp/takeoff': 'file:projects/takeoff.tgz'
@@ -91,7 +91,6 @@ dependencies:
   fastify-cors: 6.1.0
   fastify-static: 4.7.0
   file-loader: 6.2.0_webpack@5.74.0
-  fs-extra: 10.1.0
   html-webpack-plugin: 5.5.0_webpack@5.74.0
   identity-obj-proxy: 3.0.0
   ionicons: 5.5.4
@@ -2605,16 +2604,6 @@ packages:
       rollup: ^1.20.0 || ^2.0.0
     resolution:
       integrity: sha512-IGcu+cydlUMZ5En85jxHH4qj2hta/11BHq95iHEyb2sbgiN0eCdzvUcHw5gt9pBL5lTi4JDYJ1acCoMGpTvEZg==
-  /@rollup/plugin-run/2.1.0:
-    dependencies:
-      '@types/node': 14.0.26
-    dev: false
-    engines:
-      node: '>=8.0.0'
-    peerDependencies:
-      rollup: ^2.0.0
-    resolution:
-      integrity: sha512-jMtIKu/MamhHsk9S+BQ8DR3D4WGWflgjPCODB3waYMdimyvd3efqTmX6jqclQAu+Ed7RBUvbpf4PtJ1ly1rdKA==
   /@rollup/plugin-run/2.1.0_rollup@2.78.1:
     dependencies:
       '@types/node': 14.0.26
@@ -3213,7 +3202,7 @@ packages:
       integrity: sha512-zJ6IYlJ8cYYxiJfUaZOQee4lh99mFihBoqkOSEGV+dFi9leROW6+PgstzQ+w3gWTnUfskALtQPGHK6dYmPj+2A==
   /@types/resolve/1.17.1:
     dependencies:
-      '@types/node': 18.7.6
+      '@types/node': 18.7.14
     dev: false
     resolution:
       integrity: sha512-yy7HuzQhj0dhGpD8RLXSZWEkLsV9ibvxvi6EiJ3bkqLAO1RGo0WbkWQiwpRlSFymTJRz0d3k5LM3kkx8ArDbLw==
@@ -13290,7 +13279,7 @@ packages:
     dev: false
     name: '@rush-temp/conversations-ui-react'
     resolution:
-      integrity: sha512-u88LHxVQpKerhmF+iCQ/DN5oYkRwIGXZ1wsaVG4ItaP4ik8ncjTx60iONjLuiUbAwp9FZoMm6ZYcajI9Vdfs2g==
+      integrity: sha512-UK5vFofpigDuTAhnOrgBBiEEBcA6CCFdPV8rDy0klfwANEAYjnv2/aEtxV0mkk5+9AjwltewDQV0wQC/4vQ9dQ==
       tarball: 'file:projects/conversations-ui-react.tgz'
     version: 0.0.0
   'file:projects/conversations.tgz':
@@ -13298,6 +13287,7 @@ packages:
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.78.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
       '@rollup/plugin-typescript': 8.3.4_ee6504226884066b338823278b2da755
+      fs-extra: 10.1.0
       rollup: 2.78.1
       rollup-plugin-dts: 4.2.2_rollup@2.78.1+typescript@4.7.4
       rollup-plugin-livereload: 2.0.5
@@ -13309,7 +13299,7 @@ packages:
     dev: false
     name: '@rush-temp/conversations'
     resolution:
-      integrity: sha512-7LT7NoADVEM7PAZYF14tFdQ5+6i5nh+ctIUfEs6OzpkzmXTwL1KdZ3Mhqa6u31W6mqI2JFXfjg8eOl6gjFOqVg==
+      integrity: sha512-eqFDfSUnATUu27w4+Nzi7uhMK1eSEmoiI54F4FTF3RGPz+N+3aThrqG1hSaDqxL33Ke8/bK20OTSrx5dZBQxLA==
       tarball: 'file:projects/conversations.tgz'
     version: 0.0.0
   'file:projects/direction-indicator.tgz':
@@ -13591,6 +13581,24 @@ packages:
       integrity: sha512-wcdMg6lfY+90l6meYWIzKn7Lx5Ie2mgK3g5UD48+tYDHWVAfg8HHD4DkQkPf52lMt0bCw8oH929wnBShKNAGug==
       tarball: 'file:projects/server.tgz'
     version: 0.0.0
+  'file:projects/session-state.tgz':
+    dependencies:
+      '@rollup/plugin-commonjs': 21.1.0_rollup@2.78.1
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
+      rollup: 2.78.1
+      rollup-plugin-dts: 4.2.2_rollup@2.78.1+typescript@4.8.2
+      rollup-plugin-peer-deps-external: 2.2.4_rollup@2.78.1
+      rollup-plugin-terser: 7.0.2_rollup@2.78.1
+      rollup-plugin-typescript2: 0.33.0_rollup@2.78.1+typescript@4.8.2
+      tslib: 2.4.0
+      typescript: 4.8.2
+      uuid: 8.3.2
+    dev: false
+    name: '@rush-temp/session-state'
+    resolution:
+      integrity: sha512-ERZ4J3lBlcqlN0x1qKsdNh1xo7FIATPC5gg+apg/50KPSaZ6UoqgmjX3DeuJcnTpMZ1hA2Goeg9Gr9lESh0yIQ==
+      tarball: 'file:projects/session-state.tgz'
+    version: 0.0.0
   'file:projects/sqlite.tgz':
     dependencies:
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.78.1
@@ -13752,6 +13760,7 @@ packages:
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.78.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
       '@rollup/plugin-typescript': 8.3.4_ee6504226884066b338823278b2da755
+      fs-extra: 10.1.0
       rollup: 2.78.1
       rollup-plugin-dts: 4.2.2_rollup@2.78.1+typescript@4.7.4
       rollup-plugin-livereload: 2.0.5
@@ -13763,7 +13772,7 @@ packages:
     dev: false
     name: '@rush-temp/tasks'
     resolution:
-      integrity: sha512-Lub7bt0GGoTQqtaJGaXuI6zQYRElWc4cTnU8gGqhFmrN0MS75SGQMKIOaU0fH7Mp5C54HVoMnNIPbMihyKLGRg==
+      integrity: sha512-8W4Pn0xrFoG9yiMxkTBdER085TDbiY3cWjNAmeQFgJu8FFmjLTNlx0AIDNfTlptiwr/LVXqJc1d8MUpPa4CsqQ==
       tarball: 'file:projects/tasks.tgz'
     version: 0.0.0
   'file:projects/terminal-map.tgz':
@@ -13801,7 +13810,7 @@ packages:
     dev: false
     name: '@rush-temp/terminal'
     resolution:
-      integrity: sha512-9c0x6AD8RM8LCB0HWpA6zDAZgiCNRb3eUSHEUmZDWRjCfj9e2AY/E+JAjYI5/LzKXi578ZIbeAbbPBCV5IaNww==
+      integrity: sha512-ErI2ymoJeGzQboL4zJ0gxSTHZTzB8NgOjRW8OMUn9nWQHJ5YfWuiFvPx99EBzj+xBYO7qdk78BK9WNXwTeL4dw==
       tarball: 'file:projects/terminal.tgz'
     version: 0.0.0
   'file:projects/topics.tgz':
@@ -13810,6 +13819,7 @@ packages:
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.78.1
       '@rollup/plugin-run': 2.1.0_rollup@2.78.1
       '@rollup/plugin-typescript': 8.3.4_ee6504226884066b338823278b2da755
+      fs-extra: 10.1.0
       rollup: 2.78.1
       rollup-plugin-dts: 4.2.2_rollup@2.78.1+typescript@4.7.4
       rollup-plugin-livereload: 2.0.5
@@ -13821,7 +13831,7 @@ packages:
     dev: false
     name: '@rush-temp/topics'
     resolution:
-      integrity: sha512-6Vm80AKyAYFu8mq4yBnAtCsvAkRD5wx+iCTeDk2OUTa7b+du8Xog7DdmDkt9Y9I5VGPAoxvkZTUC87+KVaGaug==
+      integrity: sha512-HMdcYfuIoaqRDXyvOtyTIuYW2+dRs8MBoVoJrWjNcqGx8tTa1x5OxYZQyKyzrvDkwEyHL+gkie5icjfXMiSZ/g==
       tarball: 'file:projects/topics.tgz'
     version: 0.0.0
   'file:projects/tower.tgz':
@@ -13839,7 +13849,7 @@ packages:
     dev: false
     name: '@rush-temp/tower'
     resolution:
-      integrity: sha512-+3AaMnHs+1j+JuMgRRr4fn0H80cVe1tGgdfXCHbF2ED0qzlBlwqrinuDXIuQBIwEwE+91wbsT+C5ueYTXV59Dw==
+      integrity: sha512-JBt5D1Op2U4f6Rdx+KIFdjwbHaRCmd9w7llDWozE4r9nUHiTP5MHVxYVxArU/JpYprceplZy7DsCUqZD4G2QLA==
       tarball: 'file:projects/tower.tgz'
     version: 0.0.0
   'file:projects/travel-document-checkpoint.tgz':
@@ -14101,7 +14111,6 @@ specifiers:
   '@ionic/react': ^6.0.0
   '@ionic/react-router': ^6.0.0
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.3
-  '@rollup/plugin-run': ^2.1.0
   '@rush-temp/air-traffic-control': 'file:./projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:./projects/airport-code.tgz'
   '@rush-temp/airspace': 'file:./projects/airspace.tgz'
@@ -14132,6 +14141,7 @@ specifiers:
   '@rush-temp/runway': 'file:./projects/runway.tgz'
   '@rush-temp/sequence': 'file:./projects/sequence.tgz'
   '@rush-temp/server': 'file:./projects/server.tgz'
+  '@rush-temp/session-state': 'file:./projects/session-state.tgz'
   '@rush-temp/sqlite': 'file:./projects/sqlite.tgz'
   '@rush-temp/sqljs': 'file:./projects/sqljs.tgz'
   '@rush-temp/takeoff': 'file:./projects/takeoff.tgz'
@@ -14184,7 +14194,6 @@ specifiers:
   fastify-cors: ^6.0.2
   fastify-static: ^4.4.2
   file-loader: ^6.2.0
-  fs-extra: ^10.0.0
   html-webpack-plugin: ^5.5.0
   identity-obj-proxy: ^3.0.0
   ionicons: ^5.4.0
