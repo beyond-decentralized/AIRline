@@ -28,7 +28,7 @@ async function buildPeerFramework(
     if (runRushUpdate) {
         await wireInDependencies(frameworkDirectoryName)
     }
-    await buildProjects(projectDirectoriesInBuildOrder, 'rollup', ['-c']);
+    await buildProjects(projectDirectoriesInBuildOrder, 'npm', ['run', 'build']);
 }
 
 async function buildUI(
