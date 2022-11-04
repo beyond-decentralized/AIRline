@@ -129,15 +129,15 @@ async function execute(
     
         `);
             resolve(code)
-        }).then((returnCode) => {
-            if (returnCode != 0) {
-                throw new Error(`
-            Suspending after ${projectDirectory}
-            `)
-            }
-
-            return returnCode
         });
+    }).then((returnCode) => {
+        if (returnCode != 0) {
+            throw new Error(`
+        Suspending after ${projectDirectory}
+        `)
+        }
+
+        return returnCode
     })
 
 }
