@@ -81,43 +81,34 @@ const Menu: React.FC = () => {
     username = userAccount.username
   }
 
-  for (let conversationsForTopic of conversationsByTopic) {
-    let topic = conversationsForTopic[0].topic
-    let topicName = topic ? topic.name : 'No Topic'
-  }
-
   return (
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
           <IonListHeader>Conversations</IonListHeader>
           <IonNote>{username}</IonNote>
-          {appPages.map((appPage, index) => {
+          {conversationsByTopic.map((conversationsForTopic, topicIndex) => {
             return (
-              <IonMenuToggle key={index} autoHide={false}>
-                <IonItem
-                  className={location.pathname === appPage.url ? 'selected' : ''}
-                  routerLink={appPage.url}
-                  routerDirection="none"
-                  lines="none"
-                  detail={false}
-                >
-                  <IonIcon slot="start" ios={appPage.iosIcon} md={appPage.mdIcon} />
-                  <IonLabel>{appPage.title}</IonLabel>
-                </IonItem>
-              </IonMenuToggle>
+              <IonList id="labels-list" key={topicIndex}>
+                <IonListHeader>{conversationsForTopic[0].topic ? conversationsForTopic[0].topic.name : 'No Topic'}</IonListHeader>
+                {conversationsForTopic.map((conversation, conversationIndex) => {
+                  return (
+                    <IonMenuToggle key={conversationIndex} autoHide={false}>
+                      <IonItem
+                        className={location.pathname === `/conversation/:type/:id` ? 'selected' : ''}
+                        routerLink={'appPage.url'}
+                        routerDirection="none"
+                        lines="none"
+                        detail={false}
+                      >
+                        <IonLabel>{conversation.name}</IonLabel>
+                      </IonItem>
+                    </IonMenuToggle>
+                  );
+                })}
+              </IonList>
             );
           })}
-        </IonList>
-
-        <IonList id="labels-list">
-          <IonListHeader>Labels</IonListHeader>
-          {labels.map((label, index) => (
-            <IonItem lines="none" key={index}>
-              <IonIcon slot="start" icon={bookmarkOutline} />
-              <IonLabel>{label}</IonLabel>
-            </IonItem>
-          ))}
         </IonList>
       </IonContent>
     </IonMenu>

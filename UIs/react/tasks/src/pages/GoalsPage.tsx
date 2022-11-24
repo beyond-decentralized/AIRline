@@ -9,7 +9,7 @@ import './GoalsPage.css';
 
 export function GoalsPage() {
   const [currentGoal, setCurrentGoal] = useState<Goal>(() => new Goal())
-  const [goals, setGoals] = useState<Goal[]>([])
+  const [goals, setGoals] = useState<Goal[]>(() => [])
   const [present, dismiss] = useIonToast()
 
   function showToast(
