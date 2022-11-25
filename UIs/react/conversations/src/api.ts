@@ -1,7 +1,13 @@
 import { Comment, CommentApi, Conversation, ConversationApi } from '@airline/conversations'
-import { GoalApi, TaskApi } from '@airline/tasks'
+import { Goal, GoalApi, Task, TaskApi } from '@airline/tasks'
 import { SessionStateApi } from '@airport/session-state'
 import { UserAccount } from '@airport/travel-document-checkpoint'
+
+interface ConversationWithContext {
+    conversation: Conversation
+    goal: Goal
+    task: Task
+}
 
 const goalApi = new GoalApi()
 const taskApi = new TaskApi()
@@ -20,6 +26,12 @@ export async function getLoggedInUser(
         console.error(e)
         setMessage('Error retrieving Logged In User', 10000)
     }
+}
+
+async function getConversationWithContext() {
+    const conversations = await conversationApi.findAll()
+    const conversationIds = conversations.map(conversation => conversation.id as string)
+    const goals = await goalApi.findForConversationIds(conversationIds);
 }
 
 export async function getConversationsByTopic(

@@ -46,9 +46,9 @@
     "dist"
   ],
   "scripts": {
-    "predev": "node stageApp.mjs",
+    "predev": "node stageApp.mjs && node generate.mjs",
     "dev": "rollup -c ./rollup.config.js -w",
-    "prebuild": "node stageApp.mjs",
+    "prebuild": "node stageApp.mjs && node generate.mjs",
     "build": "rollup -c ./rollup.config.js"
   },
   "types": "dist/esm/index.d.ts"

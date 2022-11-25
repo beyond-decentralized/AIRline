@@ -63,8 +63,15 @@ export class TaskApi {
             conversation.name = 'Task: ' + task.name
             taskConversation.conversation = conversation
         }
-        await this.taskDao.save(task);
-        await this.conversationApi.save(task.taskConversations[0].conversation);
+        await this.taskDao.save(task)
+        await this.conversationApi.save(task.taskConversations[0].conversation)
+    }
+
+    @Api()
+    async findForConversationIds(
+        conversationIds: string[]
+    ): Promise<Task[]> {
+        return await this.taskDao.findForConversationIds(conversationIds)
     }
 
 }

@@ -109,4 +109,23 @@ export class GoalDao
         })
     }
 
+    async findForConversationIds(
+        conversationIds: string[]
+    ): Promise<Goal[]> {
+        let c: QConversation,
+            g: QGoal,
+            gc: QGoalConversation
+        return await this._find({
+            SELECT: {
+                name: Y,
+            },
+            FROM: [
+                g = Q.Goal,
+                gc = g.goalConversations.LEFT_JOIN(),
+                c = gc.conversation.LEFT_JOIN()
+            ],
+            WHERE: c.in(conversationIds)
+        })
+    }
+
 }

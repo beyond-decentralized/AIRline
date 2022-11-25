@@ -65,4 +65,12 @@ export class GoalApi {
         await this.conversationApi.save(goal.goalConversations[0].conversation);
         await this.goalDao.save(goal);
     }
+
+    @Api()
+    async findForConversationIds(
+        conversationIds: string[]
+    ): Promise<Goal[]> {
+        return await this.goalDao.findForConversationIds(conversationIds)
+    }
+
 }
