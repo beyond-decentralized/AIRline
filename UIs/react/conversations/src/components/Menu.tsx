@@ -95,8 +95,8 @@ const Menu: React.FC = () => {
                   return (
                     <IonMenuToggle key={conversationIndex} autoHide={false}>
                       <IonItem
-                        className={location.pathname === `/conversation/:type/:id` ? 'selected' : ''}
-                        routerLink={'appPage.url'}
+                        className={location.pathname === `/conversation/${conversation.id}` ? 'selected' : ''}
+                        routerLink={`conversation/${conversation.id}`}
                         routerDirection="none"
                         lines="none"
                         detail={false}

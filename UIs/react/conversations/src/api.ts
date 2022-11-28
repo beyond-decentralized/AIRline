@@ -1,16 +1,7 @@
 import { Comment, CommentApi, Conversation, ConversationApi } from '@airline/conversations'
-import { Goal, GoalApi, Task, TaskApi } from '@airline/tasks'
 import { SessionStateApi } from '@airport/session-state'
 import { UserAccount } from '@airport/travel-document-checkpoint'
 
-interface ConversationWithContext {
-    conversation: Conversation
-    goal: Goal
-    task: Task
-}
-
-const goalApi = new GoalApi()
-const taskApi = new TaskApi()
 const commentApi = new CommentApi()
 const conversationApi = new ConversationApi()
 const sessionStateApi = new SessionStateApi()
@@ -28,12 +19,6 @@ export async function getLoggedInUser(
     }
 }
 
-async function getConversationWithContext() {
-    const conversations = await conversationApi.findAll()
-    const conversationIds = conversations.map(conversation => conversation.id as string)
-    const goals = await goalApi.findForConversationIds(conversationIds);
-}
-
 export async function getConversationsByTopic(
     setConversations: (conversationsByTopic: Conversation[][]) => void,
     setMessage: (message: string, duration: number) => void
@@ -43,7 +28,8 @@ export async function getConversationsByTopic(
         const conversationMapByTopicId: { [topicId: string]: Conversation[] } = {}
 
         for (const conversation of conversations) {
-            const topicId = conversation.topic ? conversation.topic.id as string : 'null'
+            const topicId = conversation.topic
+                ? conversation.topic.id as string : 'null'
             let conversationsForTopic = conversationMapByTopicId[topicId]
             if (!conversationsForTopic) {
                 conversationsForTopic = []
@@ -70,26 +56,14 @@ export async function getConversationsByTopic(
     }
 }
 
-export async function loadConversationForType(
-    conversationType: string,
+export async function loadConversation(
     id: string,
     setConversation: (conversation: Conversation) => void,
     setMessage: (message: string, timeout: number) => void
 ): Promise<void> {
     let conversation: Conversation
     try {
-        switch (conversationType) {
-            case 'goal':
-                conversation = await goalApi.loadConversationForGoal(id)
-                break
-            case 'task':
-                conversation = await taskApi.loadConversationForTask(id)
-                break
-            default:
-                let message = `Unsupported type: ${conversationType}`
-                setMessage(message, 10000)
-                throw new Error(message)
-        }
+        conversation = await conversationApi.loadWithDetails(id)
         setConversation(conversation)
     } catch (e: any) {
         console.error(e)

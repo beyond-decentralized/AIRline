@@ -29,16 +29,6 @@ export class GoalApi {
     }
 
     @Api()
-    async loadConversationForGoal(
-        goalId: Goal | string
-    ): Promise<Conversation> {
-        const goalConversation = await this.goalConversationDao
-            .loadConversationForGoal(goalId)
-
-        return goalConversation.conversation
-    }
-
-    @Api()
     async findAllForTopic(
         topic: Topic | string
     ): Promise<Goal[]> {
@@ -49,28 +39,31 @@ export class GoalApi {
     async save(
         goal: Goal
     ): Promise<void> {
-        if (!goal.id) {
+        const isNewGoal = !goal.id
+        let conversation: Conversation
+        if (isNewGoal) {
             goal.goalConversations = []
-            const taskConversation = new GoalConversation()
-            taskConversation.goal = goal
-            goal.goalConversations.push(taskConversation)
+            const goalConversation = new GoalConversation()
+            goalConversation.goal = goal
+            goal.goalConversations.push(goalConversation)
 
-            const conversation = new Conversation()
+            conversation = new Conversation()
             conversation.name = 'Goal: ' + goal.name
-            taskConversation.conversation = conversation
+            goalConversation.conversation = conversation
 
             const repository = await this.repositoryApi.create(conversation.name)
             goal.repository = repository
-        }
-        await this.conversationApi.save(goal.goalConversations[0].conversation);
-        await this.goalDao.save(goal);
-    }
 
-    @Api()
-    async findForConversationIds(
-        conversationIds: string[]
-    ): Promise<Goal[]> {
-        return await this.goalDao.findForConversationIds(conversationIds)
+            await this.conversationApi.save(conversation);
+        }
+
+        await this.goalDao.save(goal);
+
+        if (isNewGoal) {
+            conversation.type = 'GOAL'
+            conversation.typedEntityId = goal.id
+            await this.conversationApi.save(conversation)
+        }
     }
 
 }

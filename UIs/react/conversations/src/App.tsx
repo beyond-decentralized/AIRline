@@ -36,7 +36,7 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <AboutPage />
             </Route>
-            <Route path="/conversation/:type/:id" exact={true}>
+            <Route path="/conversation/:id" exact={true}>
               <ConversationPage />
             </Route>
           </IonRouterOutlet>

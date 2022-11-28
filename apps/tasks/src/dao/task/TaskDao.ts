@@ -81,23 +81,4 @@ export class TaskDao
         })
     }
 
-    async findForConversationIds(
-        conversationIds: string[]
-    ): Promise<Task[]> {
-        let t: QTask,
-            tc: QTaskConversation,
-            c: QConversation
-        return await this._find({
-            SELECT: {
-                name: Y
-            },
-            FROM: [
-                t = Q.Task,
-                tc = t.taskConversations.LEFT_JOIN(),
-                c = tc.conversation.LEFT_JOIN()
-            ],
-            WHERE: c.in(conversationIds)
-        })
-    }
-
 }

@@ -26,16 +26,6 @@ export class TaskApi {
     }
 
     @Api()
-    async loadConversationForTask(
-        taskId: string | Task
-    ): Promise<Conversation> {
-        const taskConversation = await this.taskConversationDao
-            .loadConversationForTask(taskId)
-
-        return taskConversation.conversation
-    }
-
-    @Api()
     async findAllForGoal(
         goal: Goal | string
     ): Promise<Task[]> {
@@ -53,25 +43,28 @@ export class TaskApi {
     async save(
         task: Task
     ): Promise<void> {
-        if (!task.id) {
+        const isNewTask = !task.id
+        let conversation: Conversation
+        if (isNewTask) {
             task.taskConversations = []
             const taskConversation = new TaskConversation()
             taskConversation.task = task
             task.taskConversations.push(taskConversation)
 
-            const conversation = new Conversation()
+            conversation = new Conversation()
             conversation.name = 'Task: ' + task.name
             taskConversation.conversation = conversation
-        }
-        await this.taskDao.save(task)
-        await this.conversationApi.save(task.taskConversations[0].conversation)
-    }
 
-    @Api()
-    async findForConversationIds(
-        conversationIds: string[]
-    ): Promise<Task[]> {
-        return await this.taskDao.findForConversationIds(conversationIds)
+            await this.conversationApi.save(conversation)
+        }
+
+        await this.taskDao.save(task)
+
+        if (isNewTask) {
+            conversation.type = 'TASK'
+            conversation.typedEntityId = task.id
+            await this.conversationApi.save(conversation)
+        }
     }
 
 }

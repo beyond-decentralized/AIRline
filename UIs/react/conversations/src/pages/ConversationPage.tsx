@@ -4,17 +4,17 @@ import { useParams } from 'react-router';
 import './ConversationPage.css';
 import { useEffect, useState } from 'react';
 import { Conversation } from '@airline/conversations';
-import { addComment, loadConversationForType } from '../api';
+import { addComment, loadConversation } from '../api';
 
 const ConversationPage: React.FC = () => {
 
-  const { type, id } = useParams<{ type: string; id: string; }>();
+  const { id } = useParams<{ id: string; }>();
   const [conversation, setConversation] = useState(() => new Conversation())
   const [commentText, setCommentText] = useState(() => '')
   const [present, dismiss] = useIonToast()
 
   useEffect(() => {
-    loadConversationForType(type, id, setConversation, present).then()
+    loadConversation(id, setConversation, present).then()
   }, [])
 
   return (

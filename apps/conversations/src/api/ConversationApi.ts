@@ -41,4 +41,11 @@ export class ConversationApi {
         await this.conversationDao.save(conversation)
     }
 
+    @Api()
+    async loadWithDetails(
+        conversationId: string
+    ): Promise<Conversation> {
+        return await this.conversationDao.loadWithDetails(conversationId)
+    }
+
 }
