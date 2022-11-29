@@ -13,16 +13,6 @@ export class Conversation
     @Column({ name: 'NAME' })
     name: string
 
-    // Meant to be updated by other apps to include the actual
-    // types of conversations utilized by depending Apps
-    @Column({ name: 'TYPE' })
-    @DbString()
-    type: 'GOAL' | 'TASK' | string
-
-    // Denormalized since the Conversation App is not aware of apps that use it
-    @Column({ name: 'TYPED_ENTITY_ID' })
-    typedEntityId: string
-
     @ManyToOne()
     topic: Topic
 

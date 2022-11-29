@@ -45,6 +45,9 @@ const App: React.FC = () => (
           <Route exact path="/goals">
             <GoalsPage />
           </Route>
+          <Route exact path="/goal/:goalId">
+            <GoalPage />
+          </Route>
           <Route exact path="/tasks/:goalId">
             <TasksPage />
           </Route>
