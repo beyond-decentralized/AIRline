@@ -4,28 +4,72 @@ import './AirConversationView.css'
 
 export function AirConversationView({ conversation }: { conversation: Conversation }) {
 
+    function getMonth(
+        dateTime: Date
+    ) {
+        switch (dateTime.getMonth()) {
+            case 0:
+                return "Jan"
+            case 1:
+                return "Feb"
+            case 2:
+                return "Mar"
+            case 3:
+                return "Apr"
+            case 4:
+                return "May"
+            case 5:
+                return "Jun"
+            case 6:
+                return "Jul"
+            case 7:
+                return "Aug"
+            case 8:
+                return "Sept"
+            case 9:
+                return "Oct"
+            case 10:
+                return "Nov"
+            case 11:
+                return "Dec"
+        }
+    }
+
+    function lead0(
+        num: number
+    ) {
+        return num === 0 ? '00' : '' + num
+    }
+
     function getTime(
         dateTime: Date
     ): string {
-        return dateTime.toISOString()
+        return `${getMonth(dateTime)} ${dateTime.getDate()}, ${dateTime.getFullYear()} ${lead0(dateTime.getHours())}:${lead0(dateTime.getMinutes())}`
     }
 
     return (
         <>
             {conversation.comments.map(comment =>
                 <IonItem>
-                    <div
-                        className="comment-by"
-                    >
-                        {comment.createdBy?.username}
+                    <div>
+                        <div
+                            className="comment-header"
+                        >
+                            <div
+                                className="comment-by"
+                            >
+                                {comment.createdBy?.username}
+                            </div>
+                            <div
+                                className="comment-time"
+                            >
+                                {getTime(comment.createdAt as Date)}
+                            </div>
+                        </div>
+                        <div>
+                            {comment.text}
+                        </div>
                     </div>
-                    <div
-                        className="comment-time"
-                    >
-                        {getTime(comment.createdAt as Date)}
-                    </div>
-                    <br></br>
-                    {comment.text}
                 </IonItem>
             )}
         </>

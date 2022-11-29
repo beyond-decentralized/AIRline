@@ -81,6 +81,7 @@ export async function addComment(
     const comment = new Comment()
     comment.conversation = conversation
     comment.text = commentText
+    comment.repository = conversation.repository
 
     try {
         await commentApi.save(comment)

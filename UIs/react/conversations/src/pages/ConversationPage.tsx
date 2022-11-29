@@ -5,6 +5,7 @@ import './ConversationPage.css';
 import { useEffect, useState } from 'react';
 import { Conversation } from '@airline/conversations';
 import { addComment, loadConversation } from '../api';
+import { enterOutline } from 'ionicons/icons';
 
 const ConversationPage: React.FC = () => {
 
@@ -46,7 +47,7 @@ const ConversationPage: React.FC = () => {
         />
         <IonIcon
           className="enter-icon"
-          name="enter-outline"
+          icon={enterOutline}
           onClick={_ => addComment(
             conversation,
             commentText,

@@ -3,7 +3,9 @@
 }
 
 .enter-icon {
+    padding: 10px;
     position: absolute;
-    right: 10px;
-    top: 20px;
+    right: 0px;
+    top: 10px;
+    z-index: 1000;
 }
