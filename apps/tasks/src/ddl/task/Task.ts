@@ -1,7 +1,7 @@
 import { Topic } from "@airline/topics";
 import { AirEntity } from "@airport/holding-pattern";
 import { Column, DbNumber, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
-import { GoalTask } from "../goal/GoalTask";
+import { Goal } from "../goal/Goal";
 import { PrerequisiteTask } from "./PrerequisiteTask";
 import { Subtask } from "./Subtask";
 import { TaskAssignee } from "./TaskAssignee";
@@ -46,8 +46,8 @@ export class Task
     @ManyToOne()
     topic: Topic
 
-    @OneToMany({ mappedBy: 'task' })
-    goalTasks: GoalTask[]
+    @ManyToOne({ mappedBy: 'goal' })
+    goal: Goal
 
     @OneToMany({ mappedBy: 'task' })
     taskConversations: TaskConversation[]

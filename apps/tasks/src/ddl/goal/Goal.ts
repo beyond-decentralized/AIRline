@@ -32,6 +32,8 @@ export class Goal
     @OneToMany({ mappedBy: 'goal' })
     goalConversations: GoalConversation[]
 
+    // Link in the Goal Repository (instead of OneToMany directly to Task,
+    // which are in different repositories)
     @OneToMany({ mappedBy: 'goal' })
     goalTasks: GoalTask[]
 

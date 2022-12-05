@@ -51,16 +51,14 @@ export class GoalApi {
             conversation.name = 'Goal: ' + goal.name
             goalConversation.conversation = conversation
 
-            const repository = await this.repositoryApi.create(conversation.name)
-            goal.repository = repository
-
             await this.conversationApi.save(conversation)
         }
 
+        goal.repository = conversation.repository
         await this.goalDao.save(goal)
 
         if (isNewGoal) {
-            goal.repository.startUiUrl = 'http://localhost:3003/goal/' + goal.id
+            goal.repository.uiEntryUri = 'http://localhost:3003/goal/' + goal.id
             await this.goalDao.save(goal)
         }
     }

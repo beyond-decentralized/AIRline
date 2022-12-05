@@ -1,25 +1,15 @@
 import { Task } from '@airline/tasks';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {
-  IonButton,
-  IonButtons,
   IonContent,
-  IonFab,
-  IonFabButton,
   IonHeader,
-  IonIcon,
-  IonInput,
   IonItem,
-  IonModal,
-  IonLabel,
   IonPage,
-  IonTextarea,
   IonTitle,
   IonToolbar,
   useIonToast
 } from '@ionic/react';
 import { OverlayEventDetail } from '@ionic/core/components';
-import { add } from 'ionicons/icons';
 import { AirEisenhowerIcon, AirTaskEdit } from '@airline/components-ui-react'
 import { getTasks, saveTask } from '../api';
 import './TasksPage.css';
@@ -56,11 +46,6 @@ export function TasksPage() {
             <IonTitle size="large">Tasks</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton id="edit-task" color="secondary">
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
         <AirTaskEdit
           task={currentTask}
           onWillDismiss={onWillDismiss}

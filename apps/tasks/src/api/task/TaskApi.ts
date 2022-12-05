@@ -7,6 +7,9 @@ import { TaskDao } from "../../dao/task/TaskDao";
 import { TaskConversation } from "../../ddl/task/TaskConversation";
 import { Goal } from "../../ddl/goal/Goal";
 import { Task } from "../../ddl/task/Task";
+import { RepositoryApi } from "@airport/holding-pattern";
+import { GoalTask } from "../../ddl/ddl";
+import { GoalTaskDao } from "../../dao/dao";
 
 @Injected()
 export class TaskApi {
@@ -15,28 +18,34 @@ export class TaskApi {
     conversationApi: ConversationApi
 
     @Inject()
+    goalTaskDao: GoalTaskDao
+
+    @Inject()
     taskConversationDao: TaskConversationDao
 
     @Inject()
     taskDao: TaskDao
 
+    @Inject()
+    repositoryApi: RepositoryApi
+
     @Api()
     async findAll(): Promise<Task[]> {
-        return await this.taskDao.findAll()
+        return await this.taskDao.findAllWithGoal()
     }
 
     @Api()
     async findAllForGoal(
         goal: Goal | string
     ): Promise<Task[]> {
-        return await this.taskDao.findAllForGoal(goal)
+        return await this.taskDao.findAllForGoalWithGoal(goal)
     }
 
     @Api()
     async findAllForTopic(
         topic: Topic | string
     ): Promise<Task[]> {
-        return await this.taskDao.findAllForTopic(topic)
+        return await this.taskDao.findAllForTopicWithGoal(topic)
     }
 
     @Api()
@@ -58,11 +67,17 @@ export class TaskApi {
             await this.conversationApi.save(conversation)
         }
 
+        task.repository = conversation.repository
         await this.taskDao.save(task)
 
         if (isNewTask) {
-            conversation.type = 'TASK'
-            conversation.typedEntityId = task.id
+            const goalTask: GoalTask = new GoalTask()
+            goalTask.task = task
+            goalTask.goal = task.goal
+            goalTask.repository = task.goal.repository
+            this.goalTaskDao.save(goalTask)
+
+            conversation.repository.uiEntryUri = 'http://localhost:3002/task/' + task.id
             await this.conversationApi.save(conversation)
         }
     }

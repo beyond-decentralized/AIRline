@@ -46,38 +46,54 @@ export class TaskDao
         })
     }
 
-    async findAllForGoal(
+    async findAllForGoalWithGoal(
         goal: Goal | string
     ): Promise<Task[]> {
         let t: QTask,
-            gt: QGoalTask,
             g: QGoal
         return await this._find({
             SELECT: {
                 '*': Y,
-                goalTasks: {}
+                goal: {}
             },
             FROM: [
                 t = Q.Task,
-                gt = t.goalTasks.LEFT_JOIN(),
-                g = gt.goal.LEFT_JOIN()
+                g = t.goal.LEFT_JOIN()
             ],
             WHERE: g.equals(goal)
         })
     }
 
-    async findAllForTopic(
+    async findAllForTopicWithGoal(
         topic: Topic | string
     ): Promise<Task[]> {
         let ta: QTask,
             to: QTopic
         return await this._find({
-            SELECT: {},
+            SELECT: {
+                '*': Y,
+                goal: {}
+            },
             FROM: [
                 ta = Q.Task,
+                ta.goal.LEFT_JOIN(),
                 to = ta.topic.LEFT_JOIN()
             ],
             WHERE: to.equals(topic)
+        })
+    }
+
+    async findAllWithGoal() {
+        let ta: QTask
+        return await this._find({
+            SELECT: {
+                '*': Y,
+                goal: {}
+            },
+            FROM: [
+                ta = Q.Task,
+                ta.goal.LEFT_JOIN()
+            ]
         })
     }
 
