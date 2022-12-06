@@ -1,35 +1,18 @@
-import { Goal } from '@airline/tasks';
-import { OverlayEventDetail } from '@ionic/core';
-import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
-import { AirEisenhowerIcon, AirGoalEdit } from '@airline/components-ui-react'
-import { add } from 'ionicons/icons';
-import { useEffect, useState } from 'react';
-import { getGoals, saveGoal } from '../api';
-import './GoalsPage.css';
+import { Goal, GoalStatus } from "@airline/tasks";
+import { OverlayEventDetail } from "@ionic/core";
+import { IonContent, IonHeader, IonInput, IonItem, IonLabel, IonPage, IonSelect, IonSelectOption, IonTextarea, IonTitle, IonToolbar } from "@ionic/react";
+import { useRef } from "react";
 
-export function GoalsPage() {
-  const [currentGoal, setCurrentGoal] = useState<Goal>(() => new Goal())
-  const [goals, setGoals] = useState<Goal[]>(() => [])
-  const [present, dismiss] = useIonToast()
-
-  function showToast(
-    message: string,
-    duration = 3000
-  ) {
-    present(message, duration)
-  }
-
-  useEffect(() => {
-    getGoals(setGoals, showToast).then()
-  }, [])
-
-  function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
-    if (ev.detail.role === 'save') {
-      saveGoal(ev.detail.data, showToast).then(() => {
-        setCurrentGoal(new Goal())
-      })
-    }
-  }
+export function GoalPage({
+  goal,
+  onWillDismiss,
+  triggerId
+}: {
+  goal: Goal,
+  onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => void
+  triggerId: string
+}) {
+  const modal = useRef<HTMLIonModalElement>(null);
 
   return (
     <IonPage>
@@ -44,54 +27,64 @@ export function GoalsPage() {
             <IonTitle size="large">Goals</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton id="edit-goal">
-            <IonIcon icon={add} />
-          </IonFabButton>
-        </IonFab>
-        <AirGoalEdit
-          goal={currentGoal}
-          onWillDismiss={onWillDismiss}
-          triggerId="edit-goal"
-        ></AirGoalEdit>
-        {goals.map(goal =>
-          <IonItem key={goal.id}>
-            <table className="eisenhower-view">
-              <tbody>
-                <tr>
-                  <td className="eisenhower-icon">
-                    <AirEisenhowerIcon
-                      rankedUnit={goal}
-                    ></AirEisenhowerIcon>
-                  </td>
-                  <td>
-                    {goal.name}
-                    <br>
-                    </br>
-                    <a
-                      href={'/tasks/' + goal.id}
-                      className="go-to-tasks-link"
-                    >Tasks</a> |
-                    <a
-                      href={'http://localhost:8100/conversations/goals/' + goal.id}
-                      className="go-to-conversations-link"
-                    >Conversations</a>
-                    <a
-                      className="edit-goal-link"
-                      onClick={e => {
-                        setCurrentGoal(goal)
-                        document.getElementById("edit-goal")?.click()
-                      }}
-                    >Edit</a>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </IonItem>
-        )}
+        <IonItem>
+          <AirEisenhowerInputs
+            rankedUnit={goal}
+          ></AirEisenhowerInputs>
+        </IonItem>
+        {/*
+                <IonItem>
+                <IonLabel>Is a goal</IonLabel>
+                <IonToggle checked={task.isGoal} onIonChange={e => task.isGoal = e.detail.checked} />
+                </IonItem>
+                */}
+        <IonItem>
+          <IonLabel position="stacked">Name</IonLabel>
+          <IonInput
+            value={goal.name}
+            onIonChange={e => goal.name = e.detail.value as string}
+          > </IonInput>
+        </IonItem>
+        <IonItem>
+          <IonLabel position="stacked">Goal Status</IonLabel>
+          <IonSelect
+            value={goal.status}
+            onIonChange={e => goal.status = parseInt(e.detail.value)}
+          >
+            <IonSelectOption
+              key={GoalStatus.FUTURE}
+              value={GoalStatus.FUTURE}
+            >
+              Future
+            </IonSelectOption>
+            <IonSelectOption
+              key={GoalStatus.CURRENT}
+              value={GoalStatus.CURRENT}
+            >
+              Current
+            </IonSelectOption>
+            <IonSelectOption
+              key={GoalStatus.OUTDATED}
+              value={GoalStatus.OUTDATED}
+            >
+              Outdated
+            </IonSelectOption>
+            <IonSelectOption
+              key={GoalStatus.ACCOMPLISHED}
+              value={GoalStatus.ACCOMPLISHED}
+            >
+              Accomplished
+            </IonSelectOption>
+          </IonSelect>
+        </IonItem>
+        <IonItem>
+          <IonLabel position="floating">Description</IonLabel>
+          <IonTextarea
+            value={goal.description}
+            onIonChange={e => goal.description = e.detail.value as string}
+          ></IonTextarea>
+        </IonItem>
       </IonContent>
     </IonPage>
-  );
-};
-
-export default GoalsPage;
+  )
+}
