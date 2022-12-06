@@ -5,6 +5,7 @@ import { CommentDao, ConversationDao } from '../dao/dao'
 import { ConversationApi } from '../api/ConversationApi'
 import { CommentApi } from '../api/CommentApi'
 import { REQUEST_MANAGER } from '@airport/arrivals-n-departures'
+import { REPOSITORY_API } from '@airport/holding-pattern'
 
 export const CONVERSATION_DAO = conversations.token<any>({
     class: ConversationDao,
@@ -20,6 +21,7 @@ export const COMMENT_DAO = conversations.token<any>({
 CONVERSATION_API.setClass(ConversationApi)
 CONVERSATION_API.setDependencies({
     conversationDao: CONVERSATION_DAO,
+    repositoryApi: REPOSITORY_API,
     requestManager: REQUEST_MANAGER
 })
 COMMENT_API.setClass(CommentApi)

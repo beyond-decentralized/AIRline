@@ -16,7 +16,7 @@ import './TasksPage.css';
 import { useParams } from 'react-router';
 
 export function TasksPage() {
-  const [tasks, setTasks] = useState<Task[]>([])
+  const [tasks, setTasks] = useState<Task[]>(() => [])
   const [present, dismiss] = useIonToast()
   let currentTask = new Task()
 

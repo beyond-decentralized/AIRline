@@ -36,12 +36,6 @@ export function AirGoalEdit({
                         rankedUnit={goal}
                     ></AirEisenhowerInputs>
                 </IonItem>
-                {/*
-                <IonItem>
-                <IonLabel>Is a goal</IonLabel>
-                <IonToggle checked={task.isGoal} onIonChange={e => task.isGoal = e.detail.checked} />
-                </IonItem>
-                */}
                 <IonItem>
                     <IonLabel position="stacked">Name</IonLabel>
                     <IonInput

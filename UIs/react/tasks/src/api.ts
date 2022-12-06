@@ -31,6 +31,20 @@ export async function getGoals(
     }
 }
 
+export async function getGoal(
+    goalId: string,
+    setGoal: (goal: Goal) => void,
+    setMessage: (message: string, duration: number) => void
+) {
+    try {
+        const goal = await goalApi.findById(goalId)
+        setGoal(goal)
+    } catch (e) {
+        console.error(e)
+        setMessage('Error retrieving Goal', 10000)
+    }
+}
+
 export async function saveTask(
     task: Task,
     setMessage: (message: string, duration: number) => void

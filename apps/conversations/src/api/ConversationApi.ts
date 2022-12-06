@@ -35,17 +35,30 @@ export class ConversationApi {
     async save(
         conversation: Conversation
     ): Promise<void> {
-        if (!conversation.id) {
+        let noExistingRepository = false
+        const isNewConversation = !conversation.id
+        if (isNewConversation) {
             conversation.participants = []
             const participant = new Participant()
             participant.conversation = conversation
             participant.userAccount = this.requestManager.userAccount
             conversation.participants.push(participant)
 
-            const repository = await this.repositoryApi.create(conversation.name)
-            conversation.repository = repository
+            noExistingRepository = !conversation.repository
+            if (noExistingRepository) {
+                const repository = await this.repositoryApi.create(conversation.name)
+                conversation.repository = repository
+            }
         }
+
         await this.conversationDao.save(conversation)
+
+        // if (isNewConversation && noExistingRepository) {
+            await this.repositoryApi.setUiEntryUri(
+                'http://localhost:3002/conversation/' + conversation.id,
+                conversation.repository
+            )
+        // }
     }
 
     @Api()

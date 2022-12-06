@@ -12,6 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { calendarNumberOutline, flagOutline, hammerOutline } from 'ionicons/icons';
 import GoalsPage from './pages/GoalsPage';
+import GoalPage from './pages/GoalPage';
 import TasksPage from './pages/TasksPage';
 import CalendarPage from './pages/CalendarPage';
 
@@ -33,7 +34,6 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import { Goal } from '@airline/tasks';
 
 setupIonicReact();
 
