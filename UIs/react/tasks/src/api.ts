@@ -5,6 +5,19 @@ export { GoalApi } from '@airline/tasks'
 const goalApi = new GoalApi()
 const taskApi = new TaskApi()
 
+export async function createGoal(
+    goal: Goal,
+    setMessage: (message: string, duration: number) => void
+) {
+    try {
+        await goalApi.create(goal)
+        setMessage('Goal created', 3000)
+    } catch (e) {
+        console.error(e)
+        setMessage('Error creating Goal', 10000)
+    }
+}
+
 export async function saveGoal(
     goal: Goal,
     setMessage: (message: string, duration: number) => void
@@ -45,6 +58,19 @@ export async function getGoal(
     }
 }
 
+export async function createTask(
+    task: Task,
+    setMessage: (message: string, duration: number) => void
+) {
+    try {
+        await taskApi.create(task)
+        setMessage('Task created', 3000)
+    } catch (e) {
+        console.error(e)
+        setMessage('Error creating Task', 10000)
+    }
+}
+
 export async function saveTask(
     task: Task,
     setMessage: (message: string, duration: number) => void
@@ -64,12 +90,7 @@ export async function getTasks(
     setMessage: (message: string, duration: number) => void
 ) {
     try {
-        let tasks
-        if (goalId) {
-            tasks = await taskApi.findAllForGoal(goalId)
-        } else {
-            tasks = await taskApi.findAll()
-        }
+        const tasks = await taskApi.findAllForGoal(goalId)
         setTasks(tasks)
     } catch (e) {
         console.error(e)

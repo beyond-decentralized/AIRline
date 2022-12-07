@@ -4,7 +4,7 @@ import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonPage,
 import { AirEisenhowerIcon, AirGoalEdit } from '@airline/components-ui-react'
 import { add } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
-import { getGoals, saveGoal } from '../api';
+import { createGoal, getGoals } from '../api';
 import './GoalsPage.css';
 
 export function GoalsPage() {
@@ -25,7 +25,7 @@ export function GoalsPage() {
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
-      saveGoal(ev.detail.data, showToast).then(() => {
+      createGoal(ev.detail.data, showToast).then(() => {
         setNewGoal(new Goal())
       })
     }

@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import AboutPage from './pages/AboutPage';
 import ConversationPage from './pages/ConversationPage';
+import ConversationGroupPage from './pages/ConversationGroupPage';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -36,7 +37,10 @@ const App: React.FC = () => {
             <Route path="/" exact={true}>
               <AboutPage />
             </Route>
-            <Route path="/conversation/:id" exact={true}>
+            <Route path="/conversationGroup/:conversationGroupId" exact={true}>
+              <ConversationGroupPage />
+            </Route>
+            <Route path="/conversation/:conversationId" exact={true}>
               <ConversationPage />
             </Route>
           </IonRouterOutlet>

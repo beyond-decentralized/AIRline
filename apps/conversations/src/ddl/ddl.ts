@@ -1,6 +1,7 @@
 export * from './Comment'
 export * from './CommentReference'
 export * from './Conversation'
+export * from './ConversationGroup'
 export * from './Moderator'
 export * from './Participant'
 export * from './TakeBackRequest'

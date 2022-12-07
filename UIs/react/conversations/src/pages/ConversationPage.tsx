@@ -9,14 +9,21 @@ import { enterOutline } from 'ionicons/icons';
 
 const ConversationPage: React.FC = () => {
 
-  const { id } = useParams<{ id: string; }>();
+  const { conversationId } = useParams<{ conversationId: string; }>();
   const [conversation, setConversation] = useState(() => new Conversation())
   const [commentText, setCommentText] = useState(() => '')
-  const [present, dismiss] = useIonToast()
+  const [present] = useIonToast()
 
   useEffect(() => {
-    loadConversation(id, setConversation, present).then()
+    loadConversation(conversationId, setConversation, present).then()
   }, [])
+
+  const conversationParticipantsList =
+    <>
+      {conversation.participants.map(participant =>
+        participant.userAccount.username
+      )}
+    </>
 
   return (
     <IonPage>
@@ -25,14 +32,14 @@ const ConversationPage: React.FC = () => {
           <IonButtons slot="start">
             <IonMenuButton />
           </IonButtons>
-          <IonTitle>{conversation.name}</IonTitle>
+          <IonTitle>{conversationParticipantsList}</IonTitle>
         </IonToolbar>
       </IonHeader>
 
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">{conversation.name}</IonTitle>
+            <IonTitle size="large">{conversationParticipantsList}</IonTitle>
           </IonToolbar>
         </IonHeader>
         <AirConversationView conversation={conversation} />

@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
-import { ConversationApi } from '@airline/conversations';
-import { ThemeApi, TopicApi } from '@airline/topics';
+import { ConversationGroupApi } from '@airline/conversations';
+import { ThemeApi } from '@airline/topics';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,10 +15,10 @@ ReactDOM.render(
 
 const themeApi = new ThemeApi()
 // const topicApi = new TopicApi()
-const conversationApi = new ConversationApi()
+const conversationGroupApi = new ConversationGroupApi()
 
 themeApi.findAll().then(_themes => {
-  conversationApi.findAll().then()
+  conversationGroupApi.findAll().then()
 })
 
 // If you want your app to work offline and load faster, you can change

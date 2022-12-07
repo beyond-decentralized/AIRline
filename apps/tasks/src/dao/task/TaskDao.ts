@@ -6,11 +6,8 @@ import { Task } from "../../ddl/task/Task";
 import { BaseTaskDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/query/goal/QGoal";
-import { QGoalTask } from "../../generated/query/goal/QGoalTask";
 import { QTask } from "../../generated/query/task/QTask";
-import { QTaskConversation } from "../../generated/qInterfaces";
-import { QConversation, QParticipant } from "@airline/conversations";
-import { QUserAccount } from "@airport/travel-document-checkpoint";
+import { QConversation, QConversationGroup, QParticipant } from "@airline/conversations";
 
 @Injected()
 export class TaskDao
@@ -20,15 +17,14 @@ export class TaskDao
         taskUuId: string
     ): Promise<Task> {
         let t: QTask,
-            tc: QTaskConversation,
+            cg: QConversationGroup,
             c: QConversation,
-            p: QParticipant,
-            u: QUserAccount
+            p: QParticipant
         return await this._findOne({
             SELECT: {
                 '*': Y,
-                taskConversations: {
-                    conversation: {
+                conversationGroup: {
+                    conversations: {
                         participants: {
                             userAccount: {}
                         }
@@ -37,10 +33,10 @@ export class TaskDao
             },
             FROM: [
                 t = Q.Task,
-                tc = t.taskConversations.LEFT_JOIN(),
-                c = tc.conversation.LEFT_JOIN(),
+                cg = t.conversationGroup.LEFT_JOIN(),
+                c = cg.conversations.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),
-                u = p.userAccount.LEFT_JOIN()
+                p.userAccount.LEFT_JOIN()
             ],
             WHERE: t.equals(taskUuId)
         })

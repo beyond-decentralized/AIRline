@@ -10,3 +10,8 @@
 .edit-goal-link {
     float: right;
 }
+
+.goal-link {
+    cursor: pointer;
+    padding-left: 5px;
+}

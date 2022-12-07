@@ -1,8 +1,9 @@
-import { Comment, CommentApi, Conversation, ConversationApi } from '@airline/conversations'
+import { Comment, CommentApi, Conversation, ConversationApi, ConversationGroup, ConversationGroupApi } from '@airline/conversations'
 import { SessionStateApi } from '@airport/session-state'
 import { UserAccount } from '@airport/travel-document-checkpoint'
 
 const commentApi = new CommentApi()
+const conversationGroupApi = new ConversationGroupApi()
 const conversationApi = new ConversationApi()
 const sessionStateApi = new SessionStateApi()
 
@@ -19,40 +20,55 @@ export async function getLoggedInUser(
     }
 }
 
-export async function getConversationsByTopic(
-    setConversations: (conversationsByTopic: Conversation[][]) => void,
+export async function getConversationGroupsByTopic(
+    setConversationGroups: (conversationsByTopic: ConversationGroup[][]) => void,
     setMessage: (message: string, duration: number) => void
 ) {
     try {
-        const conversations = await conversationApi.findAll()
-        const conversationMapByTopicId: { [topicId: string]: Conversation[] } = {}
+        const conversationGroups = await conversationGroupApi.findAll()
+        const conversationGroupMapByTopicId: { [topicId: string]: ConversationGroup[] } = {}
 
-        for (const conversation of conversations) {
-            const topicId = conversation.topic
-                ? conversation.topic.id as string : 'null'
-            let conversationsForTopic = conversationMapByTopicId[topicId]
+        for (const conversationGroup of conversationGroups) {
+            const topicId = conversationGroup.topic
+                ? conversationGroup.topic.id as string : 'null'
+            let conversationsForTopic = conversationGroupMapByTopicId[topicId]
             if (!conversationsForTopic) {
                 conversationsForTopic = []
-                conversationMapByTopicId[topicId] = conversationsForTopic
+                conversationGroupMapByTopicId[topicId] = conversationsForTopic
             }
-            conversationsForTopic.push(conversation)
+            conversationsForTopic.push(conversationGroup)
         }
-        const conversationsByTopic: Conversation[][] = []
-        let conversationsWithNoTopic: Conversation[] | null = null
-        for (let topicId in conversationMapByTopicId) {
+        const conversationGroupsByTopic: ConversationGroup[][] = []
+        let conversationGroupsWithNoTopic: ConversationGroup[] | null = null
+        for (let topicId in conversationGroupMapByTopicId) {
             if (topicId === 'null') {
-                conversationsWithNoTopic = conversationMapByTopicId[topicId]
+                conversationGroupsWithNoTopic = conversationGroupMapByTopicId[topicId]
             } else {
-                conversationsByTopic.push(conversationMapByTopicId[topicId])
+                conversationGroupsByTopic.push(conversationGroupMapByTopicId[topicId])
             }
         }
-        if (conversationsWithNoTopic) {
-            conversationsByTopic.push(conversationsWithNoTopic)
+        if (conversationGroupsWithNoTopic) {
+            conversationGroupsByTopic.push(conversationGroupsWithNoTopic)
         }
-        setConversations(conversationsByTopic)
+        setConversationGroups(conversationGroupsByTopic)
     } catch (e) {
         console.error(e)
         setMessage('Error retrieving Conversations', 10000)
+    }
+}
+
+export async function loadConversationGroup(
+    id: string,
+    setConversationGroup: (conversationGroup: ConversationGroup) => void,
+    setMessage: (message: string, timeout: number) => void
+): Promise<void> {
+    let conversationGroup: ConversationGroup
+    try {
+        conversationGroup = await conversationGroupApi.loadWithDetails(id)
+        setConversationGroup(conversationGroup)
+    } catch (e: any) {
+        console.error(e)
+        setMessage(e.message, 10000)
     }
 }
 

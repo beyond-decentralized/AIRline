@@ -1,10 +1,8 @@
-import { Conversation, ConversationApi } from "@airline/conversations";
+import { ConversationGroupApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
-import { TaskConversationDao } from "../../dao/task/TaskConversationDao";
 import { TaskDao } from "../../dao/task/TaskDao";
-import { TaskConversation } from "../../ddl/task/TaskConversation";
 import { Goal } from "../../ddl/goal/Goal";
 import { Task } from "../../ddl/task/Task";
 import { RepositoryApi } from "@airport/holding-pattern";
@@ -15,24 +13,16 @@ import { GoalTaskDao } from "../../dao/dao";
 export class TaskApi {
 
     @Inject()
-    conversationApi: ConversationApi
+    conversationGroupApi: ConversationGroupApi
 
     @Inject()
     goalTaskDao: GoalTaskDao
-
-    @Inject()
-    taskConversationDao: TaskConversationDao
 
     @Inject()
     taskDao: TaskDao
 
     @Inject()
     repositoryApi: RepositoryApi
-
-    @Api()
-    async findAll(): Promise<Task[]> {
-        return await this.taskDao.findAllWithGoal()
-    }
 
     @Api()
     async findAllForGoal(
@@ -49,37 +39,40 @@ export class TaskApi {
     }
 
     @Api()
+    async create(
+        task: Task
+    ): Promise<void> {
+        if (task.id) {
+            throw new Error('Cannot create a Task with an existing ID')
+        }
+
+        const taskName = 'Task: ' + task.name
+        const repository = await this.repositoryApi.create(taskName)
+        const conversationGroup = await this.conversationGroupApi
+            .create(taskName, repository)
+        task.conversationGroup = conversationGroup
+
+        task.repository = repository
+        await this.taskDao.save(task)
+
+        const goalTask: GoalTask = new GoalTask()
+        const goal = task.goal
+        goalTask.task = task
+        goalTask.goal = goal
+        goalTask.repository = goal.repository
+        await this.goalTaskDao.save(goalTask)
+
+        await this.repositoryApi.setUiEntryUri(
+            'http://localhost:3003/task/' + task.id,
+            repository
+        )
+    }
+
+    @Api()
     async save(
         task: Task
     ): Promise<void> {
-        const isNewTask = !task.id
-        let conversation: Conversation
-        if (isNewTask) {
-            task.taskConversations = []
-            const taskConversation = new TaskConversation()
-            taskConversation.task = task
-            task.taskConversations.push(taskConversation)
-
-            conversation = new Conversation()
-            conversation.name = 'Task: ' + task.name
-            taskConversation.conversation = conversation
-
-            await this.conversationApi.save(conversation)
-        }
-
-        task.repository = conversation.repository
         await this.taskDao.save(task)
-
-        if (isNewTask) {
-            const goalTask: GoalTask = new GoalTask()
-            goalTask.task = task
-            goalTask.goal = task.goal
-            goalTask.repository = task.goal.repository
-            this.goalTaskDao.save(goalTask)
-
-            conversation.repository.uiEntryUri = 'http://localhost:3002/task/' + task.id
-            await this.conversationApi.save(conversation)
-        }
     }
 
 }

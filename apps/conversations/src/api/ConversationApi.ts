@@ -1,10 +1,10 @@
-import { Topic } from "@airline/topics";
 import { RequestManager } from "@airport/arrivals-n-departures";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
-import { RepositoryApi } from "@airport/holding-pattern";
+import { UserAccount } from "@airport/travel-document-checkpoint";
 import { ConversationDao } from "../dao/ConversationDao";
 import { Conversation } from "../ddl/Conversation";
+import { ConversationGroup } from "../ddl/ConversationGroup";
 import { Participant } from "../ddl/Participant";
 
 @Injected()
@@ -16,49 +16,42 @@ export class ConversationApi {
     @Inject()
     requestManager: RequestManager
 
-    @Inject()
-    repositoryApi: RepositoryApi
-
     @Api()
-    async findAll(): Promise<Conversation[]> {
-        return await this.conversationDao.findAll()
-    }
+    async create(
+        conversationGroup: ConversationGroup,
+        userAccounts?: UserAccount[]
+    ): Promise<Conversation> {
+        const conversation = new Conversation()
+        conversation.group = conversationGroup
 
-    @Api()
-    async findAllForTopic(
-        topic: Topic | string
-    ): Promise<Conversation[]> {
-        return await this.conversationDao.findAllForTopic(topic)
+        if (!userAccounts) {
+            userAccounts = []
+        }
+        if (!userAccounts.length) {
+            userAccounts.push(this.requestManager.userAccount)
+        }
+
+        conversation.participants = []
+        for (const userAccount of userAccounts) {
+            const participant = new Participant()
+            participant.conversation = conversation
+            participant.userAccount = userAccount
+            conversation.participants.push(participant)
+        }
+
+        conversationGroup.conversations.push(conversation)
+        conversation.repository = conversationGroup.repository
+
+        await this.conversationDao.save(conversation)
+
+        return conversation
     }
 
     @Api()
     async save(
         conversation: Conversation
     ): Promise<void> {
-        let noExistingRepository = false
-        const isNewConversation = !conversation.id
-        if (isNewConversation) {
-            conversation.participants = []
-            const participant = new Participant()
-            participant.conversation = conversation
-            participant.userAccount = this.requestManager.userAccount
-            conversation.participants.push(participant)
-
-            noExistingRepository = !conversation.repository
-            if (noExistingRepository) {
-                const repository = await this.repositoryApi.create(conversation.name)
-                conversation.repository = repository
-            }
-        }
-
         await this.conversationDao.save(conversation)
-
-        // if (isNewConversation && noExistingRepository) {
-            await this.repositoryApi.setUiEntryUri(
-                'http://localhost:3002/conversation/' + conversation.id,
-                conversation.repository
-            )
-        // }
     }
 
     @Api()

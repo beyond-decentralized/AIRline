@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 import { OverlayEventDetail } from '@ionic/core/components';
 import { AirEisenhowerIcon, AirTaskEdit } from '@airline/components-ui-react'
-import { getTasks, saveTask } from '../api';
+import { createTask, getTasks } from '../api';
 import './TasksPage.css';
 import { useParams } from 'react-router';
 
@@ -29,7 +29,7 @@ export function TasksPage() {
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
       currentTask = new Task()
-      saveTask(ev.detail.data, present).then()
+      createTask(ev.detail.data, present).then()
     }
   }
 

@@ -1,5 +1,3 @@
-export * from './goal/GoalConversationDao'
 export * from './goal/GoalDao'
 export * from './goal/GoalTaskDao'
-export * from './task/TaskConversationDao'
 export * from './task/TaskDao'

@@ -5,9 +5,7 @@ import { BaseGoalDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/query/goal/QGoal";
 import { Y } from "@airport/tarmaq-query";
-import { QGoalConversation } from "../../generated/qInterfaces";
-import { QConversation, QParticipant } from "@airline/conversations";
-import { QUserAccount } from "@airport/travel-document-checkpoint";
+import { QConversation, QConversationGroup, QParticipant } from "@airline/conversations";
 
 @Injected()
 export class GoalDao
@@ -16,30 +14,28 @@ export class GoalDao
     async findAll(): Promise<Goal[]> {
         let c: QConversation,
             g: QGoal,
-            gc: QGoalConversation,
-            to: QTopic,
-            p: QParticipant,
-            u: QUserAccount
+            cg: QConversationGroup,
+            p: QParticipant
         return await this._find({
             SELECT: {
                 '*': Y,
-                goalConversations: {
-                    '*': Y,
-                    conversation: {
+                conversationGroup: {
+                    conversations: {
                         '*': Y,
                         participants: {
                             userAccount: {}
                         }
                     }
-                }
+                },
+                topic: {}
             },
             FROM: [
                 g = Q.Goal,
-                to = g.topic.LEFT_JOIN(),
-                gc = g.goalConversations.LEFT_JOIN(),
-                c = gc.conversation.LEFT_JOIN(),
+                g.topic.LEFT_JOIN(),
+                cg = g.conversationGroup.LEFT_JOIN(),
+                c = cg.conversations.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),
-                u = p.userAccount.LEFT_JOIN()
+                p.userAccount.LEFT_JOIN()
             ]
         })
     }
@@ -47,16 +43,15 @@ export class GoalDao
     async findById(
         goalUuId: string | Goal
     ): Promise<Goal> {
-        let g: QGoal,
-            tc: QGoalConversation,
-            c: QConversation,
-            p: QParticipant,
-            u: QUserAccount
+        let c: QConversation,
+            cg: QConversationGroup,
+            g: QGoal,
+            p: QParticipant
         return await this._findOne({
             SELECT: {
                 '*': Y,
-                goalConversations: {
-                    conversation: {
+                conversationGroup: {
+                    conversations: {
                         '*': Y,
                         participants: {
                             userAccount: {}
@@ -66,10 +61,10 @@ export class GoalDao
             },
             FROM: [
                 g = Q.Goal,
-                tc = g.goalConversations.LEFT_JOIN(),
-                c = tc.conversation.LEFT_JOIN(),
+                cg = g.conversationGroup.LEFT_JOIN(),
+                c = cg.conversations.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),
-                u = p.userAccount.LEFT_JOIN()
+                p.userAccount.LEFT_JOIN()
             ],
             WHERE: g.equals(goalUuId)
         })
@@ -79,17 +74,16 @@ export class GoalDao
         topic: Topic | string
     ): Promise<Goal[]> {
         let c: QConversation,
+            cg: QConversationGroup,
             g: QGoal,
-            gc: QGoalConversation,
             to: QTopic,
-            p: QParticipant,
-            u: QUserAccount
+            p: QParticipant
         return await this._find({
             SELECT: {
                 '*': Y,
-                goalConversations: {
+                conversationGroup: {
                     '*': Y,
-                    conversation: {
+                    conversations: {
                         '*': Y,
                         participants: {
                             userAccount: {}
@@ -100,10 +94,10 @@ export class GoalDao
             FROM: [
                 g = Q.Goal,
                 to = g.topic.LEFT_JOIN(),
-                gc = g.goalConversations.LEFT_JOIN(),
-                c = gc.conversation.LEFT_JOIN(),
+                cg = g.conversationGroup.LEFT_JOIN(),
+                c = cg.conversations.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),
-                u = p.userAccount.LEFT_JOIN()
+                p.userAccount.LEFT_JOIN()
             ],
             WHERE: to.equals(topic)
         })

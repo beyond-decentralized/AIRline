@@ -1,10 +1,11 @@
 import { AirEisenhowerDisplay, AirGoalEdit } from "@airline/components-ui-react";
 import { Goal, GoalStatus } from "@airline/tasks";
 import { OverlayEventDetail } from "@ionic/core";
-import { IonButton, IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonSegment, IonSegmentButton, IonTitle, IonToolbar, useIonToast } from "@ionic/react";
+import { IonContent, IonHeader, IonItem, IonLabel, IonNote, IonPage, IonTitle, IonToolbar, useIonToast } from "@ionic/react";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import { getGoal, saveGoal } from "../api";
+import './GoalPage.css';
 
 export function GoalPage() {
   const { goalId } = useParams<{ goalId: string; }>();
@@ -75,14 +76,9 @@ export function GoalPage() {
         </IonItem>
         <IonItem>
           <IonLabel position="floating">Description</IonLabel>
+          <br></br>
           <IonNote color="primary">{goal.description}</IonNote>
         </IonItem>
-        <IonButton
-          expand="full"
-          onClick={e => {
-            document.getElementById("edit-goal")?.click()
-          }}
-        >Edit</IonButton>
         <IonItem>
           <div>
             <a
@@ -90,16 +86,13 @@ export function GoalPage() {
               className="go-to-tasks-link"
             >Tasks</a> |
             <a
-              href={'http://localhost:8100/conversations/goals/' + goal.id}
-              className="go-to-conversations-link"
-            >Conversations</a>
-            <a
-              className="edit-goal-link"
-              href={'/goal/' + goal.id}
-              onClick={e => {
-                document.getElementById("edit-goal")?.click()
-              }}
-            >Edit</a>
+              href={'http://localhost:3002/conversations/' + goal.conversationGroup.id}
+              className="goal-link go-to-conversations-link"
+            >Conversations</a> |
+            <div
+              id="edit-goal"
+              className="goal-link edit-goal-link"
+            >Edit</div>
           </div>
         </IonItem>
       </IonContent>

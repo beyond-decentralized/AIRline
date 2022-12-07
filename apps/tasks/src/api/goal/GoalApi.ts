@@ -1,21 +1,16 @@
-import { Conversation, ConversationApi } from "@airline/conversations";
+import { ConversationGroup, ConversationGroupApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
-import { GoalConversationDao } from "../../dao/goal/GoalConversationDao";
 import { GoalDao } from "../../dao/goal/GoalDao";
-import { GoalConversation } from "../../ddl/ddl";
 import { Goal } from "../../ddl/goal/Goal";
 
 @Injected()
 export class GoalApi {
 
     @Inject()
-    conversationApi: ConversationApi
-
-    @Inject()
-    goalConversationDao: GoalConversationDao
+    conversationGroupApi: ConversationGroupApi
 
     @Inject()
     goalDao: GoalDao
@@ -43,37 +38,33 @@ export class GoalApi {
     }
 
     @Api()
+    async create(
+        goal: Goal
+    ): Promise<void> {
+        if (goal.id) {
+            throw new Error('Cannot create a Goal with an existing ID')
+        }
+
+        const goalName = 'Goal: ' + goal.name
+        const repository = await this.repositoryApi.create(goalName)
+        const conversationGroup = await this.conversationGroupApi
+            .create(goalName, repository)
+        goal.conversationGroup = conversationGroup
+
+        goal.repository = repository
+        await this.goalDao.save(goal)
+
+        await this.repositoryApi.setUiEntryUri(
+            'http://localhost:3003/goal/' + goal.id,
+            goal.repository
+        )
+    }
+
+    @Api()
     async save(
         goal: Goal
     ): Promise<void> {
-        const isNewGoal = !goal.id
-        let conversation: Conversation
-        if (isNewGoal) {
-            goal.goalConversations = []
-            const goalConversation = new GoalConversation()
-            goalConversation.goal = goal
-            goal.goalConversations.push(goalConversation)
-
-            conversation = new Conversation()
-            conversation.name = 'Goal: ' + goal.name
-            goalConversation.conversation = conversation
-
-            const repository = await this.repositoryApi.create(conversation.name)
-            conversation.repository = repository
-
-            await this.conversationApi.save(conversation)
-
-            goal.repository = repository
-        }
-
         await this.goalDao.save(goal)
-
-        if (isNewGoal) {
-            await this.repositoryApi.setUiEntryUri(
-                'http://localhost:3003/goal/' + goal.id,
-                goal.repository
-            )
-        }
     }
 
 }
