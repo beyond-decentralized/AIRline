@@ -6,6 +6,7 @@
     "@airline/conversations": "0.0.1",
     "@airline/tasks": "0.0.1",
     "@airline/topics": "0.0.1",
+    "@airport/travel-document-checkpoint": "0.0.1",
     "@capacitor/app": "4.0.1",
     "@capacitor/core": "4.0.1",
     "@capacitor/haptics": "4.0.1",

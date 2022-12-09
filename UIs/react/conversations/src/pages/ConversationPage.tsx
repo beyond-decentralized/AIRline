@@ -12,10 +12,20 @@ const ConversationPage: React.FC = () => {
   const { conversationId } = useParams<{ conversationId: string; }>();
   const [conversation, setConversation] = useState(() => new Conversation())
   const [commentText, setCommentText] = useState(() => '')
-  const [present] = useIonToast()
+  const [present, dismiss] = useIonToast()
+
+  function showToast(
+    message: string,
+    duration = 3000
+  ): void {
+    present(message)
+    setTimeout(() => {
+      dismiss()
+    }, duration)
+  }
 
   useEffect(() => {
-    loadConversation(conversationId, setConversation, present).then()
+    loadConversation(conversationId, setConversation, showToast).then()
   }, [])
 
   const conversationParticipantsList =
@@ -60,7 +70,7 @@ const ConversationPage: React.FC = () => {
             commentText,
             setConversation,
             setCommentText,
-            present
+            showToast
           )}
         />
       </IonItem>

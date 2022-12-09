@@ -25,7 +25,7 @@ export function GoalsPage() {
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
-      createGoal(ev.detail.data, showToast).then(() => {
+      createGoal(ev.detail.data, goals, setGoals, showToast).then(() => {
         setNewGoal(new Goal())
       })
     }

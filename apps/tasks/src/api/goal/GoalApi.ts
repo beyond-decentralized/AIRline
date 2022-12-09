@@ -27,7 +27,7 @@ export class GoalApi {
     async findById(
         goalId: string
     ): Promise<Goal> {
-        return await this.goalDao.findOne(goalId)
+        return await this.goalDao.findById(goalId)
     }
 
     @Api()

@@ -1,7 +1,5 @@
 import {
   IonContent,
-  IonItem,
-  IonLabel,
   IonList,
   IonListHeader,
   IonMenu,
@@ -61,15 +59,15 @@ const Menu: React.FC = () => {
                 {conversationGroupsForTopic.map((conversationGroup, conversationIndex) => {
                   return (
                     <IonMenuToggle key={conversationIndex} autoHide={false}>
-                      <IonItem
+                      <div
                         className={location.pathname === `/conversationGroup/${conversationGroup.id}` ? 'selected' : ''}
-                        routerLink={`conversationGroup/${conversationGroup.id}`}
-                        routerDirection="none"
-                        lines="none"
-                        detail={false}
                       >
-                        <IonLabel>{conversationGroup.name}</IonLabel>
-                      </IonItem>
+                        <a
+                          href={`./conversationGroup/${conversationGroup.id}`}
+                          className='conversation-group-link='>
+                          {conversationGroup.name}
+                        </a>
+                      </div>
                     </IonMenuToggle>
                   );
                 })}

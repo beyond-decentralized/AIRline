@@ -7,10 +7,14 @@ const taskApi = new TaskApi()
 
 export async function createGoal(
     goal: Goal,
+    goals: Goal[],
+    setGoals: (goals: Goal[]) => void,
     setMessage: (message: string, duration: number) => void
 ) {
     try {
         await goalApi.create(goal)
+        goals.push(goal)
+        setGoals(goals)
         setMessage('Goal created', 3000)
     } catch (e) {
         console.error(e)

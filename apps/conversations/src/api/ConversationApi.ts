@@ -1,10 +1,14 @@
 import { RequestManager } from "@airport/arrivals-n-departures";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
+import { RepositoryApi } from "@airport/holding-pattern";
 import { UserAccount } from "@airport/travel-document-checkpoint";
 import { ConversationDao } from "../dao/ConversationDao";
+import { ConversationGroupConversationDao } from "../dao/ConversationGroupConversationDao";
 import { Conversation } from "../ddl/Conversation";
 import { ConversationGroup } from "../ddl/ConversationGroup";
+import { ConversationGroupConversation } from "../ddl/ConversationGroupConversation";
+import { Moderator } from "../ddl/Moderator";
 import { Participant } from "../ddl/Participant";
 
 @Injected()
@@ -14,43 +18,73 @@ export class ConversationApi {
     conversationDao: ConversationDao
 
     @Inject()
+    conversationGroupConversationDao: ConversationGroupConversationDao
+
+    @Inject()
     requestManager: RequestManager
+
+    @Inject()
+    repositoryApi: RepositoryApi
 
     @Api()
     async create(
         conversationGroup: ConversationGroup,
-        userAccounts?: UserAccount[]
+        participantUserAccounts: UserAccount[],
+        moderatorUserAccounts: UserAccount[]
     ): Promise<Conversation> {
         const conversation = new Conversation()
-        conversation.group = conversationGroup
+        conversation.conversationGroup = conversationGroup
 
-        if (!userAccounts) {
-            userAccounts = []
+        if (!participantUserAccounts) {
+            participantUserAccounts = []
         }
-        if (!userAccounts.length) {
-            userAccounts.push(this.requestManager.userAccount)
+        if (!participantUserAccounts.length) {
+            participantUserAccounts.push(this.requestManager.userAccount)
         }
 
         conversation.participants = []
-        for (const userAccount of userAccounts) {
+        const participantUserNames = []
+        for (const participantUserAccount of participantUserAccounts) {
             const participant = new Participant()
             participant.conversation = conversation
-            participant.userAccount = userAccount
+            participant.userAccount = participantUserAccount
             conversation.participants.push(participant)
+            participantUserNames.push(participantUserAccount.username)
+        }
+        if (moderatorUserAccounts) {
+            for (const moderatorUserAccount of moderatorUserAccounts) {
+                const moderator = new Moderator()
+                moderator.conversation = conversation
+                moderator.userAccount = moderatorUserAccount
+                conversation.moderators.push(moderator)
+            }
         }
 
-        conversationGroup.conversations.push(conversation)
-        conversation.repository = conversationGroup.repository
+        const repository = await this.repositoryApi.create(conversationGroup.name
+            + '.  Conversation: ' + participantUserNames.join(', '))
 
+        conversation.conversationGroup = conversationGroup
+        conversation.repository = repository
         await this.conversationDao.save(conversation)
+
+
+        const conversationGroupConversation = new ConversationGroupConversation()
+        conversationGroupConversation.conversationGroup = conversationGroup
+        conversationGroupConversation.conversation = conversation
+        conversationGroup.conversationGroupConversations.push(conversationGroupConversation)
+        conversationGroupConversation.repository = conversationGroup.repository
+        this.conversationGroupConversationDao.save(conversationGroupConversation)
 
         return conversation
     }
 
     @Api()
     async save(
-        conversation: Conversation
+        conversation: Conversation,
+        participantUserAccounts: UserAccount[],
+        moderatorUserAccounts: UserAccount[]
     ): Promise<void> {
+        // TODO: implement Participant and Moderator checks and conversion
         await this.conversationDao.save(conversation)
     }
 

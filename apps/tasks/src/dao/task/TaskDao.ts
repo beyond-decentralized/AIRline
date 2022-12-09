@@ -7,7 +7,6 @@ import { BaseTaskDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/query/goal/QGoal";
 import { QTask } from "../../generated/query/task/QTask";
-import { QConversation, QConversationGroup, QParticipant } from "@airline/conversations";
 
 @Injected()
 export class TaskDao
@@ -16,27 +15,14 @@ export class TaskDao
     async findById(
         taskUuId: string
     ): Promise<Task> {
-        let t: QTask,
-            cg: QConversationGroup,
-            c: QConversation,
-            p: QParticipant
+        let t: QTask
         return await this._findOne({
             SELECT: {
                 '*': Y,
-                conversationGroup: {
-                    conversations: {
-                        participants: {
-                            userAccount: {}
-                        }
-                    }
-                }
+                conversationGroup: {}
             },
             FROM: [
-                t = Q.Task,
-                cg = t.conversationGroup.LEFT_JOIN(),
-                c = cg.conversations.LEFT_JOIN(),
-                p = c.participants.LEFT_JOIN(),
-                p.userAccount.LEFT_JOIN()
+                t = Q.Task
             ],
             WHERE: t.equals(taskUuId)
         })

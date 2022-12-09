@@ -11,7 +11,7 @@ export class Conversation
     extends AirEntity {
 
     @ManyToOne()
-    group: ConversationGroup
+    conversationGroup: ConversationGroup
 
     @OneToMany({ mappedBy: "conversation" })
     participants: Participant[] = []

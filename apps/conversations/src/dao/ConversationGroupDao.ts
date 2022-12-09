@@ -5,16 +5,18 @@ import { QConversation } from "../generated/query/QConversation";
 import { ConversationGroup } from "../ddl/ConversationGroup";
 import { BaseConversationGroupDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
-import { QParticipant } from "../generated/qInterfaces";
+import { QConversationGroupConversation, QParticipant } from "../generated/qInterfaces";
 import { QConversationGroup } from "../generated/query/QConversationGroup";
+import { QRepository } from "@airport/holding-pattern";
 
 @Injected()
 export class ConversationGroupDao
     extends BaseConversationGroupDao {
 
-    async findAll(): Promise<ConversationGroup[]> {
+    async findAllForRootRepositories(): Promise<ConversationGroup[]> {
         let cg: QConversationGroup,
-            t: QTopic
+            t: QTopic,
+            r: QRepository
         return await this._find({
             SELECT: {
                 '*': Y,
@@ -22,8 +24,10 @@ export class ConversationGroupDao
             },
             FROM: [
                 cg = Q.ConversationGroup,
-                t = cg.topic.LEFT_JOIN()
-            ]
+                t = cg.topic.LEFT_JOIN(),
+                r = cg.repository.LEFT_JOIN(),
+            ],
+            WHERE: r.parentRepository.IS_NULL()
         })
     }
 
@@ -62,24 +66,28 @@ export class ConversationGroupDao
     async loadWithDetails(
         conversationGroupId: string
     ): Promise<ConversationGroup> {
-        let cg: QConversationGroup,
-            c: QConversation,
+        let c: QConversation,
+            cg: QConversationGroup,
+            cgc: QConversationGroupConversation,
             p: QParticipant
 
         return await this._findOne({
             SELECT: {
                 name: Y,
-                conversations: {
-                    participants: {
-                        userAccount: {
-                            username: Y
+                conversationGroupConversations: {
+                    conversation: {
+                        participants: {
+                            userAccount: {
+                                username: Y
+                            }
                         }
                     }
                 }
             },
             FROM: [
                 cg = Q.ConversationGroup,
-                c = cg.conversations.LEFT_JOIN(),
+                cgc = cg.conversationGroupConversations.LEFT_JOIN(),
+                c = cgc.conversation.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),
                 p.userAccount.LEFT_JOIN()
             ],
