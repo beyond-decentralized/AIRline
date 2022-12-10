@@ -59,11 +59,14 @@ export class ConversationApi {
                 conversation.moderators.push(moderator)
             }
         }
-
-        const repository = await this.repositoryApi.create(conversationGroup.name
-            + '.  Conversation: ' + participantUserNames.join(', '))
-
         conversation.conversationGroup = conversationGroup
+
+        const repository = await this.repositoryApi.create(
+            conversationGroup.name
+            + '.  Conversation: ' + participantUserNames.join(', '),
+            conversationGroup.repository,
+            'Conversations'
+        )
         conversation.repository = repository
         await this.conversationDao.save(conversation)
 

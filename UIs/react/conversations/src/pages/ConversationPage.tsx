@@ -28,6 +28,30 @@ const ConversationPage: React.FC = () => {
     loadConversation(conversationId, setConversation, showToast).then()
   }, [])
 
+  if (!conversation) {
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton />
+            </IonButtons>
+            <IonTitle>Loading Conversation</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+
+        <IonContent fullscreen>
+          <IonHeader collapse="condense">
+            <IonToolbar>
+              <IonTitle size="large">Loading Conversation</IonTitle>
+            </IonToolbar>
+          </IonHeader>
+          <IonItem>Loading ...</IonItem>
+        </IonContent>
+      </IonPage>
+    );
+  }
+
   const conversationParticipantsList =
     <>
       {conversation.participants.map(participant =>
