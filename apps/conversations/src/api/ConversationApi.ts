@@ -62,14 +62,15 @@ export class ConversationApi {
         conversation.conversationGroup = conversationGroup
 
         const repository = await this.repositoryApi.create(
-            conversationGroup.name
-            + '.  Conversation: ' + participantUserNames.join(', '),
+            'Conversation: ' + participantUserNames.join(', '),
             conversationGroup.repository,
             'Conversations'
         )
         conversation.repository = repository
         await this.conversationDao.save(conversation)
 
+        await this.repositoryApi
+            .setUiEntryUri('http://localhost:3002/conversation/' + conversation.id, repository)
 
         const conversationGroupConversation = new ConversationGroupConversation()
         conversationGroupConversation.conversationGroup = conversationGroup
