@@ -23,7 +23,9 @@ const CollectionPage: React.FC = () => {
   }
 
   useEffect(() => {
-    loadCollection(collectionId, newConversation, setCollection, present)
+    if (collectionId) {
+      loadCollection(collectionId, newConversation, setCollection, present)
+    }
   }, [collectionId])
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
