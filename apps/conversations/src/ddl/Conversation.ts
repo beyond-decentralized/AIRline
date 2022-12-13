@@ -1,7 +1,7 @@
 import { AirEntity } from "@airport/holding-pattern";
 import { Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
 import { Comment } from "./Comment";
-import { ConversationGroup } from "./ConversationGroup";
+import { Collection } from "./Collection";
 import { Moderator } from "./Moderator";
 import { Participant } from "./Participant";
 
@@ -11,7 +11,7 @@ export class Conversation
     extends AirEntity {
 
     @ManyToOne()
-    conversationGroup: ConversationGroup
+    collection: Collection
 
     @OneToMany({ mappedBy: "conversation" })
     participants: Participant[] = []

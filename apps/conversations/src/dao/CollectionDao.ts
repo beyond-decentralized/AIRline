@@ -2,19 +2,20 @@ import { QTopic, Topic } from "@airline/topics";
 import { Injected } from "@airport/direction-indicator";
 import { Y } from "@airport/tarmaq-query";
 import { QConversation } from "../generated/query/QConversation";
-import { ConversationGroup } from "../ddl/ConversationGroup";
-import { BaseConversationGroupDao } from "../generated/baseDaos";
+import { Collection } from "../ddl/Collection";
+import { BaseCollectionDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
-import { QConversationGroupConversation, QParticipant } from "../generated/qInterfaces";
-import { QConversationGroup } from "../generated/query/QConversationGroup";
+import { QParticipant } from "../generated/qInterfaces";
+import { QCollection } from "../generated/query/QCollection";
 import { QRepository } from "@airport/holding-pattern";
+import { QCollectionConversation } from "../generated/query/QCollectionConversation";
 
 @Injected()
-export class ConversationGroupDao
-    extends BaseConversationGroupDao {
+export class CollectionDao
+    extends BaseCollectionDao {
 
-    async findAllForRootRepositories(): Promise<ConversationGroup[]> {
-        let cg: QConversationGroup,
+    async findAllForRootRepositories(): Promise<Collection[]> {
+        let c: QCollection,
             t: QTopic,
             r: QRepository
         return await this._find({
@@ -23,9 +24,9 @@ export class ConversationGroupDao
                 topic: {}
             },
             FROM: [
-                cg = Q.ConversationGroup,
-                t = cg.topic.LEFT_JOIN(),
-                r = cg.repository.LEFT_JOIN(),
+                c = Q.Collection,
+                t = c.topic.LEFT_JOIN(),
+                r = c.repository.LEFT_JOIN(),
             ],
             WHERE: r.parentRepository.IS_NULL()
         })
@@ -33,8 +34,8 @@ export class ConversationGroupDao
 
     async findAllForTopic(
         topic: Topic | string
-    ): Promise<ConversationGroup[]> {
-        let cg: QConversationGroup,
+    ): Promise<Collection[]> {
+        let c: QCollection,
             t: QTopic
         return await this._find({
             SELECT: {
@@ -42,39 +43,39 @@ export class ConversationGroupDao
                 topic: {}
             },
             FROM: [
-                cg = Q.ConversationGroup,
-                t = cg.topic.LEFT_JOIN()
+                c = Q.Collection,
+                t = c.topic.LEFT_JOIN()
             ],
             WHERE: t.equals(topic)
         })
     }
 
     async findAllWithNoTopic(
-    ): Promise<ConversationGroup[]> {
-        let cg: QConversationGroup
+    ): Promise<Collection[]> {
+        let c: QCollection
         return await this._find({
             SELECT: {
                 '*': Y
             },
             FROM: [
-                cg = Q.ConversationGroup
+                c = Q.Collection
             ],
-            WHERE: cg.topic.IS_NULL()
+            WHERE: c.topic.IS_NULL()
         })
     }
 
     async loadWithDetails(
-        conversationGroupId: string
-    ): Promise<ConversationGroup> {
-        let c: QConversation,
-            cg: QConversationGroup,
-            cgc: QConversationGroupConversation,
+        collectionId: string
+    ): Promise<Collection> {
+        let cn: QConversation,
+            cl: QCollection,
+            cc: QCollectionConversation,
             p: QParticipant
 
         return await this._findOne({
             SELECT: {
                 name: Y,
-                conversationGroupConversations: {
+                collectionConversations: {
                     conversation: {
                         participants: {
                             userAccount: {
@@ -85,13 +86,13 @@ export class ConversationGroupDao
                 }
             },
             FROM: [
-                cg = Q.ConversationGroup,
-                cgc = cg.conversationGroupConversations.LEFT_JOIN(),
-                c = cgc.conversation.LEFT_JOIN(),
-                p = c.participants.LEFT_JOIN(),
+                cl = Q.Collection,
+                cc = cl.collectionConversations.LEFT_JOIN(),
+                cn = cc.conversation.LEFT_JOIN(),
+                p = cn.participants.LEFT_JOIN(),
                 p.userAccount.LEFT_JOIN()
             ],
-            WHERE: cg.equals(conversationGroupId)
+            WHERE: cl.equals(collectionId)
         })
     }
 }

@@ -12,8 +12,8 @@ export const CONVERSATION_API = conversations.token<any>({
     interface: 'ConversationApi',
     token: 'CONVERSATION_API'
 })
-export const CONVERSATION_GROUP_API = conversations.token<any>({
+export const COLLECTION_API = conversations.token<any>({
     class: null,
-    interface: 'ConversationGroupApi',
-    token: 'CONVERSATION_GROUP_API'
+    interface: 'CollectionApi',
+    token: 'COLLECTION_API'
 })

@@ -5,7 +5,7 @@ import { GOAL_API, tasks, TASK_API } from './common-tokens'
 import { GoalDao, GoalTaskDao, TaskDao } from '../dao/dao'
 import { GoalApi } from '../api/goal/GoalApi'
 import { TaskApi } from '../api/task/TaskApi'
-import { CONVERSATION_GROUP_API } from '@airline/conversations'
+import { COLLECTION_API } from '@airline/conversations'
 
 export const GOAL_DAO = tasks.token<any>({
     class: GoalDao,
@@ -25,13 +25,13 @@ export const TASK_DAO = tasks.token<any>({
 
 GOAL_API.setClass(GoalApi)
 GOAL_API.setDependencies({
-    conversationGroupApi: CONVERSATION_GROUP_API,
+    collectionApi: COLLECTION_API,
     goalDao: GOAL_DAO,
     repositoryApi: REPOSITORY_API
 })
 TASK_API.setClass(TaskApi)
 TASK_API.setDependencies({
-    conversationGroupApi: CONVERSATION_GROUP_API,
+    collectionApi: COLLECTION_API,
     goalTaskDao: GOAL_TASK_DAO,
     taskDao: TASK_DAO,
     repositoryApi: REPOSITORY_API

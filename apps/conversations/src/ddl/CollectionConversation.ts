@@ -1,15 +1,15 @@
 import { AirEntity } from "@airport/holding-pattern";
 import { Entity, ManyToOne, Table } from "@airport/tarmaq-entity";
-import { ConversationGroup } from "./ConversationGroup";
+import { Collection } from "./Collection";
 import { Conversation } from "./Conversation";
 
 @Entity()
-@Table({ name: 'CONVERSATION_GROUP_CONVERSATIONS' })
-export class ConversationGroupConversation
+@Table({ name: 'COLLECTION_CONVERSATIONS' })
+export class CollectionConversation
     extends AirEntity {
 
     @ManyToOne()
-    conversationGroup: ConversationGroup
+    collection: Collection
 
     @ManyToOne()
     conversation: Conversation

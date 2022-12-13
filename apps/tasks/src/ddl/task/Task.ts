@@ -1,4 +1,4 @@
-import { ConversationGroup } from "@airline/conversations";
+import { Collection } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { AirEntity } from "@airport/holding-pattern";
 import { Column, DbNumber, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
@@ -50,7 +50,7 @@ export class Task
     goal: Goal
 
     @ManyToOne()
-    conversationGroup: ConversationGroup
+    collection: Collection
 
     @OneToMany({ mappedBy: 'task' })
     assignees: TaskAssignee[]

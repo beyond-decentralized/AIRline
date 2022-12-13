@@ -86,7 +86,7 @@ export function GoalPage() {
               className="go-to-tasks-link"
             >Tasks</a> |
             <a
-              href={'http://localhost:3002/conversationGroup/' + goal.conversationGroup.id}
+              href={'http://localhost:3002/collection/' + goal.collection.id}
               className="goal-link go-to-conversations-link"
             >Conversations</a> |
             <div

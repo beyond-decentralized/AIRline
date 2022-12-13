@@ -1,9 +1,9 @@
-import { Comment, CommentApi, Conversation, ConversationApi, ConversationGroup, ConversationGroupApi, Participant } from '@airline/conversations'
+import { Comment, CommentApi, Conversation, ConversationApi, Collection, CollectionApi, Participant } from '@airline/conversations'
 import { SessionStateApi } from '@airport/session-state'
 import { UserAccount } from '@airport/travel-document-checkpoint'
 
 const commentApi = new CommentApi()
-const conversationGroupApi = new ConversationGroupApi()
+const collectionApi = new CollectionApi()
 const conversationApi = new ConversationApi()
 const sessionStateApi = new SessionStateApi()
 
@@ -32,53 +32,53 @@ async function wait(
     })
 }
 
-export async function getConversationGroupsByTopic(
-    setConversationGroups: (conversationsByTopic: ConversationGroup[][]) => void,
+export async function getCollectionsByTopic(
+    setCollections: (conversationsByTopic: Collection[][]) => void,
     setMessage: (message: string, duration: number) => void
 ) {
     try {
-        const conversationGroups = await conversationGroupApi.findAll()
-        const conversationGroupMapByTopicId: { [topicId: string]: ConversationGroup[] } = {}
+        const collections = await collectionApi.findAll()
+        const collectionMapByTopicId: { [topicId: string]: Collection[] } = {}
 
-        for (const conversationGroup of conversationGroups) {
-            const topicId = conversationGroup.topic
-                ? conversationGroup.topic.id as string : 'null'
-            let conversationsForTopic = conversationGroupMapByTopicId[topicId]
+        for (const collection of collections) {
+            const topicId = collection.topic
+                ? collection.topic.id as string : 'null'
+            let conversationsForTopic = collectionMapByTopicId[topicId]
             if (!conversationsForTopic) {
                 conversationsForTopic = []
-                conversationGroupMapByTopicId[topicId] = conversationsForTopic
+                collectionMapByTopicId[topicId] = conversationsForTopic
             }
-            conversationsForTopic.push(conversationGroup)
+            conversationsForTopic.push(collection)
         }
-        const conversationGroupsByTopic: ConversationGroup[][] = []
-        let conversationGroupsWithNoTopic: ConversationGroup[] | null = null
-        for (let topicId in conversationGroupMapByTopicId) {
+        const collectionsByTopic: Collection[][] = []
+        let collectionsWithNoTopic: Collection[] | null = null
+        for (let topicId in collectionMapByTopicId) {
             if (topicId === 'null') {
-                conversationGroupsWithNoTopic = conversationGroupMapByTopicId[topicId]
+                collectionsWithNoTopic = collectionMapByTopicId[topicId]
             } else {
-                conversationGroupsByTopic.push(conversationGroupMapByTopicId[topicId])
+                collectionsByTopic.push(collectionMapByTopicId[topicId])
             }
         }
-        if (conversationGroupsWithNoTopic) {
-            conversationGroupsByTopic.push(conversationGroupsWithNoTopic)
+        if (collectionsWithNoTopic) {
+            collectionsByTopic.push(collectionsWithNoTopic)
         }
-        setConversationGroups(conversationGroupsByTopic)
+        setCollections(collectionsByTopic)
     } catch (e) {
         console.error(e)
         setMessage('Error retrieving Conversations', 10000)
     }
 }
 
-export async function loadConversationGroup(
+export async function loadCollection(
     id: string,
     newConversation: Conversation,
-    setConversationGroup: (conversationGroup: ConversationGroup) => void,
+    setCollection: (collection: Collection) => void,
     setMessage: (message: string, timeout: number) => void
 ): Promise<void> {
     try {
-        const conversationGroup = await conversationGroupApi.loadWithDetails(id)
-        newConversation.conversationGroup = conversationGroup
-        setConversationGroup(conversationGroup)
+        const collection = await collectionApi.loadWithDetails(id)
+        newConversation.collection = collection
+        setCollection(collection)
     } catch (e: any) {
         console.error(e)
         setMessage(e.message, 10000)
@@ -89,8 +89,8 @@ export async function saveConversation(
     conversation: Conversation,
     participantUserAccounts: UserAccount[],
     moderatorUserAccounts: UserAccount[],
-    conversationGroup: ConversationGroup,
-    setConversationGroup: (conversationGroup: ConversationGroup) => void,
+    collection: Collection,
+    setCollection: (collection: Collection) => void,
     showToast: (message: string, duration?: number) => void
 ): Promise<void> {
     try {
@@ -102,12 +102,12 @@ export async function saveConversation(
             )
         } else {
             await conversationApi.create(
-                conversation.conversationGroup,
+                conversation.collection,
                 participantUserAccounts,
                 moderatorUserAccounts
             )
         }
-        setConversationGroup(conversationGroup)
+        setCollection(collection)
     } catch (e: any) {
         showToast(e.message)
     }

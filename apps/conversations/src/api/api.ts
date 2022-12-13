@@ -1,2 +1,2 @@
 export * from './CommentApi'
-export * from './ConversationGroupApi'
+export * from './CollectionApi'

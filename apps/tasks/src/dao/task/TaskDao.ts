@@ -1,3 +1,4 @@
+import { QCollection } from "@airline/conversations";
 import { QTopic, Topic } from "@airline/topics";
 import { Injected } from "@airport/direction-indicator";
 import { Y } from "@airport/tarmaq-query";
@@ -15,14 +16,16 @@ export class TaskDao
     async findById(
         taskUuId: string
     ): Promise<Task> {
-        let t: QTask
+        let t: QTask,
+            c: QCollection
         return await this._findOne({
             SELECT: {
                 '*': Y,
-                conversationGroup: {}
+                collection: {}
             },
             FROM: [
-                t = Q.Task
+                t = Q.Task,
+                c = t.collection.LEFT_JOIN()
             ],
             WHERE: t.equals(taskUuId)
         })

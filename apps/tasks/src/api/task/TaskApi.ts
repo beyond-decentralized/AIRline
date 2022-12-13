@@ -1,4 +1,4 @@
-import { ConversationGroupApi } from "@airline/conversations";
+import { CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
@@ -13,7 +13,7 @@ import { GoalTaskDao } from "../../dao/dao";
 export class TaskApi {
 
     @Inject()
-    conversationGroupApi: ConversationGroupApi
+    collectionApi: CollectionApi
 
     @Inject()
     goalTaskDao: GoalTaskDao
@@ -48,9 +48,9 @@ export class TaskApi {
 
         const taskName = 'Task: ' + task.name
         const repository = await this.repositoryApi.create(taskName)
-        const conversationGroup = await this.conversationGroupApi
+        const collection = await this.collectionApi
             .create(taskName, repository)
-        task.conversationGroup = conversationGroup
+        task.collection = collection
 
         task.repository = repository
         await this.taskDao.save(task)

@@ -1,18 +1,18 @@
-import { IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
+import { IonBackButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { useParams } from 'react-router';
 import './ConversationPage.css';
 import { useEffect, useState } from 'react';
-import { Conversation, ConversationGroup } from '@airline/conversations';
-import { loadConversationGroup, populateConversationDetails, saveConversation } from '../api';
-import { add } from 'ionicons/icons';
+import { Conversation, Collection } from '@airline/conversations';
+import { loadCollection, populateConversationDetails, saveConversation } from '../api';
+import { add, chevronBackOutline } from 'ionicons/icons';
 import { AirConversationEdit } from '@airline/components-ui-react';
 import { OverlayEventDetail } from '@ionic/core';
 
-const ConversationGroupPage: React.FC = () => {
+const CollectionPage: React.FC = () => {
 
+  const { collectionId } = useParams<{ collectionId: string; }>();
   const [newConversation, setNewConversation] = useState<Conversation>(() => new Conversation())
-  const { conversationGroupId } = useParams<{ conversationGroupId: string; }>();
-  const [conversationGroup, setConversationGroup] = useState(() => new ConversationGroup())
+  const [collection, setCollection] = useState(() => new Collection())
   const [present] = useIonToast()
 
   function showToast(
@@ -23,8 +23,8 @@ const ConversationGroupPage: React.FC = () => {
   }
 
   useEffect(() => {
-    loadConversationGroup(conversationGroupId, newConversation, setConversationGroup, present)
-  }, [])
+    loadCollection(collectionId, newConversation, setCollection, present)
+  }, [collectionId])
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
@@ -37,11 +37,11 @@ const ConversationGroupPage: React.FC = () => {
         conversation,
         participantUserAccounts,
         moderatorUserAccounts,
-        conversationGroup,
-        setConversationGroup,
+        collection,
+        setCollection,
         showToast).then(() => {
           const conversation = new Conversation()
-          conversation.conversationGroup = conversationGroup
+          conversation.collection = collection
           setNewConversation(conversation)
         })
     }
@@ -51,12 +51,12 @@ const ConversationGroupPage: React.FC = () => {
   let addButton
   let title
 
-  if (conversationGroup && conversationGroup.conversationGroupConversations) {
-    title = `${conversationGroup.name} Conversations`
+  if (collection && collection.collectionConversations) {
+    title = `${collection.name} Conversations`
     conversationsView =
       <>
-        {conversationGroup.conversationGroupConversations
-          .map(conversationGroupConversation => conversationGroupConversation.conversation)
+        {collection.collectionConversations
+          .map(collectionConversation => collectionConversation.conversation)
           .map(conversation =>
             <IonItem
               key={conversation.id}
@@ -95,22 +95,17 @@ const ConversationGroupPage: React.FC = () => {
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonMenuButton />
+            <IonBackButton text="" icon={chevronBackOutline}></IonBackButton>
           </IonButtons>
           <IonTitle>{title}</IonTitle>
         </IonToolbar>
       </IonHeader>
-      {addButton}
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">{title}</IonTitle>
-          </IonToolbar>
-        </IonHeader>
+        {addButton}
         {conversationsView}
       </IonContent>
     </IonPage>
   );
 };
 
-export default ConversationGroupPage;
+export default CollectionPage;

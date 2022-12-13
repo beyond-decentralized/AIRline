@@ -15,12 +15,12 @@ export class GoalDao
         return await this._find({
             SELECT: {
                 '*': Y,
-                conversationGroup: {},
+                collection: {},
                 topic: {}
             },
             FROM: [
                 g = Q.Goal,
-                g.conversationGroup.LEFT_JOIN(),
+                g.collection.LEFT_JOIN(),
                 g.topic.LEFT_JOIN()
             ]
         })
@@ -33,12 +33,12 @@ export class GoalDao
         return await this._findOne({
             SELECT: {
                 '*': Y,
-                conversationGroup: {},
+                collection: {},
                 topic: {}
             },
             FROM: [
                 g = Q.Goal,
-                g.conversationGroup.LEFT_JOIN(),
+                g.collection.LEFT_JOIN(),
                 g.topic.LEFT_JOIN()
             ],
             WHERE: g.equals(goalUuId)
@@ -53,14 +53,14 @@ export class GoalDao
         return await this._find({
             SELECT: {
                 '*': Y,
-                conversationGroup: {
+                collection: {
                 },
                 topic: {}
             },
             FROM: [
                 g = Q.Goal,
                 to = g.topic.LEFT_JOIN(),
-                g.conversationGroup.LEFT_JOIN()
+                g.collection.LEFT_JOIN()
             ],
             WHERE: to.equals(topic)
         })

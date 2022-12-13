@@ -1,11 +1,11 @@
 import { Topic } from "@airline/topics";
 import { AirEntity } from "@airport/holding-pattern";
 import { Column, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
-import { ConversationGroupConversation } from "./ConversationGroupConversation";
+import { CollectionConversation } from "./CollectionConversation";
 
 @Entity()
-@Table({ name: 'CONVERSATION_GROUPS' })
-export class ConversationGroup
+@Table({ name: 'COLLECTIONS' })
+export class Collection
     extends AirEntity {
 
     @Column({ name: 'NAME' })
@@ -14,7 +14,7 @@ export class ConversationGroup
     @ManyToOne()
     topic: Topic
 
-    @OneToMany({ mappedBy: "conversationGroup" })
-    conversationGroupConversations: ConversationGroupConversation[] = []
+    @OneToMany({ mappedBy: "collection" })
+    collectionConversations: CollectionConversation[] = []
 
 }

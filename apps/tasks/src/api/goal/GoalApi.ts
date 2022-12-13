@@ -1,4 +1,4 @@
-import { ConversationGroup, ConversationGroupApi } from "@airline/conversations";
+import { Collection, CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
@@ -10,7 +10,7 @@ import { Goal } from "../../ddl/goal/Goal";
 export class GoalApi {
 
     @Inject()
-    conversationGroupApi: ConversationGroupApi
+    collectionApi: CollectionApi
 
     @Inject()
     goalDao: GoalDao
@@ -47,9 +47,9 @@ export class GoalApi {
 
         const goalName = 'Goal: ' + goal.name
         const repository = await this.repositoryApi.create(goalName)
-        const conversationGroup = await this.conversationGroupApi
+        const collection = await this.collectionApi
             .create(goalName, repository)
-        goal.conversationGroup = conversationGroup
+        goal.collection = collection
 
         goal.repository = repository
         await this.goalDao.save(goal)

@@ -4,10 +4,10 @@ import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
 import { UserAccount } from "@airport/travel-document-checkpoint";
 import { ConversationDao } from "../dao/ConversationDao";
-import { ConversationGroupConversationDao } from "../dao/ConversationGroupConversationDao";
+import { CollectionConversationDao } from "../dao/CollectionConversationDao";
 import { Conversation } from "../ddl/Conversation";
-import { ConversationGroup } from "../ddl/ConversationGroup";
-import { ConversationGroupConversation } from "../ddl/ConversationGroupConversation";
+import { Collection } from "../ddl/Collection";
+import { CollectionConversation } from "../ddl/CollectionConversation";
 import { Moderator } from "../ddl/Moderator";
 import { Participant } from "../ddl/Participant";
 
@@ -18,7 +18,7 @@ export class ConversationApi {
     conversationDao: ConversationDao
 
     @Inject()
-    conversationGroupConversationDao: ConversationGroupConversationDao
+    collectionConversationDao: CollectionConversationDao
 
     @Inject()
     requestManager: RequestManager
@@ -28,12 +28,12 @@ export class ConversationApi {
 
     @Api()
     async create(
-        conversationGroup: ConversationGroup,
+        collection: Collection,
         participantUserAccounts: UserAccount[],
         moderatorUserAccounts: UserAccount[]
     ): Promise<Conversation> {
         const conversation = new Conversation()
-        conversation.conversationGroup = conversationGroup
+        conversation.collection = collection
 
         if (!participantUserAccounts) {
             participantUserAccounts = []
@@ -59,11 +59,11 @@ export class ConversationApi {
                 conversation.moderators.push(moderator)
             }
         }
-        conversation.conversationGroup = conversationGroup
+        conversation.collection = collection
 
         const repository = await this.repositoryApi.create(
             'Conversation: ' + participantUserNames.join(', '),
-            conversationGroup.repository,
+            collection.repository,
             'Conversations'
         )
         conversation.repository = repository
@@ -72,12 +72,12 @@ export class ConversationApi {
         await this.repositoryApi
             .setUiEntryUri('http://localhost:3002/conversation/' + conversation.id, repository)
 
-        const conversationGroupConversation = new ConversationGroupConversation()
-        conversationGroupConversation.conversationGroup = conversationGroup
-        conversationGroupConversation.conversation = conversation
-        conversationGroup.conversationGroupConversations.push(conversationGroupConversation)
-        conversationGroupConversation.repository = conversationGroup.repository
-        this.conversationGroupConversationDao.save(conversationGroupConversation)
+        const collectionConversation = new CollectionConversation()
+        collectionConversation.collection = collection
+        collectionConversation.conversation = conversation
+        collection.collectionConversations.push(collectionConversation)
+        collectionConversation.repository = collection.repository
+        this.collectionConversationDao.save(collectionConversation)
 
         return conversation
     }

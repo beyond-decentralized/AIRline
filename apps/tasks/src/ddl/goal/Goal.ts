@@ -1,4 +1,4 @@
-import { ConversationGroup } from "@airline/conversations";
+import { Collection } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { AirEntity } from "@airport/holding-pattern";
 import { Column, DbNumber, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
@@ -30,7 +30,7 @@ export class Goal
     topic: Topic
 
     @ManyToOne()
-    conversationGroup: ConversationGroup
+    collection: Collection
 
     // Link in the Goal Repository (instead of OneToMany directly to Task,
     // which are in different repositories)
