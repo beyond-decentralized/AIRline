@@ -45,10 +45,10 @@ const App: React.FC = () => {
             <Route exact path="/collections">
               <CollectionsPage />
             </Route>
-            <Route exact path="/collection/:collectionId">
+            <Route path="/collection/:collectionId">
               <CollectionPage />
             </Route>
-            <Route exact path="/conversation/:conversationId">
+            <Route path="/conversation/:conversationId">
               <ConversationPage />
             </Route>
             <Route exact path="/">

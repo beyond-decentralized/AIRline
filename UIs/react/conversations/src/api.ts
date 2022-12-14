@@ -9,18 +9,15 @@ const sessionStateApi = new SessionStateApi()
 
 let loggedInUser: UserAccount
 
-export async function getLoggedInUser(
-    setUserAccount: (userAccount: UserAccount) => void,
-    setMessage: (message: string, duration: number) => void
-) {
+async function getLoggedInUser() {
     try {
         loggedInUser = await sessionStateApi.getLoggedInUser()
-        setUserAccount(loggedInUser)
     } catch (e) {
         console.error(e)
-        setMessage('Error retrieving Logged In User', 10000)
     }
 }
+
+getLoggedInUser().then()
 
 async function wait(
     millis: number

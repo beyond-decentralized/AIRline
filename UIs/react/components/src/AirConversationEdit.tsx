@@ -3,6 +3,7 @@ import { UserAccount } from "@airport/travel-document-checkpoint";
 import { OverlayEventDetail } from "@ionic/core";
 import { IonAvatar, IonButton, IonButtons, IonChip, IonContent, IonHeader, IonItem, IonLabel, IonModal, IonTitle, IonToolbar, useIonToast } from "@ionic/react";
 import React, { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router";
 
 export function AirConversationEdit({
     conversation,
@@ -20,6 +21,8 @@ export function AirConversationEdit({
     onWillDismiss: (ev: CustomEvent<OverlayEventDetail>) => void
     triggerId: string
 }) {
+    const { collectionId } = useParams<{ collectionId: string; }>();
+
     const modal = useRef<HTMLIonModalElement>(null);
     const [participantUserAccounts, setParticipantUserAccounts] = useState<UserAccount[]>(() => [])
     const [moderatorUserAccounts, setModeratorUserAccounts] = useState<UserAccount[]>(() => [])
@@ -34,7 +37,7 @@ export function AirConversationEdit({
 
     useEffect(() => {
         populateConversationDetails(conversation, setParticipantUserAccounts, setModeratorUserAccounts, showToast).then()
-    }, [])
+    }, [collectionId])
 
     function saveConversation() {
         modal.current?.dismiss({

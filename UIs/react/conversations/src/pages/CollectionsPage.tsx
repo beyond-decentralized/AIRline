@@ -3,7 +3,7 @@ import { UserAccount } from '@airport/travel-document-checkpoint';
 import { IonBackButton, IonButtons, IonContent, IonHeader, IonItem, IonList, IonListHeader, IonMenuButton, IonNote, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { chevronBackOutline } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
-import { getCollectionsByTopic, getLoggedInUser } from '../api';
+import { getCollectionsByTopic } from '../api';
 import './CollectionsPage.css';
 
 const CollectionsPage: React.FC = () => {
@@ -21,7 +21,6 @@ const CollectionsPage: React.FC = () => {
   }
 
   useEffect(() => {
-    getLoggedInUser(setUserAccount, showToast).then()
     getCollectionsByTopic(setCollectionsByTopic, showToast).then()
   }, [])
   let username = ''
@@ -46,7 +45,7 @@ const CollectionsPage: React.FC = () => {
             <IonListHeader>{collectionsForTopic[0].topic ? collectionsForTopic[0].topic.name : 'No Topic'}</IonListHeader>
             {collectionsForTopic.map(collection =>
               <IonItem key={collection.id}
-                routerLink={`/collection/${collection.id}`}
+                href={`/collection/${collection.id}`}
               >
                 {collection.name}
               </IonItem>

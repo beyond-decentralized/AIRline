@@ -1,10 +1,10 @@
-import { IonBackButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
+import { IonBackButton, IonButton, IonButtons, IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonMenuButton, IonPage, IonTitle, IonToolbar, useIonToast } from '@ionic/react';
 import { useParams } from 'react-router';
 import './ConversationPage.css';
 import { useEffect, useState } from 'react';
 import { Conversation, Collection } from '@airline/conversations';
 import { loadCollection, populateConversationDetails, saveConversation } from '../api';
-import { add, chevronBackOutline } from 'ionicons/icons';
+import { add, chevronBackOutline, eyeOutline } from 'ionicons/icons';
 import { AirConversationEdit } from '@airline/components-ui-react';
 import { OverlayEventDetail } from '@ionic/core';
 
@@ -54,15 +54,30 @@ const CollectionPage: React.FC = () => {
   let title
 
   if (collection && collection.collectionConversations) {
-    title = `${collection.name} Conversations`
+    title = `Collection`
     conversationsView =
       <>
+        <IonItem>
+          {collection.name}
+        </IonItem>
+        <IonButton
+          href={collection.repository?.uiEntryUri}
+          fill="clear"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          <IonIcon slot="start" icon={eyeOutline}></IonIcon>
+          View
+        </IonButton>
+        <IonItem>
+          Conversations:
+        </IonItem>
         {collection.collectionConversations
           .map(collectionConversation => collectionConversation.conversation)
           .map(conversation =>
             <IonItem
               key={conversation.id}
-              routerLink={'/conversation/' + conversation.id}
+              href={'/conversation/' + conversation.id}
             >
               {conversation.participants.map(participant =>
                 <div
@@ -87,9 +102,12 @@ const CollectionPage: React.FC = () => {
         ></AirConversationEdit>
       </>
   } else {
-    title = 'Group not found'
+    title = 'Collection'
     addButton = <></>
-    conversationsView = <></>
+    conversationsView =
+      <IonItem>
+        Loading ...
+      </IonItem>
   }
 
   return (
