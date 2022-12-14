@@ -4,11 +4,11 @@ import { IonContent, IonFab, IonFabButton, IonHeader, IonIcon, IonItem, IonPage,
 import { AirEisenhowerIcon, AirGoalEdit } from '@airline/components-ui-react'
 import { add } from 'ionicons/icons';
 import { useEffect, useState } from 'react';
-import { getGoals, saveGoal } from '../api';
+import { createGoal, getGoals } from '../api';
 import './GoalsPage.css';
 
 export function GoalsPage() {
-  const [currentGoal, setCurrentGoal] = useState<Goal>(() => new Goal())
+  const [newGoal, setNewGoal] = useState<Goal>(() => new Goal())
   const [goals, setGoals] = useState<Goal[]>(() => [])
   const [present, dismiss] = useIonToast()
 
@@ -25,8 +25,8 @@ export function GoalsPage() {
 
   function onWillDismiss(ev: CustomEvent<OverlayEventDetail>) {
     if (ev.detail.role === 'save') {
-      saveGoal(ev.detail.data, showToast).then(() => {
-        setCurrentGoal(new Goal())
+      createGoal(ev.detail.data, goals, setGoals, showToast).then(() => {
+        setNewGoal(new Goal())
       })
     }
   }
@@ -45,14 +45,14 @@ export function GoalsPage() {
           </IonToolbar>
         </IonHeader>
         <IonFab vertical="bottom" horizontal="end" slot="fixed">
-          <IonFabButton id="edit-goal">
+          <IonFabButton id="add-goal">
             <IonIcon icon={add} />
           </IonFabButton>
         </IonFab>
         <AirGoalEdit
-          goal={currentGoal}
+          goal={newGoal}
           onWillDismiss={onWillDismiss}
-          triggerId="edit-goal"
+          triggerId="add-goal"
         ></AirGoalEdit>
         {goals.map(goal =>
           <IonItem key={goal.id}>
@@ -69,20 +69,17 @@ export function GoalsPage() {
                     <br>
                     </br>
                     <a
-                      href={'/tasks/' + goal.id}
                       className="go-to-tasks-link"
+                      href={'/tasks/' + goal.id}
                     >Tasks</a> |
                     <a
-                      href={'http://localhost:8100/conversations/goals/' + goal.id}
                       className="go-to-conversations-link"
+                      href={'http://localhost:8100/conversations/goals/' + goal.id}
                     >Conversations</a>
                     <a
-                      className="edit-goal-link"
-                      onClick={e => {
-                        setCurrentGoal(goal)
-                        document.getElementById("edit-goal")?.click()
-                      }}
-                    >Edit</a>
+                      className="view-goal-link"
+                      href={'/goal/' + goal.id}
+                    >View</a>
                   </td>
                 </tr>
               </tbody>

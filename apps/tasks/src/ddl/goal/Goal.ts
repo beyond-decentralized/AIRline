@@ -1,7 +1,7 @@
+import { Collection } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { AirEntity } from "@airport/holding-pattern";
 import { Column, DbNumber, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
-import { GoalConversation } from "./GoalConversation";
 import { GoalStatus } from "./GoalStatus";
 import { GoalTask } from "./GoalTask";
 
@@ -29,9 +29,11 @@ export class Goal
     @ManyToOne()
     topic: Topic
 
-    @OneToMany({ mappedBy: 'goal' })
-    goalConversations: GoalConversation[]
+    @ManyToOne()
+    collection: Collection
 
+    // Link in the Goal Repository (instead of OneToMany directly to Task,
+    // which are in different repositories)
     @OneToMany({ mappedBy: 'goal' })
     goalTasks: GoalTask[]
 

@@ -1,5 +1,13 @@
 dependencies:
   '@babel/core': 7.20.5_@babel+core@7.20.5
+  '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
+  '@capacitor/core': 4.6.1
+  '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
+  '@capacitor/keyboard': 4.1.0_@capacitor+core@4.6.1
+  '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
+  '@ionic/core': 6.4.0
+  '@ionic/react': 6.4.0_react-dom@18.2.0+react@18.2.0
+  '@ionic/react-router': 6.4.0_5c58fdc9ca58488184935e5fd7f177b2
   '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_a358053c186fea2b80718c8305c5e43e
   '@rush-temp/air-traffic-control': 'file:projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:projects/airport-code.tgz'
@@ -54,6 +62,7 @@ dependencies:
   '@rush-temp/web-tower': 'file:projects/web-tower.tgz'
   '@svgr/webpack': 5.5.0
   '@testing-library/jest-dom': 5.16.5
+  '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
   '@testing-library/user-event': 12.8.3
   '@tsconfig/node16': 1.0.2
   '@types/jest': 26.0.24
@@ -86,6 +95,7 @@ dependencies:
   history: 4.10.1
   html-webpack-plugin: 5.5.0_webpack@5.75.0
   identity-obj-proxy: 3.0.0
+  ionicons: 6.0.4
   jest: 27.5.1
   jest-resolve: 27.5.1_jest-resolve@27.5.1
   jest-watch-typeahead: 1.1.0_jest@27.5.1
@@ -99,12 +109,14 @@ dependencies:
   postcss-normalize: 10.0.1_9c321c8447226b54d394c16fdf8f4918
   postcss-preset-env: 7.8.3_postcss@8.4.20
   prompts: 2.4.2
+  react: 18.2.0
   react-app-polyfill: 3.0.0
   react-dev-utils: 12.0.1_eslint@8.29.0+webpack@5.75.0
+  react-dom: 18.2.0_react@18.2.0
   react-refresh: 0.11.0
-  react-router: 5.3.4
-  react-router-dom: 5.3.4
-  react-scripts: 5.0.1
+  react-router: 5.3.4_react@18.2.0
+  react-router-dom: 5.3.4_react@18.2.0
+  react-scripts: 5.0.1_react@18.2.0
   resolve: 1.22.1
   resolve-url-loader: 4.0.0
   rollup-plugin-dts: 4.2.3
@@ -1584,14 +1596,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
-  /@capacitor/app/4.0.1_@capacitor+core@4.0.1:
-    dependencies:
-      '@capacitor/core': 4.0.1
-    dev: false
-    peerDependencies:
-      '@capacitor/core': ^4.0.0
-    resolution:
-      integrity: sha512-frPft9TMJL70jWq5jmxwGSBddZVvsWxX5Agj2i19WJerk37aTgljB05HRr/YLg6mF1G/NIXmmFJZDY8MEgirDg==
   /@capacitor/app/4.1.1_@capacitor+core@4.6.1:
     dependencies:
       '@capacitor/core': 4.6.1
@@ -1650,26 +1654,12 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-iFMK83B67RXEQyWi1kOzQmRdCFc/pPD924mjAXG7yFLVyMvVRGAwwf8LzWFzHyQDoKK+auPMHycVfzm9T6Iyyg==
-  /@capacitor/core/4.0.1:
-    dependencies:
-      tslib: 2.4.1
-    dev: false
-    resolution:
-      integrity: sha512-gita0j7UPoGyHejAUsrW1OrkyDSp7gfHn45fkeQclHRSz7UWLF4hqE1R/6INsVmIFu/amIApxfHed8h3m/Fm7g==
   /@capacitor/core/4.6.1:
     dependencies:
       tslib: 2.4.1
     dev: false
     resolution:
       integrity: sha512-7A2IV9E8umgu9u0fChUTjQJq+Jp25GJZMmWxoQN/nVx/1rcpFJ4m1xo3NPBoIRs+aV7FR+BM17mPrnkKlA8N2g==
-  /@capacitor/haptics/4.0.1_@capacitor+core@4.0.1:
-    dependencies:
-      '@capacitor/core': 4.0.1
-    dev: false
-    peerDependencies:
-      '@capacitor/core': ^4.0.0
-    resolution:
-      integrity: sha512-ZLVoLdK1Md/xIRRrDOnrLCKGRg8UENY1ShpKcysPN1z1MgcpvB/9Nbqczm3RH24zyo3MP/7homkqMzUGxPBlwQ==
   /@capacitor/haptics/4.1.0_@capacitor+core@4.6.1:
     dependencies:
       '@capacitor/core': 4.6.1
@@ -1678,14 +1668,6 @@ packages:
       '@capacitor/core': ^4.0.0
     resolution:
       integrity: sha512-gAIFy50e1VZPdokRFLkl8Y+yZYB3e4brd5yu9DRShbWbheruwU34TxtG5C1NANvq4mbXd3tMXzBi59Q5JFyTHA==
-  /@capacitor/keyboard/4.0.1_@capacitor+core@4.0.1:
-    dependencies:
-      '@capacitor/core': 4.0.1
-    dev: false
-    peerDependencies:
-      '@capacitor/core': ^4.0.0
-    resolution:
-      integrity: sha512-JZVci2v9jAKH0sIoNNZzmw/cWGXWf+KneLt0yDr/6YSs/2/tfuH10yOrUOhgrKFkR+fFj/rddTClQXUQ8Rqcrg==
   /@capacitor/keyboard/4.1.0_@capacitor+core@4.6.1:
     dependencies:
       '@capacitor/core': 4.6.1
@@ -1694,14 +1676,6 @@ packages:
       '@capacitor/core': ^4.0.0
     resolution:
       integrity: sha512-5fanmJLdkXLEaro0oezkmpC15tBGlsLW4cp1jQTMPwyX6NLlPUFHdWUhMERzxL2QXHmHvtoFMJ4m15Eymgefuw==
-  /@capacitor/status-bar/4.0.1_@capacitor+core@4.0.1:
-    dependencies:
-      '@capacitor/core': 4.0.1
-    dev: false
-    peerDependencies:
-      '@capacitor/core': ^4.0.0
-    resolution:
-      integrity: sha512-BmEyOf3m/hAf8bO4hCX0m5gpQPSgd05mGYl+9E841WUZeJjcYlmiG/EBshAUb2uGCVtyNaG36yPXB0r0Ypg+rw==
   /@capacitor/status-bar/4.1.1_@capacitor+core@4.6.1:
     dependencies:
       '@capacitor/core': 4.6.1
@@ -1948,22 +1922,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-rWqXX67bWDD5r5Kleacy4dTBIXcB1gX+2Q5AK7LAtmtHUUuJPqGw/bAWE8hGKlF7ehJTyzb5CYV9XDzb8/00Zw==
-  /@ionic/react-router/6.4.0_1546e8dac1072b77578c42476db31328:
-    dependencies:
-      '@ionic/react': 6.4.0_react-dom@17.0.2+react@17.0.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      react-router: 5.3.4_react@17.0.2
-      react-router-dom: 5.3.4_react@17.0.2
-      tslib: 2.4.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8.6'
-      react-dom: '>=16.8.6'
-      react-router: ^5.0.1
-      react-router-dom: ^5.0.1
-    resolution:
-      integrity: sha512-AhebRCiS9GQA5aoU3LFoRpl+8kuhJMJTYavbZe/Y62R0vyWabn3KEhtHszjuQLf0iTSWagzIIcjCpjFqMDGb5g==
   /@ionic/react-router/6.4.0_5c58fdc9ca58488184935e5fd7f177b2:
     dependencies:
       '@ionic/react': 6.4.0_react-dom@18.2.0+react@18.2.0
@@ -1980,19 +1938,6 @@ packages:
       react-router-dom: ^5.0.1
     resolution:
       integrity: sha512-AhebRCiS9GQA5aoU3LFoRpl+8kuhJMJTYavbZe/Y62R0vyWabn3KEhtHszjuQLf0iTSWagzIIcjCpjFqMDGb5g==
-  /@ionic/react/6.4.0_react-dom@17.0.2+react@17.0.2:
-    dependencies:
-      '@ionic/core': 6.4.0
-      ionicons: 6.0.4
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      tslib: 2.4.1
-    dev: false
-    peerDependencies:
-      react: '>=16.8.6'
-      react-dom: '>=16.8.6'
-    resolution:
-      integrity: sha512-TgKmIVBR0puqvm2N6PYSdW36ASDwha363oa2MAir6Ir5DAWpXZ9GbG9Wpizh/WDEdRPtdejWFIHJ54MPXOVLAQ==
   /@ionic/react/6.4.0_react-dom@18.2.0+react@18.2.0:
     dependencies:
       '@ionic/core': 6.4.0
@@ -2632,14 +2577,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-OAPJUAtgeINhh/TAlUID4QTs53Njm7xzddaVlEs/SXwgtiD1tW22zAB/W1wdqfrpmikgaWQ9Fw6Ws+hsiRm5Vg==
-  /@stencil/core/2.10.0:
-    dev: false
-    engines:
-      node: '>=12.10.0'
-      npm: '>=6.0.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-15rWMTPQ/sp0lSV82HVCXkIya3QLN+uBl7pqK4JnTrp4HiLrzLmNbWjbvgCs55gw0lULbCIGbRIEsFz+Pe/Q+A==
   /@stencil/core/2.20.0:
     dev: false
     engines:
@@ -2774,21 +2711,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-DOBOK255wfQxguUta2INKkzPj6AIS6iafZYiYmHn6W3pHlycSRRlvWKCfLDG10fXfLWqE3DJHgRUOyJYmARa7g==
-  /@testing-library/dom/7.31.2:
-    dependencies:
-      '@babel/code-frame': 7.18.6
-      '@babel/runtime': 7.20.6
-      '@types/aria-query': 4.2.2
-      aria-query: 4.2.2
-      chalk: 4.1.2
-      dom-accessibility-api: 0.5.14
-      lz-string: 1.4.4
-      pretty-format: 26.6.2
-    dev: false
-    engines:
-      node: '>=10'
-    resolution:
-      integrity: sha512-3UqjCpey6HiTZT92vODYLPxTBWlM8ZOOjr3LX5F37/VRipW2M1kX6I/Cm4VXzteZqfGfagg8yXywpcOgQBlNsQ==
   /@testing-library/dom/8.19.0:
     dependencies:
       '@babel/code-frame': 7.18.6
@@ -2822,20 +2744,6 @@ packages:
       yarn: '>=1'
     resolution:
       integrity: sha512-N5ixQ2qKpi5OLYfwQmUb/5mSV9LneAcaUfp32pn4yCnpb8r/Yz0pXFPck21dIicKmi+ta5WRAknkZCfA8refMA==
-  /@testing-library/react/11.2.7_react-dom@17.0.2+react@17.0.2:
-    dependencies:
-      '@babel/runtime': 7.20.6
-      '@testing-library/dom': 7.31.2
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-    dev: false
-    engines:
-      node: '>=10'
-    peerDependencies:
-      react: '*'
-      react-dom: '*'
-    resolution:
-      integrity: sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==
   /@testing-library/react/13.4.0_react-dom@18.2.0+react@18.2.0:
     dependencies:
       '@babel/runtime': 7.20.6
@@ -2975,7 +2883,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-DxMhY+NAsTwMMFHBTtJFNp5qiHKJ7TeqOo23zVEM9alT1Ml27Q3xcTH0xwxn7Q0BbMcVEJOs/7aQtUWupUQN3Q==
-  /@types/express/4.17.15:
+  /@types/express/4.17.14:
     dependencies:
       '@types/body-parser': 1.19.2
       '@types/express-serve-static-core': 4.17.31
@@ -2983,7 +2891,7 @@ packages:
       '@types/serve-static': 1.15.0
     dev: false
     resolution:
-      integrity: sha512-Yv0k4bXGOH+8a+7bELd2PqHQsuiANB+A8a4gnQrkRWzrkKlb6KHaVvyXhqs04sVW/OWlbPyYxRgYlIXLfrufMQ==
+      integrity: sha512-TEbt+vaPFQ+xpxFLFssxUDXj5cWCxZJjIcB7Yg0k0GMHGtgtQgpvx/MUQUeAkNbA9AAGrwkAsoeItdTgS7FMyg==
   /@types/fs-extra/8.1.2:
     dependencies:
       '@types/node': 12.20.55
@@ -3097,12 +3005,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-EEhsLsD6UsDM1yFhAvy0Cjr6VwmpMWqFBCb9w07wVugF7w9nfajxLuVmngTIpgS6svCnm6Vaw+MZhoDCKnOfsw==
-  /@types/react-dom/16.9.17:
-    dependencies:
-      '@types/react': 16.14.34
-    dev: false
-    resolution:
-      integrity: sha512-qSRyxEsrm5btPXnowDOs5jSkgT8ldAA0j6Qp+otHUh+xHzy3sXmgNfyhucZjAjkgpdAUw9rJe0QRtX/l+yaS4g==
   /@types/react-dom/18.0.9:
     dependencies:
       '@types/react': 18.0.26
@@ -3124,22 +3026,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Fv/5kb2STAEMT3wHzdKQK2z8xKq38EDIGVrutYLmQVVLe+4orDFquU52hQrULnEHinMKv9FSA6lf9+uNT1ITtA==
-  /@types/react/16.14.34:
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-    dev: false
-    resolution:
-      integrity: sha512-b99nWeGGReLh6aKBppghVqp93dFJtgtDOzc8NXM6hewD8PQ2zZG5kBLgbx+VJr7Q7WBMjHxaIl3dwpwwPIUgyA==
-  /@types/react/17.0.52:
-    dependencies:
-      '@types/prop-types': 15.7.5
-      '@types/scheduler': 0.16.2
-      csstype: 3.1.1
-    dev: false
-    resolution:
-      integrity: sha512-vwk8QqVODi0VaZZpDXQCmEmiOuyjEFPY7Ttaw5vjM112LOq37yz1CDJGrRJwA1fYEq4Iitd5rnjd1yWAc/bT+A==
   /@types/react/18.0.26:
     dependencies:
       '@types/prop-types': 15.7.5
@@ -3168,7 +3054,7 @@ packages:
       integrity: sha512-21cFJr9z3g5dW8B0CVI9g2O9beqaThGQ6ZFBqHfwhzLDKUxaqTIy3vnfah/UPkfOiF2pLq+tGz+W8RyCskuslw==
   /@types/serve-index/1.9.1:
     dependencies:
-      '@types/express': 4.17.15
+      '@types/express': 4.17.14
     dev: false
     resolution:
       integrity: sha512-d/Hs3nWDxNL2xAczmOVZNj92YZCS6RGxfBPjKzuu/XirCgXdpKEb88dYNbrYGint6IVWLNP+yonwVAuRC0T2Dg==
@@ -6743,9 +6629,9 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-k0zdNgqWTGA6aeIRVpvfVob4fL52dTfaehylg0Y4UvSySvOq/Y+BOyPrgpUrA7HylqvU8vIZGsRuXmspskV0Tg==
-  /http-proxy-middleware/2.0.6_@types+express@4.17.15:
+  /http-proxy-middleware/2.0.6_@types+express@4.17.14:
     dependencies:
-      '@types/express': 4.17.15
+      '@types/express': 4.17.14
       '@types/http-proxy': 1.17.9
       http-proxy: 1.18.1
       is-glob: 4.0.3
@@ -6920,12 +6806,6 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-tA8URYccNzMo94s5MQZgH8NB/XTa6HsOo0MLfXTKKEnHVVdegzaQoFZ7Jp44bdvLvY2waT5dc+j5ICEswhi7UQ==
-  /ionicons/5.5.4:
-    dependencies:
-      '@stencil/core': 2.10.0
-    dev: false
-    resolution:
-      integrity: sha512-3ph8X9my3inhabWEZ7N0XRA0MnnNQ1v9a602mLNgWsIXnxE9G5BybIZ/pws/OZZ/hoNlvSjk801N03yL9/FNgQ==
   /ionicons/6.0.4:
     dependencies:
       '@stencil/core': 2.20.0
@@ -10110,17 +9990,6 @@ packages:
       webpack: '*'
     resolution:
       integrity: sha512-84Ivxmr17KjUupyqzFode6xKhjwuEJDROWKJy/BthkL7Wn6NJ8h4WE6k/exAv6ImS+0oZLRRW5j/aINMHyeGeQ==
-  /react-dom/17.0.2_react@17.0.2:
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react: 17.0.2
-      scheduler: 0.20.2
-    dev: false
-    peerDependencies:
-      react: 17.0.2
-    resolution:
-      integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==
   /react-dom/18.2.0_react@18.2.0:
     dependencies:
       loose-envify: 1.4.0
@@ -10153,35 +10022,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==
-  /react-router-dom/5.3.4:
-    dependencies:
-      '@babel/runtime': 7.20.6
-      history: 4.10.1
-      loose-envify: 1.4.0
-      prop-types: 15.8.1
-      react-router: 5.3.4
-      tiny-invariant: 1.3.1
-      tiny-warning: 1.0.3
-    dev: false
-    peerDependencies:
-      react: '>=15'
-    resolution:
-      integrity: sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==
-  /react-router-dom/5.3.4_react@17.0.2:
-    dependencies:
-      '@babel/runtime': 7.20.6
-      history: 4.10.1
-      loose-envify: 1.4.0
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-router: 5.3.4_react@17.0.2
-      tiny-invariant: 1.3.1
-      tiny-warning: 1.0.3
-    dev: false
-    peerDependencies:
-      react: '>=15'
-    resolution:
-      integrity: sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==
   /react-router-dom/5.3.4_react@18.2.0:
     dependencies:
       '@babel/runtime': 7.20.6
@@ -10197,39 +10037,6 @@ packages:
       react: '>=15'
     resolution:
       integrity: sha512-m4EqFMHv/Ih4kpcBCONHbkT68KoAeHN4p3lAGoNryfHi0dMy0kCzEZakiKRsvg5wHZ/JLrLW8o8KomWiz/qbYQ==
-  /react-router/5.3.4:
-    dependencies:
-      '@babel/runtime': 7.20.6
-      history: 4.10.1
-      hoist-non-react-statics: 3.3.2
-      loose-envify: 1.4.0
-      path-to-regexp: 1.8.0
-      prop-types: 15.8.1
-      react-is: 16.13.1
-      tiny-invariant: 1.3.1
-      tiny-warning: 1.0.3
-    dev: false
-    peerDependencies:
-      react: '>=15'
-    resolution:
-      integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==
-  /react-router/5.3.4_react@17.0.2:
-    dependencies:
-      '@babel/runtime': 7.20.6
-      history: 4.10.1
-      hoist-non-react-statics: 3.3.2
-      loose-envify: 1.4.0
-      path-to-regexp: 1.8.0
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-is: 16.13.1
-      tiny-invariant: 1.3.1
-      tiny-warning: 1.0.3
-    dev: false
-    peerDependencies:
-      react: '>=15'
-    resolution:
-      integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==
   /react-router/5.3.4_react@18.2.0:
     dependencies:
       '@babel/runtime': 7.20.6
@@ -10247,7 +10054,7 @@ packages:
       react: '>=15'
     resolution:
       integrity: sha512-Ys9K+ppnJah3QuaRiLxk+jDWOR1MekYQrlytiXxC1RyfbdsZkS5pvKAzCCr031xHixZwpnsYNT5xysdFHQaYsA==
-  /react-scripts/5.0.1:
+  /react-scripts/5.0.1_react@18.2.0:
     dependencies:
       '@babel/core': 7.20.5_@babel+core@7.20.5
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_a358053c186fea2b80718c8305c5e43e
@@ -10281,6 +10088,7 @@ packages:
       postcss-normalize: 10.0.1_9c321c8447226b54d394c16fdf8f4918
       postcss-preset-env: 7.8.3_postcss@8.4.20
       prompts: 2.4.2
+      react: 18.2.0
       react-app-polyfill: 3.0.0
       react-dev-utils: 12.0.1_eslint@8.29.0+webpack@5.75.0
       react-refresh: 0.11.0
@@ -10310,7 +10118,7 @@ packages:
         optional: true
     resolution:
       integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
-  /react-scripts/5.0.1_react@17.0.2+typescript@4.9.4:
+  /react-scripts/5.0.1_react@18.2.0+typescript@4.9.4:
     dependencies:
       '@babel/core': 7.20.5_@babel+core@7.20.5
       '@pmmmwh/react-refresh-webpack-plugin': 0.5.10_a358053c186fea2b80718c8305c5e43e
@@ -10344,7 +10152,7 @@ packages:
       postcss-normalize: 10.0.1_9c321c8447226b54d394c16fdf8f4918
       postcss-preset-env: 7.8.3_postcss@8.4.20
       prompts: 2.4.2
-      react: 17.0.2
+      react: 18.2.0
       react-app-polyfill: 3.0.0
       react-dev-utils: 12.0.1_a50288bec3f95f766c3161a9bd8b67f3
       react-refresh: 0.11.0
@@ -10375,15 +10183,6 @@ packages:
         optional: true
     resolution:
       integrity: sha512-8VAmEm/ZAwQzJ+GOMLbBsTdDKOpuZh7RPs0UymvBR2vRk4iZWCskjbFnxqjrzoIvlNNRZ3QJFx6/qDSi6zSnaQ==
-  /react/17.0.2:
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-    dev: false
-    engines:
-      node: '>=0.10.0'
-    resolution:
-      integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==
   /react/18.2.0:
     dependencies:
       loose-envify: 1.4.0
@@ -10847,13 +10646,6 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==
-  /scheduler/0.20.2:
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-    dev: false
-    resolution:
-      integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==
   /scheduler/0.23.0:
     dependencies:
       loose-envify: 1.4.0
@@ -12107,7 +11899,7 @@ packages:
     dependencies:
       '@types/bonjour': 3.5.10
       '@types/connect-history-api-fallback': 1.3.5
-      '@types/express': 4.17.15
+      '@types/express': 4.17.14
       '@types/serve-index': 1.9.1
       '@types/serve-static': 1.15.0
       '@types/sockjs': 0.3.33
@@ -12122,7 +11914,7 @@ packages:
       express: 4.18.2
       graceful-fs: 4.2.10
       html-entities: 2.3.3
-      http-proxy-middleware: 2.0.6_@types+express@4.17.15
+      http-proxy-middleware: 2.0.6_@types+express@4.17.14
       ipaddr.js: 2.0.1
       open: 8.4.0
       p-retry: 4.6.2
@@ -12898,29 +12690,29 @@ packages:
     version: 0.0.0
   'file:projects/components-ui-react.tgz_postcss@8.4.20+tslib@2.4.1':
     dependencies:
-      '@capacitor/app': 4.0.1_@capacitor+core@4.0.1
+      '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
       '@capacitor/cli': 4.0.1
-      '@capacitor/core': 4.0.1
-      '@capacitor/haptics': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/keyboard': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/status-bar': 4.0.1_@capacitor+core@4.0.1
+      '@capacitor/core': 4.6.1
+      '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/keyboard': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
       '@ionic/core': 6.4.0
-      '@ionic/react': 6.4.0_react-dom@17.0.2+react@17.0.2
-      '@ionic/react-router': 6.4.0_1546e8dac1072b77578c42476db31328
+      '@ionic/react': 6.4.0_react-dom@18.2.0+react@18.2.0
+      '@ionic/react-router': 6.4.0_5c58fdc9ca58488184935e5fd7f177b2
       '@rollup/plugin-commonjs': 21.1.0_rollup@2.79.1
       '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
       '@rollup/plugin-typescript': 8.5.0_905125611895ceb1b1b2fc58dab912cd
       '@types/jest': 26.0.24
       '@types/node': 12.20.55
-      '@types/react': 17.0.52
-      '@types/react-dom': 16.9.17
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
       '@types/react-router': 5.1.19
       '@types/react-router-dom': 5.3.3
-      ionicons: 5.5.4
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      react-router: 5.3.4_react@17.0.2
-      react-router-dom: 5.3.4_react@17.0.2
+      ionicons: 6.0.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 5.3.4_react@18.2.0
+      react-router-dom: 5.3.4_react@18.2.0
       rollup: 2.79.1
       rollup-plugin-dts: 4.2.3_rollup@2.79.1+typescript@4.9.4
       rollup-plugin-peer-deps-external: 2.2.4_rollup@2.79.1
@@ -12934,36 +12726,36 @@ packages:
       postcss: '*'
       tslib: '*'
     resolution:
-      integrity: sha512-n+Z/KM57eXEhOpJLvmyDpMnqM9CwwBIsrV07DDtEsrXVgwASi5Qja3v6sdMbWuwOi+YQJXRaOCl3MVVHr8jcWg==
+      integrity: sha512-W+TG8bWMYzB6D0e3ZH0Dqtc/v8Vw1swikhRn6RfN6iAboQEcubi6qRSUB7KIADG+Ksr7r5KxK7PKBzN6e9dW8w==
       tarball: 'file:projects/components-ui-react.tgz'
     version: 0.0.0
   'file:projects/conversations-ui-react.tgz':
     dependencies:
-      '@capacitor/app': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/cli': 4.0.1
-      '@capacitor/core': 4.0.1
-      '@capacitor/haptics': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/keyboard': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/status-bar': 4.0.1_@capacitor+core@4.0.1
+      '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
+      '@capacitor/cli': 4.6.1
+      '@capacitor/core': 4.6.1
+      '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/keyboard': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
       '@ionic/core': 6.4.0
-      '@ionic/react': 6.4.0_react-dom@17.0.2+react@17.0.2
-      '@ionic/react-router': 6.4.0_1546e8dac1072b77578c42476db31328
+      '@ionic/react': 6.4.0_react-dom@18.2.0+react@18.2.0
+      '@ionic/react-router': 6.4.0_5c58fdc9ca58488184935e5fd7f177b2
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
+      '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
       '@testing-library/user-event': 12.8.3
       '@types/jest': 26.0.24
       '@types/node': 12.20.55
-      '@types/react': 16.14.34
-      '@types/react-dom': 16.9.17
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
       '@types/react-router': 5.1.19
       '@types/react-router-dom': 5.3.3
-      cross-env: 7.0.3
-      ionicons: 5.5.4
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      react-router: 5.3.4_react@17.0.2
-      react-router-dom: 5.3.4_react@17.0.2
-      react-scripts: 5.0.1_react@17.0.2+typescript@4.9.4
+      history: 4.10.1
+      ionicons: 6.0.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 5.3.4_react@18.2.0
+      react-router-dom: 5.3.4_react@18.2.0
+      react-scripts: 5.0.1_react@18.2.0+typescript@4.9.4
       typescript: 4.9.4
       web-vitals: 0.2.4
       workbox-background-sync: 5.1.4
@@ -12981,7 +12773,7 @@ packages:
     dev: false
     name: '@rush-temp/conversations-ui-react'
     resolution:
-      integrity: sha512-AIv9rcCCpbTh72PQ3lR1/bsd4fnvcVqQmmtxq1zTLn97/NArCsZr79M35cg/NV1eveCQD5CzH7bJeORWTbwJWg==
+      integrity: sha512-1Zt3clWtnU4xyQacm4JGp/SO7BQ0XXI39p7Cm8BOF9dVNKTdD6tGYqvxKTP+FbWit/8Q/T8onb12ik37sBjTmg==
       tarball: 'file:projects/conversations-ui-react.tgz'
     version: 0.0.0
   'file:projects/conversations.tgz':
@@ -13408,31 +13200,32 @@ packages:
     version: 0.0.0
   'file:projects/tasks-ui-react.tgz':
     dependencies:
-      '@capacitor/app': 4.0.1_@capacitor+core@4.0.1
+      '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
       '@capacitor/cli': 4.0.1
-      '@capacitor/core': 4.0.1
-      '@capacitor/haptics': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/keyboard': 4.0.1_@capacitor+core@4.0.1
-      '@capacitor/status-bar': 4.0.1_@capacitor+core@4.0.1
+      '@capacitor/core': 4.6.1
+      '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/keyboard': 4.1.0_@capacitor+core@4.6.1
+      '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
       '@ionic/core': 6.4.0
-      '@ionic/react': 6.4.0_react-dom@17.0.2+react@17.0.2
-      '@ionic/react-router': 6.4.0_1546e8dac1072b77578c42476db31328
+      '@ionic/react': 6.4.0_react-dom@18.2.0+react@18.2.0
+      '@ionic/react-router': 6.4.0_5c58fdc9ca58488184935e5fd7f177b2
       '@testing-library/jest-dom': 5.16.5
-      '@testing-library/react': 11.2.7_react-dom@17.0.2+react@17.0.2
+      '@testing-library/react': 13.4.0_react-dom@18.2.0+react@18.2.0
       '@testing-library/user-event': 12.8.3
       '@types/jest': 26.0.24
       '@types/node': 12.20.55
-      '@types/react': 16.14.34
-      '@types/react-dom': 16.9.17
+      '@types/react': 18.0.26
+      '@types/react-dom': 18.0.9
       '@types/react-router': 5.1.19
       '@types/react-router-dom': 5.3.3
       cross-env: 7.0.3
-      ionicons: 5.5.4
-      react: 17.0.2
-      react-dom: 17.0.2_react@17.0.2
-      react-router: 5.3.4_react@17.0.2
-      react-router-dom: 5.3.4_react@17.0.2
-      react-scripts: 5.0.1_react@17.0.2+typescript@4.9.4
+      history: 4.10.1
+      ionicons: 6.0.4
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-router: 5.3.4_react@18.2.0
+      react-router-dom: 5.3.4_react@18.2.0
+      react-scripts: 5.0.1_react@18.2.0+typescript@4.9.4
       typescript: 4.9.4
       web-vitals: 0.2.4
       workbox-background-sync: 5.1.4
@@ -13450,7 +13243,7 @@ packages:
     dev: false
     name: '@rush-temp/tasks-ui-react'
     resolution:
-      integrity: sha512-CbaVQOeAwkM5uOP96AvAg93a3gju9e809WELOj2RZsinJlhtXvJKpxGXjSVYqm3AiErhfjqSoOG8rk8sjAA27Q==
+      integrity: sha512-C+gm50eqhWv71ipJ+bI9kKlbVX6bSON9vPRMiUQAujE/xSQuKCxBuXy4WTUjGW31FPsl2rpcGs0sslO7wavuKQ==
       tarball: 'file:projects/tasks-ui-react.tgz'
     version: 0.0.0
   'file:projects/tasks.tgz':
@@ -13792,8 +13585,17 @@ packages:
       integrity: sha512-JP94VMXHBcpiWd9z++USEzN0D1xdxeRm4itZVjeTKme0CaYKDEUugeHicfaA0irn1uGvGOtjk59fjN5ZAoHkCA==
       tarball: 'file:projects/web-tower.tgz'
     version: 0.0.0
+registry: ''
 specifiers:
   '@babel/core': ^7.16.0
+  '@capacitor/app': 4.1.1
+  '@capacitor/core': 4.6.1
+  '@capacitor/haptics': 4.1.0
+  '@capacitor/keyboard': 4.1.0
+  '@capacitor/status-bar': 4.1.1
+  '@ionic/core': ^6.0.16
+  '@ionic/react': ^6.0.16
+  '@ionic/react-router': ^6.0.16
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.3
   '@rush-temp/air-traffic-control': 'file:./projects/air-traffic-control.tgz'
   '@rush-temp/airport-code': 'file:./projects/airport-code.tgz'
@@ -13848,6 +13650,7 @@ specifiers:
   '@rush-temp/web-tower': 'file:./projects/web-tower.tgz'
   '@svgr/webpack': ^5.5.0
   '@testing-library/jest-dom': ^5.11.9
+  '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^12.6.3
   '@tsconfig/node16': 1.0.2
   '@types/jest': ^26.0.20
@@ -13880,6 +13683,7 @@ specifiers:
   history: ^4.9.0
   html-webpack-plugin: ^5.5.0
   identity-obj-proxy: ^3.0.0
+  ionicons: ^6.0.3
   jest: ^27.4.3
   jest-resolve: ^27.4.2
   jest-watch-typeahead: ^1.0.0
@@ -13893,8 +13697,10 @@ specifiers:
   postcss-normalize: ^10.0.1
   postcss-preset-env: ^7.0.1
   prompts: ^2.4.2
+  react: ^18.2.0
   react-app-polyfill: ^3.0.0
   react-dev-utils: ^12.0.1
+  react-dom: ^18.2.0
   react-refresh: ^0.11.0
   react-router: ^5.2.0
   react-router-dom: ^5.2.0

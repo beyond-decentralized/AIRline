@@ -1,12 +1,15 @@
 import { AirEntity } from "@airport/holding-pattern";
 import { UserAccount } from "@airport/travel-document-checkpoint";
-import { Entity, JoinColumn, ManyToOne, Table } from "@airport/tarmaq-entity";
+import { Column, Entity, JoinColumn, ManyToOne, Table } from "@airport/tarmaq-entity";
 import { Conversation } from "./Conversation";
 
 @Entity()
 @Table({ name: 'MODERATORS' })
 export class Moderator
     extends AirEntity {
+
+    @Column({ name: 'ACTIVE', nullable: false })
+    active: boolean = true;
 
     @ManyToOne({ optional: false })
     conversation: Conversation

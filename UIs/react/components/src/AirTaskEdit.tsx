@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from "@airline/tasks";
+import { Goal, Task, TaskStatus } from "@airline/tasks";
 import { OverlayEventDetail } from "@ionic/core";
 import { IonButton, IonButtons, IonContent, IonHeader, IonInput, IonItem, IonLabel, IonModal, IonSelect, IonSelectOption, IonTextarea, IonTitle, IonToggle, IonToolbar } from "@ionic/react";
 import { useRef } from "react";

@@ -1,5 +1,4 @@
 export * from './goal/Goal'
-export * from './goal/GoalConversation'
 export * from './goal/GoalStatus'
 export * from './goal/GoalTask'
 export * from './task/PrerequisiteTask'

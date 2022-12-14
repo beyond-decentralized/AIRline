@@ -9,26 +9,27 @@
     "@airline/components-ui-react": "0.0.1",
     "@airport/session-state": "0.0.1",
     "@airport/travel-document-checkpoint": "0.0.1",
-    "@capacitor/app": "4.0.1",
-    "@capacitor/core": "4.0.1",
-    "@capacitor/haptics": "4.0.1",
-    "@capacitor/keyboard": "4.0.1",
-    "@capacitor/status-bar": "4.0.1",
-    "@ionic/core": "^6.0.0",
-    "@ionic/react": "^6.0.0",
-    "@ionic/react-router": "^6.0.0",
+    "@capacitor/app": "4.1.1",
+    "@capacitor/core": "4.6.1",
+    "@capacitor/haptics": "4.1.0",
+    "@capacitor/keyboard": "4.1.0",
+    "@capacitor/status-bar": "4.1.1",
+    "@ionic/core": "^6.0.16",
+    "@ionic/react": "^6.0.16",
+    "@ionic/react-router": "^6.0.16",
     "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
+    "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^12.6.3",
     "@types/jest": "^26.0.20",
     "@types/node": "^12.19.15",
-    "@types/react": "^16.14.3",
-    "@types/react-dom": "^16.9.10",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
-    "ionicons": "^5.4.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "history": "^4.9.0",
+    "ionicons": "^6.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^5.0.0",
@@ -48,8 +49,8 @@
     "workbox-streams": "^5.1.4"
   },
   "scripts": {
-    "start": "cross-env PORT=3002 react-scripts start",
-    "build": "cross-env PORT=3002 react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
     "eject": "react-scripts eject"
   },
@@ -72,8 +73,7 @@
     ]
   },
   "devDependencies": {
-    "@capacitor/cli": "4.0.1",
-    "cross-env": "7.0.3"
+    "@capacitor/cli": "4.6.1"
   },
-  "description": "An Ionic project"
+  "description": "Conversations"
 }

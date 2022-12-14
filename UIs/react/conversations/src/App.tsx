@@ -1,9 +1,19 @@
-import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
+import {
+  IonApp,
+  IonIcon,
+  IonLabel,
+  IonRouterOutlet,
+  IonTabBar,
+  IonTabButton,
+  IonTabs,
+  setupIonicReact
+} from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { Route } from 'react-router-dom';
-import Menu from './components/Menu';
-import AboutPage from './pages/AboutPage';
+import { Redirect, Route } from 'react-router-dom';
+import CollectionPage from './pages/CollectionPage';
+import CollectionsPage from './pages/CollectionsPage';
 import ConversationPage from './pages/ConversationPage';
+import { atOutline, folderOpenOutline, personOutline } from 'ionicons/icons';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -30,17 +40,36 @@ const App: React.FC = () => {
   return (
     <IonApp>
       <IonReactRouter>
-        <IonSplitPane contentId="main">
-          <Menu />
-          <IonRouterOutlet id="main">
-            <Route path="/" exact={true}>
-              <AboutPage />
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route exact path="/collections">
+              <CollectionsPage />
             </Route>
-            <Route path="/conversation/:id" exact={true}>
+            <Route path="/collection/:collectionId">
+              <CollectionPage />
+            </Route>
+            <Route path="/conversation/:conversationId">
               <ConversationPage />
             </Route>
+            <Route exact path="/">
+              <Redirect to="/collections" />
+            </Route>
           </IonRouterOutlet>
-        </IonSplitPane>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="collections" href="/collections">
+              <IonIcon icon={folderOpenOutline} />
+              <IonLabel>Collections</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="participants" href="/participants">
+              <IonIcon icon={personOutline} />
+              <IonLabel>Participants</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="themes" href="/themes">
+              <IonIcon icon={atOutline} />
+              <IonLabel>Themes</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
       </IonReactRouter>
     </IonApp>
   );

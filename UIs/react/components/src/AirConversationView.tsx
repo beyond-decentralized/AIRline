@@ -50,7 +50,9 @@ export function AirConversationView({ conversation }: { conversation: Conversati
     return (
         <>
             {conversation.comments.map(comment =>
-                <IonItem>
+                <IonItem
+                    key={comment.id}
+                >
                     <div>
                         <div
                             className="comment-header"

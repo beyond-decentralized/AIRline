@@ -1,70 +1,78 @@
-import { Conversation, ConversationApi } from "@airline/conversations";
+import { CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
-import { TaskConversationDao } from "../../dao/task/TaskConversationDao";
 import { TaskDao } from "../../dao/task/TaskDao";
-import { TaskConversation } from "../../ddl/task/TaskConversation";
 import { Goal } from "../../ddl/goal/Goal";
 import { Task } from "../../ddl/task/Task";
+import { RepositoryApi } from "@airport/holding-pattern";
+import { GoalTask } from "../../ddl/ddl";
+import { GoalTaskDao } from "../../dao/dao";
 
 @Injected()
 export class TaskApi {
 
     @Inject()
-    conversationApi: ConversationApi
+    collectionApi: CollectionApi
 
     @Inject()
-    taskConversationDao: TaskConversationDao
+    goalTaskDao: GoalTaskDao
 
     @Inject()
     taskDao: TaskDao
 
-    @Api()
-    async findAll(): Promise<Task[]> {
-        return await this.taskDao.findAll()
-    }
+    @Inject()
+    repositoryApi: RepositoryApi
 
     @Api()
     async findAllForGoal(
         goal: Goal | string
     ): Promise<Task[]> {
-        return await this.taskDao.findAllForGoal(goal)
+        return await this.taskDao.findAllForGoalWithGoal(goal)
     }
 
     @Api()
     async findAllForTopic(
         topic: Topic | string
     ): Promise<Task[]> {
-        return await this.taskDao.findAllForTopic(topic)
+        return await this.taskDao.findAllForTopicWithGoal(topic)
+    }
+
+    @Api()
+    async create(
+        task: Task
+    ): Promise<void> {
+        if (task.id) {
+            throw new Error('Cannot create a Task with an existing ID')
+        }
+
+        const taskName = 'Task: ' + task.name
+        const repository = await this.repositoryApi.create(taskName)
+        const collection = await this.collectionApi
+            .create(taskName, repository)
+        task.collection = collection
+
+        task.repository = repository
+        await this.taskDao.save(task)
+
+        const goalTask: GoalTask = new GoalTask()
+        const goal = task.goal
+        goalTask.task = task
+        goalTask.goal = goal
+        goalTask.repository = goal.repository
+        await this.goalTaskDao.save(goalTask)
+
+        await this.repositoryApi.setUiEntryUri(
+            'http://localhost:3003/task/' + task.id,
+            repository
+        )
     }
 
     @Api()
     async save(
         task: Task
     ): Promise<void> {
-        const isNewTask = !task.id
-        let conversation: Conversation
-        if (isNewTask) {
-            task.taskConversations = []
-            const taskConversation = new TaskConversation()
-            taskConversation.task = task
-            task.taskConversations.push(taskConversation)
-
-            conversation = new Conversation()
-            conversation.name = 'Task: ' + task.name
-            taskConversation.conversation = conversation
-
-            await this.conversationApi.save(conversation)
-        }
-
         await this.taskDao.save(task)
-
-        if (isNewTask) {
-            conversation.type = 'TASK'
-            conversation.typedEntityId = task.id
-            await this.conversationApi.save(conversation)
-        }
     }
 
 }
