@@ -21,6 +21,7 @@
             "projectFolder": "./apps/topics",
             "shouldPublish": true
         },
+        /*
         {
             "packageName": "@airline/components-ui-react",
             "projectFolder": "./UIs/react/components",
@@ -34,6 +35,12 @@
         {
             "packageName": "@airline/tasks-ui-react",
             "projectFolder": "./UIs/react/tasks",
+            "shouldPublish": true
+        },
+        */
+        {
+            "packageName": "@airline/ui-angular",
+            "projectFolder": "./UIs/angular",
             "shouldPublish": true
         },
         // AIRbridge (alphabetical order)

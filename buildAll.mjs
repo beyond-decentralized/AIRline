@@ -23,7 +23,7 @@ const reactUiProjects = [
 
 try {
     await buildPeerFramework('AIRline', projectDescriptorsInBuildOrder, true)
-    await buildUI('react', reactUiProjects)
+    // await buildUI('react', reactUiProjects)
 } catch (e) {
     console.log(e)
 }

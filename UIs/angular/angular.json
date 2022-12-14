@@ -58,6 +58,7 @@
             "assets": [
               "projects/conversations/src/favicon.ico",
               "projects/conversations/src/assets",
+              "projects/conversations/src/AIRport",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
@@ -131,6 +132,7 @@
             "assets": [
               "projects/conversations/src/favicon.ico",
               "projects/conversations/src/assets",
+              "projects/conversations/src/AIRport",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
@@ -190,6 +192,7 @@
             "assets": [
               "projects/tasks/src/favicon.ico",
               "projects/tasks/src/assets",
+              "projects/tasks/src/AIRport",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
@@ -262,6 +265,7 @@
             "assets": [
               "projects/tasks/src/favicon.ico",
               "projects/tasks/src/assets",
+              "projects/tasks/src/AIRport",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
