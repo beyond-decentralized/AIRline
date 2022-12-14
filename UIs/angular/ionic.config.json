@@ -1,0 +1,23 @@
+{
+  "projects": {
+    "components": {
+      "name": "components",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects\\components"
+    },
+    "conversations": {
+      "name": "conversations",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects\\conversations"
+    },
+    "tasks": {
+      "name": "tasks",
+      "integrations": {},
+      "type": "angular",
+      "root": "projects\\tasks"
+    }
+  },
+  "defaultProject": "conversations"
+}
