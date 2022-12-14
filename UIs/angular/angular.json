@@ -53,6 +53,7 @@
             "polyfills": [
               "projects/conversations/src/polyfills.ts"
             ],
+            "preserveSymlinks": true,
             "tsConfig": "projects/conversations/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -187,6 +188,7 @@
             "polyfills": [
               "projects/tasks/src/polyfills.ts"
             ],
+            "preserveSymlinks": true,
             "tsConfig": "projects/tasks/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -306,6 +308,7 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "defaultCollection": "@ionic/angular-toolkit"
   }
 }

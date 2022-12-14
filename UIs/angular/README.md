@@ -1,3 +1,7 @@
+If you are not able to generate pages, follow the instructions below:
+
+https://github.com/ionic-team/ionic-cli/wiki/Angular-Monorepo#Troubleshooting
+
 # Angular
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.3.
