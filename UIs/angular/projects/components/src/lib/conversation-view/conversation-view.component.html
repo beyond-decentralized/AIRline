@@ -1,0 +1,15 @@
+<ion-item *ngFor="let comment of conversation.comments trackBy identifyComment">
+  <div>
+    <div class="comment-header">
+      <div class="comment-by">
+        {{comment.createdBy?.username}}
+      </div>
+      <div class="comment-time">
+        {{getTime(comment.createdAt)}}
+      </div>
+    </div>
+    <div>
+      {{comment.text}}
+    </div>
+  </div>
+</ion-item>

@@ -43,6 +43,11 @@
             "projectFolder": "./UIs/angular",
             "shouldPublish": true
         },
+        {
+            "packageName": "@airline/components-ui-angular",
+            "projectFolder": "./UIs/angular/projects/components",
+            "shouldPublish": true
+        },
         // AIRbridge (alphabetical order)
         {
             "packageName": "@airbridge/validate",

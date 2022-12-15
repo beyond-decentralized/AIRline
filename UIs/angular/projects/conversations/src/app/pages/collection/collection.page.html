@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Conversation Collection</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="collection">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="add-conversation">
+      <ion-icon icon="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <air-conversation-edit [conversation]="newConversation" [moderatorUserAccounts]="newConversationModeratorUserAccounts"
+    [onWillDismiss]="addConversation" [participantUserAccounts]="newConversationParticipantUserAccounts"
+    triggerId="add-conversation"></air-conversation-edit>
+  <ion-item>
+    {{collection.name}}
+  </ion-item>
+  <ion-button [href]="collection.repository?.uiEntryUri" fill="clear" rel="noopener noreferrer" target="_blank">
+    <ion-icon slot="start" icon="eye-outline"></ion-icon>
+    View
+  </ion-button>
+  <ion-item>
+    Conversations:
+  </ion-item>
+  <ion-item
+    *ngFor="let collectionConversation of collection.collectionConversations trackBy: identifyCollectionConverstation"
+    [routerLink]="['/conversation/', collectionConversation.conversation.id]">
+    <div *ngFor="let participant of collectionConversation.conversation.participants trackBy: identifyParticipant">
+      {{participant.userAccount.username}}
+    </div>
+  </ion-item>
+</ion-content>
+<ion-content *ngIf="!collection">
+  <ion-item>
+    Loading conversation collection ...
+  </ion-item>
+</ion-content>

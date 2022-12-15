@@ -1,0 +1,18 @@
+.reply-header {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.comment-by {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.comment-time {
+    color: gray;
+    display: inline-block;
+    font-size: 13px;
+    padding-left: 5px;
+}

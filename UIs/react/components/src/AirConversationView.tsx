@@ -37,8 +37,11 @@ export function AirConversationView({ conversation }: { conversation: Conversati
 
     function lead0(
         num: number
-    ) {
-        return num === 0 ? '00' : '' + num
+    ): string {
+        if (num < 10) {
+            return '0' + num
+        }
+        return '' + num
     }
 
     function getTime(

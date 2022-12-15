@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{conversation ? 'Conversation' : 'Loading Conversation'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="conversation">
+  <air-conversation-view [conversation]="conversation">
+  </air-conversation-view>
+</ion-content>
+<ion-content *ngIf="!conversation">
+  <ion-item>
+    Loading Conversation ...
+  </ion-item>
+</ion-content>
+<ion-item *ngIf="conversation">
+  <ion-label position="stacked">
+    Reply
+  </ion-label>
+  <ion-input
+  class="enter-input"
+  [(ngModel)]="commentText"
+  placeholder="Enter your comment"
+  >
+    <ion-icon
+      (click)="enterComment()"
+      class="enter-icon"
+      icon="enter-outline"
+    >
+    </ion-icon>
+  </ion-input>
+</ion-item>

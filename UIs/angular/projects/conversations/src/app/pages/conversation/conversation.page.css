@@ -1,0 +1,10 @@
+.enter-input {
+    --padding-end: 23px;
+}
+
+.enter-icon {
+    padding: 10px;
+    position: absolute;
+    right: 0px;
+    top: 10px;
+}
