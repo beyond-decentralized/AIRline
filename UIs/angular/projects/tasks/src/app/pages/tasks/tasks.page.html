@@ -5,5 +5,32 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tasks</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <air-task-edit task={currentTask} [onWillDismiss]={onWillDismiss} triggerId="edit-task"></air-task-edit>
+  {tasks.map(task =>
+  <ion-item>
+    <table className="eisenhower-view">
+      <tbody>
+        <tr>
+          <td className="eisenhower-icon">
+            <air-eisenhower-icon rankedUnit={task}></air-eisenhower-icon>
+          </td>
+          <td>
+            {task.name}
+            <br>
+            </br>
+            <a href={'http://localhost:8100/conversations/tasks/' + task.id}
+              className="go-to-conversations-link">Conversations</a> |
+            <a className="edit-task-link" id="edit-task" onClick={e=> currentTask = task}
+              >Edit</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </ion-item>
+  )}
 </ion-content>

@@ -1,3 +1,4 @@
+import { Task } from '@airline/tasks';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,6 +7,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks.page.css'],
 })
 export class TasksPage implements OnInit {
+
+  newTask = new Task()
+
+  tasks: Task[] = null as any
 
   constructor() { }
 

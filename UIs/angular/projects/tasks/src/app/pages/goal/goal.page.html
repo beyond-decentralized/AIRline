@@ -24,12 +24,12 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Description</ion-label>
-    <br></br>
+    <br />
     <ion-note color="primary">{{goal.description}}</ion-note>
   </ion-item>
   <ion-item>
     <div>
-      <ion-button fill="clear" [routerLink]="['tasks/', goal.id]">
+      <ion-button fill="clear" [routerLink]="['tasks', goal.id]">
         <ion-icon slot="start" icon="hammer-outline"></ion-icon>
         Tasks
       </ion-button>
@@ -38,14 +38,10 @@
         <ion-icon slot="start" icon="folder-open-outline"></ion-icon>
         Conversations
       </ion-button>
-      <ion-button fill="clear" [routerLink]="['goal/', goal.id]">
+      <ion-button id="edit-goal" fill="clear">
         <ion-icon slot="start" icon="create-outline"></ion-icon>
-        View
+        Edit
       </ion-button>
-      <a href={'/tasks/' + goal.id} className="go-to-tasks-link">Tasks</a> |
-      <a href={'http://localhost:3002/collection/' + goal.collection.id}
-        className="goal-link go-to-conversations-link">Conversations</a> |
-      <div id="edit-goal" className="goal-link edit-goal-link">Edit</div>
     </div>
   </ion-item>
 </ion-content>
