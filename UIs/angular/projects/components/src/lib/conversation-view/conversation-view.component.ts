@@ -1,6 +1,6 @@
 import { Comment, Conversation } from '@airline/conversations';
 import { Component, Input, OnInit } from '@angular/core';
-import { DateService } from '../date.service';
+import { DateService } from '../services/date.service';
 
 @Component({
   selector: 'air-conversation-view',

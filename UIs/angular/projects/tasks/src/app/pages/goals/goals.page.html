@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{goals ? 'Goals' : 'Loading Goals'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="goals">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="add-goal">
+      <ion-icon icon="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <air-goal-edit></air-goal-edit>
+  <ion-item *ngFor="let goal of goals trackBy identifyGoal">
+    <div>
+      <div>
+        {{goal.name}}
+      </div>
+      <div>
+        <ion-button fill="clear" [routerLink]="['tasks/', goal.id]">
+          <ion-icon slot="start" icon="hammer-outline"></ion-icon>
+          Tasks
+        </ion-button>
+        <ion-button fill="clear" fill="clear" [href]="'http://localhost:3002/collection/' + goal.collection.id"
+          rel="noopener noreferrer" target="_blank">
+          <ion-icon slot="start" icon="folder-open-outline"></ion-icon>
+          Conversations
+        </ion-button>
+        <ion-button fill="clear" [routerLink]="['goal/', goal.id]">
+          <ion-icon slot="start" icon="flag-outline"></ion-icon>
+          View
+        </ion-button>
+      </div>
+    </div>
+  </ion-item>
+</ion-content>
+<ion-content *ngIf="!goals">
+  <ion-item>
+    Loading Goals ...
+  </ion-item>
+</ion-content>

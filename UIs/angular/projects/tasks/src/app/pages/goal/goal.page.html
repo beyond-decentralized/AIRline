@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{goal ? 'Goal' : 'Loading'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="goal">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button id="edit-goal">
+      <ion-icon icon="create-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <air-goal-edit [goal]="goal" [onWillDismiss]="editGoal" triggerId="edit-goal"></air-goal-edit>
+  <ion-item>
+    <air-eisenhower-display [rankedUnit]="goal"></air-eisenhower-display>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Name</ion-label>
+    <ion-note color="primary">{{goal.name}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Goal Status</ion-label>
+    <ion-note color="primary">{{getGoalStatusName(goal)}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <br></br>
+    <ion-note color="primary">{{goal.description}}</ion-note>
+  </ion-item>
+  <ion-item>
+    <div>
+      <ion-button fill="clear" [routerLink]="['tasks/', goal.id]">
+        <ion-icon slot="start" icon="hammer-outline"></ion-icon>
+        Tasks
+      </ion-button>
+      <ion-button fill="clear" fill="clear" [href]="'http://localhost:3002/collection/' + goal.collection.id"
+        rel="noopener noreferrer" target="_blank">
+        <ion-icon slot="start" icon="folder-open-outline"></ion-icon>
+        Conversations
+      </ion-button>
+      <ion-button fill="clear" [routerLink]="['goal/', goal.id]">
+        <ion-icon slot="start" icon="create-outline"></ion-icon>
+        View
+      </ion-button>
+      <a href={'/tasks/' + goal.id} className="go-to-tasks-link">Tasks</a> |
+      <a href={'http://localhost:3002/collection/' + goal.collection.id}
+        className="goal-link go-to-conversations-link">Conversations</a> |
+      <div id="edit-goal" className="goal-link edit-goal-link">Edit</div>
+    </div>
+  </ion-item>
+</ion-content>
+
+<ion-content *ngIf="!goal">
+  <ion-item>
+    Loading Goal ...
+  </ion-item>
+</ion-content>
