@@ -16,7 +16,7 @@ export default [
         output: [{
             sourcemap: true,
             format: 'esm',
-            file: '../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/bundle.mjs'
+            file: '../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations/bundle.mjs'
         }],
         plugins: [
             resolve({
@@ -105,8 +105,8 @@ export default [
         },
     },
     {
-        input: "../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/to_be_generated/runtime-index.d.ts",
-        output: [{ file: "../../UIs/react/conversations/public/AIRport/apps/@airline/conversations/bundle.d.ts", format: "esm" }],
+        input: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations/to_be_generated/runtime-index.d.ts",
+        output: [{ file: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations/bundle.d.ts", format: "esm" }],
         plugins: [dts()],
         external: [/\.css$/],
     },

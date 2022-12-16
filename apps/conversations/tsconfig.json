@@ -8,6 +8,8 @@
   "exclude": [
     "lib",
     "node_modules",
+    "projects/conversations/src/AIRport",
+    "projects/tasks/src/AIRport"
   ],
   "extends": "../../tsconfig.core.json"
 }

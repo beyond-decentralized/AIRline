@@ -16,8 +16,8 @@ const routes: Routes = [
         loadChildren: () => import('../pages/goals/goals.module').then(m => m.GoalsPageModule)
       },
       {
-        path: 'tasks',
-        loadChildren: () => import('../pages/tasks/tasks.module').then(m => m.TasksPageModule)
+        path: 'big-picture',
+        loadChildren: () => import('../pages/big-picture/big-picture.module').then(m => m.BigPicturePageModule)
       },
       {
         path: '',

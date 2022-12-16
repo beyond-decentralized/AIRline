@@ -12,6 +12,7 @@ dependencies:
   '@angular/platform-browser-dynamic': 15.0.4_3b5beaed9fbbcb6c76d433b35a4e12c2
   '@angular/router': 15.0.4_296ccc26ddd732d448d2a406290f1980
   '@babel/core': 7.20.5_@babel+core@7.20.5
+  '@babel/runtime': 7.20.6
   '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
   '@capacitor/core': 4.6.1
   '@capacitor/haptics': 4.1.0_@capacitor+core@4.6.1
@@ -18036,6 +18037,7 @@ packages:
       '@angular/platform-browser': 15.0.4_0dacf5c1be2a9acdc88cc30b05d6dd0b
       '@angular/platform-browser-dynamic': 15.0.4_3b5beaed9fbbcb6c76d433b35a4e12c2
       '@angular/router': 15.0.4_9f42b135a2ca19fbe48bbc53aa168dd8
+      '@babel/runtime': 7.20.6
       '@capacitor/app': 4.1.1_@capacitor+core@4.6.1
       '@capacitor/cli': 4.6.1
       '@capacitor/core': 4.6.1
@@ -18067,7 +18069,7 @@ packages:
       html-webpack-plugin: '*'
       tailwindcss: '*'
     resolution:
-      integrity: sha512-kgX2fmKajSlF1CYZifM5mD3v0xNJi2Kw816MfnktOXovbCqA09IPrmU/Q4J/a1EevLQXb/aD0EIouGrTw/+vbw==
+      integrity: sha512-NqHMzbkFF1XiMaT0bWRmooXXwR3OhuRBxtWNA2c7NI7V2MsStzXijGMLMPc1b6L/tPP5LLkwmdW0YZ6ILTcwuA==
       tarball: 'file:projects/ui-angular.tgz'
     version: 0.0.0
   'file:projects/ui-react-components.tgz_postcss@8.4.20':
@@ -18294,6 +18296,7 @@ specifiers:
   '@angular/platform-browser-dynamic': ^15.0.0
   '@angular/router': ^15.0.0
   '@babel/core': ^7.16.0
+  '@babel/runtime': 7.20.6
   '@capacitor/app': 4.1.1
   '@capacitor/core': 4.6.1
   '@capacitor/haptics': 4.1.0
