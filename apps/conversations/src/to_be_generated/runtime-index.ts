@@ -1,11 +1,11 @@
 import { loadIframe } from '@airport/web-tower'
-import { conversations } from './common-tokens'
+import { airApp } from './runtime-injection'
 
 export * from '../dao/dao'
 export * from '../ddl/ddl'
 // export * from '../dvo/dvo'
 export * from '../generated/generated'
 export * from './ApplicationLoader'
-export * from './runtime-tokens'
+export * from './runtime-injection'
 
-loadIframe(conversations.getFullName())
+loadIframe(airApp.getFullName())

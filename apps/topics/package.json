@@ -8,7 +8,6 @@
   },
   "peerDependencies": {
     "@airbridge/validate": "0.0.1",
-    "@airport/autopilot": "0.0.1",
     "@airport/aviation-communication": "0.0.1",
     "@airport/check-in": "0.0.1",
     "@airport/direction-indicator": "0.0.1",

@@ -1,4 +1,4 @@
-import { TOPIC_API, topics, THEME_API } from './common-tokens'
+import { TOPIC_API, topics, THEME_API } from './app-declaration'
 import { TopicDao, ThemeDao } from '../dao/dao'
 import { ThemeApi } from '../api/ThemeApi'
 import { TopicApi } from '../api/TopicApi'
