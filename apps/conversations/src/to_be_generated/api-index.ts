@@ -12,7 +12,7 @@ export * from '../generated/vInterfaces';
 export * from '../generated/interfaces';
 export * from './app-declaration'
 
-for (let apiStub in [CollectionApi,
+for (let apiStub of [CollectionApi,
     CommentApi,
     ConversationApi]) {
     (apiStub as any).application = application
