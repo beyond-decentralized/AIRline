@@ -1,6 +1,6 @@
 import { Collection } from "@airline/conversations";
 import { Topic } from "@airline/topics";
-import { AirEntity } from "@airport/holding-pattern";
+import { AirEntity } from "@airport/final-approach";
 import { Column, DbNumber, Entity, ManyToOne, OneToMany, Table } from "@airport/tarmaq-entity";
 import { GoalStatus } from "./GoalStatus";
 import { GoalTask } from "./GoalTask";

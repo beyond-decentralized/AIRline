@@ -38,6 +38,7 @@ dependencies:
   '@rush-temp/components-ui-angular': 'file:projects/components-ui-angular.tgz_cd42731a2c50b0b42a972b63671a1e5b'
   '@rush-temp/conversations': 'file:projects/conversations.tgz'
   '@rush-temp/direction-indicator': 'file:projects/direction-indicator.tgz'
+  '@rush-temp/final-approach': 'file:projects/final-approach.tgz'
   '@rush-temp/flight-number': 'file:projects/flight-number.tgz'
   '@rush-temp/fuel-hydrant-system': 'file:projects/fuel-hydrant-system.tgz'
   '@rush-temp/ground-control': 'file:projects/ground-control.tgz'
@@ -3876,6 +3877,40 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-P+h+VoM2EyY+1+kCOX/keUVYhSmWsA3kd0PGkB1lLaxHepK6vwiqZycEI/u7S5NVeZEFM3ndYpN9kzZpQqe5Rg==
+  /@ionic/cli/6.20.6:
+    dependencies:
+      '@ionic/cli-framework': 5.1.3
+      '@ionic/cli-framework-output': 2.2.5
+      '@ionic/cli-framework-prompts': 2.1.10
+      '@ionic/utils-array': 2.1.5
+      '@ionic/utils-fs': 3.1.6
+      '@ionic/utils-network': 2.1.5
+      '@ionic/utils-process': 2.1.10
+      '@ionic/utils-stream': 3.1.5
+      '@ionic/utils-subprocess': 2.1.11
+      '@ionic/utils-terminal': 2.3.3
+      chalk: 4.1.2
+      debug: 4.3.4
+      diff: 4.0.2
+      elementtree: 0.1.7
+      leek: 0.0.24
+      lodash: 4.17.21
+      open: 7.4.2
+      os-name: 4.0.1
+      semver: 7.3.8
+      split2: 3.2.2
+      ssh-config: 1.1.6
+      stream-combiner2: 1.1.1
+      superagent: 5.3.1
+      superagent-proxy: 3.0.0_superagent@5.3.1
+      tar: 6.1.13
+      tslib: 2.4.1
+    dev: false
+    engines:
+      node: '>=10.3.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-xQoLQAHvWiBtvNFZ8f4EimtCaSbNtwKe8dCHMozFjfJx6RbfCXzPFj8H1IJGGYLjFihoxRu8p4RZsY7lvE/o7A==
   /@ionic/core/6.4.0:
     dependencies:
       '@stencil/core': 2.20.0
@@ -17491,7 +17526,7 @@ packages:
     dev: false
     name: '@rush-temp/conversations'
     resolution:
-      integrity: sha512-eqFDfSUnATUu27w4+Nzi7uhMK1eSEmoiI54F4FTF3RGPz+N+3aThrqG1hSaDqxL33Ke8/bK20OTSrx5dZBQxLA==
+      integrity: sha512-ESjuuEl6YRoKGQ5cD4JbISEwZCwSODSwFQjNrSQV5R+3r8boyCX7IrzFUtKe8gH2Em8iVl3ypU4ino6/k8Q8cA==
       tarball: 'file:projects/conversations.tgz'
     version: 0.0.0
   'file:projects/direction-indicator.tgz':
@@ -17510,6 +17545,24 @@ packages:
     resolution:
       integrity: sha512-AfumI9+UFUP1DB2m14XMFNlGcUqAJaZk/I8LF6wTPDfqRLutahyaxC43JyIxGeMqfJblwDrV4mKjx4Ag3381lA==
       tarball: 'file:projects/direction-indicator.tgz'
+    version: 0.0.0
+  'file:projects/final-approach.tgz':
+    dependencies:
+      '@rollup/plugin-commonjs': 21.1.0_rollup@2.79.1
+      '@rollup/plugin-node-resolve': 13.3.0_rollup@2.79.1
+      rollup: 2.79.1
+      rollup-plugin-dts: 4.2.3_rollup@2.79.1+typescript@4.9.4
+      rollup-plugin-peer-deps-external: 2.2.4_rollup@2.79.1
+      rollup-plugin-terser: 7.0.2_rollup@2.79.1
+      rollup-plugin-typescript2: 0.33.0_rollup@2.79.1+typescript@4.9.4
+      tslib: 2.4.1
+      typescript: 4.9.4
+      uuid: 8.3.2
+    dev: false
+    name: '@rush-temp/final-approach'
+    resolution:
+      integrity: sha512-3PhjzkLKz6rNB+WkKT3N9w2EUvwyXeNiIPA4rhsVAs1u/Bo0fX6DJ206B4McokZmDKxZm6OmO9SFNmVDzPiXCA==
+      tarball: 'file:projects/final-approach.tgz'
     version: 0.0.0
   'file:projects/flight-number.tgz':
     dependencies:
@@ -17910,7 +17963,7 @@ packages:
     dev: false
     name: '@rush-temp/tasks'
     resolution:
-      integrity: sha512-8W4Pn0xrFoG9yiMxkTBdER085TDbiY3cWjNAmeQFgJu8FFmjLTNlx0AIDNfTlptiwr/LVXqJc1d8MUpPa4CsqQ==
+      integrity: sha512-0YiO3Kvoya/JPAWbcEtj5BZcWu5apDGU4oPXDeIMqnwr8+JxfWYUi70jwJhz7FXkvXoLRDyxLxj05bmoLmEVNQ==
       tarball: 'file:projects/tasks.tgz'
     version: 0.0.0
   'file:projects/terminal-map.tgz':
@@ -17928,7 +17981,7 @@ packages:
     dev: false
     name: '@rush-temp/terminal-map'
     resolution:
-      integrity: sha512-F/I+UgWMhHHw88of6lbyuTuS/To/U7rIU3ODdSOmlYJ4lYDTGLuBFNP8pObyy9IpL/W0k9Iq1H+Tw6wMuQIsCQ==
+      integrity: sha512-YHUXKt5O86DyeExI73W3lDAvj/wY5A864xfcRIVexp6+0eI0EvAmHNFAmegmgQLC/6hJBbCXO+nOUhuwI8fajg==
       tarball: 'file:projects/terminal-map.tgz'
     version: 0.0.0
   'file:projects/terminal.tgz':
@@ -17948,7 +18001,7 @@ packages:
     dev: false
     name: '@rush-temp/terminal'
     resolution:
-      integrity: sha512-ErI2ymoJeGzQboL4zJ0gxSTHZTzB8NgOjRW8OMUn9nWQHJ5YfWuiFvPx99EBzj+xBYO7qdk78BK9WNXwTeL4dw==
+      integrity: sha512-GEaa4PNmmBFQRGzfaIzau03B63Mb6AUbYbW2+jdZoah12OYQpkQ8upwOrbqGdspu2BfzqRqluMb+uKLcDSgTfA==
       tarball: 'file:projects/terminal.tgz'
     version: 0.0.0
   'file:projects/topics.tgz':
@@ -17967,7 +18020,7 @@ packages:
     dev: false
     name: '@rush-temp/topics'
     resolution:
-      integrity: sha512-HMdcYfuIoaqRDXyvOtyTIuYW2+dRs8MBoVoJrWjNcqGx8tTa1x5OxYZQyKyzrvDkwEyHL+gkie5icjfXMiSZ/g==
+      integrity: sha512-iV8RkR5Kgrga3wkY/kGtcMI2YpTCHj/GtGqVS3OeZCa5d5iLPGjN3sJQA4EpoyKfiEl1xID2hv4jWyT+ckt+Uw==
       tarball: 'file:projects/topics.tgz'
     version: 0.0.0
   'file:projects/tower.tgz':
@@ -17985,7 +18038,7 @@ packages:
     dev: false
     name: '@rush-temp/tower'
     resolution:
-      integrity: sha512-JBt5D1Op2U4f6Rdx+KIFdjwbHaRCmd9w7llDWozE4r9nUHiTP5MHVxYVxArU/JpYprceplZy7DsCUqZD4G2QLA==
+      integrity: sha512-ETndwIKjzZ9GTXrGyX6gBAmrSbPmcchPH1TvIyy7MIu7kQK5VeqBSaDdRecGAZS1aAVnRjXHsMrUkLv4/d1moA==
       tarball: 'file:projects/tower.tgz'
     version: 0.0.0
   'file:projects/travel-document-checkpoint.tgz':
@@ -18046,7 +18099,7 @@ packages:
       '@capacitor/status-bar': 4.1.1_@capacitor+core@4.6.1
       '@ionic/angular': 6.4.1_86a0a9fef528f60be3c816b8a1f991e0
       '@ionic/angular-toolkit': 7.0.0
-      '@ionic/cli': 6.20.5
+      '@ionic/cli': 6.20.6
       '@ionic/core': 6.4.1
       '@types/jasmine': 4.3.1
       '@types/node': 18.11.15
@@ -18069,7 +18122,7 @@ packages:
       html-webpack-plugin: '*'
       tailwindcss: '*'
     resolution:
-      integrity: sha512-NqHMzbkFF1XiMaT0bWRmooXXwR3OhuRBxtWNA2c7NI7V2MsStzXijGMLMPc1b6L/tPP5LLkwmdW0YZ6ILTcwuA==
+      integrity: sha512-QcTgZtZGBXThjlJxMBSZg8Dg9l1kjPwwodRY4LcocAMGs6gCISEwartAobHGvH7FeZ6sj5e/XoqKS/nuASKG5A==
       tarball: 'file:projects/ui-angular.tgz'
     version: 0.0.0
   'file:projects/ui-react-components.tgz_postcss@8.4.20':
@@ -18322,6 +18375,7 @@ specifiers:
   '@rush-temp/components-ui-angular': 'file:./projects/components-ui-angular.tgz'
   '@rush-temp/conversations': 'file:./projects/conversations.tgz'
   '@rush-temp/direction-indicator': 'file:./projects/direction-indicator.tgz'
+  '@rush-temp/final-approach': 'file:./projects/final-approach.tgz'
   '@rush-temp/flight-number': 'file:./projects/flight-number.tgz'
   '@rush-temp/fuel-hydrant-system': 'file:./projects/fuel-hydrant-system.tgz'
   '@rush-temp/ground-control': 'file:./projects/ground-control.tgz'

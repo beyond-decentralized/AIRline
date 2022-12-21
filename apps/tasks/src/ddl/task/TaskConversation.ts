@@ -1,5 +1,5 @@
 import { Conversation } from "@airline/conversations";
-import { AirEntity } from "@airport/holding-pattern";
+import { AirEntity } from "@airport/final-approach";
 import { Entity, ManyToOne, Table } from "@airport/tarmaq-entity";
 import { Task } from "./Task";
 

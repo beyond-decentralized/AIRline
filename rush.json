@@ -233,6 +233,11 @@
             "shouldPublish": true
         },
         {
+            "packageName": "@airport/final-approach",
+            "projectFolder": "../AIRport/schemas/final-approach",
+            "shouldPublish": true
+        },
+        {
             "packageName": "@airport/holding-pattern",
             "projectFolder": "../AIRport/schemas/holding-pattern",
             "shouldPublish": true

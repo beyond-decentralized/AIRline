@@ -1,4 +1,4 @@
-import { AirEntity } from "@airport/holding-pattern";
+import { AirEntity } from "@airport/final-approach";
 import { Entity, JoinColumn, ManyToOne, Table } from "@airport/tarmaq-entity";
 import { UserAccount } from "@airport/travel-document-checkpoint"
 import { Task } from "./Task";

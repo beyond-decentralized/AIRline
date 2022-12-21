@@ -1,4 +1,4 @@
-import { AirEntity } from "@airport/holding-pattern";
+import { AirEntity } from "@airport/final-approach";
 import { Entity, ManyToOne, Table } from "@airport/tarmaq-entity";
 import { Collection } from "./Collection";
 import { Conversation } from "./Conversation";
