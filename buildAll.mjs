@@ -37,6 +37,7 @@ async function buildPeerFramework(
     if (runRushUpdate) {
         await wireInDependencies(frameworkDirectoryName)
     }
+    await execute('npm', ['run', 'build'], '.');
     await buildProjects(projectDescriptorsInBuildOrder, 'npm', ['run', 'build']);
 }
 

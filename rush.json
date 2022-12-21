@@ -7,6 +7,11 @@
     "projectFolderMaxDepth": 9,
     "projects": [
         {
+            "packageName": "airline",
+            "projectFolder": ".",
+            "shouldPublish": true
+        },
+        {
             "packageName": "@airline/conversations",
             "projectFolder": "./apps/conversations",
             "shouldPublish": true
@@ -141,6 +146,11 @@
         {
             "packageName": "@airport/takeoff",
             "projectFolder": "../AIRport/generators/takeoff",
+            "shouldPublish": true
+        },
+        {
+            "packageName": "@airport/taxiway",
+            "projectFolder": "../AIRport/generators/taxiway",
             "shouldPublish": true
         },
         // AIRport "libs" folder (alphabetical order)

@@ -1,5 +1,11 @@
 {
   "compilerOptions": {
+    "plugins": [
+      {
+        "transform": "@airport/taxiway",
+        "type": "program"
+      },
+    ],
     "typeRoots": [
       "node_modules/@types"
     ]
