@@ -1,5 +1,5 @@
 import { loadIframe } from '@airport/web-tower'
-import { topics } from './app-declaration'
+import { airApp } from './runtime-injection'
 
 export * from '../dao/dao'
 export * from '../ddl/ddl'
@@ -8,4 +8,4 @@ export * from '../generated/generated'
 export * from './ApplicationLoader'
 export * from './runtime-injection'
 
-loadIframe(topics.getFullName())
+loadIframe(airApp.getFullName())

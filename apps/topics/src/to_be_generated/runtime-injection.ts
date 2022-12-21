@@ -6,7 +6,7 @@ import { TopicApi } from '../api/TopicApi'
 import { setApplicationLoader } from '@airport/web-tower'
 import { ApplicationLoader } from './ApplicationLoader'
 
-const airApp = app(application)
+export const airApp = app(application)
 
 airApp.register(
     ThemeApi, TopicApi, ThemeDao,
