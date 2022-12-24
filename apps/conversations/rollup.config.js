@@ -4,6 +4,7 @@ import typescript from "rollup-plugin-typescript2";
 import dts from "rollup-plugin-dts";
 import { terser } from 'rollup-plugin-terser';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import copy from 'rollup-plugin-copy';
 
 // const production = !process.env.ROLLUP_WATCH;
 const production = false;
@@ -28,7 +29,15 @@ export default [
                 sourceMap: !production,
                 inlineSources: !production
             }),
-            production && terser()
+            production && terser(),
+            copy({
+                targets: [
+                    {
+                        src: 'node_modules/@airport/tower/dist/index.html',
+                        dest: '../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations'
+                    },
+                ]
+            })
         ],
         watch: {
             clearScreen: false
