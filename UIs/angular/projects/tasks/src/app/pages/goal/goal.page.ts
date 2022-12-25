@@ -24,7 +24,7 @@ export class GoalPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queryParamsSubscription = this.route.queryParams
+    this.queryParamsSubscription = this.route.params
       .subscribe(params => {
         this.loadGoal(params['goalId']).then()
       })

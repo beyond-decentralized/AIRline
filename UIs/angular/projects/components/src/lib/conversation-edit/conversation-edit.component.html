@@ -1,40 +1,42 @@
 <ion-modal [trigger]="triggerId" (willDismiss)="dismiss($event)">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons *ngIf="conversation">
-        <ion-button (click)="cancel()" slot="start">
-          Cancel
-        </ion-button>
-        <ion-title>{{conversation.id ? 'Edit' : 'Create'}}</ion-title>
-        <ion-button (click)="save()" slot="end">
-          Save
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content *ngIf="participantUserAccounts.length && moderatorUserAccounts.length">
-    <ion-item>
-      <ion-label position="stacked">Participants</ion-label>
-      <ion-chip *ngFor="let participantUserAccount of participantUserAccounts trackBy: identifyUserAccount">
-        <ion-avatar>
-          <img alt="Participant silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <ion-label>{{participantUserAccount.username}}</ion-label>
-      </ion-chip>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Moderators</ion-label>
-      <ion-chip *ngFor="let moderatorUserAccount of moderatorUserAccounts trackBy: identifyUserAccount">
-        <ion-avatar>
-          <img alt="Moderator silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
-        </ion-avatar>
-        <ion-label>{{moderatorUserAccount.username}}</ion-label>
-      </ion-chip>
-    </ion-item>
-  </ion-content>
-  <ion-content *ngIf="!participantUserAccounts.length || !moderatorUserAccounts.length">
-    <ion-item>
-      Loading ...
-    </ion-item>
-  </ion-content>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons *ngIf="conversation">
+          <ion-button (click)="cancel()" slot="start">
+            Cancel
+          </ion-button>
+          <ion-title>{{conversation.id ? 'Edit' : 'Create'}}</ion-title>
+          <ion-button (click)="save()" slot="end">
+            Save
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content *ngIf="participantUserAccounts.length && moderatorUserAccounts.length">
+      <ion-item>
+        <ion-label position="stacked">Participants</ion-label>
+        <ion-chip *ngFor="let participantUserAccount of participantUserAccounts trackBy: identifyUserAccount">
+          <ion-avatar>
+            <img alt="Participant silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>{{participantUserAccount.username}}</ion-label>
+        </ion-chip>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Moderators</ion-label>
+        <ion-chip *ngFor="let moderatorUserAccount of moderatorUserAccounts trackBy: identifyUserAccount">
+          <ion-avatar>
+            <img alt="Moderator silhouette" src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+          </ion-avatar>
+          <ion-label>{{moderatorUserAccount.username}}</ion-label>
+        </ion-chip>
+      </ion-item>
+    </ion-content>
+    <ion-content *ngIf="!participantUserAccounts.length || !moderatorUserAccounts.length">
+      <ion-item>
+        Loading ...
+      </ion-item>
+    </ion-content>
+  </ng-template>
 </ion-modal>

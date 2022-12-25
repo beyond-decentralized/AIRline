@@ -30,7 +30,7 @@ export class CollectionPage implements OnDestroy, OnInit {
   ) { }
 
   ngOnInit() {
-    this.queryParamsSubscription = this.route.queryParams
+    this.queryParamsSubscription = this.route.params
       .subscribe(params => {
         Promise.all([
           this.collectionsService.loadCollection(params['collectionId']),

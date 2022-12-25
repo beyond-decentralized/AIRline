@@ -26,7 +26,7 @@ export class TasksPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queryParamsSubscription = this.route.queryParams
+    this.queryParamsSubscription = this.route.params
       .subscribe(params => {
         this.loadData(params['goalId']).then()
       })

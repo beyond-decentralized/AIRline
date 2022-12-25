@@ -23,7 +23,7 @@ export class ConversationPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queryParamsSubscription = this.route.queryParams
+    this.queryParamsSubscription = this.route.params
       .subscribe(params => {
         this.conversationService.loadConversation(params['conversationId'])
           .then((conversation) => {

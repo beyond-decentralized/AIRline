@@ -1,50 +1,52 @@
 <ion-modal [trigger]="triggerId" (willDismiss)="dismiss($event)">
-  <ion-header>
-    <ion-toolbar>
-      <ion-buttons *ngIf="task">
-        <ion-button (click)="cancel()" slot="start">
-          Cancel
-        </ion-button>
-        <ion-title>{{task.id ? 'Edit' : 'Create'}}" Goal</ion-title>
-        <ion-button (click)="save()" slot="end">
-          Save
-        </ion-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  <ion-content *ngIf="task" class="ion-padding">
-    <ion-item>
-      <air-eisenhower-inputs [rankedUnit]="task"></air-eisenhower-inputs>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Name</ion-label>
-      <ion-input [(ngModel)]="task.name"> </ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="stacked">Task Status</ion-label>
-      <ion-select [(ngModel)]="task.status">
-        <ion-select-option [value]="TaskStatus.IN_PLANNING">
-          In Planning
-        </ion-select-option>
-        <ion-select-option [value]="TaskStatus.PENDING">
-          Pending
-        </ion-select-option>
-        <ion-select-option [value]="TaskStatus.IN_PROGRESS">
-          In Progress
-        </ion-select-option>
-        <ion-select-option [value]="TaskStatus.DONE">
-          Done
-        </ion-select-option>
-      </ion-select>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Description</ion-label>
-      <ion-textarea [(ngModel)]="task.description"></ion-textarea>
-    </ion-item>
-  </ion-content>
-  <ion-content *ngIf="!task" class="ion-padding">
-    <ion-item>
-      Loading Task Edit ...
-    </ion-item>
-  </ion-content>
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons *ngIf="task">
+          <ion-button (click)="cancel()" slot="start">
+            Cancel
+          </ion-button>
+          <ion-title>{{task.id ? 'Edit' : 'Create'}}" Goal</ion-title>
+          <ion-button (click)="save()" slot="end">
+            Save
+          </ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content *ngIf="task" class="ion-padding">
+      <ion-item>
+        <air-eisenhower-inputs [rankedUnit]="task"></air-eisenhower-inputs>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input [(ngModel)]="task.name"> </ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Task Status</ion-label>
+        <ion-select [(ngModel)]="task.status">
+          <ion-select-option [value]="TaskStatus.IN_PLANNING">
+            In Planning
+          </ion-select-option>
+          <ion-select-option [value]="TaskStatus.PENDING">
+            Pending
+          </ion-select-option>
+          <ion-select-option [value]="TaskStatus.IN_PROGRESS">
+            In Progress
+          </ion-select-option>
+          <ion-select-option [value]="TaskStatus.DONE">
+            Done
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Description</ion-label>
+        <ion-textarea [(ngModel)]="task.description"></ion-textarea>
+      </ion-item>
+    </ion-content>
+    <ion-content *ngIf="!task" class="ion-padding">
+      <ion-item>
+        Loading Task Edit ...
+      </ion-item>
+    </ion-content>
+  </ng-template>
 </ion-modal>
