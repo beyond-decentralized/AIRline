@@ -14,7 +14,7 @@
     </ion-fab-button>
   </ion-fab>
   <air-conversation-edit [conversation]="newConversation" [moderatorUserAccounts]="newConversationModeratorUserAccounts"
-    [onWillDismiss]="addConversation" [participantUserAccounts]="newConversationParticipantUserAccounts"
+    [parent]="self" [participantUserAccounts]="newConversationParticipantUserAccounts"
     triggerId="add-conversation"></air-conversation-edit>
   <ion-item>
     {{collection.name}}

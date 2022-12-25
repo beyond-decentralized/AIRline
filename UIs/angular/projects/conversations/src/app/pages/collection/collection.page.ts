@@ -20,6 +20,7 @@ export class CollectionPage implements OnDestroy, OnInit {
   newConversationModeratorUserAccounts: UserAccount[] = []
   newConversationParticipantUserAccounts: UserAccount[] = []
   queryParamsSubscription: Subscription = null as any
+  self: CollectionPage = this
 
   constructor(
     private collectionsService: CollectionsService,
@@ -50,15 +51,27 @@ export class CollectionPage implements OnDestroy, OnInit {
     this.queryParamsSubscription.unsubscribe()
   }
 
-  addConversation(_event: Event) {
-    this.addConversationAsync().then()
+  saveConversation(
+    conversation: Conversation,
+    conversationModeratorUserAccounts: UserAccount[],
+    conversationParticipantUserAccounts: UserAccount[]
+  ) {
+    this.addConversationAsync(
+      conversation,
+      conversationModeratorUserAccounts,
+      conversationParticipantUserAccounts
+    ).then()
   }
 
-  async addConversationAsync(): Promise<void> {
+  private async addConversationAsync(
+    conversation: Conversation,
+    conversationModeratorUserAccounts: UserAccount[],
+    conversationParticipantUserAccounts: UserAccount[]
+  ): Promise<void> {
     await this.conversationService.saveConversation(
-      this.newConversation,
-      this.newConversationParticipantUserAccounts,
-      this.newConversationModeratorUserAccounts
+      conversation,
+      conversationModeratorUserAccounts,
+      conversationParticipantUserAccounts
     )
     this.setupNewConversationState()
   }

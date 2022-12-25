@@ -31,10 +31,10 @@ export class GoalsPage implements OnInit {
     this.addGoalAsync(goalToAdd).then()
   }
 
-  async addGoalAsync(
+  private async addGoalAsync(
     goalToAdd: Goal
   ): Promise<void> {
-    await this.goalService.saveGoal(
+    await this.goalService.createGoal(
       goalToAdd
     )
     this.setupNewGoalState()

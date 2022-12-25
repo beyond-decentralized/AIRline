@@ -10,7 +10,7 @@
       <ion-icon icon="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <air-task-edit [task]="currentTask" [onWillDismiss]="saveTask" triggerId="edit-task"></air-task-edit>
+  <air-task-edit [task]="currentTask" [parent]="self" triggerId="edit-task"></air-task-edit>
   <ion-item>
     <ion-label position="floating">Goal: </ion-label>
     {{goal.name}}

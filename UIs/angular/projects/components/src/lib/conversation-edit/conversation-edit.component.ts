@@ -1,4 +1,5 @@
 import { Conversation } from '@airline/conversations';
+import { Goal } from '@airline/tasks';
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
@@ -14,13 +15,19 @@ export class ConversationEditComponent implements OnInit {
   modal: IonModal = null as any
 
   @Input()
-  conversation: Conversation | null = null
+  conversation: Conversation = null as any
 
   @Input()
   moderatorUserAccounts: UserAccount[] = []
 
   @Input()
-  onWillDismiss: (e: Event) => void = null as any
+  parent: {
+    saveConversation(
+      conversation: Conversation,
+      moderatorUserAccounts: UserAccount[],
+      participantUserAccounts: UserAccount[]
+    ): void
+  } = null as any
 
   @Input()
   participantUserAccounts: UserAccount[] = []
@@ -28,15 +35,28 @@ export class ConversationEditComponent implements OnInit {
   @Input()
   triggerId: string = null as any
 
+  saveOnClose = false
+
   constructor() { }
 
   ngOnInit() { }
+
+  dismiss(e: Event): void {
+    if (this.saveOnClose) {
+      this.parent.saveConversation(
+        this.conversation,
+        this.moderatorUserAccounts,
+        this.participantUserAccounts
+      )
+    }
+  }
 
   cancel(): void {
     this.modal.dismiss(null, 'cancel')
   }
 
   save(): void {
+    this.saveOnClose = true
     this.modal.dismiss(null, 'save')
   }
 

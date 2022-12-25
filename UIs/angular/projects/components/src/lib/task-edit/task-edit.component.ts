@@ -16,22 +16,33 @@ export class TaskEditComponent implements OnInit {
   task: Task = null as any
 
   @Input()
-  onWillDismiss: (e: Event) => void = null as any
+  parent: {
+    saveTask(task: Task): void
+  } = null as any
 
   @Input()
   triggerId: string = null as any
 
   TaskStatus = TaskStatus
 
+  saveOnClose = false
+
   constructor() { }
 
   ngOnInit() { }
+
+  dismiss(e: Event): void {
+    if (this.saveOnClose) {
+      this.parent.saveTask(this.task)
+    }
+  }
 
   cancel(): void {
     this.modal.dismiss(null, 'cancel')
   }
 
   save(): void {
+    this.saveOnClose = true
     this.modal.dismiss(null, 'save')
   }
 

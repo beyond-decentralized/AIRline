@@ -17,6 +17,7 @@ export class TasksPage implements OnInit {
   newTask = new Task()
   tasks: Task[] = null as any
   queryParamsSubscription: Subscription = null as any
+  self = this
 
   constructor(
     private goalService: GoalService,
@@ -55,9 +56,11 @@ export class TasksPage implements OnInit {
     return task.id
   }
 
-  saveTask(_event: Event) {
+  saveTask(
+    taskToSave: Task
+  ) {
     let task: Task
-    if ((_event as any).task === this.newTask) {
+    if (taskToSave === this.newTask) {
       task = this.newTask
     } else {
       task = this.currentTask
