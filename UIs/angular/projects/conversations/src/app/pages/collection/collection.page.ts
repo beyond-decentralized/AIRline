@@ -40,10 +40,6 @@ export class CollectionPage implements OnDestroy, OnInit {
           this.loggedInUserAccount = loggedInUserAccount
           this.setupNewConversationState()
         })
-        this.collectionsService.loadCollection(params['collectionId'])
-          .then(collection => {
-            this.collection = collection
-          })
       })
   }
 

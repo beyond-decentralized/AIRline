@@ -1,0 +1,21 @@
+.goal-name {
+    padding: 5px;
+    padding-top: 10px;
+}
+
+.eisenhower-view {
+    width: 100%;
+}
+
+.eisenhower-icon {
+    padding-left: 5px;
+    width: 62px;
+}
+
+ion-button {
+    text-transform: none;
+}
+
+.view-goal-link {
+    float: right;
+}

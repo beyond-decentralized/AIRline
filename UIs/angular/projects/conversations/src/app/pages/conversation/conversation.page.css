@@ -1,10 +1,17 @@
+.enter-comment-item {
+    --inner-padding-end: 0px;
+}
+
 .enter-input {
-    --padding-end: 23px;
+    /* --padding-end: 43px; */
 }
 
 .enter-icon {
-    padding: 10px;
+    height: 25px;
+    padding: 12px;
     position: absolute;
     right: 0px;
     top: 10px;
+    width: 25px;
+    z-index: 1000;
 }

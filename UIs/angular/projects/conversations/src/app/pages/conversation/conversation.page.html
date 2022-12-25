@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
     <ion-title>{{conversation ? 'Conversation' : 'Loading Conversation'}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,20 +16,12 @@
     Loading Conversation ...
   </ion-item>
 </ion-content>
-<ion-item *ngIf="conversation">
+<ion-item *ngIf="conversation" class="enter-comment-item">
   <ion-label position="stacked">
     Reply
   </ion-label>
-  <ion-input
-  class="enter-input"
-  [(ngModel)]="commentText"
-  placeholder="Enter your comment"
-  >
-    <ion-icon
-      (click)="enterComment()"
-      class="enter-icon"
-      icon="enter-outline"
-    >
-    </ion-icon>
+  <ion-input class="enter-input" [(ngModel)]="commentText" placeholder="Enter your comment">
   </ion-input>
+  <ion-icon (click)="enterComment()" class="enter-icon" icon="enter-outline">
+  </ion-icon>
 </ion-item>

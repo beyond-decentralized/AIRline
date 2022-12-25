@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
     <ion-title>Goal tasks</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,7 +16,7 @@
   <air-task-edit [task]="currentTask" [parent]="self" triggerId="edit-task"></air-task-edit>
   <ion-item>
     <ion-label position="floating">Goal: </ion-label>
-    {{goal.name}}
+    <div class="goal-name">{{goal.name}}</div>
   </ion-item>
   <ion-item *ngFor="let task of tasks trackBy identifyTask">
     <table class="eisenhower-view">
@@ -40,7 +43,6 @@
       </div>
     </table>
   </ion-item>
-  )}
 </ion-content>
 
 <ion-content *ngIf="!tasks">
