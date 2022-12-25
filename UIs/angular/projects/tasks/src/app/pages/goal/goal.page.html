@@ -10,7 +10,7 @@
       <ion-icon icon="create-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <air-goal-edit [goal]="goal" [onWillDismiss]="editGoal" triggerId="edit-goal"></air-goal-edit>
+  <air-goal-edit [goal]="goal" [parent]="self" triggerId="edit-goal"></air-goal-edit>
   <ion-item>
     <air-eisenhower-display [rankedUnit]="goal"></air-eisenhower-display>
   </ion-item>

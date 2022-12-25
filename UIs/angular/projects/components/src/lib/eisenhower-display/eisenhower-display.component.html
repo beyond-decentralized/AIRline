@@ -1,19 +1,16 @@
-
-        <table className="eisenhower-display-view">
-          <tbody>
-              <tr>
-                  <td className="eisenhower-icon">
-                      <air-eisenhower-icon
-                          [rankedUnit]="rankedUnit"
-                      ></air-eisenhower-icon>
-                  </td>
-                  <td>
-                      <div className="display-label">Importance</div>
-                      <div className="display-label">{{rankedUnit.importance}}</div>
-                      <br/>
-                      <div className="display-label">Urgency</div>
-                      <div className="display-label">{{rankedUnit.importance}}</div>
-                  </td>
-              </tr>
-          </tbody>
-      </table>
+<table *ngIf="rankedUnit" class="eisenhower-display-view">
+    <tbody>
+        <tr>
+            <td class="eisenhower-icon">
+                <air-eisenhower-icon [rankedUnit]="rankedUnit"></air-eisenhower-icon>
+            </td>
+            <td>
+                <div class="display-label">Importance</div>
+                <div class="display-label">{{rankedUnit.importance}}</div>
+                <br />
+                <div class="display-label">Urgency</div>
+                <div class="display-label">{{rankedUnit.importance}}</div>
+            </td>
+        </tr>
+    </tbody>
+</table>

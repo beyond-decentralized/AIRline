@@ -13,6 +13,8 @@ export class GoalsPage implements OnInit {
 
   goals: Goal[] = null as any
 
+  self: GoalsPage = this
+
   constructor(
     private goalService: GoalService
   ) { }
@@ -21,6 +23,25 @@ export class GoalsPage implements OnInit {
     this.goalService.getGoals().then(goals => {
       this.goals = goals
     })
+  }
+
+  saveGoal(
+    goalToAdd: Goal
+  ) {
+    this.addGoalAsync(goalToAdd).then()
+  }
+
+  async addGoalAsync(
+    goalToAdd: Goal
+  ): Promise<void> {
+    await this.goalService.saveGoal(
+      goalToAdd
+    )
+    this.setupNewGoalState()
+  }
+
+  setupNewGoalState(): void {
+    this.newGoal = new Goal()
   }
 
   identifyGoal(

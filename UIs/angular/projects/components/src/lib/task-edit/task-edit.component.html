@@ -12,7 +12,7 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  <ion-content className="ion-padding">
+  <ion-content *ngIf="task" class="ion-padding">
     <ion-item>
       <air-eisenhower-inputs [rankedUnit]="task"></air-eisenhower-inputs>
     </ion-item>
@@ -39,8 +39,12 @@
     </ion-item>
     <ion-item>
       <ion-label position="floating">Description</ion-label>
-      <ion-textarea [(ngModel)]="task.description"
-        ></ion-textarea>
+      <ion-textarea [(ngModel)]="task.description"></ion-textarea>
+    </ion-item>
+  </ion-content>
+  <ion-content *ngIf="!task" class="ion-padding">
+    <ion-item>
+      Loading Task Edit ...
     </ion-item>
   </ion-content>
 </ion-modal>

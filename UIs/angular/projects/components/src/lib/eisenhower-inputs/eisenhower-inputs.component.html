@@ -1,29 +1,22 @@
-<table className="eisenhower-edit-view">
-  <tbody>
-      <tr>
-          <td className="eisenhower-icon">
-              <air-eisenhower-icon
-                  [rankedUnit]="rankedUnit"
-              ></air-eisenhower-icon>
-          </td>
-          <td>
-              <div className="range-label">Importance</div>
-              <ion-range min="1" max="5" step="1" name="importance"
-                  [snaps]="true"
-                  [(ngModel)]="rankedUnit.importance"
-                  >
-                  <ion-label slot="start">Low</ion-label>
-                  <ion-label slot="end">High</ion-label>
-              </ion-range>
-              <div className="range-label">Urgency</div>
-              <ion-range min="1" max="5" step="1" name="urgency"
-                  [snaps]="true"
-                  [(ngModel)]="rankedUnit.urgency"
-                  >
-                  <ion-label slot="start">Low</ion-label>
-                  <ion-label slot="end">High</ion-label>
-              </ion-range>
-          </td>
-      </tr>
-  </tbody>
+<table *ngIf="rankedUnit" class="eisenhower-edit-view">
+    <tbody>
+        <tr>
+            <td class="eisenhower-icon">
+                <air-eisenhower-icon [rankedUnit]="rankedUnit"></air-eisenhower-icon>
+            </td>
+            <td>
+                <div class="range-label">Importance</div>
+                <ion-range min="1" max="5" step="1" name="importance" [snaps]="true"
+                    [(ngModel)]="rankedUnit.importance">
+                    <ion-label slot="start">Low</ion-label>
+                    <ion-label slot="end">High</ion-label>
+                </ion-range>
+                <div class="range-label">Urgency</div>
+                <ion-range min="1" max="5" step="1" name="urgency" [snaps]="true" [(ngModel)]="rankedUnit.urgency">
+                    <ion-label slot="start">Low</ion-label>
+                    <ion-label slot="end">High</ion-label>
+                </ion-range>
+            </td>
+        </tr>
+    </tbody>
 </table>

@@ -15,6 +15,8 @@ export class GoalPage implements OnInit {
   goal: Goal = null as any
   queryParamsSubscription: Subscription = null as any
 
+  self: GoalPage = this
+
   constructor(
     private goalInfoService: GoalInfoService,
     private goalService: GoalService,
@@ -32,12 +34,16 @@ export class GoalPage implements OnInit {
     this.queryParamsSubscription.unsubscribe()
   }
 
-  editGoal(_event: Event) {
-    this.editGoalAsync().then()
+  saveGoal(
+    goalToEdit: Goal
+  ) {
+    this.editGoalAsync(goalToEdit).then()
   }
 
-  async editGoalAsync(): Promise<void> {
-    await this.goalService.saveGoal(this.goal)
+  async editGoalAsync(
+    goalToEdit: Goal
+  ): Promise<void> {
+    await this.goalService.saveGoal(goalToEdit)
     this.goal = {
       ...this.goal
     }

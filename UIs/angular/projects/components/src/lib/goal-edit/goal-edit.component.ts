@@ -16,22 +16,33 @@ export class GoalEditComponent implements OnInit {
   goal: Goal = null as any
 
   @Input()
-  onWillDismiss: (e: Event) => void = null as any
+  parent: {
+    saveGoal(goal: Goal): void
+  } = null as any
 
   @Input()
   triggerId: string = null as any
 
   GoalStatus = GoalStatus
 
+  saveOnClose = false
+
   constructor() { }
 
   ngOnInit() { }
+
+  dismiss(e: Event): void {
+    if (this.saveOnClose) {
+      this.parent.saveGoal(this.goal)
+    }
+  }
 
   cancel(): void {
     this.modal.dismiss(null, 'cancel')
   }
 
   save(): void {
+    this.saveOnClose = true
     this.modal.dismiss(null, 'save')
   }
 

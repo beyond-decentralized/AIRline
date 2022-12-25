@@ -10,7 +10,7 @@
       <ion-icon icon="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <air-goal-edit></air-goal-edit>
+  <air-goal-edit [goal]="newGoal" [parent]="self" triggerId="add-goal"></air-goal-edit>
   <ion-item *ngFor="let goal of goals trackBy identifyGoal">
     <div>
       <div>
