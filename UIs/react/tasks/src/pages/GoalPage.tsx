@@ -36,7 +36,7 @@ export function GoalPage() {
       case GoalStatus.ACCOMPLISHED:
         return 'Accomplished'
       case GoalStatus.CURRENT:
-        return 'Cuurrent'
+        return 'Current'
       case GoalStatus.FUTURE:
         return 'Future'
       case GoalStatus.OUTDATED:
