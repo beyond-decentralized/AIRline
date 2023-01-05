@@ -27,8 +27,7 @@ export class CollectionDao
                 c = Q.Collection,
                 t = c.topic.LEFT_JOIN(),
                 r = c.repository.LEFT_JOIN(),
-            ],
-            WHERE: r.parentRepository.IS_NULL()
+            ]
         })
     }
 

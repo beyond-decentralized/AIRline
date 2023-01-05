@@ -62,9 +62,7 @@ export class ConversationApi {
         conversation.collection = collection
 
         const repository = await this.repositoryApi.create(
-            'Conversation: ' + participantUserNames.join(', '),
-            collection.repository,
-            'Conversations'
+            'Conversation: ' + participantUserNames.join(', ')
         )
         conversation.repository = repository
         await this.conversationDao.save(conversation)
