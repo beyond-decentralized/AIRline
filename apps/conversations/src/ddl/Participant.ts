@@ -16,8 +16,8 @@ export class Participant
 
     @ManyToOne({ optional: false })
     @JoinColumn({
-        name: "USER_ACCOUNT_GUID",
-        referencedColumnName: "GUID"
+        name: "USER_ACCOUNT_LID",
+        referencedColumnName: "USER_ACCOUNT_LID"
     })
     userAccount: UserAccount
 
