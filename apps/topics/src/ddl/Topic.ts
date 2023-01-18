@@ -1,5 +1,5 @@
 import { AirEntity } from "@airport/final-approach";
-import { Entity, ManyToOne, Table } from "@airport/tarmaq-entity";
+import { Column, Entity, ManyToOne, Table } from "@airport/tarmaq-entity";
 import { Theme } from "./Theme";
 
 @Entity()
@@ -7,6 +7,7 @@ import { Theme } from "./Theme";
 export class Topic
     extends AirEntity {
 
+    @Column({ name: 'NAME', nullable: false })
     name: string
 
     @ManyToOne({ optional: true })

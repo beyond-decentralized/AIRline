@@ -1,5 +1,5 @@
 import { AirEntity } from "@airport/final-approach";
-import { Entity, OneToMany, Table } from "@airport/tarmaq-entity";
+import { Column, Entity, OneToMany, Table } from "@airport/tarmaq-entity";
 import { Topic } from "./Topic";
 
 @Entity()
@@ -7,6 +7,7 @@ import { Topic } from "./Topic";
 export class Theme
     extends AirEntity {
 
+    @Column({ name: 'NAME', nullable: false })
     name: string
 
     @OneToMany({ mappedBy: 'theme' })
