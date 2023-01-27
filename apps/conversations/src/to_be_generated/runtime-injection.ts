@@ -1,15 +1,15 @@
-import { setApplicationLoader } from '@airport/apron'
 import { ApplicationLoader } from './ApplicationLoader'
 import { CommentDao, ConversationDao } from '../dao/dao'
 import { ConversationApi } from '../api/ConversationApi'
 import { CollectionApi } from '../api/CollectionApi'
 import { CommentApi } from '../api/CommentApi'
-import { RequestManager } from '@airport/arrivals-n-departures'
 import { RepositoryApi } from '@airport/holding-pattern'
 import { CollectionDao } from '../dao/CollectionDao'
 import { CollectionConversationDao } from '../dao/CollectionConversationDao'
 import { app } from '@airport/direction-indicator'
 import { application } from './app-declaration'
+import { RequestManager } from '@airport/tower'
+import { setApplicationLoader } from '@airport/terminal-map'
 
 export const airApp = app(application)
 

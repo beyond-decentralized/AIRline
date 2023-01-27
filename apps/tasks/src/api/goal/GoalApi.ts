@@ -1,6 +1,6 @@
 import { Collection, CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
-import { Api } from "@airport/check-in";
+import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
 import { GoalDao } from "../../dao/goal/GoalDao";

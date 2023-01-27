@@ -1,6 +1,5 @@
 import { CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
-import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { TaskDao } from "../../dao/task/TaskDao";
 import { Goal } from "../../ddl/goal/Goal";
@@ -8,6 +7,7 @@ import { Task } from "../../ddl/task/Task";
 import { RepositoryApi } from "@airport/holding-pattern";
 import { GoalTask } from "../../ddl/ddl";
 import { GoalTaskDao } from "../../dao/dao";
+import { Api } from "@airport/air-traffic-control";
 
 @Injected()
 export class TaskApi {

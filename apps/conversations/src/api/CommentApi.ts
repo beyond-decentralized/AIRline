@@ -1,4 +1,4 @@
-import { Api } from "@airport/check-in";
+import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { CommentDao } from "../dao/CommentDao";
 import { Comment } from "../ddl/comment";

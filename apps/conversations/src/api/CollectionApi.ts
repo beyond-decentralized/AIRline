@@ -1,5 +1,5 @@
 import { Topic } from "@airline/topics";
-import { Api } from "@airport/check-in";
+import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { Repository, RepositoryApi } from "@airport/holding-pattern";
 import { CollectionDao } from "../dao/CollectionDao";

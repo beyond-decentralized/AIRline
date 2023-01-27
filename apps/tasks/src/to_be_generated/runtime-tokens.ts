@@ -1,4 +1,3 @@
-import { setApplicationLoader } from '@airport/apron'
 import { RepositoryApi } from '@airport/holding-pattern'
 import { ApplicationLoader } from './ApplicationLoader'
 import { GoalDao, GoalTaskDao, TaskDao } from '../dao/dao'
@@ -7,6 +6,7 @@ import { TaskApi } from '../api/task/TaskApi'
 import { CollectionApi } from '@airline/conversations'
 import { app } from '@airport/direction-indicator'
 import { application } from './app-declaration'
+import { setApplicationLoader } from '@airport/terminal-map'
 
 export const airApp = app(application)
 

@@ -1,5 +1,3 @@
-import { RequestManager } from "@airport/arrivals-n-departures";
-import { Api } from "@airport/check-in";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
 import { UserAccount } from "@airport/travel-document-checkpoint";
@@ -10,6 +8,8 @@ import { Collection } from "../ddl/Collection";
 import { CollectionConversation } from "../ddl/CollectionConversation";
 import { Moderator } from "../ddl/Moderator";
 import { Participant } from "../ddl/Participant";
+import { RequestManager } from "@airport/tower";
+import { Api } from "@airport/air-traffic-control";
 
 @Injected()
 export class ConversationApi {
