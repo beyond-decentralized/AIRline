@@ -13,7 +13,7 @@ const packageJson = require("./package.json");
 
 export default [
     {
-        input: 'src/to_be_generated/runtime-index.ts',
+        input: 'src/to_be_generated/topics.runtime-index.ts',
         output: [{
             sourcemap: true,
             format: 'esm',
@@ -82,7 +82,7 @@ export default [
         }
     },
     {
-        input: "src/to_be_generated/api-index.ts",
+        input: "src/to_be_generated/topics.api-index.ts",
         output: [
             {
                 file: packageJson.main,
@@ -114,14 +114,14 @@ export default [
         },
     },
     {
-        input: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/topics/to_be_generated/runtime-index.d.ts",
+        input: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/topics/to_be_generated/topics.runtime-index.d.ts",
         output: [{ file: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/topics/bundle.d.ts", format: "esm" }],
         plugins: [dts()],
         external: [/\.css$/],
     },
     {
-        input: "dist/esm/to_be_generated/api-index.d.ts",
-        output: [{ file: "dist/esm/index.d.ts", format: "esm" }],
+        input: "dist/esm/to_be_generated/topics.api-index.d.ts",
+        output: [{ file: "dist/esm/topics.index.d.ts", format: "esm" }],
         plugins: [dts()],
         external: [/\.css$/],
     },

@@ -39,8 +39,8 @@
     "typescript": "^4.5.2",
     "tslib": "^2.0.0"
   },
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/cjs/topics.index.js",
+  "module": "dist/esm/topics.index.js",
   "files": [
     "dist"
   ],
@@ -50,5 +50,5 @@
     "prebuild": "node stageApp.mjs && node generate.mjs",
     "build": "rollup -c ./rollup.config.js"
   },
-  "types": "dist/esm/index.d.ts"
+  "types": "dist/esm/topics.index.d.ts"
 }
