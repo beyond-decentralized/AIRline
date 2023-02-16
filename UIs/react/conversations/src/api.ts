@@ -1,4 +1,4 @@
-import { Comment, CommentApi, Conversation, ConversationApi, Collection, CollectionApi, Participant } from '@airline/conversations'
+import { Comment, CommentApi, Conversation, ConversationApi, Collection, CollectionApi } from '@airline/conversations'
 import { SessionStateApi } from '@airport/session-state'
 import { UserAccount } from '@airport/travel-document-checkpoint'
 
