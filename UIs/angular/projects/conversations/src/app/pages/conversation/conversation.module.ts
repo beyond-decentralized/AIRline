@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ConversationPageRoutingModule } from './conversation-routing.module';
 
 import { ConversationPage } from './conversation.page';
-import { ComponentsModule } from 'components';
+import { ComponentsModule } from 'projects/components/src/public-api';
 
 @NgModule({
   imports: [

@@ -64,7 +64,7 @@ export class ConversationEditComponent implements OnInit {
     _index: number,
     userAccount: UserAccount
   ) {
-    return userAccount.GUID
+    return userAccount.accountPublicSigningKey
   }
 
 }

@@ -1,7 +1,7 @@
 import { Goal } from '@airline/tasks';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { GoalInfoService } from 'components';
+import { GoalInfoService } from 'projects/components/src/public-api';
 import { Subscription } from 'rxjs';
 import { GoalService } from '../../services/goal.service';
 

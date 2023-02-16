@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { GoalsPageRoutingModule } from './goals-routing.module';
 
 import { GoalsPage } from './goals.page';
-import { ComponentsModule } from 'components';
+import { ComponentsModule } from 'projects/components/src/public-api';
 
 @NgModule({
   imports: [
