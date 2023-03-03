@@ -1,8 +1,9 @@
-import { Collection, CollectionApi } from "@airline/conversations";
+import { CollectionApi } from "@airline/conversations";
 import { Topic } from "@airline/topics";
 import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
+import { Observable } from "rxjs";
 import { GoalDao } from "../../dao/goal/GoalDao";
 import { Goal } from "../../ddl/goal/Goal";
 
@@ -19,8 +20,8 @@ export class GoalApi {
     repositoryApi: RepositoryApi
 
     @Api()
-    async findAll(): Promise<Goal[]> {
-        return await this.goalDao.findAll()
+    searchAll(): Observable<Goal[]> {
+        return this.goalDao.searchAll()
     }
 
     @Api()

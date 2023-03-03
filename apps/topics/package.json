@@ -19,7 +19,8 @@
     "@airport/tarmaq-query": "0.0.1",
     "@airport/travel-document-checkpoint": "0.0.1",
     "@airport/tower": "0.0.1",
-    "@airport/web-tower": "0.0.1"
+    "@airport/web-tower": "0.0.1",
+    "rxjs": "~7.8.0"
   },
   "devDependencies": {
     "@airport/runway": "0.0.1",

@@ -14,7 +14,7 @@
     </ion-fab-button>
   </ion-fab>
   <air-goal-edit [goal]="newGoal" [parent]="self" triggerId="add-goal"></air-goal-edit>
-  <ion-item *ngFor="let goal of goals trackBy identifyGoal">
+  <ion-item *ngFor="let goal of goals | async trackBy identifyGoal">
     <div>
       <ion-label class="goal-name">
         {{goal.name}}

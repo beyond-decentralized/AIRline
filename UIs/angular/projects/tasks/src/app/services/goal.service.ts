@@ -1,5 +1,6 @@
 import { Goal, GoalApi } from '@airline/tasks';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,11 @@ export class GoalService {
 
   goalApi = new GoalApi()
 
-  constructor() { }
+  goals$: Observable<Goal[]>
+
+  constructor() {
+    this.goals$ = this.goalApi.searchAll()
+  }
 
   async createGoal(
     goal: Goal
@@ -30,19 +35,6 @@ export class GoalService {
       console.error(e)
       alert('Error saving Goal')
     }
-  }
-
-  async getGoals(
-  ): Promise<Goal[]> {
-    let goals: Goal[] = []
-    try {
-      goals = await this.goalApi.findAll()
-    } catch (e) {
-      console.error(e)
-      alert('Error retrieving Goals')
-    }
-
-    return goals
   }
 
   async getGoal(

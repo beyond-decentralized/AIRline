@@ -1,5 +1,6 @@
 import { Goal } from '@airline/tasks';
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { GoalService } from '../../services/goal.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class GoalsPage implements OnInit {
 
   newGoal = new Goal()
 
-  goals: Goal[] = null as any
+  goals: Observable<Goal[]> = null as any
 
   self: GoalsPage = this
 
@@ -20,9 +21,7 @@ export class GoalsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.goalService.getGoals().then(goals => {
-      this.goals = goals
-    })
+    this.goals = this.goalService.goals$
   }
 
   saveGoal(
