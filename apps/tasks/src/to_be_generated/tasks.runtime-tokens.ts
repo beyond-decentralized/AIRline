@@ -7,6 +7,7 @@ import { CollectionApi } from '@airline/conversations'
 import { app } from '@airport/direction-indicator'
 import { application } from './app-declaration'
 import { setApplicationLoader } from '@airport/terminal-map'
+import { ThemeApi } from '@airline/topics'
 
 export const airApp = app(application)
 
@@ -18,7 +19,8 @@ airApp.register(
 airApp.setDependencies(GoalApi, {
     collectionApi: CollectionApi,
     goalDao: GoalDao,
-    repositoryApi: RepositoryApi
+    repositoryApi: RepositoryApi,
+    themeApi: ThemeApi
 })
 airApp.setDependencies(TaskApi, {
     collectionApi: CollectionApi,

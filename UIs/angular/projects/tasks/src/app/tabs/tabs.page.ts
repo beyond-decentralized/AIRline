@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GoalService } from '../services/goal.service';
 
 @Component({
   selector: 'app-tabs',
@@ -7,6 +8,10 @@ import { Component } from '@angular/core';
 })
 export class TabsPage {
 
-  constructor() {}
+  themes$ = this.goalService.themes$
+
+  constructor(
+    private goalService: GoalService
+  ) { }
 
 }

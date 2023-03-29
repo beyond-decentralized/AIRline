@@ -1,9 +1,9 @@
 import { CollectionApi } from "@airline/conversations";
-import { Topic } from "@airline/topics";
+import { Theme, ThemeApi, Topic } from "@airline/topics";
 import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { RepositoryApi } from "@airport/holding-pattern";
-import { Observable } from "rxjs";
+import { map, Observable } from "rxjs";
 import { GoalDao } from "../../dao/goal/GoalDao";
 import { Goal } from "../../ddl/goal/Goal";
 
@@ -19,9 +19,27 @@ export class GoalApi {
     @Inject()
     repositoryApi: RepositoryApi
 
+    @Inject()
+    themeApi: ThemeApi
+
     @Api()
     searchAll(): Observable<Goal[]> {
-        return this.goalDao.searchAll()
+        return this.goalDao.searchAll().pipe(
+            map(goals => {
+                console.log(`TASKS Search returned ${goals.length} goals`)
+                return goals
+            })
+        )
+    }
+
+    @Api()
+    searchAllThemes(): Observable<Theme[]> {
+        return this.themeApi.searchAll().pipe(
+            map(themes => {
+                console.log(`TASKS Search returned ${themes.length} themes`)
+                return themes
+            })
+        )
     }
 
     @Api()
