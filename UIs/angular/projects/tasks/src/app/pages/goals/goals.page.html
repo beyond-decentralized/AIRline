@@ -14,6 +14,18 @@
     </ion-fab-button>
   </ion-fab>
   <air-goal-edit [goal]="newGoal" [parent]="self" triggerId="add-goal"></air-goal-edit>
+  <ion-item
+  *ngIf="themes$"
+  >
+    <br>
+    # Themes non-async: {{numThemes}}
+    <button
+    (click)="getThemes()"
+    >Get themes</button>
+    <button
+    (click)="ungetThemes()"
+    >Unget themes</button>
+  </ion-item>
   <ion-item *ngFor="let goal of goals | async trackBy identifyGoal">
     <div>
       <ion-label class="goal-name">

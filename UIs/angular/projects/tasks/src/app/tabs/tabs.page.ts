@@ -8,10 +8,4 @@ import { GoalService } from '../services/goal.service';
 })
 export class TabsPage {
 
-  themes$ = this.goalService.themes$
-
-  constructor(
-    private goalService: GoalService
-  ) { }
-
 }
