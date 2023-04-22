@@ -32,8 +32,8 @@ export class GoalsPage implements OnInit {
   ) {
     this.addGoalAsync(goalToAdd).then()
   }
-
- /*  toggleSubscriptionTest() {
+/* 
+ toggleSubscriptionTest() {
     this.showSubscriptionTest = !this.showSubscriptionTest
 
     if(this.showSubscriptionTest) {
@@ -41,8 +41,8 @@ export class GoalsPage implements OnInit {
     } else {
       this.toggleSubscriptionTestMessage = 'Show Subscription Test'
     }
-  } */
-
+  }
+ */
   private async addGoalAsync(
     goalToAdd: Goal
   ): Promise<void> {
