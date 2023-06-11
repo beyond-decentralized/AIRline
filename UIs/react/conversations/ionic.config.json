@@ -1,7 +1,0 @@
-{
-  "name": "Conversations",
-  "integrations": {
-    "capacitor": {}
-  },
-  "type": "react"
-}
