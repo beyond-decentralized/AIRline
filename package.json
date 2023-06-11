@@ -12,10 +12,6 @@
         "AIRline"
     ],
     "author": "Artem <Artem.V.Shamsutdinov@beyond-decentralized.world> (https://beyond-decentralized.world/)",
-    "devDependencies": {
-        "ts-patch": "^2.1.0",
-        "typescript": "^4.5.2"
-    },
     "bugs": {
         "url": "https://github.com/beyond-decentralized/AIRline/issues"
     },

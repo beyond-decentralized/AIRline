@@ -116,13 +116,13 @@ export default [
     {
         input: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations/to_be_generated/conversations.runtime-index.d.ts",
         output: [{ file: "../../UIs/angular/projects/conversations/src/AIRport/apps/@airline/conversations/bundle.d.ts", format: "esm" }],
-        plugins: [dts()],
+        plugins: [dts.default()],
         external: [/\.css$/],
     },
     {
         input: "dist/esm/to_be_generated/conversations.api-index.d.ts",
         output: [{ file: "dist/esm/conversations.index.d.ts", format: "esm" }],
-        plugins: [dts()],
+        plugins: [dts.default()],
         external: [/\.css$/],
     },
 ];
