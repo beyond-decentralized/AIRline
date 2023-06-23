@@ -2,10 +2,11 @@ import { Collection, CollectionConversation, Conversation, Participant } from '@
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, flatMap, map, mergeMap } from 'rxjs';
 import { CollectionsService } from '../../services/collections.service';
 import { ConversationService } from '../../services/conversation.service';
 import { SessionStateService } from '../../services/session-state.service';
+import { ParticipantsPageRoutingModule } from '../participants/participants-routing.module';
 
 @Component({
   selector: 'cvr-collection',
@@ -14,9 +15,18 @@ import { SessionStateService } from '../../services/session-state.service';
 })
 export class CollectionPage implements OnDestroy, OnInit {
 
-  collection: Collection = null as any
-  loggedInUserAccount: UserAccount = null as any
   newConversation: Conversation = new Conversation()
+  collection: Collection = null as any
+  collection$: Observable<Collection> = this.route.params.pipe(
+    mergeMap(params =>
+      this.collectionsService.loadCollection(params['collectionId'])),
+      map(collection => {
+        this.collection = collection
+        this.newConversation.collection = collection
+        return collection
+      })
+  )
+  loggedInUserAccount: UserAccount = null as any
   newConversationModeratorUserAccounts: UserAccount[] = []
   newConversationParticipantUserAccounts: UserAccount[] = []
   queryParamsSubscription: Subscription = null as any
@@ -29,18 +39,9 @@ export class CollectionPage implements OnDestroy, OnInit {
     private sessionStateService: SessionStateService
   ) { }
 
-  ngOnInit() {
-    this.queryParamsSubscription = this.route.params
-      .subscribe(params => {
-        Promise.all([
-          this.collectionsService.loadCollection(params['collectionId']),
-          this.sessionStateService.getLoggedInUserAccount()
-        ]).then(([collection, loggedInUserAccount]) => {
-          this.collection = collection
-          this.loggedInUserAccount = loggedInUserAccount
-          this.setupNewConversationState()
-        })
-      })
+  async ngOnInit() {
+    this.loggedInUserAccount = await this.sessionStateService.getLoggedInUserAccount()
+    this.setupDefaultUserAccountsForConversation()
   }
 
   ngOnDestroy(): void {
@@ -75,6 +76,10 @@ export class CollectionPage implements OnDestroy, OnInit {
   setupNewConversationState(): void {
     this.newConversation = new Conversation()
     this.newConversation.collection = this.collection
+    this.setupDefaultUserAccountsForConversation()
+  }
+
+  setupDefaultUserAccountsForConversation() {
     this.newConversationModeratorUserAccounts
       = [this.loggedInUserAccount]
     this.newConversationParticipantUserAccounts

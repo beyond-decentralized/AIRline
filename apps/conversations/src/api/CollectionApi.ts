@@ -4,6 +4,7 @@ import { Inject, Injected } from "@airport/direction-indicator";
 import { Repository, RepositoryApi } from "@airport/holding-pattern";
 import { CollectionDao } from "../dao/CollectionDao";
 import { Collection } from "../ddl/Collection";
+import { Observable, map } from "rxjs";
 
 @Injected()
 export class CollectionApi {
@@ -15,15 +16,21 @@ export class CollectionApi {
     repositoryApi: RepositoryApi
 
     @Api()
-    async findAll(): Promise<Collection[]> {
-        return await this.collectionDao.findAll()
+    searchAll(): Observable<Collection[]> {
+        return this.collectionDao.searchAll().pipe(
+            map(collections => {
+                console.log(`CollectionApi returned ${collections.length} collections`)
+
+                return collections
+            })
+        )
     }
 
     @Api()
-    async findAllForTopic(
+    searchAllForTopic(
         topic: Topic | string
-    ): Promise<Collection[]> {
-        return await this.collectionDao.findAllForTopic(topic)
+    ): Observable<Collection[]> {
+        return this.collectionDao.searchAllForTopic(topic)
     }
 
     @Api()
@@ -59,10 +66,10 @@ export class CollectionApi {
     }
 
     @Api()
-    async loadWithDetails(
+    loadWithDetails(
         collectionId: string
-    ): Promise<Collection> {
-        return await this.collectionDao.loadWithDetails(collectionId)
+    ): Observable<Collection> {
+        return this.collectionDao.loadWithDetails(collectionId)
     }
 
 }

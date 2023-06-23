@@ -3,20 +3,20 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{conversation ? 'Conversation' : 'Loading Conversation'}}</ion-title>
+    <ion-title>{{(conversation$ | async) ? 'Conversation' : 'Loading Conversation'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="conversation">
-  <air-conversation-view [conversation]="conversation">
+<ion-content *ngIf="(conversation$ | async)">
+  <air-conversation-view [conversation]="(conversation$ | async)">
   </air-conversation-view>
 </ion-content>
-<ion-content *ngIf="!conversation">
+<ion-content *ngIf="!(conversation$ | async)">
   <ion-item>
     Loading Conversation ...
   </ion-item>
 </ion-content>
-<ion-item *ngIf="conversation" class="enter-comment-item">
+<ion-item *ngIf="(conversation$ | async)" class="enter-comment-item">
   <ion-label position="stacked">
     Reply
   </ion-label>

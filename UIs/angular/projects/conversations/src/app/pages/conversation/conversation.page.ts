@@ -1,7 +1,7 @@
 import { Conversation } from '@airline/conversations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription, mergeMap, shareReplay, take } from 'rxjs';
 import { CommentService } from '../../services/comment.service';
 import { ConversationService } from '../../services/conversation.service';
 
@@ -13,7 +13,13 @@ import { ConversationService } from '../../services/conversation.service';
 export class ConversationPage implements OnInit {
 
   commentText: string = ''
-  conversation: Conversation = null as any
+  conversation$: Observable<Conversation> = this.route.params.pipe(
+    mergeMap(params =>
+      this.conversationService.loadConversation(params['conversationId'])
+        .pipe(
+          shareReplay(1)
+        ))
+  )
   queryParamsSubscription: Subscription = null as any
 
   constructor(
@@ -23,13 +29,6 @@ export class ConversationPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.queryParamsSubscription = this.route.params
-      .subscribe(params => {
-        this.conversationService.loadConversation(params['conversationId'])
-          .then((conversation) => {
-            this.conversation = conversation
-          })
-      })
   }
 
   ngOnDestroy(): void {
@@ -37,16 +36,20 @@ export class ConversationPage implements OnInit {
   }
 
   enterComment(): void {
-    this.enterCommentAsync().then()
+    const subscription = this.conversation$.pipe(
+      take(1)
+    ).subscribe(conversation => {
+      this.enterCommentAsync(conversation).then()
+    })
+    subscription.unsubscribe()
   }
 
-  async enterCommentAsync(): Promise<void> {
+  async enterCommentAsync(
+    conversation: Conversation
+  ): Promise<void> {
     await this.commentService
-      .addComment(this.conversation, this.commentText)
+      .addComment(conversation, this.commentText)
     this.commentText = ''
-    this.conversation = {
-      ...this.conversation
-    }
   }
 
 }

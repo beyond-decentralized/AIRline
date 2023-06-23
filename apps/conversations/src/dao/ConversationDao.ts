@@ -5,19 +5,20 @@ import { BaseConversationDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
 import { QModerator, QParticipant } from "../generated/qInterfaces";
 import { QConversation } from "../generated/query/QConversation";
+import { Observable } from "rxjs";
 
 @Injected()
 export class ConversationDao
     extends BaseConversationDao {
 
-    async loadWithDetails(
+    loadWithDetails(
         conversationId: string
-    ): Promise<Conversation> {
+    ): Observable<Conversation> {
         let c: QConversation,
             m: QModerator,
             p: QParticipant
 
-        return await this._findOne({
+        return this._searchOne({
             SELECT: {
                 comments: {},
                 moderators: {

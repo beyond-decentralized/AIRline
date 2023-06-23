@@ -8,7 +8,7 @@ import { GoalsPageRoutingModule } from './goals-routing.module';
 
 import { GoalsPage } from './goals.page';
 import { ComponentsModule } from 'projects/components/src/public-api';
-// import { SubscriptionTestComponent } from './subscription-test/subscription-test.component';
+import { SubscriptionTestComponent } from './subscription-test/subscription-test.component';
 
 @NgModule({
   imports: [
@@ -19,7 +19,7 @@ import { ComponentsModule } from 'projects/components/src/public-api';
     GoalsPageRoutingModule
   ],
   declarations: [GoalsPage, 
-    // SubscriptionTestComponent
+    SubscriptionTestComponent
   ]
 })
 export class GoalsPageModule { }

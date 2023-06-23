@@ -9,16 +9,17 @@ import { QParticipant } from "../generated/qInterfaces";
 import { QCollection } from "../generated/query/QCollection";
 import { QRepository } from "@airport/holding-pattern";
 import { QCollectionConversation } from "../generated/query/QCollectionConversation";
+import { Observable } from "rxjs";
 
 @Injected()
 export class CollectionDao
     extends BaseCollectionDao {
 
-    async findAllForRootRepositories(): Promise<Collection[]> {
+    searchAllForRootRepositories(): Observable<Collection[]> {
         let c: QCollection,
             t: QTopic,
             r: QRepository
-        return await this._find({
+        return this._search({
             SELECT: {
                 '*': Y,
                 topic: {}
@@ -31,12 +32,12 @@ export class CollectionDao
         })
     }
 
-    async findAllForTopic(
+    searchAllForTopic(
         topic: Topic | string
-    ): Promise<Collection[]> {
+    ): Observable<Collection[]> {
         let c: QCollection,
             t: QTopic
-        return await this._find({
+        return this._search({
             SELECT: {
                 '*': Y,
                 topic: {}
@@ -49,10 +50,10 @@ export class CollectionDao
         })
     }
 
-    async findAllWithNoTopic(
-    ): Promise<Collection[]> {
+    findAllWithNoTopic(
+    ): Observable<Collection[]> {
         let c: QCollection
-        return await this._find({
+        return this._search({
             SELECT: {
                 '*': Y
             },
@@ -63,15 +64,15 @@ export class CollectionDao
         })
     }
 
-    async loadWithDetails(
+    loadWithDetails(
         collectionId: string
-    ): Promise<Collection> {
+    ): Observable<Collection> {
         let cn: QConversation,
             cl: QCollection,
             cc: QCollectionConversation,
             p: QParticipant
 
-        return await this._findOne({
+        return this._searchOne({
             SELECT: {
                 name: Y,
                 collectionConversations: {

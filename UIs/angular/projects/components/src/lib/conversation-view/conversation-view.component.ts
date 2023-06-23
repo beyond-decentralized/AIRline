@@ -10,7 +10,7 @@ import { DateService } from '../services/date.service';
 export class ConversationViewComponent implements OnInit {
 
   @Input()
-  conversation: Conversation = null as any
+  conversation: Conversation | null = null
 
   constructor(
     private dateService: DateService

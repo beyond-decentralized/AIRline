@@ -10,6 +10,7 @@ import { Moderator } from "../ddl/Moderator";
 import { Participant } from "../ddl/Participant";
 import { RequestManager } from "@airport/tower";
 import { Api } from "@airport/air-traffic-control";
+import { Observable } from "rxjs";
 
 @Injected()
 export class ConversationApi {
@@ -91,10 +92,10 @@ export class ConversationApi {
     }
 
     @Api()
-    async loadWithDetails(
+    loadWithDetails(
         conversationId: string
-    ): Promise<Conversation> {
-        return await this.conversationDao.loadWithDetails(conversationId)
+    ): Observable<Conversation> {
+        return this.conversationDao.loadWithDetails(conversationId)
     }
 
 }

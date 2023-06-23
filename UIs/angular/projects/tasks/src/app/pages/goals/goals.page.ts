@@ -16,9 +16,9 @@ export class GoalsPage implements OnInit {
 
   self: GoalsPage = this
 
-  // showSubscriptionTest = false
+  showSubscriptionTest = false
 
-  // toggleSubscriptionTestMessage = 'Show Subscription Test'
+  toggleSubscriptionTestMessage = 'Show Subscription Test'
 
   constructor(
     private goalService: GoalService
@@ -32,7 +32,7 @@ export class GoalsPage implements OnInit {
   ) {
     this.addGoalAsync(goalToAdd).then()
   }
-/* 
+
  toggleSubscriptionTest() {
     this.showSubscriptionTest = !this.showSubscriptionTest
 
@@ -42,7 +42,7 @@ export class GoalsPage implements OnInit {
       this.toggleSubscriptionTestMessage = 'Show Subscription Test'
     }
   }
- */
+ 
   private async addGoalAsync(
     goalToAdd: Goal
   ): Promise<void> {

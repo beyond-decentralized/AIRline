@@ -7,13 +7,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="collectionsByTopic">
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="reloadCollectionsByTopic()">
-      <ion-icon icon="refresh"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-  <ion-list *ngFor="let collectionsForTopic of collectionsByTopic trackBy: identifyCollections">
+<ion-content *ngIf="(collectionsByTopic$ | async)?.length">
+  <ion-list *ngFor="let collectionsForTopic of (collectionsByTopic$ | async) trackBy: identifyCollections">
     <ion-list-header>
       {{collectionsForTopic[0].topic ? collectionsForTopic[0].topic.name : 'No Topic'}}
       <ion-item *ngFor="let collection of collectionsForTopic trackBy: identifyCollection"
@@ -23,7 +18,7 @@
     </ion-list-header>
   </ion-list>
 </ion-content>
-<ion-content *ngIf="!collectionsByTopic">
+<ion-content *ngIf="!(collectionsByTopic$ | async)?.length">
   <ion-item>
     Loading conversation collections ...
   </ion-item>

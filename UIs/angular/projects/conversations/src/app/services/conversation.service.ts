@@ -2,6 +2,7 @@ import { Conversation, ConversationApi } from '@airline/conversations';
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Injectable } from '@angular/core';
 import { SessionStateService } from './session-state.service';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -35,7 +36,6 @@ export class ConversationService {
       }
     } catch (e: any) {
       console.error(e)
-      alert(e.message)
     }
   }
 
@@ -60,17 +60,16 @@ export class ConversationService {
     }
   }
 
-  async loadConversation(
+  loadConversation(
     id: string
-  ): Promise<Conversation> {
-    let conversation: Conversation = null as any
+  ): Observable<Conversation> {
+    let conversation$: Observable<Conversation> = of(null) as any
     try {
-      conversation = await this.conversationApi.loadWithDetails(id)
+      conversation$ = this.conversationApi.loadWithDetails(id)
     } catch (e: any) {
       console.error(e)
-      alert(e.message)
     }
 
-    return conversation
+    return conversation$
   }
 }

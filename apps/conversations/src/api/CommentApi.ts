@@ -1,8 +1,9 @@
 import { Api } from "@airport/air-traffic-control";
 import { Inject, Injected } from "@airport/direction-indicator";
 import { CommentDao } from "../dao/CommentDao";
-import { Comment } from "../ddl/comment";
+import { Comment } from "../ddl/Comment";
 import { Conversation } from "../ddl/Conversation";
+import { Observable } from "rxjs";
 
 @Injected()
 export class CommentApi {
@@ -11,10 +12,10 @@ export class CommentApi {
     commentDao: CommentDao
 
     @Api()
-    async findAllForConversation(
+    searchAllForConversation(
         conversation: Conversation | string
-    ): Promise<Comment[]> {
-        return await this.commentDao.findAllForConversation(conversation)
+    ): Observable<Comment[]> {
+        return this.commentDao.searchAllForConversation(conversation)
     }
 
     @Api()

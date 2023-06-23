@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Collection, CollectionApi, Conversation } from '@airline/conversations';
+import { Collection, CollectionApi } from '@airline/conversations';
+import { Observable, concatMap, from, groupBy, map, mergeMap, of, switchMap, toArray } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,56 +11,53 @@ export class CollectionsService {
 
   constructor() { }
 
-  async getCollectionsByTopic(): Promise<Collection[][]> {
-    const collectionsByTopic: Collection[][] = []
-
+  getCollectionsByTopic(): Observable<Collection[][]> {
+    let collectionsByTopic$: Observable<Collection[][]> = of([]) as any;
     try {
-      const collections = await this.collectionApi.findAll()
-      const collectionMapByTopicId: { [topicId: string]: Collection[] } = {}
-
-      for (const collection of collections) {
-        const topicId = collection.topic
-          ? collection.topic.id as string : 'null'
-        let conversationsForTopic = collectionMapByTopicId[topicId]
-        if (!conversationsForTopic) {
-          conversationsForTopic = []
-          collectionMapByTopicId[topicId] = conversationsForTopic
-        }
-        conversationsForTopic.push(collection)
-      }
-      let collectionsWithNoTopic: Collection[] | null = null
-      for (let topicId in collectionMapByTopicId) {
-        if (topicId === 'null') {
-          collectionsWithNoTopic = collectionMapByTopicId[topicId]
-        } else {
-          collectionsByTopic.push(collectionMapByTopicId[topicId])
-        }
-      }
-      if (collectionsWithNoTopic) {
-        collectionsByTopic.push(collectionsWithNoTopic)
-      }
+      collectionsByTopic$ = this.collectionApi.searchAll().pipe(
+        concatMap(collections => from(collections)),
+        groupBy(collection => collection.topic
+          ? collection.topic.id as string
+          : 'null'),
+        mergeMap(group => group.pipe(toArray())),
+        toArray(),
+        map(collectionsByTopics => collectionsByTopics.sort((a, b) => {
+          let topicAName = a[0].topic.name
+          let topicBName = b[0].topic.name
+          if (topicAName === 'null') {
+            return -1
+          }
+          if (topicBName === 'null') {
+            return 1
+          }
+          if (topicAName < topicBName)
+            return -1;
+          if (topicBName > topicAName)
+            return 1;
+          return 0;
+        })
+        )
+      )
     } catch (e) {
       console.error(e)
-      alert('Error retrieving Conversations')
     }
 
-    return collectionsByTopic
+    return collectionsByTopic$
   }
 
-  async loadCollection(
+  loadCollection(
     id: string,
     // newConversation: Conversation
-  ): Promise<Collection> {
+  ): Observable<Collection> {
 
-    let collection: Collection = null as any;
+    let collection$: Observable<Collection> = of(null) as any;
     try {
-      collection = await this.collectionApi.loadWithDetails(id)
+      collection$ = this.collectionApi.loadWithDetails(id)
       // newConversation.collection = collection
     } catch (e: any) {
       console.error(e)
-      alert(e.message)
     }
 
-    return collection;
+    return collection$;
   }
 }
