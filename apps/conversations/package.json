@@ -15,13 +15,13 @@
     "@airport/final-approach": "workspace:../../../AIRport/schemas/final-approach",
     "@airport/ground-control": "workspace:../../../AIRport/apis/ground-control",
     "@airport/holding-pattern": "workspace:../../../AIRport/schemas/holding-pattern",
-    "@airport/tarmaq-entity": "workspace:../../../AIRport/ORMs/tarmaq/tarmaq-entity",
-    "@airport/tarmaq-dao": "workspace:../../../AIRport/ORMs/tarmaq/tarmaq-dao",
-    "@airport/tarmaq-query": "workspace:../../../AIRport/ORMs/tarmaq/tarmaq-query",
+    "@airport/tarmaq-entity": "workspace:../../../AIRport/ORMs/tarmaq/entity",
+    "@airport/tarmaq-dao": "workspace:../../../AIRport/ORMs/tarmaq/dao",
+    "@airport/tarmaq-query": "workspace:../../../AIRport/ORMs/tarmaq/query",
+    "@airport/terminal-map": "workspace:../../../AIRport/apis/terminal-map",
     "@airport/tower": "workspace:../../../AIRport/engines/tower",
     "@airport/travel-document-checkpoint": "workspace:../../../AIRport/schemas/travel-document-checkpoint",
     "@airport/web-tower": "workspace:../../../AIRport/platforms/web-tower",
-    "@airport/terminal-map": "workspace:../../../AIRport/apis/terminal-map",
     "rxjs": "workspace:../../../node_modules/rxjs"
   },
   "devDependencies": {

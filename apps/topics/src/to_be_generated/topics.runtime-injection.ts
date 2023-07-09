@@ -3,7 +3,7 @@ import { app } from '@airport/direction-indicator'
 import { TopicDao, ThemeDao } from '../dao/dao'
 import { ThemeApi } from '../api/ThemeApi'
 import { TopicApi } from '../api/TopicApi'
-import { setApplicationLoader } from '@airport/web-tower'
+import { setApplicationLoader } from '@airport/terminal-map'
 import { ApplicationLoader } from './ApplicationLoader'
 
 export const airApp = app(application)

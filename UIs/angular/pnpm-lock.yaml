@@ -1,0 +1,134 @@
+lockfileVersion: '6.0'
+
+dependencies:
+  '@airline/conversations':
+    specifier: ../../apps/conversations
+    version: link:../../apps/conversations
+  '@airline/tasks':
+    specifier: ../../apps/tasks
+    version: link:../../apps/tasks
+  '@airline/topics':
+    specifier: ../../apps/topics
+    version: link:../../apps/topics
+  '@airport/autopilot':
+    specifier: ../../../AIRport/libs/autopilot
+    version: link:../../../AIRport/libs/autopilot
+  '@airport/session-state':
+    specifier: ../../../AIRport/libs/session-state
+    version: link:../../../AIRport/libs/session-state
+  '@airport/travel-document-checkpoint':
+    specifier: ../../../AIRport/schemas/travel-document-checkpoint
+    version: link:../../../AIRport/schemas/travel-document-checkpoint
+  '@angular/animations':
+    specifier: ../../../node_modules/@angular/animations
+    version: link:../../../node_modules/@angular/animations
+  '@angular/common':
+    specifier: ../../../node_modules/@angular/common
+    version: link:../../../node_modules/@angular/common
+  '@angular/compiler':
+    specifier: ../../../node_modules/@angular/compiler
+    version: link:../../../node_modules/@angular/compiler
+  '@angular/core':
+    specifier: ../../../node_modules/@angular/core
+    version: link:../../../node_modules/@angular/core
+  '@angular/forms':
+    specifier: ../../../node_modules/@angular/forms
+    version: link:../../../node_modules/@angular/forms
+  '@angular/platform-browser':
+    specifier: ../../../node_modules/@angular/platform-browser
+    version: link:../../../node_modules/@angular/platform-browser
+  '@angular/platform-browser-dynamic':
+    specifier: ../../../node_modules/@angular/platform-browser-dynamic
+    version: link:../../../node_modules/@angular/platform-browser-dynamic
+  '@angular/router':
+    specifier: ../../../node_modules/@angular/router
+    version: link:../../../node_modules/@angular/router
+  '@capacitor/app':
+    specifier: ../../../node_modules/@capacitor/app
+    version: link:../../../node_modules/@capacitor/app
+  '@capacitor/core':
+    specifier: ../../../node_modules/@capacitor/core
+    version: link:../../../node_modules/@capacitor/core
+  '@capacitor/haptics':
+    specifier: ../../../node_modules/@capacitor/haptics
+    version: link:../../../node_modules/@capacitor/haptics
+  '@capacitor/keyboard':
+    specifier: ../../../node_modules/@capacitor/keyboard
+    version: link:../../../node_modules/@capacitor/keyboard
+  '@capacitor/status-bar':
+    specifier: ../../../node_modules/@capacitor/status-bar
+    version: link:../../../node_modules/@capacitor/status-bar
+  '@ionic/angular':
+    specifier: ../../../node_modules/@ionic/angular
+    version: link:../../../node_modules/@ionic/angular
+  '@ionic/core':
+    specifier: ../../../node_modules/@ionic/core
+    version: link:../../../node_modules/@ionic/core
+  ionicons:
+    specifier: ../../../node_modules/ionicons
+    version: link:../../../node_modules/ionicons
+  rxjs:
+    specifier: ../../../node_modules/rxjs
+    version: link:../../../node_modules/rxjs
+  tslib:
+    specifier: ../../../node_modules/tslib
+    version: link:../../../node_modules/tslib
+  zone.js:
+    specifier: ../../../node_modules/zone.js
+    version: link:../../../node_modules/zone.js
+
+devDependencies:
+  '@angular-devkit/build-angular':
+    specifier: ../../../node_modules/@angular-devkit/build-angular
+    version: link:../../../node_modules/@angular-devkit/build-angular
+  '@angular/cli':
+    specifier: ../../../node_modules/@angular/cli
+    version: link:../../../node_modules/@angular/cli
+  '@angular/compiler-cli':
+    specifier: ../../../node_modules/@angular/compiler-cli
+    version: link:../../../node_modules/@angular/compiler-cli
+  '@angular/language-service':
+    specifier: ../../../node_modules/@angular/language-service
+    version: link:../../../node_modules/@angular/language-service
+  '@babel/runtime':
+    specifier: ../../../node_modules/@babel/runtime
+    version: link:../../../node_modules/@babel/runtime
+  '@capacitor/cli':
+    specifier: ../../../node_modules/@capacitor/cli
+    version: link:../../../node_modules/@capacitor/cli
+  '@ionic/angular-toolkit':
+    specifier: ../../../node_modules/@ionic/angular-toolkit
+    version: link:../../../node_modules/@ionic/angular-toolkit
+  '@ionic/cli':
+    specifier: ../../../node_modules/@ionic/cli
+    version: link:../../../node_modules/@ionic/cli
+  '@types/jasmine':
+    specifier: ../../../node_modules/@types/jasmine
+    version: link:../../../node_modules/@types/jasmine
+  '@types/node':
+    specifier: ../../../node_modules/@types/node
+    version: link:../../../node_modules/@types/node
+  jasmine-core:
+    specifier: ../../../node_modules/jasmine-core
+    version: link:../../../node_modules/jasmine-core
+  karma:
+    specifier: ../../../node_modules/karma
+    version: link:../../../node_modules/karma
+  karma-chrome-launcher:
+    specifier: ../../../node_modules/karma-chrome-launcher
+    version: link:../../../node_modules/karma-chrome-launcher
+  karma-coverage:
+    specifier: ../../../node_modules/karma-coverage
+    version: link:../../../node_modules/karma-coverage
+  karma-jasmine:
+    specifier: ../../../node_modules/karma-jasmine
+    version: link:../../../node_modules/karma-jasmine
+  karma-jasmine-html-reporter:
+    specifier: ../../../node_modules/karma-jasmine-html-reporter
+    version: link:../../../node_modules/karma-jasmine-html-reporter
+  ng-packagr:
+    specifier: ../../../node_modules/ng-packagr
+    version: link:../../../node_modules/ng-packagr
+  typescript:
+    specifier: ../../../node_modules/typescript
+    version: link:../../../node_modules/typescript
