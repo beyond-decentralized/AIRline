@@ -1,15 +1,16 @@
-import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import typescript from "rollup-plugin-typescript2";
-import dts from "rollup-plugin-dts";
-import { terser } from 'rollup-plugin-terser';
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import copy from 'rollup-plugin-copy';
+import commonjs from '@rollup/plugin-commonjs'
+import resolve from '@rollup/plugin-node-resolve'
+import typescript from "rollup-plugin-typescript2"
+import dts from "rollup-plugin-dts"
+import { terser } from 'rollup-plugin-terser'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external'
+import copy from 'rollup-plugin-copy'
+import del from 'rollup-plugin-delete'
 
-// const production = !process.env.ROLLUP_WATCH;
-const production = false;
+// const production = !process.env.ROLLUP_WATCH
+const production = false
 
-const packageJson = require("./package.json");
+const packageJson = require("./package.json")
 
 export default [
     {
@@ -20,6 +21,7 @@ export default [
             file: '../../UIs/angular/projects/tasks/src/AIRport/apps/@airline/tasks/bundle.mjs'
         }],
         plugins: [
+            del({ targets: 'dist/*' }),
             resolve({
                 browser: true
             }),
@@ -125,4 +127,4 @@ export default [
         plugins: [dts.default()],
         external: [/\.css$/],
     },
-];
+]

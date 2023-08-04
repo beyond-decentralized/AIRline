@@ -35,6 +35,7 @@
     "fs-extra": "workspace:../../../node_modules/fs-extra",
     "rollup": "workspace:../../../node_modules/rollup",
     "rollup-plugin-copy": "workspace:../../../node_modules/rollup-plugin-copy",
+    "rollup-plugin-delete": "workspace:../../../node_modules/rollup-plugin-delete",
     "rollup-plugin-dts": "workspace:../../../node_modules/rollup-plugin-dts",
     "rollup-plugin-peer-deps-external": "workspace:../../../node_modules/rollup-plugin-peer-deps-external",
     "rollup-plugin-terser": "workspace:../../../node_modules/rollup-plugin-terser",
