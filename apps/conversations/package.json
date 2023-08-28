@@ -27,21 +27,7 @@
   "devDependencies": {
     "@airport/runway": "workspace:../../../AIRport/generators/runway",
     "@airport/taxiway": "workspace:../../../AIRport/generators/taxiway",
-    "@rollup/plugin-commonjs": "workspace:../../../node_modules/@rollup/plugin-commonjs",
-    "@rollup/plugin-node-resolve": "workspace:../../../node_modules/@rollup/plugin-node-resolve",
-    "@rollup/plugin-typescript": "workspace:../../../node_modules/@rollup/plugin-typescript",
-    "fs-extra": "workspace:../../../node_modules/fs-extra",
-    "rollup": "workspace:../../../node_modules/rollup",
-    "rollup-plugin-copy": "workspace:../../../node_modules/rollup-plugin-copy",
-    "rollup-plugin-delete": "workspace:../../../node_modules/rollup-plugin-delete",
-    "rollup-plugin-dts": "workspace:../../../node_modules/rollup-plugin-dts",
-    "rollup-plugin-peer-deps-external": "workspace:../../../node_modules/rollup-plugin-peer-deps-external",
-    "rollup-plugin-terser": "workspace:../../../node_modules/rollup-plugin-terser",
-    "rollup-plugin-typescript2": "workspace:../../../node_modules/rollup-plugin-typescript2",
-    "ts-node": "workspace:../../../node_modules/ts-node",
-    "ts-patch": "workspace:../../../node_modules/ts-patch",
-    "typescript": "workspace:../../../node_modules/typescript",
-    "tslib": "workspace:../../../node_modules/tslib"
+    "rollup": "workspace:../../../node_modules/rollup"
   },
   "main": "dist/cjs/conversations.index.js",
   "module": "dist/esm/conversations.index.js",
@@ -49,10 +35,10 @@
     "dist"
   ],
   "scripts": {
-    "predev": "node stageApp.mjs && node generate.mjs",
-    "dev": "rollup --bundleConfigAsCjs -c ./rollup.config.js -w",
-    "prebuild": "node stageApp.mjs && node generate.mjs",
-    "build": "rollup --bundleConfigAsCjs -c ./rollup.config.js"
+    "build": "node generate.mjs && rollup -c ./rollup.config.mjs",
+    "clean-build": "node generate.mjs && rollup -c ./rollup.config.mjs --config-clean",
+    "dev": "node generate.mjs && rollup -c ./rollup.config.mjs -w",
+    "generate": "node generate.mjs"
   },
   "types": "dist/esm/conversations.index.d.ts"
 }
