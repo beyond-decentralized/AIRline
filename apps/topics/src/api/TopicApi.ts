@@ -1,6 +1,6 @@
 import { Inject, Injected } from "@airport/direction-indicator";
 import { TopicDao } from "../dao/TopicDao";
-import { Topic } from "../ddl/topic";
+import { Topic } from "../ddl/Topic";
 import { Theme } from "../ddl/Theme";
 import { Api } from "@airport/air-traffic-control";
 

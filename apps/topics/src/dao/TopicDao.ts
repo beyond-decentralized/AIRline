@@ -1,5 +1,5 @@
 import { Injected } from "@airport/direction-indicator";
-import { Topic } from "../ddl/topic";
+import { Topic } from "../ddl/Topic";
 import { Theme } from "../ddl/Theme";
 import { BaseTopicDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
