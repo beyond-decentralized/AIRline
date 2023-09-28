@@ -27,6 +27,7 @@
   "devDependencies": {
     "@airport/runway": "workspace:../../../AIRport/generators/runway",
     "@airport/taxiway": "workspace:../../../AIRport/generators/taxiway",
+    "fs-extra": "workspace:../../../node_modules/fs-extra",
     "rollup": "workspace:../../../node_modules/rollup"
   },
   "main": "dist/cjs/conversations.index.js",
@@ -35,9 +36,9 @@
     "dist"
   ],
   "scripts": {
-    "build": "node generate.mjs && rollup -c ./rollup.config.mjs",
-    "clean-build": "node generate.mjs && rollup -c ./rollup.config.mjs --config-clean",
-    "dev": "node generate.mjs && rollup -c ./rollup.config.mjs -w",
+    "build": "node stageApp.mjs && node generate.mjs && rollup -c ./rollup.config.mjs",
+    "clean-build": "node stageApp.mjs && node generate.mjs && rollup -c ./rollup.config.mjs --config-clean",
+    "dev": "node stageApp.mjs && node generate.mjs && rollup -c ./rollup.config.mjs -w",
     "generate": "node generate.mjs"
   },
   "types": "dist/esm/conversations.index.d.ts"
