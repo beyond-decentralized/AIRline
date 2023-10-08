@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "scripts": {
     "ng": "ng",
-    "start-conversations": "ng serve --project conversations --port 3002",
-    "start-tasks": "ng serve --project tasks --port 3003",
+    "start-conversations": "ng serve --ssl true --ssl-key ./node_modules/browser-sync/certs/server.key --ssl-cert ./node_modules/browser-sync/certs/server.crt --project conversations --port 3002",
+    "start-tasks": "ng serve --ssl true --ssl-key ./node_modules/browser-sync/certs/server.key --ssl-cert ./node_modules/browser-sync/certs/server.crt --project tasks --port 3003",
     "build-components-dev": "ng build components --configuration development",
     "build-components-prod": "ng build components",
     "build-conversations": "ng build --project conversations",
@@ -35,6 +35,7 @@
     "@capacitor/keyboard": "../../../node_modules/@capacitor/keyboard",
     "@capacitor/status-bar": "../../../node_modules/@capacitor/status-bar",
     "@ionic/angular": "../../../node_modules/@ionic/angular",
+    "browser-sync": "../../../node_modules/browser-sync",
     "ionicons": "../../../node_modules/ionicons",
     "rxjs": "../../../node_modules/rxjs",
     "tslib": "../../../node_modules/tslib",

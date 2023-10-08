@@ -74,7 +74,7 @@ export class GoalApi {
         await this.goalDao.save(goal)
 
         await this.repositoryApi.setUiEntryUri(
-            'http://localhost:3003/goal/' + goal.id,
+            'https://localhost:3003/goal/' + goal.id,
             goal.repository
         )
     }
