@@ -5,5 +5,9 @@ import { AppModule } from './app/app.module';
 
 loadUiAutopilot()
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platformBrowserDynamic().bootstrapModule(AppModule
+//   , {
+//   ngZone: 'noop'
+// }
+)
   .catch(err => console.error(err));
