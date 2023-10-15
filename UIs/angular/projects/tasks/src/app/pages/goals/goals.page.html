@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{goals ? 'Goals' : 'Loading Goals'}}</ion-title>
+    <ion-title>{{goals() ? 'Goals' : 'Loading Goals'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +22,7 @@
     <cvr-subscription-test></cvr-subscription-test>
   </ion-item>
   
-  <ion-item *ngFor="let goal of goals | async trackBy identifyGoal">
+  <ion-item *ngFor="let goal of goals() trackBy identifyGoal">
     <div>
       <ion-label class="goal-name">
         {{goal.name}}

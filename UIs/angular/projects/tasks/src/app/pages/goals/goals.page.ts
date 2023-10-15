@@ -1,6 +1,6 @@
 import { Goal } from '@airline/tasks';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { GoalService } from '../../services/goal.service';
 
 @Component({
@@ -12,7 +12,9 @@ export class GoalsPage implements OnInit {
 
   newGoal = new Goal()
 
-  goals: Observable<Goal[]> = this.goalService.goals$
+  goals = toSignal(this.goalService.goals$, {
+    initialValue: []
+  })
 
   self: GoalsPage = this
 
