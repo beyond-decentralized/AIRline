@@ -35,16 +35,16 @@ export class GoalsPage implements OnInit {
     this.addGoalAsync(goalToAdd).then()
   }
 
- toggleSubscriptionTest() {
+  toggleSubscriptionTest() {
     this.showSubscriptionTest = !this.showSubscriptionTest
 
-    if(this.showSubscriptionTest) {
+    if (this.showSubscriptionTest) {
       this.toggleSubscriptionTestMessage = 'Hide Subscription Test'
     } else {
       this.toggleSubscriptionTestMessage = 'Show Subscription Test'
     }
   }
- 
+
   private async addGoalAsync(
     goalToAdd: Goal
   ): Promise<void> {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'cvr-root',
@@ -6,9 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
+
   title = 'conversations';
 
-  constructor() {}
+  constructor(
+    ngZone: NgZone
+  ) {
+    (globalThis as any).setApiClientNgZone(ngZone)
+  }
 
 }

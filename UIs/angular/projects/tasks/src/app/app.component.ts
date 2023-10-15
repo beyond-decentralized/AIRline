@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 
 @Component({
   selector: 'tsk-root',
@@ -9,6 +9,10 @@ export class AppComponent {
 
   title = 'tasks';
 
-  constructor() { }
+  constructor(
+    ngZone: NgZone
+  ) {
+    (globalThis as any).setApiClientNgZone(ngZone)
+  }
 
 }
