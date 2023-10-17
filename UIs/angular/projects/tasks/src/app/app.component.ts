@@ -1,4 +1,5 @@
 import { Component, NgZone } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tsk-root',
@@ -10,9 +11,14 @@ export class AppComponent {
   title = 'tasks';
 
   constructor(
-    ngZone: NgZone
+    ngZone: NgZone,
+    router: Router
   ) {
-    (globalThis as any).setApiClientNgZone(ngZone)
+    let global = (globalThis as any)
+    global.setApiClientNgZone(ngZone)
+    global.setApiClientNavigationCallback((url: string) => {
+      router.navigateByUrl(url)
+    })
   }
 
 }

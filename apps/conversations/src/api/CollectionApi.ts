@@ -50,7 +50,7 @@ export class CollectionApi {
 
         if (!repository) {
             await this.repositoryApi.setUiEntryUri(
-                'https://localhost:3002/collection/' + collection.id,
+                'localhost:3002/collection/' + collection.id,
                 collection.repository
             )
         }

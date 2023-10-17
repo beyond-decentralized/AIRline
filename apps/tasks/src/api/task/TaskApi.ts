@@ -63,7 +63,7 @@ export class TaskApi {
         await this.goalTaskDao.save(goalTask)
 
         await this.repositoryApi.setUiEntryUri(
-            'https://localhost:3003/task/' + task.id,
+            'localhost:3003/task/' + task.id,
             repository
         )
     }

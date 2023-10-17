@@ -69,7 +69,7 @@ export class ConversationApi {
         await this.conversationDao.save(conversation)
 
         await this.repositoryApi
-            .setUiEntryUri('https://localhost:3002/conversation/' + conversation.id, repository)
+            .setUiEntryUri('localhost:3002/conversation/' + conversation.id, repository)
 
         const collectionConversation = new CollectionConversation()
         collectionConversation.collection = collection
