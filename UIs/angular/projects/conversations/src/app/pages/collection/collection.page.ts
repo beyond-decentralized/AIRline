@@ -2,11 +2,10 @@ import { Collection, CollectionConversation, Conversation, Participant } from '@
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription, flatMap, map, mergeMap } from 'rxjs';
+import { Observable, Subscription, filter, map, mergeMap } from 'rxjs';
 import { CollectionsService } from '../../services/collections.service';
 import { ConversationService } from '../../services/conversation.service';
 import { SessionStateService } from '../../services/session-state.service';
-import { ParticipantsPageRoutingModule } from '../participants/participants-routing.module';
 
 @Component({
   selector: 'cvr-collection',
@@ -17,14 +16,37 @@ export class CollectionPage implements OnDestroy, OnInit {
 
   newConversation: Conversation = new Conversation()
   collection: Collection = null as any
+  lastRouteParams: Record<string, any> = {};
   collection$: Observable<Collection> = this.route.params.pipe(
+    filter((params) => {
+      const routeParamKeys = Object.keys(params)
+      const lastRouterParamKeys = Object.keys(this.lastRouteParams)
+      try {
+        if (routeParamKeys.length !== lastRouterParamKeys.length) {
+          return true;
+        }
+        for(const routeParamKey of routeParamKeys) {
+          if(params[routeParamKey] !== this.lastRouteParams[routeParamKey]) {
+            return true
+          }
+        }
+        for(const lastRouteParamKey of lastRouterParamKeys) {
+          if(params[lastRouteParamKey] !== this.lastRouteParams[lastRouteParamKey]) {
+            return true
+          }
+        }
+        return false
+      } finally {
+        this.lastRouteParams = params
+      }
+    }),
     mergeMap(params =>
       this.collectionsService.loadCollection(params['collectionId'])),
-      map(collection => {
-        this.collection = collection
-        this.newConversation.collection = collection
-        return collection
-      })
+    map(collection => {
+      this.collection = collection
+      this.newConversation.collection = collection
+      return collection
+    })
   )
   loggedInUserAccount: UserAccount = null as any
   newConversationModeratorUserAccounts: UserAccount[] = []
