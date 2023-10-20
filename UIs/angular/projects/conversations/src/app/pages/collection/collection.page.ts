@@ -2,10 +2,11 @@ import { Collection, CollectionConversation, Conversation, Participant } from '@
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription, filter, map, mergeMap } from 'rxjs';
+import { Subscription, distinctUntilChanged, map, mergeMap } from 'rxjs';
 import { CollectionsService } from '../../services/collections.service';
 import { ConversationService } from '../../services/conversation.service';
 import { SessionStateService } from '../../services/session-state.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'cvr-collection',
@@ -15,39 +16,16 @@ import { SessionStateService } from '../../services/session-state.service';
 export class CollectionPage implements OnDestroy, OnInit {
 
   newConversation: Conversation = new Conversation()
-  collection: Collection = null as any
-  lastRouteParams: Record<string, any> = {};
-  collection$: Observable<Collection> = this.route.params.pipe(
-    filter((params) => {
-      const routeParamKeys = Object.keys(params)
-      const lastRouterParamKeys = Object.keys(this.lastRouteParams)
-      try {
-        if (routeParamKeys.length !== lastRouterParamKeys.length) {
-          return true;
-        }
-        for(const routeParamKey of routeParamKeys) {
-          if(params[routeParamKey] !== this.lastRouteParams[routeParamKey]) {
-            return true
-          }
-        }
-        for(const lastRouteParamKey of lastRouterParamKeys) {
-          if(params[lastRouteParamKey] !== this.lastRouteParams[lastRouteParamKey]) {
-            return true
-          }
-        }
-        return false
-      } finally {
-        this.lastRouteParams = params
-      }
-    }),
-    mergeMap(params =>
-      this.collectionsService.loadCollection(params['collectionId'])),
+  collection = toSignal(this.route.params.pipe(
+    map(params => params['collectionId']),
+    distinctUntilChanged(),
+    mergeMap(collectionId =>
+      this.collectionsService.loadCollection(collectionId)),
     map(collection => {
-      this.collection = collection
       this.newConversation.collection = collection
       return collection
     })
-  )
+  ))
   loggedInUserAccount: UserAccount = null as any
   newConversationModeratorUserAccounts: UserAccount[] = []
   newConversationParticipantUserAccounts: UserAccount[] = []
@@ -97,7 +75,7 @@ export class CollectionPage implements OnDestroy, OnInit {
 
   setupNewConversationState(): void {
     this.newConversation = new Conversation()
-    this.newConversation.collection = this.collection
+    this.newConversation.collection = this.collection() as Collection
     this.setupDefaultUserAccountsForConversation()
   }
 

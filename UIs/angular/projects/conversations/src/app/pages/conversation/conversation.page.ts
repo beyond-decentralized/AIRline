@@ -1,9 +1,10 @@
 import { Conversation } from '@airline/conversations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, Subscription, mergeMap, shareReplay, take } from 'rxjs';
+import { Subscription, distinctUntilChanged, map, mergeMap } from 'rxjs';
 import { CommentService } from '../../services/comment.service';
 import { ConversationService } from '../../services/conversation.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'cvr-conversation',
@@ -13,13 +14,12 @@ import { ConversationService } from '../../services/conversation.service';
 export class ConversationPage implements OnInit {
 
   commentText: string = ''
-  conversation$: Observable<Conversation> = this.route.params.pipe(
-    mergeMap(params =>
-      this.conversationService.loadConversation(params['conversationId'])
-        .pipe(
-          shareReplay(1)
-        ))
-  )
+  conversation = toSignal(this.route.params.pipe(
+    map(params => params['conversationId']),
+    distinctUntilChanged(),
+    mergeMap(conversationId =>
+      this.conversationService.loadConversation(conversationId))
+  ))
   queryParamsSubscription: Subscription = null as any
 
   constructor(
@@ -36,12 +36,7 @@ export class ConversationPage implements OnInit {
   }
 
   enterComment(): void {
-    const subscription = this.conversation$.pipe(
-      take(1)
-    ).subscribe(conversation => {
-      this.enterCommentAsync(conversation).then()
-    })
-    subscription.unsubscribe()
+    this.enterCommentAsync(this.conversation() as Conversation).then()
   }
 
   async enterCommentAsync(
