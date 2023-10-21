@@ -1,5 +1,5 @@
 import { Goal } from '@airline/tasks';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoalInfoService } from 'projects/components/src/public-api';
 import { Subscription } from 'rxjs';
@@ -12,7 +12,7 @@ import { GoalService } from '../../services/goal.service';
 })
 export class GoalPage implements OnInit {
 
-  goal: Goal = null as any
+  goal = signal<Goal>(null as any)
   queryParamsSubscription: Subscription = null as any
 
   self: GoalPage = this
@@ -44,15 +44,16 @@ export class GoalPage implements OnInit {
     goalToEdit: Goal
   ): Promise<void> {
     await this.goalService.saveGoal(goalToEdit)
-    this.goal = {
-      ...this.goal
-    }
+    this.goal.set({
+      ...this.goal()
+    })
   }
 
   async loadGoal(
     goalId: string
   ): Promise<void> {
-    this.goal = await this.goalService.getGoal(goalId);
+    const goal = await this.goalService.getGoal(goalId)
+    this.goal.set(goal)
   }
 
   getGoalStatusName(

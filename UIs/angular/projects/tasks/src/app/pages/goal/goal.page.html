@@ -3,19 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="chevron-back-outline"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{goal ? 'Goal' : 'Loading'}}</ion-title>
+    <ion-title>{{goal() ? 'Goal' : 'Loading'}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="goal">
+<ion-content *ngIf="goal()">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button id="edit-goal">
       <ion-icon icon="create-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <air-goal-edit [goal]="goal" [parent]="self" triggerId="edit-goal"></air-goal-edit>
+  <air-goal-edit [goal]="goal()" [parent]="self" triggerId="edit-goal"></air-goal-edit>
   <ion-item>
-    <air-eisenhower-display [rankedUnit]="goal"></air-eisenhower-display>
+    <air-eisenhower-display [rankedUnit]="goal()"></air-eisenhower-display>
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Name</ion-label>
@@ -23,20 +23,20 @@
   </ion-item>
   <ion-item>
     <ion-label position="stacked">Goal Status</ion-label>
-    <ion-note color="primary">{{getGoalStatusName(goal)}}</ion-note>
+    <ion-note color="primary">{{getGoalStatusName(goal())}}</ion-note>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Description</ion-label>
     <br />
-    <ion-note color="primary">{{goal.description}}</ion-note>
+    <ion-note color="primary">{{goal().description}}</ion-note>
   </ion-item>
   <ion-item>
     <div>
-      <ion-button fill="clear" [routerLink]="['tasks', goal.id]">
+      <ion-button fill="clear" [routerLink]="['tasks', goal().id]">
         <ion-icon slot="start" icon="hammer-outline"></ion-icon>
         Tasks
       </ion-button>
-      <ion-button fill="clear" fill="clear" [href]="'https://localhost:3002/collection/' + goal.collection.id"
+      <ion-button fill="clear" fill="clear" [href]="'https://localhost:3002/collection/' + goal().collection.id"
         rel="noopener noreferrer">
         <ion-icon slot="start" icon="folder-open-outline"></ion-icon>
         Conversations
@@ -49,7 +49,7 @@
   </ion-item>
 </ion-content>
 
-<ion-content *ngIf="!goal">
+<ion-content *ngIf="!goal()">
   <ion-item>
     Loading Goal ...
   </ion-item>
