@@ -20,7 +20,6 @@ export class ConversationPage implements OnInit {
     mergeMap(conversationId =>
       this.conversationService.loadConversation(conversationId))
   ))
-  queryParamsSubscription: Subscription = null as any
 
   constructor(
     private commentService: CommentService,
@@ -29,10 +28,6 @@ export class ConversationPage implements OnInit {
   ) { }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy(): void {
-    this.queryParamsSubscription.unsubscribe()
   }
 
   enterComment(): void {
