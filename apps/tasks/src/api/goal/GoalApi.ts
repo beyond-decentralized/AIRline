@@ -43,10 +43,10 @@ export class GoalApi {
     }
 
     @Api()
-    async findById(
+    searchById(
         goalId: string
-    ): Promise<Goal> {
-        return await this.goalDao.findById(goalId)
+    ): Observable<Goal> {
+        return this.goalDao.searchById(goalId)
     }
 
     @Api()

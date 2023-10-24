@@ -8,6 +8,7 @@ import { RepositoryApi } from "@airport/holding-pattern";
 import { GoalTask } from "../../ddl/ddl";
 import { GoalTaskDao } from "../../dao/dao";
 import { Api } from "@airport/air-traffic-control";
+import { Observable } from "rxjs";
 
 @Injected()
 export class TaskApi {
@@ -25,17 +26,17 @@ export class TaskApi {
     repositoryApi: RepositoryApi
 
     @Api()
-    async findAllForGoal(
+    searchAllForGoal(
         goal: Goal | string
-    ): Promise<Task[]> {
-        return await this.taskDao.findAllForGoalWithGoal(goal)
+    ): Observable<Task[]> {
+        return this.taskDao.searchAllForGoalWithGoal(goal)
     }
 
     @Api()
-    async findAllForTopic(
+    searchAllForTopic(
         topic: Topic | string
-    ): Promise<Task[]> {
-        return await this.taskDao.findAllForTopicWithGoal(topic)
+    ): Observable<Task[]> {
+        return this.taskDao.searchAllForTopicWithGoal(topic)
     }
 
     @Api()

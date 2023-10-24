@@ -1,5 +1,6 @@
 import { Task, TaskApi } from '@airline/tasks';
 import { Injectable } from '@angular/core';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -21,18 +22,17 @@ export class TaskService {
     }
   }
 
-  async getTasks(
+  getTasks$(
     goalId: string
-  ): Promise<Task[]> {
-    let tasks: Task[] = []
+  ): Observable<Task[] | null> {
     try {
-      tasks = await this.taskApi.findAllForGoal(goalId)
+      return this.taskApi.searchAllForGoal(goalId)
     } catch (e) {
       console.error(e)
       alert('Error retrieving Tasks')
     }
 
-    return tasks
+    return of(null)
   }
 
 }

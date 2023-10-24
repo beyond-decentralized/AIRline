@@ -1,46 +1,35 @@
 import { Goal, Task } from '@airline/tasks';
-import { Component, OnInit } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { GoalService } from '../../services/goal.service';
 import { TaskService } from '../../services/task.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'cvr-tasks',
   templateUrl: './tasks.page.html',
   styleUrls: ['./tasks.page.css'],
 })
-export class TasksPage implements OnInit {
+export class TasksPage {
 
   currentTask: Task = null as any
-  goal: Goal = null as any
+  goal: Signal<Goal | null>
   newTask = new Task()
-  tasks: Task[] = null as any
-  queryParamsSubscription: Subscription = null as any
+  tasks: Signal<Task[]>
   self = this
 
   constructor(
     private goalService: GoalService,
-    private route: ActivatedRoute,
+    route: ActivatedRoute,
     private taskService: TaskService,
-  ) { }
-
-  ngOnInit() {
-    this.queryParamsSubscription = this.route.params
-      .subscribe(params => {
-        this.loadData(params['goalId']).then()
-      })
-  }
-
-  ngOnDestroy(): void {
-    this.queryParamsSubscription.unsubscribe()
-  }
-
-  async loadData(
-    goalId: string
-  ): Promise<void> {
-    this.goal = await this.goalService.getGoal(goalId)
-    this.tasks = await this.taskService.getTasks(goalId)
+  ) {
+    const goalId = route.snapshot.paramMap.get('goalId') as string
+    this.goal = toSignal(this.goalService.getGoal$(goalId), {
+      initialValue: null
+    }) as Signal<Goal>
+    this.tasks = toSignal(this.taskService.getTasks$(goalId), {
+      initialValue: null
+    }) as Signal<Task[]>
   }
 
   setCurrentTask(

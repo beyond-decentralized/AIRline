@@ -5,6 +5,7 @@ import { Goal } from "../../ddl/goal/Goal";
 import { BaseGoalDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/query/goal/QGoal";
+import { Observable } from "rxjs";
 
 @Injected()
 export class GoalDao
@@ -26,11 +27,11 @@ export class GoalDao
         })
     }
 
-    async findById(
+    searchById(
         goalUuId: string | Goal
-    ): Promise<Goal> {
+    ): Observable<Goal> {
         let g: QGoal
-        return await this._findOne({
+        return this._searchOne({
             SELECT: {
                 '*': Y,
                 collection: {},

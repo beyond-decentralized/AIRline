@@ -8,17 +8,18 @@ import { BaseTaskDao } from "../../generated/baseDaos";
 import Q from "../../generated/qApplication";
 import { QGoal } from "../../generated/query/goal/QGoal";
 import { QTask } from "../../generated/query/task/QTask";
+import { Observable } from "rxjs";
 
 @Injected()
 export class TaskDao
     extends BaseTaskDao {
 
-    async findById(
+    searchById(
         taskUuId: string
-    ): Promise<Task> {
+    ): Observable<Task> {
         let t: QTask,
             c: QCollection
-        return await this._findOne({
+        return this._searchOne({
             SELECT: {
                 '*': Y,
                 collection: {}
@@ -31,12 +32,12 @@ export class TaskDao
         })
     }
 
-    async findAllForGoalWithGoal(
+    searchAllForGoalWithGoal(
         goal: Goal | string
-    ): Promise<Task[]> {
+    ): Observable<Task[]> {
         let t: QTask,
             g: QGoal
-        return await this._find({
+        return this._search({
             SELECT: {
                 '*': Y,
                 goal: {}
@@ -49,12 +50,12 @@ export class TaskDao
         })
     }
 
-    async findAllForTopicWithGoal(
+    searchAllForTopicWithGoal(
         topic: Topic | string
-    ): Promise<Task[]> {
+    ): Observable<Task[]> {
         let ta: QTask,
             to: QTopic
-        return await this._find({
+        return this._search({
             SELECT: {
                 '*': Y,
                 goal: {}
@@ -65,20 +66,6 @@ export class TaskDao
                 to = ta.topic.LEFT_JOIN()
             ],
             WHERE: to.equals(topic)
-        })
-    }
-
-    async findAllWithGoal() {
-        let ta: QTask
-        return await this._find({
-            SELECT: {
-                '*': Y,
-                goal: {}
-            },
-            FROM: [
-                ta = Q.Task,
-                ta.goal.LEFT_JOIN()
-            ]
         })
     }
 

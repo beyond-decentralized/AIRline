@@ -1,7 +1,7 @@
 import { Goal, GoalApi } from '@airline/tasks';
 import { Theme } from '@airline/topics';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -51,17 +51,16 @@ export class GoalService {
     }
   }
 
-  async getGoal(
+  getGoal$(
     goalId: string
-  ): Promise<Goal> {
-    let goal: Goal = null as any
+  ): Observable<Goal | null> {
     try {
-      goal = await this.goalApi.findById(goalId)
+      return this.goalApi.searchById(goalId)
     } catch (e) {
       console.error(e)
       alert('Error retrieving Goal')
     }
-
-    return goal
+    
+    return of(null) 
   }
 }

@@ -7,18 +7,18 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content *ngIf="tasks">
+<ion-content *ngIf="tasks()">
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button (click)="setCurrentTask(newTask)" id="edit-task">
       <ion-icon icon="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
   <air-task-edit [task]="currentTask" [parent]="self" triggerId="edit-task"></air-task-edit>
-  <ion-item>
+  <ion-item *ngIf="goal">
     <ion-label position="floating">Goal: </ion-label>
-    <div class="goal-name">{{goal.name}}</div>
+    <div class="goal-name">{{goal()?.name}}</div>
   </ion-item>
-  <ion-item *ngFor="let task of tasks trackBy identifyTask">
+  <ion-item *ngFor="let task of tasks() trackBy identifyTask">
     <table class="eisenhower-view">
       <tbody>
         <tr>
@@ -45,7 +45,7 @@
   </ion-item>
 </ion-content>
 
-<ion-content *ngIf="!tasks">
+<ion-content *ngIf="!tasks()">
   <ion-item>
     Loading Goal Tasks ...
   </ion-item>

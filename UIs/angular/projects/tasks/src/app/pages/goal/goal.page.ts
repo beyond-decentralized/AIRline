@@ -1,37 +1,29 @@
 import { Goal } from '@airline/tasks';
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, Signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GoalInfoService } from 'projects/components/src/public-api';
-import { Subscription } from 'rxjs';
 import { GoalService } from '../../services/goal.service';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'cvr-goal',
   templateUrl: './goal.page.html',
   styleUrls: ['./goal.page.css'],
 })
-export class GoalPage implements OnInit {
+export class GoalPage {
 
-  goal = signal<Goal>(null as any)
-  queryParamsSubscription: Subscription = null as any
-
+  goal: Signal<Goal>
   self: GoalPage = this
 
   constructor(
     private goalInfoService: GoalInfoService,
     private goalService: GoalService,
-    private route: ActivatedRoute,
-  ) { }
-
-  ngOnInit() {
-    this.queryParamsSubscription = this.route.params
-      .subscribe(params => {
-        this.loadGoal(params['goalId']).then()
-      })
-  }
-
-  ngOnDestroy(): void {
-    this.queryParamsSubscription.unsubscribe()
+    route: ActivatedRoute,
+  ) {
+    const goalId = route.snapshot.paramMap.get('goalId') as string
+    this.goal = toSignal(this.goalService.getGoal$(goalId), {
+      initialValue: null
+    }) as Signal<Goal>
   }
 
   saveGoal(
@@ -44,16 +36,6 @@ export class GoalPage implements OnInit {
     goalToEdit: Goal
   ): Promise<void> {
     await this.goalService.saveGoal(goalToEdit)
-    this.goal.set({
-      ...this.goal()
-    })
-  }
-
-  async loadGoal(
-    goalId: string
-  ): Promise<void> {
-    const goal = await this.goalService.getGoal(goalId)
-    this.goal.set(goal)
   }
 
   getGoalStatusName(
