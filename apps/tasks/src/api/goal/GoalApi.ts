@@ -65,7 +65,7 @@ export class GoalApi {
         }
 
         const goalName = 'Goal: ' + goal.name
-        const repository = await this.repositoryApi.create(goalName)
+        const repository = await this.repositoryApi.create(goalName, true)
         const collection = await this.collectionApi
             .create(goalName, repository)
         goal.collection = collection

@@ -48,7 +48,7 @@ export class TaskApi {
         }
 
         const taskName = 'Task: ' + task.name
-        const repository = await this.repositoryApi.create(taskName)
+        const repository = await this.repositoryApi.create(taskName, true)
         const collection = await this.collectionApi
             .create(taskName, repository)
         task.collection = collection

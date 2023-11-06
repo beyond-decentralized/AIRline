@@ -42,7 +42,7 @@ export class CollectionApi {
         collection.name = name
 
         if (!repository) {
-            repository = await this.repositoryApi.create(collection.name)
+            repository = await this.repositoryApi.create(collection.name, true)
             collection.repository = repository
         }
 
