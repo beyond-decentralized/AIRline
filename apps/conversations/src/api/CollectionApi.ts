@@ -5,9 +5,14 @@ import { Repository, RepositoryApi } from "@airport/holding-pattern";
 import { CollectionDao } from "../dao/CollectionDao";
 import { Collection } from "../ddl/Collection";
 import { Observable, map } from "rxjs";
+import { IAirEntityUtils } from "@airport/web-tower";
+import { AirEntity_GUID, IUserAccount } from "@airport/ground-control";
 
 @Injected()
 export class CollectionApi {
+
+    @Inject()
+    airEntityUtils: IAirEntityUtils
 
     @Inject()
     collectionDao: CollectionDao
@@ -24,6 +29,17 @@ export class CollectionApi {
                 return collections
             })
         )
+    }
+
+    @Api()
+    searchCollectionUsers(
+        collectionGUID: AirEntity_GUID
+    ): Observable<IUserAccount[]> {
+        const airEntityId = this.airEntityUtils.parseEGUID(collectionGUID)
+
+        return this.repositoryApi.searchRepositoryMemberUserAccountsByGUID(
+            airEntityId.repository.GUID)
+            )
     }
 
     @Api()

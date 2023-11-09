@@ -6,7 +6,7 @@ import { CommentApi } from '../api/CommentApi'
 import { RepositoryApi } from '@airport/holding-pattern'
 import { CollectionDao } from '../dao/CollectionDao'
 import { CollectionConversationDao } from '../dao/CollectionConversationDao'
-import { app } from '@airport/direction-indicator'
+import { AIR_ENTITY_UTILS, app } from '@airport/direction-indicator'
 import { application } from './app-declaration'
 import { RequestManager } from '@airport/tower'
 import { setApplicationLoader } from '@airport/terminal-map'
@@ -27,6 +27,7 @@ airApp.setDependencies(ConversationApi, {
 })
 
 airApp.setDependencies(CollectionApi, {
+    airEntityUtils: AIR_ENTITY_UTILS,
     collectionDao: CollectionDao,
     repositoryApi: RepositoryApi
 })
