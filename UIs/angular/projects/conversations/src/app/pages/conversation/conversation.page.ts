@@ -1,7 +1,7 @@
 import { Conversation } from '@airline/conversations';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, distinctUntilChanged, map, mergeMap } from 'rxjs';
+import { distinctUntilChanged, map, mergeMap } from 'rxjs';
 import { CommentService } from '../../services/comment.service';
 import { ConversationService } from '../../services/conversation.service';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -18,7 +18,7 @@ export class ConversationPage implements OnInit {
     map(params => params['conversationId']),
     distinctUntilChanged(),
     mergeMap(conversationId =>
-      this.conversationService.loadConversation(conversationId))
+      this.conversationService.searchConversation(conversationId))
   ))
 
   constructor(

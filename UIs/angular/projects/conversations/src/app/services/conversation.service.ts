@@ -60,7 +60,7 @@ export class ConversationService {
     }
   }
 
-  loadConversation(
+  searchConversation(
     id: string
   ): Observable<Conversation> {
     let conversation$: Observable<Conversation> = of(null) as any
