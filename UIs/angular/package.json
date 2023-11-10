@@ -19,6 +19,7 @@
     "@airline/tasks": "../../apps/tasks",
     "@airline/topics": "../../apps/topics",
     "@airport/autopilot": "../../../AIRport/libs/autopilot",
+    "@airport/ground-control": "../../../AIRport/apis/ground-control",
     "@airport/session-state": "../../../AIRport/libs/session-state",
     "@airport/travel-document-checkpoint": "../../../AIRport/schemas/travel-document-checkpoint",
     "@angular/animations": "../../../node_modules/@angular/animations",

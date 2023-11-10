@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Collection, CollectionApi } from '@airline/conversations';
-import { Observable, concatMap, from, groupBy, map, mergeMap, of, switchMap, toArray } from 'rxjs';
+import { Observable, concatMap, from, groupBy, map, mergeMap, of, tap, toArray } from 'rxjs';
+import { AirEntity_GUID, IUserAccount } from '@airport/ground-control';
 
 @Injectable({
   providedIn: 'root'
@@ -45,19 +46,17 @@ export class CollectionsService {
     return collectionsByTopic$
   }
 
-  loadCollection(
-    id: string,
+  searchCollection(
+    collectionGUID: AirEntity_GUID,
     // newConversation: Conversation
   ): Observable<Collection> {
+    return this.collectionApi.loadWithDetails(collectionGUID)
+  }
 
-    let collection$: Observable<Collection> = of(null) as any;
-    try {
-      collection$ = this.collectionApi.loadWithDetails(id)
-      // newConversation.collection = collection
-    } catch (e: any) {
-      console.error(e)
-    }
-
-    return collection$;
+  searchCollectionUsers(
+    collectionGUID: AirEntity_GUID
+  ): Observable<IUserAccount[]> {
+    return this.collectionApi.searchCollectionUsers(
+      collectionGUID)
   }
 }

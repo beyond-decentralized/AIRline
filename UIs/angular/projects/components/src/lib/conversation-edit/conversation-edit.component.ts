@@ -1,7 +1,7 @@
 import { Conversation } from '@airline/conversations';
-import { Goal } from '@airline/tasks';
+import { IUserAccount } from '@airport/ground-control';
 import { UserAccount } from '@airport/travel-document-checkpoint';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { IonModal } from '@ionic/angular';
 
 @Component({
@@ -17,7 +17,6 @@ export class ConversationEditComponent implements OnInit {
   @Input()
   conversation: Conversation = null as any
 
-  @Input()
   moderatorUserAccounts: UserAccount[] = []
 
   @Input()
@@ -30,12 +29,25 @@ export class ConversationEditComponent implements OnInit {
   } = null as any
 
   @Input()
+  set collectionUsers(collectionUsers: IUserAccount[]) {
+    this.moderatorUserAccounts = collectionUsers
+    this.participantUserAccounts = collectionUsers
+    this.setModeratorUserAccounts.emit(this.moderatorUserAccounts)
+    this.setParticipantUserAccounts.emit(this.participantUserAccounts)
+  }
+
   participantUserAccounts: UserAccount[] = []
 
   @Input()
   triggerId: string = null as any
 
   saveOnClose = false
+
+  @Output()
+  setModeratorUserAccounts = new EventEmitter<IUserAccount[]>()
+
+  @Output()
+  setParticipantUserAccounts = new EventEmitter<IUserAccount[]>()
 
   constructor() { }
 

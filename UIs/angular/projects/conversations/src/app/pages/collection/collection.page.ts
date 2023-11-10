@@ -2,11 +2,12 @@ import { Collection, CollectionConversation, Conversation, Participant } from '@
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription, distinctUntilChanged, map, mergeMap } from 'rxjs';
+import { Subscription, distinctUntilChanged, map, mergeMap, tap } from 'rxjs';
 import { CollectionsService } from '../../services/collections.service';
 import { ConversationService } from '../../services/conversation.service';
 import { SessionStateService } from '../../services/session-state.service';
 import { toSignal } from '@angular/core/rxjs-interop';
+import { IUserAccount } from '@airport/ground-control';
 
 @Component({
   selector: 'cvr-collection',
@@ -20,12 +21,23 @@ export class CollectionPage implements OnDestroy, OnInit {
     map(params => params['collectionId']),
     distinctUntilChanged(),
     mergeMap(collectionId =>
-      this.collectionsService.loadCollection(collectionId)),
-    map(collection => {
+      this.collectionsService.searchCollection(collectionId)),
+    tap(collection => {
       this.newConversation.collection = collection
-      return collection
     })
-  ))
+  ), {
+    initialValue: null
+  })
+
+  collectionUsers = toSignal(this.route.params.pipe(
+    map(params => params['collectionId']),
+    distinctUntilChanged(),
+    mergeMap(collectionId =>
+      this.collectionsService.searchCollectionUsers(collectionId))
+  ), {
+    initialValue: []
+  })
+
   loggedInUserAccount: UserAccount = null as any
   newConversationModeratorUserAccounts: UserAccount[] = []
   newConversationParticipantUserAccounts: UserAccount[] = []
@@ -48,10 +60,22 @@ export class CollectionPage implements OnDestroy, OnInit {
     this.queryParamsSubscription.unsubscribe()
   }
 
+  setModeratorUserAccounts(
+    userAccounts: IUserAccount[]
+  ): void {
+    this.newConversationModeratorUserAccounts = userAccounts
+  }
+
+  setParticipantUserAccounts(
+    userAccounts: IUserAccount[]
+  ): void {
+    this.newConversationParticipantUserAccounts = userAccounts
+  }
+
   saveConversation(
     conversation: Conversation,
-    conversationModeratorUserAccounts: UserAccount[],
-    conversationParticipantUserAccounts: UserAccount[]
+    conversationModeratorUserAccounts: IUserAccount[],
+    conversationParticipantUserAccounts: IUserAccount[]
   ) {
     this.addConversationAsync(
       conversation,

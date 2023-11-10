@@ -13,8 +13,9 @@
       <ion-icon icon="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <air-conversation-edit [conversation]="newConversation" [moderatorUserAccounts]="newConversationModeratorUserAccounts"
-    [parent]="self" [participantUserAccounts]="newConversationParticipantUserAccounts"
+  <air-conversation-edit [collectionUsers]="collectionUsers()" [conversation]="newConversation"
+    (setModeratorUserAccounts)="setModeratorUserAccounts($event)" [parent]="self"
+    (setParticipantUserAccounts)="setParticipantUserAccounts($event)"
     triggerId="add-conversation"></air-conversation-edit>
   <ion-item>
     {{collection()?.name}}

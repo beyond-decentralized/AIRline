@@ -39,7 +39,6 @@ export class CollectionApi {
 
         return this.repositoryApi.searchRepositoryMemberUserAccountsByGUID(
             airEntityId.repository.GUID)
-            )
     }
 
     @Api()
