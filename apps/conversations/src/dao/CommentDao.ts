@@ -22,7 +22,8 @@ export class CommentDao
                 com = Q.Comment,
                 con = com.conversation.LEFT_JOIN()
             ],
-            WHERE: con.equals(conversation)
+            WHERE: con.equals(conversation),
+            ORDER_BY: [com.createdAt.ASC()]
         })
     }
 

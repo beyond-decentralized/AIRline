@@ -21,7 +21,6 @@ export class CommentService {
 
     try {
       await this.commentApi.save(comment)
-      conversation.comments.push(comment)
     } catch (e: any) {
       console.error(e)
       alert(e.message)

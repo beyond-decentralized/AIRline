@@ -60,7 +60,6 @@ export class ConversationApi {
                 conversation.moderators.push(moderator)
             }
         }
-        conversation.collection = collection
 
         const repository = await this.repositoryApi.create(
             'Conversation: ' + participantUserNames.join(', '), true

@@ -20,7 +20,6 @@ export class ConversationDao
 
         return this._searchOne({
             SELECT: {
-                comments: {},
                 moderators: {
                     userAccount: {
                         username: Y
@@ -34,7 +33,6 @@ export class ConversationDao
             },
             FROM: [
                 c = Q.Conversation,
-                c.comments.LEFT_JOIN(),
                 m = c.moderators.LEFT_JOIN(),
                 m.userAccount.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),

@@ -1,4 +1,4 @@
-import { Comment, Conversation } from '@airline/conversations';
+import { Comment } from '@airline/conversations';
 import { Component, Input, OnInit } from '@angular/core';
 import { DateService } from '../services/date.service';
 
@@ -10,7 +10,7 @@ import { DateService } from '../services/date.service';
 export class ConversationViewComponent implements OnInit {
 
   @Input()
-  conversation: Conversation | undefined = undefined
+  comments: Comment[] | undefined = []
 
   constructor(
     private dateService: DateService

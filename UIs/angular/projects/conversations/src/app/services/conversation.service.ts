@@ -1,4 +1,4 @@
-import { Conversation, ConversationApi } from '@airline/conversations';
+import { Comment, CommentApi, Conversation, ConversationApi } from '@airline/conversations';
 import { UserAccount } from '@airport/travel-document-checkpoint';
 import { Injectable } from '@angular/core';
 import { SessionStateService } from './session-state.service';
@@ -9,6 +9,7 @@ import { Observable, of } from 'rxjs';
 })
 export class ConversationService {
 
+  commentApi = new CommentApi()
   conversationApi = new ConversationApi()
 
   constructor(
@@ -71,5 +72,18 @@ export class ConversationService {
     }
 
     return conversation$
+  }
+
+  searchComments(
+    id: string
+  ): Observable<Comment[]> {
+    let comments$: Observable<Comment[]> = of([]) as any
+    try {
+      comments$ = this.commentApi.searchAllForConversation(id)
+    } catch(e: any) {
+      console.error(e)
+    }
+
+    return comments$
   }
 }

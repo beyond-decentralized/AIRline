@@ -19,7 +19,17 @@ export class ConversationPage implements OnInit {
     distinctUntilChanged(),
     mergeMap(conversationId =>
       this.conversationService.searchConversation(conversationId))
-  ))
+  ), {
+    initialValue: null
+  })
+  comments = toSignal(this.route.params.pipe(
+    map(params => params['conversationId']),
+    distinctUntilChanged(),
+    mergeMap(conversationId =>
+      this.conversationService.searchComments(conversationId))
+  ), {
+    initialValue: []
+  })
 
   constructor(
     private commentService: CommentService,
@@ -35,7 +45,7 @@ export class ConversationPage implements OnInit {
   }
 
   async enterCommentAsync(
-    conversation: Conversation
+    conversation: Conversation,
   ): Promise<void> {
     await this.commentService
       .addComment(conversation, this.commentText)
