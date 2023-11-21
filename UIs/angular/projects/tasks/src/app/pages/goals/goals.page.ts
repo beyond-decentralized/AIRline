@@ -18,10 +18,6 @@ export class GoalsPage implements OnInit {
 
   self: GoalsPage = this
 
-  showSubscriptionTest = false
-
-  toggleSubscriptionTestMessage = 'Show Subscription Test'
-
   constructor(
     private goalService: GoalService
   ) { }
@@ -33,16 +29,6 @@ export class GoalsPage implements OnInit {
     goalToAdd: Goal
   ) {
     this.addGoalAsync(goalToAdd).then()
-  }
-
-  toggleSubscriptionTest() {
-    this.showSubscriptionTest = !this.showSubscriptionTest
-
-    if (this.showSubscriptionTest) {
-      this.toggleSubscriptionTestMessage = 'Hide Subscription Test'
-    } else {
-      this.toggleSubscriptionTestMessage = 'Show Subscription Test'
-    }
   }
 
   private async addGoalAsync(

@@ -15,13 +15,6 @@
   </ion-fab>
   <air-goal-edit [goal]="newGoal" [parent]="self" triggerId="add-goal"></air-goal-edit>
   
-  <ion-item>
-    <button (click)="toggleSubscriptionTest()">{{toggleSubscriptionTestMessage}}</button>
-  </ion-item>
-  <ion-item *ngIf="showSubscriptionTest">
-    <cvr-subscription-test></cvr-subscription-test>
-  </ion-item>
-  
   <ion-item *ngFor="let goal of goals() trackBy identifyGoal">
     <div>
       <ion-label class="goal-name">
