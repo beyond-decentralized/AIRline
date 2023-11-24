@@ -7,7 +7,6 @@ import { BaseCollectionDao } from "../generated/baseDaos";
 import Q from "../generated/qApplication";
 import { QParticipant } from "../generated/qInterfaces";
 import { QCollection } from "../generated/query/QCollection";
-import { QRepository } from "@airport/holding-pattern";
 import { QCollectionConversation } from "../generated/query/QCollectionConversation";
 import { Observable } from "rxjs";
 
@@ -16,9 +15,7 @@ export class CollectionDao
     extends BaseCollectionDao {
 
     searchAllForRootRepositories(): Observable<Collection[]> {
-        let c: QCollection,
-            t: QTopic,
-            r: QRepository
+        let c: QCollection
         return this._search({
             SELECT: {
                 '*': Y,
@@ -26,8 +23,7 @@ export class CollectionDao
             },
             FROM: [
                 c = Q.Collection,
-                t = c.topic.LEFT_JOIN(),
-                r = c.repository.LEFT_JOIN(),
+                c.topic.LEFT_JOIN()
             ]
         })
     }
