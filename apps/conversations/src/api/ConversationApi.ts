@@ -33,9 +33,6 @@ export class ConversationApi {
         participantUserAccounts: UserAccount[],
         moderatorUserAccounts: UserAccount[]
     ): Promise<Conversation> {
-        const conversation = new Conversation()
-        conversation.collection = collection
-
         if (!participantUserAccounts) {
             participantUserAccounts = []
         }
@@ -43,28 +40,35 @@ export class ConversationApi {
             participantUserAccounts.push(this.requestManager.userAccount)
         }
 
-        conversation.participants = []
         const participantUserNames = []
+        for (const participantUserAccount of participantUserAccounts) {
+            participantUserNames.push(participantUserAccount.username)
+        }
+        const repository = await this.repositoryApi.create(
+            'Conversation: ' + participantUserNames.join(', '), true
+        )
+        
+        const conversation = new Conversation()
+        conversation.collection = collection
+        conversation.repository = repository
+
+        conversation.participants = []
         for (const participantUserAccount of participantUserAccounts) {
             const participant = new Participant()
             participant.conversation = conversation
             participant.userAccount = participantUserAccount
+            participant.repository = repository
             conversation.participants.push(participant)
-            participantUserNames.push(participantUserAccount.username)
         }
         if (moderatorUserAccounts) {
             for (const moderatorUserAccount of moderatorUserAccounts) {
                 const moderator = new Moderator()
                 moderator.conversation = conversation
                 moderator.userAccount = moderatorUserAccount
+                moderator.repository = repository
                 conversation.moderators.push(moderator)
             }
         }
-
-        const repository = await this.repositoryApi.create(
-            'Conversation: ' + participantUserNames.join(', '), true
-        )
-        conversation.repository = repository
         await this.conversationDao.save(conversation)
 
         await this.repositoryApi
@@ -75,7 +79,7 @@ export class ConversationApi {
         collectionConversation.conversation = conversation
         collection.collectionConversations.push(collectionConversation)
         collectionConversation.repository = collection.repository
-        this.collectionConversationDao.save(collectionConversation)
+        await this.collectionConversationDao.save(collectionConversation)
 
         return conversation
     }

@@ -58,8 +58,8 @@ export class CollectionApi {
 
         if (!repository) {
             repository = await this.repositoryApi.create(collection.name, true)
-            collection.repository = repository
         }
+        collection.repository = repository
 
         await this.collectionDao.save(collection)
 
