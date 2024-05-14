@@ -50,20 +50,19 @@ export class GoalDao
         topic: Topic | string
     ): Promise<Goal[]> {
         let g: QGoal,
-            to: QTopic
+            t: QTopic
         return await this._find({
             SELECT: {
                 '*': Y,
-                collection: {
-                },
+                collection: {},
                 topic: {}
             },
             FROM: [
                 g = Q.Goal,
-                to = g.topic.LEFT_JOIN(),
+                t = g.topic.LEFT_JOIN(),
                 g.collection.LEFT_JOIN()
             ],
-            WHERE: to.equals(topic)
+            WHERE: t.equals(topic)
         })
     }
 
