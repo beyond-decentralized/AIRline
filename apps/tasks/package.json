@@ -34,6 +34,7 @@
   },
   "main": "dist/cjs/tasks.index.js",
   "module": "dist/esm/tasks.index.js",
+  "browser": "dist/esm/tasks.index.js",
   "files": [
     "dist"
   ],

@@ -31,6 +31,7 @@
   },
   "main": "dist/cjs/topics.index.js",
   "module": "dist/esm/topics.index.js",
+  "browser": "dist/esm/topics.index.js",
   "files": [
     "dist"
   ],

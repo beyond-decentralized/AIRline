@@ -32,6 +32,7 @@
   },
   "main": "dist/cjs/conversations.index.js",
   "module": "dist/esm/conversations.index.js",
+  "browser": "dist/esm/conversations.index.js",
   "files": [
     "dist"
   ],
