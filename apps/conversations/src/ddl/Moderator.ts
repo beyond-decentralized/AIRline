@@ -15,10 +15,7 @@ export class Moderator
     conversation: Conversation
 
     @ManyToOne({ optional: false })
-    @JoinColumn({
-        name: "USER_ACCOUNT_LID",
-        referencedColumnName: "USER_ACCOUNT_LID"
-    })
+    @JoinColumn({ name: 'USER_ACCOUNT_LID' })
     userAccount: UserAccount
 
 }
