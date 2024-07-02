@@ -2,7 +2,6 @@ import { Injected } from "@airport/direction-indicator";
 import { Topic } from "../ddl/Topic";
 import { Theme } from "../ddl/Theme";
 import { BaseTopicDao } from "../generated/baseDaos";
-import Q from "../generated/qApplication";
 import { QTopic } from "../generated/query/QTopic";
 import { QTheme } from "../generated/query/QTheme";
 
@@ -18,7 +17,7 @@ export class TopicDao
         return await this._find({
             SELECT: {},
             FROM: [
-                com = Q.Topic,
+                com = this.qSchema.Topic,
                 con = com.theme.LEFT_JOIN()
             ],
             WHERE: con.equals(theme)

@@ -12,6 +12,7 @@
     "@airline/topics": "workspace:../topics",
     "@airport/airgate": "workspace:../../../AIRport/libs/airgate",
     "@airport/air-traffic-control": "workspace:../../../AIRport/apis/air-traffic-control",
+    "@airport/aviation-communication": "workspace:../../../AIRport/apis/aviation-communication",
     "@airport/autopilot": "workspace:../../../AIRport/libs/autopilot",
     "@airport/direction-indicator": "workspace:../../../AIRport/libs/direction-indicator",
     "@airport/final-approach": "workspace:../../../AIRport/schemas/final-approach",

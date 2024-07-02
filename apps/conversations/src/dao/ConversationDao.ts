@@ -1,11 +1,10 @@
-import { Injected } from "@airport/direction-indicator";
-import { Y } from "@airport/tarmaq-query";
-import { Conversation } from "../ddl/Conversation";
-import { BaseConversationDao } from "../generated/baseDaos";
-import Q from "../generated/qApplication";
-import { QModerator, QParticipant } from "../generated/qInterfaces";
-import { QConversation } from "../generated/query/QConversation";
-import { Observable } from "rxjs";
+import { Injected } from "@airport/direction-indicator"
+import { Y } from "@airport/tarmaq-query"
+import { Conversation } from "../ddl/Conversation"
+import { BaseConversationDao } from "../generated/baseDaos"
+import { QModerator, QParticipant } from "../generated/qInterfaces"
+import { QConversation } from "../generated/query/QConversation"
+import { Observable } from "rxjs"
 
 @Injected()
 export class ConversationDao
@@ -32,7 +31,7 @@ export class ConversationDao
                 }
             },
             FROM: [
-                c = Q.Conversation,
+                c = this.qSchema.Conversation,
                 m = c.moderators.LEFT_JOIN(),
                 m.userAccount.LEFT_JOIN(),
                 p = c.participants.LEFT_JOIN(),

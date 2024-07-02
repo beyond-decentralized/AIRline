@@ -1,11 +1,10 @@
-import { QTopic, Topic } from "@airline/topics";
-import { Injected } from "@airport/direction-indicator";
-import { Y } from "@airport/tarmaq-query";
-import { Goal } from "../../ddl/goal/Goal";
-import { BaseGoalDao } from "../../generated/baseDaos";
-import Q from "../../generated/qApplication";
-import { QGoal } from "../../generated/query/goal/QGoal";
-import { Observable } from "rxjs";
+import { QTopic, Topic } from "@airline/topics"
+import { Injected } from "@airport/direction-indicator"
+import { Y } from "@airport/tarmaq-query"
+import { Goal } from "../../ddl/goal/Goal"
+import { BaseGoalDao } from "../../generated/baseDaos"
+import { QGoal } from "../../generated/query/goal/QGoal"
+import { Observable } from "rxjs"
 
 @Injected()
 export class GoalDao
@@ -20,7 +19,7 @@ export class GoalDao
                 topic: {}
             },
             FROM: [
-                g = Q.Goal,
+                g = this.qSchema.Goal,
                 g.collection.LEFT_JOIN(),
                 g.topic.LEFT_JOIN()
             ]
@@ -38,7 +37,7 @@ export class GoalDao
                 topic: {}
             },
             FROM: [
-                g = Q.Goal,
+                g = this.qSchema.Goal,
                 g.collection.LEFT_JOIN(),
                 g.topic.LEFT_JOIN()
             ],
@@ -58,7 +57,7 @@ export class GoalDao
                 topic: {}
             },
             FROM: [
-                g = Q.Goal,
+                g = this.qSchema.Goal,
                 t = g.topic.LEFT_JOIN(),
                 g.collection.LEFT_JOIN()
             ],

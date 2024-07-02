@@ -1,14 +1,13 @@
-import { QTopic, Topic } from "@airline/topics";
-import { Injected } from "@airport/direction-indicator";
-import { Y } from "@airport/tarmaq-query";
-import { QConversation } from "../generated/query/QConversation";
-import { Collection } from "../ddl/Collection";
-import { BaseCollectionDao } from "../generated/baseDaos";
-import Q from "../generated/qApplication";
-import { QParticipant } from "../generated/qInterfaces";
-import { QCollection } from "../generated/query/QCollection";
-import { QCollectionConversation } from "../generated/query/QCollectionConversation";
-import { Observable } from "rxjs";
+import { QTopic, Topic } from "@airline/topics"
+import { Injected } from "@airport/direction-indicator"
+import { Y } from "@airport/tarmaq-query"
+import { QConversation } from "../generated/query/QConversation"
+import { Collection } from "../ddl/Collection"
+import { BaseCollectionDao } from "../generated/baseDaos"
+import { QParticipant } from "../generated/qInterfaces"
+import { QCollection } from "../generated/query/QCollection"
+import { QCollectionConversation } from "../generated/query/QCollectionConversation"
+import { Observable } from "rxjs"
 
 @Injected()
 export class CollectionDao
@@ -22,7 +21,7 @@ export class CollectionDao
                 topic: {}
             },
             FROM: [
-                c = Q.Collection,
+                c = this.qSchema.Collection,
                 c.topic.LEFT_JOIN()
             ]
         })
@@ -39,7 +38,7 @@ export class CollectionDao
                 topic: {}
             },
             FROM: [
-                c = Q.Collection,
+                c = this.qSchema.Collection,
                 t = c.topic.LEFT_JOIN()
             ],
             WHERE: t.equals(topic)
@@ -54,7 +53,7 @@ export class CollectionDao
                 '*': Y
             },
             FROM: [
-                c = Q.Collection
+                c = this.qSchema.Collection
             ],
             WHERE: c.topic.IS_NULL()
         })
@@ -82,7 +81,7 @@ export class CollectionDao
                 }
             },
             FROM: [
-                cl = Q.Collection,
+                cl = this.qSchema.Collection,
                 cc = cl.collectionConversations.LEFT_JOIN(),
                 cn = cc.conversation.LEFT_JOIN(),
                 p = cn.participants.LEFT_JOIN(),
